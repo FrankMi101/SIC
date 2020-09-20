@@ -11,7 +11,30 @@ namespace SIC.SICSetup
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                string goPage = Page.Request.QueryString["pID"].ToString();
+                switch (goPage)
+                {
+                    case "Encryption":
+                        goPage = "EncryptionStr.aspx";
+                        break;
+                    case "SchoolList":
+                        goPage = "SchoolListPage.aspx";
+                        break;
+                    case "StaffListTCDSB":
+                        goPage = "StaffListPage.aspx?Scope=All";
+                        break;
+                    case "StaffListSchool":
+                        goPage = "StaffListPage.aspx?Scope=School";
+                        break;
+                    default:
+                        goPage = "Home.aspx";
+                        break;
+                }
 
+                PageURL.HRef = goPage;
+            }
         }
     }
 }

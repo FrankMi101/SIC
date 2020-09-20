@@ -4,7 +4,7 @@
 
 <html>
 <head id="Head1" runat="server">
-    <title>Teacher Performance Appraisal - Login</title>
+     <title>Student Information Center</title>
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <script src="../Scripts/jquery-3.2.1.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>

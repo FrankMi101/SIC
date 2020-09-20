@@ -15,11 +15,11 @@ namespace SIC
             {
                 Page.Response.Expires = 0;
                 SaveUserWorkingEnvironment();
-                string deviceScreen = WorkingProfile.ClientUserScreen;
-                int xInt = deviceScreen.IndexOf("x");
-                string devicewidth = deviceScreen.Substring(0, xInt);
+                //  string deviceScreen = WorkingProfile.ClientUserScreen;
+                // int xInt = deviceScreen.IndexOf("x");
+                //  string devicewidth = deviceScreen.Substring(0, xInt);
 
-                int dWidth = int.Parse(devicewidth);
+                //int dWidth = int.Parse(devicewidth);
                 //if (dWidth < 800)
                 //{
                 //    Page.Response.Redirect("Mobile/DefaultM.aspx");

@@ -10,7 +10,7 @@
             {
                 "display": "Student Tasks Definition",
                 "role": "Admin",
-                "url": "System/Loading.aspx?pID=StudentTasks",
+                "url": "SICSetup/Loading.aspx?pID=StudentTasks",
                 "target": "GoList",
                 "ID": "11",
                 "myClass": "Level-2"
@@ -19,7 +19,7 @@
             {
                 "display": "School Tasks Definition",
                 "role": "Admin",
-                "url": "System/Loading.aspx?pID=SchoolTasks",
+                "url": "SICSetup/Loading.aspx?pID=SchoolTasks",
                 "target": "GoList",
                 "ID": "12",
                 "myClass": "Level-2"
@@ -36,7 +36,7 @@
                     {
                         "display": "User Role Setup",
                         "role": "Admin",
-                        "url": "System/Loading.aspx?pID=ApplicationRole",
+                        "url": "SICSetup/Loading.aspx?pID=ApplicationRole",
                         "target": "GoList",
                         "ID": "131",
                         "myClass": "Level-3"
@@ -44,7 +44,7 @@
                     {
                         "display": "User Management",
                         "role": "Admin",
-                        "url": "System/Loading.aspx?pID=UserManagement",
+                        "url": "SICSetup/Loading.aspx?pID=UserManagement",
                         "target": "GoList",
                         "ID": "132",
                         "myClass": "Level-3"
@@ -52,7 +52,7 @@
                     {
                         "display": "Multiple School Work User Management",
                         "role": "Admin",
-                        "url": "System/Loading.aspx?pID=MultipleSchoolUser",
+                        "url": "SICSetup/Loading.aspx?pID=MultipleSchoolUser",
                         "target": "GoList",
                         "ID": "133",
                         "myClass": "Level-3"
@@ -70,7 +70,7 @@
                     {
                         "display": "School District Setup",
                         "role": "Admin",
-                        "url": "School/Loading.aspx?pID=SchoolDistrictSetup",
+                        "url": "SICSetup/Loading.aspx?pID=SchoolDistrictSetup",
                         "target": "GoList",
                         "ID": "151",
                         "myClass": "Level-3"
@@ -78,7 +78,7 @@
                     {
                         "display": "School Region Setup",
                         "role": "Admin",
-                        "url": "School/Loading.aspx?pID=SchoolRegionSetup",
+                        "url": "SICSetup/Loading.aspx?pID=SchoolRegionSetup",
                         "target": "GoList",
                         "ID": "152",
                         "myClass": "Level-3"
@@ -86,14 +86,22 @@
                     {
                         "display": "School Department Management",
                         "role": "Admin",
-                        "url": "School/Loading.aspx?pID=SchoolManagement",
+                        "url": "SICSetup/Loading.aspx?pID=SchoolManagement",
                         "target": "GoList",
                         "ID": "153",
                         "myClass": "Level-3"
                     }
                 ]
-            }           
+            },           
+             {
+                "display": "Encryption String",
+                "role": "Admin",
+                "url": "SICSetup/Loading.aspx?pID=Encryption",
+                "target": "GoList",
+                "ID": "11",
+                "myClass": "Level-2"
 
+            }
         ]
     },
     {
@@ -115,7 +123,7 @@
             {
                 "display": "Student Reports",
                 "role": "Teacher",
-                "url": "Student/Loading.aspx?pID=StudentReports",
+                "url": "SICStudent/Loading.aspx?pID=StudentReports",
                 "target": "GoList",
                 "ID": "22",
                 "myClass": "Level-2"
@@ -123,7 +131,7 @@
             {
                 "display": "Student Forms",
                 "role": "Teacher",
-                "url": "Student/Loading.aspx?pID=StudentForms",
+                "url": "SICStudent/Loading.aspx?pID=StudentForms",
                 "target": "GoList",
                 "ID": "23",
                 "myClass": "Level-2"
@@ -150,7 +158,7 @@
             {
                 "display": "Class Reports",
                 "role": "Teacher",
-                "url": "Class/Loading.aspx?pID=ClassReports",
+                "url": "SICClass/Loading.aspx?pID=ClassReports",
                 "target": "GoList",
                 "ID": "32",
                 "myClass": "Level-2"
@@ -158,7 +166,7 @@
             {
                 "display": "Class Forms",
                 "role": "Teacher",
-                "url": "Class/Loading.aspx?pID=ClassForms",
+                "url": "SICClass/Loading.aspx?pID=ClassForms",
                 "target": "GoList",
                 "ID": "33",
                 "myClass": "Level-2"
@@ -185,7 +193,7 @@
             {
                 "display": "School Management",
                 "role": "Principal",
-                "url": "School/Loading.aspx?pID=SchoolManagement",
+                "url": "SICSchool/Loading.aspx?pID=SchoolManagement",
                 "target": "",
                 "ID": "42",
                 "myClass": "Level-2" 
@@ -220,7 +228,7 @@
             {
                 "display": "Staff Management",
                 "role": "Principal",
-                "url": "Staff/Loading.aspx?pID=StaffManagement",
+                "url": "SICStaff/Loading.aspx?pID=StaffManagement",
                 "target": "",
                 "ID": "53",
                 "myClass": "Level-2"

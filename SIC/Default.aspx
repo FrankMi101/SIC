@@ -24,7 +24,7 @@
     <script src="Scripts/jquery-3.2.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/NavTopList.js"></script>
- 
+
     <style>
         html, body {
             height: 100%;
@@ -129,16 +129,16 @@
                 <div id="LogoCol" style="display: inline; width: 7%; float: left;" class="pull-left visible-sm visible-md visible-lg">
                     <img id="Image3" src="images/boardLogo.gif" alt="TCDSB Logo" border="0" style="width: 200px; height: 90px" />
                 </div>
-                <div id="messageCol" style="display: inline; text-align: right; width:50%; float: left" class="visible-md visible-lg">
+                <div id="messageCol" style="display: inline; text-align: right; width: 50%; float: left" class="visible-md visible-lg">
 
                     <asp:Button ID="btnLogout" CssClass="inVisibleBtn" runat="server" Text="" OnClick="btnLogout_Click" Visible="true" Height="0px" Width="0px" />
                     <asp:Label ID="LabelTrain" runat="server" Height="20px" Visible="False"
                         Font-Size="Large" ForeColor="#00C000"> Training</asp:Label>
-                     <br />
                     <br />
                     <br />
-                    <div style="vertical-align: baseline; font-size:smaller; text-wrap:avoid">
-                        
+                    <br />
+                    <div style="vertical-align: baseline; font-size: smaller; text-wrap: avoid">
+
                         <a href="javascript:openParameter();">School Year:</a>
                         <asp:Label ID="LabelSchoolYear" runat="server" BackColor="Transparent"
                             ForeColor="purple"> </asp:Label>
@@ -190,7 +190,7 @@
                         <tr class=" visible-sm visible-md visible-lg">
                             <td></td>
                         </tr>
-                      
+
                     </table>
                 </div>
                 <div id="LoginAsDIV" class="bubble epahide">
@@ -261,17 +261,16 @@
             </div>
         </div>
 
+        <div id="PopUpDIV" class="bubble epahide"></div>
         <div id="ActionPOPDIV" class="bubble epahide">
             <div class="editTitle" style="display: block">
                 <div id="ActionTitle" style="display: inline; float: left; width: 92%; font-weight: 600;"></div>
-                <div style="display: inline; float: left;">
+                <div style="display: inline; float: right; width:30px;">
                     <img id="closeActionPOP" src="images/close.ico" style="height: 25px; width: 25px; margin: -3px 0 -3px 0" />
                 </div>
             </div>
             <iframe id="ActioniFramePage" name="ActioniFramePage" style="height: 420px; width: 99%" frameborder="0" scrolling="auto" src="iBlankPage.html" runat="server"></iframe>
         </div>
- 
-        <div id="PopUpDIV"   class="bubble epahide" ></div>
 
 
     </form>
@@ -283,25 +282,22 @@
     var currentNodeLevel1;
     var currentNodeLevel2;
     myTopNav(myTopMenu);
-</script>
-<script>
+</script> 
+
+<script type="text/javascript">
     $(document).ready(function () {
 
         var vHeight = window.innerHeight - 140;
-        //var vWidth = screen.width;
-        //var vHeight = window.innerHeight - apprScreenH1;
         $("#GoList").css("height", vHeight);
 
-        //$("#GoList").css({
-        //     height: vHeight
-        //    //width: vWidth
-        //})
         $("#LoginUserRole").click(function (event) {
             OpenLoginUserRolePage();
         });
+
         $("#LoginUserIcon").click(function (event) {
             OpenLoginUserRolePage();
         });
+
         $("#closeMe").click(function (event) {
 
             $("#PopUpDIV").fadeToggle("fast");
@@ -309,16 +305,16 @@
             if ($("#EditDIV").css('display') === "block") { $("#EditDIV").fadeToggle("fast"); }
 
             if ($("#ApprDIV").css('display') === "block") { $("#ApprDIV").fadeToggle("fast"); }
+        });
 
+        $("#closeActionPOP").click(function (event) {
+
+            if ($("#PopUpDIV").css('display') === "block") $("#PopUpDIV").fadeToggle("fast");
+
+            if ($("#ActionPOPDIV").css('display') === "block") { $("#ActionPOPDIV").fadeToggle("fast"); }
 
         });
-          $("#closeActionPOP").click(function (event) {
 
-            if ($("#PopUpDIV").css('display') === "block")  $("#PopUpDIV").fadeToggle("fast");
-
-            if ($("#ActionPOPDIV").css('display') === "block") { $("#ActionPOPDIV").fadeToggle("fast"); } 
-
-        });
         $("#MobileMenu").click(function (event) {
             if ($("#GoList").attr("src") === "iBlankPage.html") {
                 $("#TopNavM").hide();
@@ -327,6 +323,19 @@
             else {
                 $("#TopNavM").show();
                 $("#GoList").attr("src", "iBlankPage.html");
+            }
+        });
+
+        $("#LabelTrain").click(function () {
+            if ($("#hfUserID").val() == "mif") {
+                teachername = $("#hfTeacherName").val();
+                schoolyear = $("#hfApprYear").val();
+                schoolcode = $("#hfApprSchool").val();
+                employeeid = $("#hfApprEmployeeID").val();
+                sessionid = "";
+                pageid = $("#hfPageID").val();
+                userid = $("#hfUserID").val();
+                openEditPageA('450','800', 'SICSetup/Loading.aspx?pID=Encryption', 'Encription String');
             }
         });
     });
@@ -342,7 +351,6 @@
             });
 
             $("#LoginAsDIV").fadeToggle("fast");
-            //   $("#LoginAsDIV").addClass("visible");
         }
     }
     function changeAppsRole() {
@@ -398,11 +406,9 @@
                     width: vWidth - 5,
                     border: 0
                 })
-                //  $("#PopUpDIV").fadeToggle("fast");
                 $("#ActionPOPDIV").fadeToggle("fast");
             }
             catch (e) { }
-
         });
     }
 </script>

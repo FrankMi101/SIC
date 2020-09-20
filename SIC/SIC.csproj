@@ -150,6 +150,7 @@
     <Content Include="NotAllowView.aspx" />
     <Content Include="SICSchool\Loading.aspx" />
     <Content Include="Scripts\MoursPoint.js" />
+    <Content Include="SICSetup\EncryptionStr.aspx" />
     <Content Include="SICStaff\Loading.aspx" />
     <Content Include="StaffListPage.aspx" />
     <Content Include="StudentListPage.aspx" />
@@ -454,6 +455,13 @@
     <Compile Include="SICSchool\Loading.aspx.designer.cs">
       <DependentUpon>Loading.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SICSetup\EncryptionStr.aspx.cs">
+      <DependentUpon>EncryptionStr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SICSetup\EncryptionStr.aspx.designer.cs">
+      <DependentUpon>EncryptionStr.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SICStaff\Loading.aspx.cs">
       <DependentUpon>Loading.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -563,14 +571,6 @@
     <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj">
       <Project>{236fbb7b-0972-4289-b642-81ab05954d08}</Project>
       <Name>ClassLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
-      <Project>{cb4b0c6f-7fc8-467b-b484-4a1c55baebf7}</Project>
-      <Name>DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EPA2.Generic.LIB\EPA2.Generic.LIB.csproj">
-      <Project>{e15990a4-bbe9-422c-b565-b13b759231fc}</Project>
-      <Name>EPA2.Generic.LIB</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
