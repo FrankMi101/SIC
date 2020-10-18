@@ -55,8 +55,8 @@ table tbody tr:nth-child(odd) {
 
 
 #btnSearch, #btApplicant, #Button1, .GoButton {
-    background-color: dodgerblue;
-    color: white;
+    background-color:  white;
+    color:dodgerblue;
     font-weight: 600;
     height: 22px;
     width: 40px;

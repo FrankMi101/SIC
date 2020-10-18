@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <script src="../Scripts/jquery-3.2.1.min.js"></script>
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/BubbleHelp.css" rel="stylesheet" />
@@ -116,6 +116,12 @@
             margin-bottom: -5px;
         }
 
+     
+        #btnSearch:hover {
+            color:white;
+            background-color: dodgerblue;    
+            cursor: pointer;
+        }
         #SearchBar {
             position: absolute;
             top: 22px;
@@ -185,7 +191,7 @@
                     <asp:Label ID="Searchby" runat="server" Text="Search by" CssClass="label1"></asp:Label>
 
 
-                    <asp:DropDownList ID="ddlSearchby" runat="server" Width="100px" AutoPostBack="true" OnSelectedIndexChanged="DDLSearchBy_SelectedIndexChanged">
+                    <asp:DropDownList ID="ddlSearchby" runat="server" Width="100px" AutoPostBack="false" OnSelectedIndexChanged="DDLSearchBy_SelectedIndexChanged">
                         <asp:ListItem Value="SurName" Selected="True"> SurName</asp:ListItem>
                         <asp:ListItem Value="Age">Age</asp:ListItem>
                         <asp:ListItem Value="Grade">Grade</asp:ListItem>
@@ -433,25 +439,37 @@
 </html>
 
 <script src="../Scripts/MoursPoint.js"></script>
-
 <script src="../Scripts/GridView.js"></script>
 <script src="../Scripts/Appr_ListPage.js"></script>
 <script src="../Scripts/Appr_Help.js"></script>
 <script src="../Scripts/Appr_textEdit.js"></script>
+<script src="../Scripts/CommonListBuild.js"></script>
 
 <script type="text/javascript">
     var UserID = $("#hfUserID").val();
     var UserRole = $("#hfUserRole").val();
     var ItemCode = $("#hfCode").val();
     var preaLinkID;
+
     var BasePara = {
+        Operate: "Get",
         UserID: $("#hfUserID").val(),
         UserRole: $("#hfUserRole").val(),
         SchoolYear: "",
         SchoolCode: "",
         Grade: "",
         StudentID: "",
-        StudentName: ""
+        StudentName: "",
+    };
+    var BaseParaDDL = {
+        Operate: "Get",
+        UserID: $("#hfUserID").val(),
+        UserRole: $("#hfUserRole").val(),
+        SchoolYear: $("#ddlSchoolYear").val(),
+        SchoolCode: $("#ddlSchool").val(),
+        Para1: "",
+        Para2: "",
+        Para3: "",
     };
     var stName;
     var stID;
@@ -462,13 +480,15 @@
     var currentTR;
     var myIDs;
     var currentTR;
+
     function pageLoad(sender, args) {
 
         $(document).ready(function () {
-            var vHeight = window.innerHeight - 70;
+            var vHeight = window.innerHeight - 100;
             MakeStaticHeader("GridView1", vHeight, 1500, 20, false);
             preaLinkID = $("#hfSelectedTabL").val();
             ChangeHeaderSchoolName();
+            CheckSearchControl()
             $("#GridView1 tr").mouseenter(function (event) {
                 if (currentTR != undefined) { currentTR.removeClass("highlightRow"); }
                 currentTR = $(this)
@@ -487,13 +507,24 @@
                 $("#TextSearch").val(cEvantID);
                 $("#btnGradeTab").click();
             });
-            //$("#ddlSchool").change(function (e) {
-            //     ChangeTitleSchool();
-            //});
-            //$("#ddlSchoolCode").change(function (e) {
-            //   ChangeTitleSchool();
-            //});
+            $("#ddlSearchby").change(function (e) {
+                CheckSearchControl();
+            });
         });
+    }
+
+    function CheckSearchControl() {
+        var value = $("#ddlSearchby").val();
+        if (value == "SurName") {
+            $("#TextSearch").show();
+            $("#ddlSearchValue").hide();
+        }
+        else {
+            $("#TextSearch").hide();
+            $("#ddlSearchValue").show();
+           ChangeSearchValueList();
+          //  ChangeSearchValueListAPI();
+        }
     }
     function ChangeHeaderSchoolName() {
         var schoolcode = $("#ddlSchool").val();
@@ -513,40 +544,64 @@
         var menuList = SIC.Models.WebService.MenuOfStudentList("Get", BasePara, onSuccessMenu, onFailure);
     }
     function onSuccessMenu(result) {
-        BuildingMenuList(result);
+
+        BuldingList.ULList($("#ActionMenuUL"), BuildingULList(result));
+        BuildingMenuList($("#ActionMenuDIV"));
     }
 
     function onFailure() {
         alert("Get Menu Failed!");
     }
-    function BuildingMenuList(result) {
-        var list = "";
-        var myObj = result;
-        //  $("#ActionMenuDIV").html("");
-        for (x in myObj) {
-            // list += "<option value ='" + myObj[x].myCode + "'>" + myObj[x].myName + "</option>";
-            var para = "javascript:openPage(" + myObj[x].Ptop + "," + myObj[x].Pleft + "," + myObj[x].Pheight + "," + myObj[x].Pwidth + ",'" + myObj[x].MenuID + "','" + myObj[x].Type + "')";
+    function ChangeSearchValueList() {
+        BaseParaDDL.Operate = $("#ddlSearchby").val();
+        BaseParaDDL.SchoolYear = $("#ddlSchoolYear").val();
+        BaseParaDDL.SchoolCode = $("#ddlSchool").val();
+        var ddlList = SIC.Models.WebService.CommonLists(BaseParaDDL.Operate, BaseParaDDL, onSuccessDDL, onFailure);
+    }
+    function onSuccessDDL(result) {
+     //   var objControl = $("#ddlSearchValue")
+     //   BuildingDDList(result, objControl);
 
-            list += ' <li><a class="menuLink" href="' + para + '">' + myObj[x].Name + ' </a></li>';
-        }
+        BuldingList.DropDoweList($("#ddlSearchValue"), BuildingDropDownList(result));
+    }
+    function BuildingMenuList(Objcontrol) {
 
-        var menulength = myObj.length * 40;
-        $("#ActionMenuUL").html("");
-        $("#ActionMenuUL").html(list);
+        //var list = "";
+        //var myObj = result;
+        ////  $("#ActionMenuDIV").html("");
+        //for (x in myObj) {
+        //    // list += "<option value ='" + myObj[x].myCode + "'>" + myObj[x].myName + "</option>";
+        //    var para = "javascript:openPage(" + myObj[x].Ptop + "," + myObj[x].Pleft + "," + myObj[x].Pheight + "," + myObj[x].Pwidth + ",'" + myObj[x].MenuID + "','" + myObj[x].Type + "')";
+
+        //    list += ' <li><a class="menuLink" href="' + para + '">' + myObj[x].Name + ' </a></li>';
+        //}
+        //$("#ActionMenuUL").html("");
+        //$("#ActionMenuUL").html(list);
+
+        var menulength = Objcontrol.length * 40;
 
         var vTop = mousey;
         if (vTop > 500) {
             vTop = vTop - 150;
         }
-        //  var vLeft = event.currentTarget.offsetLeft;
-        $("#ActionMenuDIV").css({
+        Objcontrol.css({
             top: vTop + 15,
             left: 60,
             width: 250,
             height: menulength
 
         });
-        $("#ActionMenuDIV").fadeToggle("fast");
+        Objcontrol.fadeToggle("fast");
+
+    }
+    function BuildingDDList(result, ObjControl) {
+        var list = "";
+        var myObj = result;
+        for (x in myObj) {
+            list += "<option value ='" + myObj[x].Value + "'>" + myObj[x].Name + "</option>";
+        }
+
+        ObjControl.html(list);
 
     }
     function openPage(vTop, vLeft, vHeight, vWidth, menuID, type) {
@@ -579,4 +634,31 @@
             window.alert(e.mess);
         }
     }
+
+    var DataUrl = {
+        "myUrl": "https://webt.tcdsb.org/Webapi/SIC/Api/SIC/"  
+    }
+
+    function getUrl() {
+        return DataUrl.myUrl + "?Operate=" + BaseParaDDL.Operate + "&UserID=" + BaseParaDDL.UserID + "&UserRole=" + BaseParaDDL.UserRole + "&SchoolYear=" + BaseParaDDL.SchoolYear + "&SchoolCode=" + BaseParaDDL.SchoolCode + "&Para1=1&Para2=2&Para3=1";
+    }
+    
+    function ChangeSearchValueListAPI() {
+        BaseParaDDL.Operate = $("#ddlSearchby").val();
+        BaseParaDDL.SchoolYear = $("#ddlSchoolYear").val();
+        BaseParaDDL.SchoolCode = $("#ddlSchool").val();
+        var myUrl = getUrl();
+        $.get(myUrl, function (data, status) {
+            // alert("Data: " + data + "\nStatus: " + status);
+            var objControl = $("#ddlSearchValue");
+            var myData = JSON.parse(data);
+            BuildingDDList(myData, objControl);
+        });
+        //$.getJSON(myUrl, function (result) {
+        //    $.each(result, function (i, field) {
+        //        $("div").append(field + " ");
+        //    });
+        //});
+    }
+ 
 </script>

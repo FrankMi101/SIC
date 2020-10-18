@@ -87,7 +87,7 @@ namespace BLL
                     return "dbo.SIC_sys_MenuOfSchoolList" + parameter1 ;
                  default:
 
-                    return "";
+                    return action;
 
             }
 

@@ -40,7 +40,12 @@
             }
 
             #TopNav ul li:hover {
-                background-color: lightsalmon;
+             /*   background-color: lightsalmon;*/
+                background: lightsalmon; /* For browsers that do not support gradients */
+                background: -webkit-linear-gradient(lightsalmon, white); /* For Safari 5.1 to 6.0 */
+                background: -o-linear-gradient(lightsalmon, white); /* For Opera 11.1 to 12.0 */
+                background: -moz-linear-gradient(lightsalmon, white); /* For Firefox 3.6 to 15 */
+                background: linear-gradient(lightsalmon, white); /* Standard syntax */
             }
 
         #TopNav ul ul {
@@ -60,8 +65,13 @@
         }
 
 .TopSelectItem {
-    background-color: lightsalmon;
+   /* background-color: lightsalmon;*/
     /* background-image: url(image\highLightRow.png);*/
+    background: lightsalmon; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(lightsalmon, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(lightsalmon, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(lightsalmon, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(lightsalmon, white); /* Standard syntax */
 }
 
 #TopNav ul ul ul {
@@ -104,4 +114,11 @@
     background: -o-linear-gradient(skyblue, white); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(skyblue, white); /* For Firefox 3.6 to 15 */
     background: linear-gradient(skyblue, white); /* Standard syntax */
+}
+.HighLightMenu {
+    background: lightsalmon; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(lightsalmon, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(lightsalmon, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(lightsalmon, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(lightsalmon, white); /* Standard syntax */
 }

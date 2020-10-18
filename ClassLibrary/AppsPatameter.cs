@@ -17,6 +17,11 @@ namespace ClassLibrary
         public string UserID { get; set; }
         public string UserRole { get; set; }  
     }
+    public class Base2Parameter :BaseParameter
+    {
+        public string SchoolYear { get; set; }
+        public string SchoolCode { get; set; } 
+    }
 
     public class CommonListParameter : BaseParameter
     {
@@ -26,10 +31,14 @@ namespace ClassLibrary
         public string Para3 { get; set; }
         public string Para4 { get; set; }
     }
-    public class SchoolListParameter : BaseParameter
+    public class GeneralParameter : Base2Parameter
     {
-        public string SchoolYear { get; set; }
-        public string SchoolCode { get; set; }
+        public string Para1 { get; set; }
+        public string Para2 { get; set; }
+        public string Para3 { get; set; }
+    }
+    public class SchoolListParameter : Base2Parameter
+    {
         public string Panel { get; set; }
     }
     public class MenuListParameter: SchoolListParameter

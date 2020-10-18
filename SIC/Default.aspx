@@ -21,7 +21,7 @@
     <link href="Content/TopNavListM.css" rel="stylesheet" />
     <link href="Content/DefaultPage.css" rel="stylesheet" />
 
-    <script src="Scripts/jquery-3.2.1.min.js"></script>
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/NavTopList.js"></script>
 
@@ -41,10 +41,10 @@
         }*/
 
         #GoList {
-            font-size: small;
+/*            font-size: small;
             font-family: Arial;
             table-layout: auto;
-            height: 100%;
+*/            height: 100%;
             width: 100%;
             border: 0px solid red;
             margin: auto;

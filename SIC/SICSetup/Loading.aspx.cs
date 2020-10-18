@@ -19,6 +19,9 @@ namespace SIC.SICSetup
                     case "Encryption":
                         goPage = "EncryptionStr.aspx";
                         break;
+                    case "ClientPage":
+                        goPage = "ClientPage.aspx";
+                        break;
                     case "SchoolList":
                         goPage = "SchoolListPage.aspx";
                         break;

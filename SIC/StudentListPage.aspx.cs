@@ -16,7 +16,7 @@ namespace SIC
                 Page.Response.Expires = 0;
                 SetPageAttribution();
                 AssemblePage();
-
+                BindStudentListGridViewData();
             }
         }
         private void SetPageAttribution()
@@ -90,9 +90,7 @@ namespace SIC
             }
             ddlSearchby.SelectedIndex = 0;
             TextSearch.Visible = true;
-            ddlSearchValue.Visible = false;
-
-
+           // ddlSearchValue.Visible = false;
         }
         protected void DDLSchoolYear_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -145,15 +143,15 @@ namespace SIC
             if (Grade != "")
             {
                 BindStudentListGridViewData();
-                Assembing_GradeTab();
-            }
+                 Assembing_GradeTab();
+           }
 
         }
         protected void BtnSearch_Click(object sender, EventArgs e)
         {
 
-            BindStudentListGridViewData();
-            Assembing_GradeTab();
+             Assembing_GradeTab();
+           BindStudentListGridViewData();
         }
         // private async Task BindStudentListGridViewData()
         private void BindStudentListGridViewData()

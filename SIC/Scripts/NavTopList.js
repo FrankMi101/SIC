@@ -14,7 +14,6 @@
                 "target": "GoList",
                 "ID": "11",
                 "myClass": "Level-2"
-
             },
             {
                 "display": "School Tasks Definition",
@@ -23,7 +22,6 @@
                 "target": "GoList",
                 "ID": "12",
                 "myClass": "Level-2"
-
             },
             {
                 "display": "User Management",
@@ -98,10 +96,35 @@
                 "role": "Admin",
                 "url": "SICSetup/Loading.aspx?pID=Encryption",
                 "target": "GoList",
-                "ID": "11",
+                "ID": "13",
                 "myClass": "Level-2"
-
-            }
+            },
+            {
+                "display": "Example Page",
+                "role": "Admin",
+                "url": "#",
+                "target": "GoList",
+                "ID": "14",
+                "myClass": "Level-2",
+                "subItems": [
+                    {
+                        "display": "Client Call Web Service",
+                        "role": "Admin",
+                        "url": "SICSetup/Loading.aspx?pID=ClientPage",
+                        "target": "GoList",
+                        "ID": "141",
+                        "myClass": "Level-3"
+                    },
+                    {
+                        "display": "Client Call Web API",
+                        "role": "Admin",
+                        "url": "SICSetup/Loading.aspx?pID=ClientPageAPI",
+                        "target": "GoList",
+                        "ID": "142",
+                        "myClass": "Level-3"
+                    } 
+                ]
+            } 
         ]
     },
     {

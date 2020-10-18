@@ -141,6 +141,35 @@ namespace SIC.Models
 
         }
 
+        [WebMethod]
+        public List<NameValueList> CommonLists(string operate, GeneralParameter parameter)
+        {
+            try
+            {
+                var sp = "[dbo].[SIC_sys_GeneralList]"; 
+                return GeneralList.CommonList<NameValueList>(sp, parameter);
+            }        
+            catch (Exception ex)
+            {
+                var em = ex.Message;
+                return null;
+            }
 
+        }
+        [WebMethod]
+        public List<NameValueList> GCommonList(object parameter)
+        {
+            try
+            {
+                var sp = "[dbo].[SIC_sys_GeneralList] @Operate,@UserID,@UserRole,@SchoolYear,@SchoolCode,@Para1,@Para2,@Para3";
+                return GeneralList.CommonList<NameValueList>(sp, parameter);
+            }
+            catch (Exception ex)
+            {
+                var em = ex.Message;
+                return null;
+            }
+
+        }
     }
 }

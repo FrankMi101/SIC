@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <script src="../Scripts/jquery-3.2.1.min.js"></script>
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/BubbleHelp.css" rel="stylesheet" />
@@ -115,7 +115,11 @@
             padding-top: 0px;
             margin-bottom: -5px;
         }
-
+         #btnSearch:hover {
+            color:white;
+            background-color: dodgerblue;    
+            cursor: pointer;
+        }
         #SearchBar {
             position: absolute;
             top: 22px;

@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Login.aspx" />
+    <Content Include="Scripts\CommonListBuild.js" />
     <Content Include="SICClass\Loading.aspx" />
     <Content Include="Common\HelpEdit.aspx" />
     <Content Include="Common\Loading3.aspx" />
@@ -150,7 +151,9 @@
     <Content Include="NotAllowView.aspx" />
     <Content Include="SICSchool\Loading.aspx" />
     <Content Include="Scripts\MoursPoint.js" />
+    <Content Include="SICSetup\ClientPage.aspx" />
     <Content Include="SICSetup\EncryptionStr.aspx" />
+    <Content Include="SICSetup\HtmlPageExample.html" />
     <Content Include="SICStaff\Loading.aspx" />
     <Content Include="StaffListPage.aspx" />
     <Content Include="StudentListPage.aspx" />
@@ -454,6 +457,13 @@
     </Compile>
     <Compile Include="SICSchool\Loading.aspx.designer.cs">
       <DependentUpon>Loading.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SICSetup\ClientPage.aspx.cs">
+      <DependentUpon>ClientPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SICSetup\ClientPage.aspx.designer.cs">
+      <DependentUpon>ClientPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="SICSetup\EncryptionStr.aspx.cs">
       <DependentUpon>EncryptionStr.aspx</DependentUpon>

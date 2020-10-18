@@ -7,11 +7,11 @@
     <title>Loading Page</title>
     <style>
         div {
-            height: 99.5%;
-            width: 99.5%;
+      /*      height: 99.5%;
+            width: 99.5%;*/
             text-align: center;
             margin: 0 auto;
-            padding-top: 20%;
+            padding-top: 15%;
         }
     </style>
 </head>
