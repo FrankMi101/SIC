@@ -19,8 +19,11 @@ namespace ClassLibrary
         public string Attachment1 { get; set; }
         public string Attachment2 { get; set; }
         public string Attachment3 { get; set; }
-
+        public string FileName { get; set; }
+        public string FileType { get; set; }
+        public byte[] FileMemory { get; set; }
     }
+  
     public class EmailNoticePara
     {
         public string Operate { get; set; }
@@ -41,7 +44,6 @@ namespace ClassLibrary
         public string Template { get; set; }
         public string TemplateType { get; set; }
         public string AutoNotice { get; set; }
-
 
     }
 

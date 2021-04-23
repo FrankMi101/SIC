@@ -116,7 +116,7 @@
 </body>
 </html>
 
-<script src="../Scripts/jquery-3.2.1.min.js"></script>
+<script src="../Scripts/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
     var UserID = $("#hfUserID").val();
     var CategoryID = $("#hfCategory").val();

@@ -57,20 +57,20 @@ namespace ClassLibrary
     {
       
     }
-    public class SchoolList : SetupList
-    {
+    //public class SchoolList : SetupList
+    //{
       
-        public string Edit { get; set; }
-        public string BriefName { get; set; }
-        public bool TPA { get; set; }
-        public bool PPA { get; set; }
-        public string Header { get; set; }
-        public string Supervisor { get; set; }
-        public string District { get; set; }
-        public string Panel { get; set; }
-        public string Type { get; set; }
+    //    public string Edit { get; set; }
+    //    public string BriefName { get; set; }
+    //    public bool TPA { get; set; }
+    //    public bool PPA { get; set; }
+    //    public string Header { get; set; }
+    //    public string Supervisor { get; set; }
+    //    public string District { get; set; }
+    //    public string Panel { get; set; }
+    //    public string Type { get; set; }
 
 
 
-    }
+    //}
 }

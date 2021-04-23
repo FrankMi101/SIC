@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SIC {
-    
-    
-    public partial class Default {
-        
+namespace SIC
+{
+
+
+    public partial class Default
+    {
+
         /// <summary>
         /// Head1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
-        
+
         /// <summary>
         /// form2 control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form2;
-        
+
         /// <summary>
         /// btnLogout control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLogout;
-        
+
         /// <summary>
         /// LabelTrain control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelTrain;
-        
+
         /// <summary>
         /// LabelSchoolYear control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelSchoolYear;
-        
+
         /// <summary>
         /// LabelSchoolCode control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelSchoolCode;
-        
+
         /// <summary>
         /// LabelSchool control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelSchool;
-        
+
         /// <summary>
         /// TableVersion control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTable TableVersion;
-        
+
         /// <summary>
         /// LoginUserRole control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor LoginUserRole;
-        
+
         /// <summary>
         /// hfCurrentUserRole control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfCurrentUserRole;
-        
+
         /// <summary>
         /// Logout control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor Logout;
-        
+
         /// <summary>
         /// lblApplication control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblApplication;
-        
+
         /// <summary>
         /// appLink control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor appLink;
-        
+
         /// <summary>
         /// lblTCDSB control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTCDSB;
-        
+
         /// <summary>
         /// lblVersion control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblVersion;
-        
+
         /// <summary>
         /// rblLoginAS control.
         /// </summary>
@@ -155,7 +157,16 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rblLoginAS;
-        
+
+        /// <summary>
+        /// LabelPageTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelPageTitle;
+
         /// <summary>
         /// GoList control.
         /// </summary>
@@ -164,7 +175,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlIframe GoList;
-        
+
         /// <summary>
         /// hfUserID control.
         /// </summary>
@@ -173,7 +184,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfUserID;
-        
+
         /// <summary>
         /// hfPageID control.
         /// </summary>
@@ -182,7 +193,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfPageID;
-        
+
         /// <summary>
         /// hfUserLoginRole control.
         /// </summary>
@@ -191,7 +202,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfUserLoginRole;
-        
+
         /// <summary>
         /// hfRunningModel control.
         /// </summary>
@@ -200,7 +211,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfRunningModel;
-        
+
         /// <summary>
         /// hfApprYear control.
         /// </summary>
@@ -209,7 +220,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfApprYear;
-        
+
         /// <summary>
         /// hfApprSchool control.
         /// </summary>
@@ -218,7 +229,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfApprSchool;
-        
+
         /// <summary>
         /// hfApprEmployeeID control.
         /// </summary>
@@ -227,7 +238,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfApprEmployeeID;
-        
+
         /// <summary>
         /// hfTeacherName control.
         /// </summary>
@@ -236,7 +247,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfTeacherName;
-        
+
         /// <summary>
         /// hfSchoolArea control.
         /// </summary>
@@ -245,7 +256,25 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfSchoolArea;
-        
+
+        /// <summary>
+        /// hfTopMenuArea control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfTopMenuArea;
+
+        /// <summary>
+        /// hfLevel1MenuArea control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfLevel1MenuArea;
+
         /// <summary>
         /// EditDIV control.
         /// </summary>
@@ -254,7 +283,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl EditDIV;
-        
+
         /// <summary>
         /// editiFrame control.
         /// </summary>
@@ -263,7 +292,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlIframe editiFrame;
-        
+
         /// <summary>
         /// ApprDIV control.
         /// </summary>
@@ -272,7 +301,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ApprDIV;
-        
+
         /// <summary>
         /// appriFrame control.
         /// </summary>
@@ -281,7 +310,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlIframe appriFrame;
-        
+
         /// <summary>
         /// ActioniFramePage control.
         /// </summary>

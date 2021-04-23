@@ -1,33 +1,33 @@
-﻿using System;
+﻿using ClassLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BLL
 {
-   public class Common
+    public class Common
     {
-         
-        public static string GetSP(string action, string className)
-        {
-            switch (SPSource.SPFile)
-            {
-                case "JsonFile":
-                    return GetSPFrom.JsonFile(action);
-                case "DBTable":
-                    return GetSPFrom.DbTable(action, className);
-                default:
-                    return   GetSPInClass(action);
-            }
-
-        }
-
-        public static List<T> CommonList<T>(string action, object parameter)
+        public static string SPName(string className, string action, object parameter)
         {
             try
             {
-               string sp = GetSP(action,"GeneralList");
+                string sp = GetSPbyClassAndAction(className, action);
+                return GetParamerters(sp, parameter);
+            }
+            catch (Exception ex)
+            {
+                return className + " " + action;
+            }
+        }
+
+        public static List<T> CommonList<T>(string sp, object parameter)
+        {
+            try
+            {
+                // string sp = GetSP(action,"GeneralList");
                 var myList = new CommonOperate<T>();
                 return myList.ListOfT(sp, parameter);
 
@@ -39,37 +39,13 @@ namespace BLL
             }
 
         }
-        public static T CommonValue<T>(string action, object parameter)
+   
+        public static List<T> CommonList<T>(string className, string action, object parameter)
         {
             try
             {
-                 string sp = GetSP(action,"GeneralValue"); 
-                var myValue = new CommonOperate<T>();
-                return myValue.ValueOfT(sp, parameter);
-            
-            }
-            catch (Exception ex)
-            {
-                string em = ex.StackTrace;
-                throw;
-            }
-        }
-        public static List<T> CommonList<T>(string className ,string action , object parameter)
-        {
-            try
-            {
-                switch (className)
-                {
-                    case "GeneralList":
-                        return GeneralList.CommonList<T>(action, parameter);
-                    case "AppsPageHelp":
-                        return AppsPageHelp.CommonList<T>(action, parameter);
-                    case "CommentsBank":
-                        return CommentsBank.CommonList<T>(action, parameter);
-                    default:
-                        return AppsPageHelp.CommonList<T>(action, parameter);
-                }
-                 
+                string sp = SPName(className, action, parameter);
+                return CommonList<T>(sp, parameter);
             }
             catch (Exception ex)
             {
@@ -77,24 +53,28 @@ namespace BLL
                 throw;
             }
 
+        }
+        public static T CommonValue<T>(string sp, object parameter)
+        {
+            try
+            {
+               // string sp = GetSP(action, "GeneralValue");
+                var myValue = new CommonOperate<T>();
+                return myValue.ValueOfT(sp, parameter);
+
+            }
+            catch (Exception ex)
+            {
+                string em = ex.StackTrace;
+                throw;
+            }
         }
         public static T CommonValue<T>(string className, string action, object parameter)
         {
             try
             {
-
-                switch (className)
-                {
-                    case "GeneralList":
-                        return GeneralList.CommonValue<T>(action, parameter);
-            
-                    case "CommentsBank":
-                        return CommentsBank.CommonValue<T>(action, parameter);
-                    case "AppsPageHelp":
-                        return AppsPageHelp.CommonValue<T>(action, parameter);
-                    default:
-                        return AppsPageHelp.CommonValue<T>(action, parameter);
-                }
+                string sp = SPName(className, action, parameter);
+                return CommonValue<T>(sp, parameter);             
             }
             catch (Exception ex)
             {
@@ -102,46 +82,113 @@ namespace BLL
                 throw;
             }
         }
-        public static string SPName(string className, string action, object parameter)
+
+        private static string GetSPbyClassAndAction(string className, string action)
         {
             try
             {
-
                 switch (className)
                 {
                     case "GeneralList":
-                        return GeneralList.GetSP(action) ;
-
+                        return GeneralList.GetSP(action);
+                    case "GeneralValue":
+                        return GeneralValue.GetSP(action);
                     case "CommentsBank":
                         return CommentsBank.GetSP(action);
                     case "AppsPageHelp":
                         return AppsPageHelp.GetSP(action);
+                    case "SecurityManage":
+                        return AppsSecurityManagement.GetSP(action);
                     default:
                         return AppsPageHelp.GetSP(action);
                 }
             }
             catch (Exception ex)
             {
-                string em = ex.StackTrace;
-                throw;
+                return className + " " + action;
             }
         }
-        private static string GetSPInClass(string action)
+
+        //private static string GetSPInClass(string action)
+        //{
+        //    string parameter = " @Operate,@UserID,@Type";
+        //    switch (action)
+        //    {
+        //        case "General":
+        //            return "dbo.SIC_sys_GeneralList" + parameter;
+
+        //        case "DDList":
+        //            return "dbo.SIC_sys_ListsValuePara" + parameter;
+        //        case "SchoolList":
+        //            return "dbo.SIC_sys_SchoolList" + parameter;
+        //        default:
+        //            return action;
+
+        //    }
+        //}
+        public static string CheckParamerters(string sp, object obj)
         {
-            string parameter = " @Operate,@UserID,@Type";
-            switch (action)
-            {
-                case "General":
-                    return "dbo.SIC_sys_GeneralList" + parameter;
-
-                case "DDList":
-                    return "dbo.SIC_sys_ListsValuePara" + parameter;
-                case "SchoolList":
-                    return "dbo.SIC_sys_SchoolList" + parameter;
-                default:
-                    return action;
-
-            }
+            if (sp.Contains("@"))
+                return sp;
+            else
+                return sp + GetParameterStrFromParameterObj2(obj);
         }
+        private static string GetParamerters(string sp, object obj)
+        {
+            if (sp.Contains("@"))
+                return sp;
+            else
+                return sp + GetParameterStrFromParameterObj(obj);
+        }
+
+        private static string GetParameterStrFromParameterObj(object obj)
+        {
+            var myP = PropertiesOfType<string>(obj);
+            int x = 0;
+            var para = "";
+            foreach (var item in myP)
+            {
+                if (item.Value != null)
+                {
+                    if (x == 0)
+                        para = " @" + item.Key;
+                    else
+                        para = para + ",@" + item.Key;
+                    x++;
+                }
+
+            };
+            return para;
+        }
+        private static IEnumerable<KeyValuePair<string, T>> PropertiesOfType<T>(object obj)
+        {
+            return from p in obj.GetType().GetProperties()
+                   where p.PropertyType == typeof(T)
+                   select new KeyValuePair<string, T>(p.Name, (T)p.GetValue(obj));
+        }
+   
+
+        private static string GetParameterStrFromParameterObj2(object obj)
+        {
+            //for (int i = 0; i < 10; i++)
+            //{  }
+            var myObj = (IEnumerable<KeyValuePair<string, string>>)obj;
+            int x = 0;
+            var para = "";
+            foreach (var item in myObj)
+            {
+                if (item.Value != null)
+                {
+                    if (x == 0)
+                        para = " @" + item.Key;
+                    else
+                        para = para + ",@" + item.Key;
+                    x++;
+                }
+
+            };
+            return para;
+        }
+
     }
 }

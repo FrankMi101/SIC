@@ -9,6 +9,9 @@ img {
     margin-bottom: -5px;
 }
 
+img:hover { 
+    filter: contrast(200%);
+}
 .helpImg, .imgHelp {
     height: 25px;
     width: 25px;
@@ -210,3 +213,9 @@ section {
 .myEditItemDisable {
    background-color: #f6f4f4;
 }
+.EditDIV {
+    border: 2px solid salmon;
+    border-radius: 10px;
+    padding: 5px;
+}
+ 

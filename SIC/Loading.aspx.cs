@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,27 +15,46 @@ namespace SIC
             if (!Page.IsPostBack)
             {
                 string goPage = Page.Request.QueryString["pID"].ToString();
+
                 switch (goPage)
-                    {
+                {
                     case "StudentList":
-                        goPage = "StudentListPage.aspx";
+                        goPage = "SICStudent/StudentListPage.aspx";
+                        break;
+                    case "StudentGroupList":
+                        goPage = "SICStudent/StudentGroupPage.aspx";
+                        break;
+                    case "ClassList":
+                        goPage = "SICClass/ClassListPage.aspx";
                         break;
                     case "SchoolList":
-                        goPage = "SchoolListPage.aspx";
+                        goPage = "SICSchool/SchoolListPage.aspx";
                         break;
                     case "StaffListTCDSB":
                         goPage = "StaffListPage.aspx?Scope=All";
                         break;
                     case "StaffListSchool":
-                        goPage = "StaffListPage.aspx?Scope=School";
+                        goPage = "SICStaff/StaffListPage.aspx?Scope=School";
+                        break;
+                    case "TPAStaffList":
+                        goPage = "SICStaff/StaffListPageTPA.aspx?Scope=School";
                         break;
                     default:
-                        goPage = "Home.aspx";
+                      //  goPage = "Home.aspx";
                         break;
                 }
 
-                PageURL.HRef = goPage;
+                PageURL.HRef = GetGoPage(goPage);
             }
         }
+
+        private string GetGoPage(string page)
+        {
+            if (!File.Exists(Server.MapPath(page)))
+              { page = "ComeSoon.aspx?pID="  + page; }
+
+            return page;
+        }
+
     }
 }

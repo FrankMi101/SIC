@@ -31,19 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\myBaseClass\BaseClassC\bin\Release\Dapper.dll</HintPath>
+    <Reference Include="Dapper">
+      <HintPath>..\..\DLLReferance\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\itextsharp.dll</HintPath>
+      <HintPath>..\..\DLLReferance\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.pdfa">
-      <HintPath>..\itextsharp.pdfa.dll</HintPath>
+      <HintPath>..\..\DLLReferance\itextsharp.pdfa.dll</HintPath>
     </Reference>
-    <Reference Include="MyBaseClassC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\myBaseClass\BaseClassC\bin\Release\MyBaseClassC.dll</HintPath>
+    <Reference Include="MyBaseClassC">
+      <HintPath>..\..\DLLReferance\MyBaseClassC.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -64,11 +62,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
+    <Compile Include="CommonDb.cs" />
     <Compile Include="CommonExecute.cs" />
     <Compile Include="GetSPFrom.cs" />
+    <Compile Include="ManageApp\AppsSecurityManagement.cs" />
     <Compile Include="ManageApp\GeneralList.cs" />
     <Compile Include="ManageApp\AppsPageHelp.cs" />
     <Compile Include="ManageApp\CommentsBank.cs" />
+    <Compile Include="ManageApp\GeneralValue.cs" />
+    <Compile Include="SPandParameters.cs" />
+    <Compile Include="UserProfiles\UserLastWorking.cs" />
+    <Compile Include="UserProfiles\UserProfile.cs" />
     <Compile Include="UtilityMethod\AssemblyListControl.cs" />
     <Compile Include="CommonOperate.cs" />
     <Compile Include="CommonParameters.cs" />

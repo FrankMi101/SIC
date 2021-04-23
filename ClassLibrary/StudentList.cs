@@ -16,6 +16,8 @@
         public string IsIEP { get; set; }
         public string IsIPRC { get; set; }
         public string IsAlternative { get; set; }
+        public string IsSSN { get; set; }
+        public string IsESL { get; set; }
 
 
 

@@ -22,16 +22,34 @@ table tbody tr:nth-child(odd) {
 .loading {
     font-size: large;
 }
-
+.GridView-Selected {
+    background: lightblue; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(skyblue, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(skyblue, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(skyblue, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(skyblue, white); /* Standard syntax */
+    color: purple;
+}
+.GridView-List tr:hover {
+    background: lightblue; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(skyblue, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(skyblue, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(skyblue, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(skyblue, white); /* Standard syntax */
+    color: purple;
+}
 
 #GridView1 td {
     border: 1px solid #e1d9d9;
 }
 
 #GridView1 th {
-    border: 1px solid #e1d9d9;
-    font-family: Arial, sans-serif;
     font-size: x-small;
+    background: dodgerblue; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(dodgerblue, lightblue); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(dodgerblue, lightblue); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(dodgerblue, lightblue); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(dodgerblue, lightblue); /* Standard syntax */
 }
 
 #GridView2 tr {
@@ -41,12 +59,43 @@ table tbody tr:nth-child(odd) {
     background: -moz-linear-gradient(dodgerblue, lightblue); /* For Firefox 3.6 to 15 */
     background: linear-gradient(dodgerblue, lightblue); /* Standard syntax */
 }
+#GridView1 tr:hover {
+    background: lightblue; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(skyblue, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(skyblue, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(skyblue, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(skyblue, white); /* Standard syntax */
+    color:purple;
+}
+
+#GridView1 tr:visited {
+    background: lightblue; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(skyblue, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(skyblue, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(skyblue, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(skyblue, white); /* Standard syntax */
+    color: purple;
+}
+
+#GridView1 tr:focus {
+    background: lightblue; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(skyblue, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(skyblue, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(skyblue, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(skyblue, white); /* Standard syntax */
+    color: purple;
+}
+
+
 #GridView2 th {
     border: 1px solid #e1d9d9;
     font-family: Arial, sans-serif;
     font-size: x-small;
 }
-
+#GridView1 img {
+    margin-top:-2px;
+}
+ 
 #DivRoot {
     width: 100%;
     height: 100%;
@@ -67,4 +116,10 @@ table tbody tr:nth-child(odd) {
 .iFrameDIV
 {
     height:95%;
+}
+
+#alphabateSearch a:visited {
+ 
+text-decoration:underline;
+
 }

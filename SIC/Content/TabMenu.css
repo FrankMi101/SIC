@@ -147,15 +147,20 @@ html body form {
     color: Black;
     padding: 2px 10px 2px 20px;
     background-color: transparent;
-    background-image: url(../images/OrangeExplorerH.png);
+    /*background-image: url(../images/OrangeExplorerH.png);*/
+    background: orange; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(orange, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(orange, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(orange, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(orange, white); /* Standard syntax */
     display: inline;
     /*direction: rtl;*/
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
     border-radius: 9px 9px 0px 0px; /* work for IE7 IE8 */
-   /*  behavior: url(PIE/PIE.htc); work for IE7 IE8 */
+    /*  behavior: url(PIE/PIE.htc); work for IE7 IE8 */
 }
-
+ 
 .Horizontal_Tab ul li a:visited {
     color: Purple;
 }

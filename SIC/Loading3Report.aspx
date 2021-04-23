@@ -7,9 +7,12 @@
 <head runat="server">
     <title>Loading Page</title>
     <style>
-        div {
-       /*     height: 99%;
-            width: 99%;*/
+        body {
+        height:500px;
+        width:100%;
+        margin:auto;
+        }
+        div { 
             text-align: center;
             margin:auto;
             padding-top: 20%;
@@ -23,7 +26,6 @@
         <br />
         <br />
       <h2> 
-
             <asp:Label ID="NotPDFReport" runat="server" Text="No PDF report has been created" Visible="false" ForeColor="red"></asp:Label>
         </h2>
     </div>

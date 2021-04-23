@@ -40,12 +40,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppraisalList.cs" />
+    <Compile Include="Appraisee.cs" />
+    <Compile Include="AppRole.cs" />
+    <Compile Include="AppRoleList.cs" />
+    <Compile Include="AppRoleMatch.cs" />
+    <Compile Include="AppRoleMatchList.cs" />
+    <Compile Include="Classes.cs" />
+    <Compile Include="ClassesList.cs" />
     <Compile Include="CommentBank.cs" />
     <Compile Include="EmailNotice.cs" />
+    <Compile Include="Employee.cs" />
     <Compile Include="GoPageItems.cs" />
+    <Compile Include="Group.cs" />
+    <Compile Include="GroupList.cs" />
+    <Compile Include="HelpMessage.cs" />
+    <Compile Include="ItemsOnList.cs" />
     <Compile Include="MenuItems.cs" />
+    <Compile Include="School.cs" />
+    <Compile Include="SchoolDate.cs" />
+    <Compile Include="SchoolList.cs" />
     <Compile Include="Staff.cs" />
     <Compile Include="StaffList.cs" />
+    <Compile Include="StudentEnrolment.cs" />
     <Compile Include="StudentList.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="DataSource.cs" />
@@ -53,6 +70,7 @@
     <Compile Include="CommonList.cs" />
     <Compile Include="SetupList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Teacher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

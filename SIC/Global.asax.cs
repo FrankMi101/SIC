@@ -24,7 +24,13 @@ namespace SIC
 
         }
 
-
+        void Application_Error(object sender, EventArgs e)
+        {
+            // Code that runs when an unhandled error occurs  
+            //Exception Ex = Server.GetLastError();
+            //Server.ClearError();
+            //Server.Transfer("Error.aspx");
+        }
         private void SetSpSource()
         {
 

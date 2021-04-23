@@ -9,12 +9,11 @@ namespace BLL
   
     public static class AssemblingList
     {
-        public static void SetLists(System.Web.UI.WebControls.ListControl myListControl, List<CommonList> myListData)
-        {
-
-            AssemblingMyList(myListControl, myListData, "Code", "Name");
+        public static void SetLists(System.Web.UI.WebControls.ListControl myListControl, List<NameValueList> myListData)
+        {           
+                AssemblingMyList(myListControl, myListData, "Value", "Name");
         }
-        public static void SetLists(System.Web.UI.WebControls.ListControl myListControl, List<CommonList> myListData, object initialValue)
+        public static void SetLists(System.Web.UI.WebControls.ListControl myListControl, List<NameValueList> myListData, object initialValue)
         {
 
             SetLists(myListControl, myListData);
@@ -22,7 +21,7 @@ namespace BLL
         }
         public static void SetLists(string JsonSource, System.Web.UI.WebControls.ListControl myListControl, string ddlType, CommonListParameter parameter)
         {
-            List<CommonList> myListData = ListDataSource(JsonSource, ddlType, parameter,"DDList");
+            List<NameValueList> myListData = ListDataSource(JsonSource, ddlType, parameter,"DDList");
             SetLists(myListControl, myListData);
         }
         public static void SetLists(string JsonSource, System.Web.UI.WebControls.ListControl myListControl, string ddlType, CommonListParameter parameter, object initialValue)
@@ -114,6 +113,8 @@ namespace BLL
                 myListControl.DataTextField = TextField;
                 myListControl.DataValueField = ValueField;
                 myListControl.DataBind();
+                myListControl.SelectedIndex = 0;
+
             }
             catch (Exception ex)
             { var em = ex.Message; }
@@ -131,21 +132,22 @@ namespace BLL
         {
           //  string SP = SPandParameters.GetSPNameAndParameters("General", "Schools");
 
-            List<CommonList> myListData = ListDataSource("", ddlType, parameter, "DDLListSchool");  // CommonExcute<CommonList>.ListOfT(SP, parameter);
+            List<NameValueList> myListData = ListDataSource("", ddlType, parameter, "DDLListSchool");  // CommonExcute<CommonList>.ListOfT(SP, parameter);
             AssemblingSchoolList(myListControl1, myListControl2, myListData);
 
         }
-        private static void AssemblingSchoolList(System.Web.UI.WebControls.ListControl myListControl1, System.Web.UI.WebControls.ListControl myListControl2, List<CommonList> myList)
+        private static void AssemblingSchoolList(System.Web.UI.WebControls.ListControl myListControl1, System.Web.UI.WebControls.ListControl myListControl2, List<NameValueList> myList)
         {
             try
             {
-                var byList = myList.OrderBy(o => o.Code); 
+                var byList = myList.OrderBy(o => o.Value); 
                 //var sList = from c in myList
                 //             orderby c.Code
                 //             select c;
-                AssemblingMyList(myListControl2, myList, "Code", "Name"); // School Name DDL
-                AssemblingMyList(myListControl1, byList, "Code", "Code"); // school Code DDL
-
+                AssemblingMyList(myListControl2, myList, "Value", "Name"); // School Name DDL
+                AssemblingMyList(myListControl1, byList, "Value", "Value"); // school Code DDL
+                myListControl2.SelectedIndex = 0;
+                SetValue(myListControl1, myListControl2.SelectedValue);
             }
             catch (Exception ex)
             { var em = ex.Message; }
@@ -153,20 +155,20 @@ namespace BLL
             { }
         }
 
-        private static List<CommonList> ListDataSource(string JsonSource, string ddlType, CommonListParameter parameter, string action)
+        private static List<NameValueList> ListDataSource(string JsonSource, string ddlType, CommonListParameter parameter, string action)
         {
-            List<CommonList> myListData;
+            List<NameValueList> myListData;
             if (JsonSource == "")
             {
                 parameter.Operate = ddlType;
 
                 //  string SP = SPandParameters.GetSPNameAndParameters("General", "DDList");
                 //   myListData = CommonListExecute<NVListItem>.GeneralList(SP, parameter);
-                myListData = GeneralList.CommonList<CommonList>(action, parameter); //  CommonExcute<CommonList>.ListOfT(SP, parameter);
+                myListData = GeneralList.CommonList<NameValueList>(action, parameter); //  CommonExcute<CommonList>.ListOfT(SP, parameter);
             }
             else
             {
-                myListData = GeneralList.JsonSourceList<CommonList>(JsonSource, ddlType, action);
+                myListData = GeneralList.JsonSourceList<NameValueList>(JsonSource, ddlType, action);
             } 
             return myListData;
 

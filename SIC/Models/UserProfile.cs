@@ -82,6 +82,10 @@ namespace SIC
         {
             return CommonExecute<string>.ValueOfT("dbo.SIC_sys_LoginUserProfile @Operate, @UserID", new { Operate = "Role",UserID = userId});
         }
+        public static string UserAccessScope(string userId)
+        {
+            return CommonExecute<string>.ValueOfT("dbo.SIC_sys_LoginUserProfile @Operate, @UserID", new { Operate = "Scope", UserID = userId });
+        }
     }
    
 }

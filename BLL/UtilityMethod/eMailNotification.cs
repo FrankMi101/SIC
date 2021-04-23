@@ -1,5 +1,6 @@
 ﻿using ClassLibrary;
 using System;
+using System.IO;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Configuration;
@@ -12,8 +13,6 @@ namespace BLL
         { }
         public static string SendMail(EmailNotice eNotice)
         {
-
-
             string result = "Failed";
             try
             {
@@ -38,6 +37,7 @@ namespace BLL
             }
             return result;
         }
+    
         public static string SendMailWithiCalendar(EmailNotice eNotice, System.Net.Mail.Attachment iCalendar)
         {
 
@@ -87,10 +87,7 @@ namespace BLL
                     NoticeArea = noticeArea,
                     NoticeDate = noticeDate,
                     DeadLineDate = deadlineDate,
-
                 };
-
-
                return NoticeSave(parameter);
 
  
@@ -120,7 +117,6 @@ namespace BLL
         {
             if (WebConfigurationManager.AppSettings["eMailTry"] == "Test")
             {
-
                 eNotice.EmailBody = eNotice.EmailBody.Replace("{{PlaceHolder:TestEmailTo}}", "Email To: " + eNotice.EmailTo);
                 eNotice.EmailBody = eNotice.EmailBody.Replace("{{PlaceHolder:TestEmailCC}}", "Email CC: " + eNotice.EmailCC);
                 eNotice.EmailTo = eNotice.EmailFrom;
@@ -136,7 +132,6 @@ namespace BLL
             string applicationSite = WebConfigurationManager.AppSettings["ApplicationSite"];
             if (eNotice.EmailFormat == "HTML")
             {
-
                 string appUrl = " <a href=' " + applicationSite + "' target='_blank'>  Teacher Performance Appraisal </a>";
                 eNotice.EmailBody = eNotice.EmailBody.Replace("{{PlaceHolder:WebSite}}", appUrl);
                 eNotice.EmailBody = eNotice.EmailBody.Replace("{{PlaceHolder:OneLine}}", "<br />");
@@ -170,7 +165,17 @@ namespace BLL
 
                 if (!string.IsNullOrEmpty(eNotice.Attachment1)) AddAttachments(eNotice.Attachment1, ref Mailmsg);
                 if (!string.IsNullOrEmpty(eNotice.Attachment2)) AddAttachments(eNotice.Attachment2, ref Mailmsg);
-                if (!string.IsNullOrEmpty(eNotice.Attachment3)) AddAttachments(eNotice.Attachment3, ref Mailmsg); 
+                if (!string.IsNullOrEmpty(eNotice.Attachment3)) AddAttachments(eNotice.Attachment3, ref Mailmsg);
+
+                if (eNotice.FileMemory != null)
+                {
+                    MemoryStream attaStream = new MemoryStream(eNotice.FileMemory);
+                    attaStream.Position = 0;
+                    System.Net.Mime.ContentType contentType = new System.Net.Mime.ContentType(eNotice.FileType); // "application/pdf");
+                    System.Net.Mail.Attachment attaFile = new Attachment(attaStream, contentType);
+                    attaFile.ContentDisposition.FileName = eNotice.FileName;
+                    Mailmsg.Attachments.Add(attaFile);
+                }
 
                 return Mailmsg;
             }
@@ -180,9 +185,7 @@ namespace BLL
                 return null;
             }
         }
-
-
-
+       
         public static string SendMail(string eMailTo, string eMailCC, string eMailBcc, string eMailForm, string eMailSubject, string eMailBody, string eMailFormat, System.Net.Mail.Attachment iCal)
         {
             var eNotice = new EmailNotice

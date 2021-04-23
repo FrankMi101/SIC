@@ -187,6 +187,10 @@
     }
     function onSuccessControl(result) {
 
+        BindMyList(result);
+
+    }
+    function BindMyList(result) {
         BuildingList.DropDown($("#DropDownList1"), BuildingDropDownList(result));
 
         BuildingList.CheckBox($("#CheckBoxListDIV"), BuildingCheckBoxList(result));
@@ -195,29 +199,15 @@
 
         BuildingList.ListBox($("#ListBox1"), BuildingListBoxList(result));
 
-        BuldingList.ULList($("#ActionMenuUL"), BuildingULList(result));
-
+        BuildingList.ULList($("#ActionMenuUL"), BuildingULList(result));
     }
-   
 
     function AssemblingControlsbyWebApi() {
         BaseParaDDL.Operate = $("#ddlSearchby").val();
         var myUrl = "https://webt.tcdsb.org/Webapi/SIC/Api/SIC/" + "?Operate=" + BaseParaDDL.Operate + "&UserID=" + BaseParaDDL.UserID + "&UserRole=" + BaseParaDDL.UserRole + "&SchoolYear=" + BaseParaDDL.SchoolYear + "&SchoolCode=" + BaseParaDDL.SchoolCode + "&Para1=1&Para2=2&Para3=3";
 
         $.get(myUrl, function (data, status) {
-            // var myData = JSON.parse(data);
-            //var myDropDownList = $("#DropDownList1");
-            //var myCheckBoxList = $("#CheckBoxListDIV");
-            //var myRadioButtonList = $("#RadioButtonList1");
-            //var myListBoxList = $("#ListBox1");
-            //var myULList = $("#ActionMenuUL");
-
-            //BuildingDropDownList(data);
-            //BuildingCheckBoxList(data);
-            //BuildingRadioButtonList(data);
-            //BuildingListBoxList(data);
-            //BuildingULList(data);
-            onSuccessControl(date);
+            BindMyList(data);
         });
 
     }

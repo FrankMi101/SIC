@@ -95,22 +95,28 @@ namespace SIC
 
             return GeneralList<T>("AppsPageHelp", "GoPageItems", parameter);
         }
-        public static List<T> ActionMenuStudentList<T>(object parameter)
+        public static List<T> ActionMenuList<T>(object parameter)
         {
-
-            return GeneralList<T>("GeneralList", "MenuOfStudentList", parameter);
+            return GeneralList<T>("GeneralList", "ActionMenuList", parameter);
         }
+        //public static List<T> ActionMenuGroupList<T>(object parameter)
+        //{
+        //    return GeneralList<T>("GeneralList", "MenuOfGroupList", parameter);
+        //}
 
-        public static List<T> ActionMenuClassList<T>(object parameter)
-        {
+        //public static List<T> ActionMenuStaffList<T>(object parameter)
+        //{
+        //    return GeneralList<T>("GeneralList", "MenuOfStaffList", parameter);
+        //}
 
-            return GeneralList<T>("GeneralList", "MenuOfClassList", parameter);
-        }
-        public static List<T> ActionMenuSchoolList<T>(object parameter)
-        {
-
-            return GeneralList<T>("GeneralList", "MenuOfSchoolList", parameter);
-        }
+        //public static List<T> ActionMenuClassList<T>(object parameter)
+        //{
+        //    return GeneralList<T>("GeneralList", "MenuOfClassList", parameter);
+        //}
+        //public static List<T> ActionMenuSchoolList<T>(object parameter)
+        //{
+        //    return GeneralList<T>("GeneralList", "MenuOfSchoolList", parameter);
+        //}
 
         public static string GoPage(object parameter)
         {
@@ -163,21 +169,44 @@ namespace SIC
         {
             AssemblingList.SetListSchool(myCodeListControl, myListNameControl, action, parameter, initialValue);
         }
-
-        public static void BuildingTab(System.Web.UI.HtmlControls.HtmlGenericControl myDIVTab, object parameter, string Grade)
+        public static void BuildGradeTab(System.Web.UI.HtmlControls.HtmlGenericControl myDIVTab, object parameter, string Grade)
         {
-
-            var gradeList = GeneralList<CommonList>("GeneralList", "Grade", parameter);
+            var gradeList = GeneralList<NameValueList>("GeneralList", "Grade", parameter);
             var UL = new HtmlGenericControl("ul");
-           // int tabCount = gradeList.Count;
-          //  int tabWidth = tabCount > 8 ? 70 : 45;
-
             try
             {
                 foreach (var item in gradeList)
                 {
-                    var a = getALink(item.Code,item.Name,Grade) ;
-                    var li = getLi(item.Code, item.Name, Grade);
+                    var a = getALink(item.Value, item.Name, Grade);
+                    var li = getLi(item.Value, item.Name, Grade);
+
+                    li.InnerText = "";
+                    li.Controls.Add(a);
+                    UL.Controls.Add(li);
+
+                }
+                myDIVTab.InnerHtml = "";
+                myDIVTab.Controls.Add(UL);
+
+            }
+            catch (System.Exception ex)
+            {
+                var em = ex.Message;
+                throw;
+            }
+
+        }
+        public static void BuildingTab(System.Web.UI.HtmlControls.HtmlGenericControl myDIVTab, object parameter,string cTab)
+        {
+
+            var gradeList = GeneralList<NameValueList>("GeneralList", "TabList", parameter);
+            var UL = new HtmlGenericControl("ul"); 
+            try
+            {
+                foreach (var item in gradeList)
+                {
+                    var a = getALink(item.Value,item.Name, cTab) ;
+                    var li = getLi(item.Value, item.Name, cTab);
                  
                     li.InnerText = "";
                     li.Controls.Add(a);
@@ -195,21 +224,21 @@ namespace SIC
             }
         }
 
-        private static HtmlAnchor getALink(string code, string name, string Grade)
+        private static HtmlAnchor getALink(string code, string name, string cTab)
         {
             var a = new HtmlAnchor();
             a.InnerText = name;
             a.ID = code;
             a.HRef = "#";
-            string classAdd = code == Grade ? "aLinkTabHS" : "aLinkTabH";
+            string classAdd = code == cTab ? "aLinkTabHS" : "aLinkTabH";
             a.Attributes.Add("class", classAdd);
             return a;
         }
-        private static HtmlGenericControl getLi(string code, string name, string Grade)
+        private static HtmlGenericControl getLi(string code, string name, string cTab)
         {
             var li = new HtmlGenericControl("li");
             li.ID = "GT_" + code;
-            string classAdd = code == Grade ? "liTabHS" : "liTabH";
+            string classAdd = code == cTab ? "liTabHS" : "liTabH";
             li.Attributes.Add("class", classAdd);
 
             if (name.Length > 9)

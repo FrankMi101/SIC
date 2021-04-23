@@ -47,9 +47,9 @@ namespace BLL
 
             try
             {
-                string authenticationMethod = WebConfigurationManager.AppSettings["AuthenticateMethod"];// WebConfig.getValuebyKey("AuthenticateMethod");
+              //  string authenticationMethod = WebConfigurationManager.AppSettings["AuthenticateMethod"];// WebConfig.getValuebyKey("AuthenticateMethod");
 
-                if (authenticationMethod == "NameOnly")
+                if (AuthenticateMethod() == "NameOnly")
                 {
                     return true;
                 }
@@ -89,6 +89,18 @@ namespace BLL
                 return false;
             }
 
+        }
+        private static string AuthenticateMethod()
+        {
+            string authMethod = WebConfigurationManager.AppSettings["AuthenticateMethod"]; ;
+            if (authMethod == "NameOnly")
+            {
+                string appServers = WebConfigurationManager.AppSettings["AppServers"]; 
+                string serverName = System.Net.Dns.GetHostName();
+                if (appServers.Contains(serverName))
+                    authMethod = "NameOnlyFalse";
+            }
+            return authMethod;
         }
         //public static string UserRole(string userID)
         //{

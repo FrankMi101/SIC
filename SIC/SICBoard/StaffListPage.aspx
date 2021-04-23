@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StaffListPage.aspx.cs" Inherits="SIC.StaffListPage" Async="true" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StaffListPage.aspx.cs" Inherits="SIC.StaffListPage" Async="true"   %>
 
 <!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>SIC Student List</title>
+    <title>School Staff List</title>
     <meta http-equiv="Pragma" content="No-cache" />
     <meta http-equiv="Cache-Control" content="no-Store,no-Cache" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -18,6 +18,8 @@
     <link href="../Content/ListPage.css" rel="stylesheet" />
     <link href="../Content/ContentPage.css" rel="stylesheet" />
     <link href="../Content/TabMenu.css" rel="stylesheet" />
+    <link href="../Content/ActionMenu.css" rel="stylesheet" />
+    <link href="../Content/SearchArea.css" rel="stylesheet" />
 
     <style type="text/css">
         body {
@@ -75,61 +77,14 @@
             border: 1px blue none;
         }
 
-        #ActionMenuDIV {
-            border: 2px lightblue ridge;
-            height: 180px;
-            width: 210px;
-            background: lightblue; /* For browsers that do not support gradients */
-            background: -webkit-linear-gradient(lightblue, white); /* For Safari 5.1 to 6.0 */
-            background: -o-linear-gradient(lightblue, white); /* For Opera 11.1 to 12.0 */
-            background: -moz-linear-gradient(lightblue, white); /* For Firefox 3.6 to 15 */
-            background: linear-gradient(lightblue, white); /* Standard syntax */
-        }
 
-            #ActionMenuDIV li {
-                height: 25px;
-            }
 
         .hfSchoolYear, .hfSchoolCode, .hfEmployeeID, .hfTeacherName, .hfmyKey, .hfIDs {
             display: none;
             width: 0px;
         }
 
-        img {
-            border-color: yellow
-        }
 
-        .imgHelp {
-            width: 23px;
-            height: 23px;
-            margin-top: -10px;
-        }
-
-        .label1 {
-            font-family: Arial;
-            font-size: 13px;
-        }
-
-        .Gobutton {
-            display: inline;
-            padding-top: 0px;
-            margin-bottom: -5px;
-        }
-         #btnSearch:hover {
-            color:white;
-            background-color: dodgerblue;    
-            cursor: pointer;
-        }
-        #SearchBar {
-            position: absolute;
-            top: 22px;
-            left: 1000px;
-        }
-
-        #HelpTextBox {
-            width: 100%;
-            height: 100%;
-        }
 
         .top5Row {
             border-top: 5px solid darkcyan;
@@ -139,20 +94,6 @@
             margin: 0px;
             padding: 0px;
             border: 0px;
-        }
-
-        #alphabateSearch .alphabateKey {
-            list-style-type: none;
-            display: inline;
-            padding-right: 15px;
-        }
-
-        #alphabateSearch ul {
-            margin-top: -20px;
-        }
-
-        #TextSearch {
-            margin-bottom: -5px;
         }
     </style>
 
@@ -166,65 +107,67 @@
 
             </Services>
         </asp:ScriptManager>
+        <div class="SearchAreaRow">
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                <ContentTemplate>
+                    <div class="SearchAreaDIV">
+                        <img class="imgHelp" src="../images/help2.png" title="Help Content" />
+                        <asp:Label ID="Label3" runat="server" Text="School Year: " CssClass="label1"></asp:Label>
+                        <asp:DropDownList ID="ddlSchoolYear" runat="server" Width="85px" AutoPostBack="False" OnSelectedIndexChanged="DDLSchoolYear_SelectedIndexChanged">
+                        </asp:DropDownList>
+                        <asp:Label ID="Label1" runat="server" Text="Panel: " CssClass="label1"></asp:Label>
 
-        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-            <ContentTemplate>
-                <div style="display: inline;">
-                    <img class="imgHelp" src="../images/help2.png" title="Help Content" />
-                    <asp:Label ID="Label3" runat="server" Text="School Year: " CssClass="label1"></asp:Label>
-                    <asp:DropDownList ID="ddlSchoolYear" runat="server" Width="85px" AutoPostBack="False" OnSelectedIndexChanged="DDLSchoolYear_SelectedIndexChanged">
+                        <asp:DropDownList ID="DDLPanel" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLPanel_SelectedIndexChanged">
+                            <asp:ListItem Selected="True" Value="Elementary">Elementary</asp:ListItem>
+                            <asp:ListItem>Secondary</asp:ListItem>
+                            <asp:ListItem>Department</asp:ListItem>
+                        </asp:DropDownList>
+
+                        <asp:Label ID="Label2" runat="server" Text="School" CssClass="label1"></asp:Label>
+                        <asp:DropDownList ID="ddlSchoolCode" runat="server" Width="55px" AutoPostBack="True" OnSelectedIndexChanged="DDLSchoolCode_SelectedIndexChanged">
+                        </asp:DropDownList>
+                        <asp:DropDownList ID="ddlSchool" runat="server" Width="200px" AutoPostBack="True" OnSelectedIndexChanged="DDLSchool_SelectedIndexChanged">
+                        </asp:DropDownList>
+                        <asp:Label ID="Searchby" runat="server" Text="Search by" CssClass="label1"></asp:Label>
+
+
+                        <asp:DropDownList ID="ddlSearchby" runat="server" Width="100px" AutoPostBack="false" OnSelectedIndexChanged="DDLSearchBy_SelectedIndexChanged">
+                            <asp:ListItem Value="SurName" Selected="True">Last Name</asp:ListItem>
+                            <asp:ListItem Value="FirstName"> First Name</asp:ListItem>
+                            <asp:ListItem Value="CPNum">CPNum</asp:ListItem>
+                            <asp:ListItem Value="SIN">SIN</asp:ListItem>
+                            <asp:ListItem Value="EmployeeID">Employee ID</asp:ListItem>
+                            <asp:ListItem Value="UserID">Network UserID</asp:ListItem>
+                        </asp:DropDownList>
+
+                        <asp:TextBox ID="TextSearch" runat="server" Width="80px" Height="19px" placeholder="Surname"></asp:TextBox>
+
+                        <asp:DropDownList ID="ddlSearchValue" runat="server" Width="100px" AutoPostBack="false">
+                        </asp:DropDownList>
+
+                        IN 
+                    <asp:DropDownList ID="ddlType" runat="server" Width="70px" AutoPostBack="false" Enabled="false">
+                        <asp:ListItem Value="School" Selected="True">School</asp:ListItem>
+                        <asp:ListItem Value="Board"> All TCDSB</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:Label ID="Label1" runat="server" Text="Panel: " CssClass="label1"></asp:Label>
-
-                    <asp:DropDownList ID="DDLPanel" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLPanel_SelectedIndexChanged">
-                        <asp:ListItem Selected="True" Value="Elementary">Elementary</asp:ListItem>
-                        <asp:ListItem>Secondary</asp:ListItem>
-                    </asp:DropDownList>
-
-                    <asp:Label ID="Label2" runat="server" Text="School" CssClass="label1"></asp:Label>
-                    <asp:DropDownList ID="ddlSchoolCode" runat="server" Width="55px" AutoPostBack="True" OnSelectedIndexChanged="DDLSchoolCode_SelectedIndexChanged">
-                    </asp:DropDownList>
-                    <asp:DropDownList ID="ddlSchool" runat="server" Width="200px" AutoPostBack="True" OnSelectedIndexChanged="DDLSchool_SelectedIndexChanged">
-                    </asp:DropDownList>
-                    <asp:Label ID="Searchby" runat="server" Text="Search by" CssClass="label1"></asp:Label>
+                        <%--<asp:Button ID="btnSearch" runat="server" Text="Go" OnClick="BtnSearch_Click" CssClass="Gobutton" />--%>
+                         <asp:ImageButton ID="btnSearchGo" CssClass="SearchGoButton"  runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearch_Click" />
+                        <asp:Button ID="btnGradeTab" runat="server" Text="" Height="0px" Width="0px" CssClass="HideButton" OnClick="BtnGradeTab_Click" />
 
 
-                    <asp:DropDownList ID="ddlSearchby" runat="server" Width="100px" AutoPostBack="true" OnSelectedIndexChanged="DDLSearchBy_SelectedIndexChanged">
-                        <asp:ListItem Value="SurName" Selected="True">Last Name</asp:ListItem>
-                        <asp:ListItem Value="fName"> First Name</asp:ListItem>
-                        <asp:ListItem Value="CPNum">CPNum</asp:ListItem>
-                    </asp:DropDownList>
+                        <div id="SearchBar">
+                            <asp:UpdateProgress ID="UpdateProgress1" runat="server">
+                                <ProgressTemplate>
+                                    <img src="../images/indicator.gif" alt="" />
+                                    <b>Searching.....</b>
+                                </ProgressTemplate>
+                            </asp:UpdateProgress>
+                        </div>
 
-                    <asp:TextBox ID="TextSearch" runat="server" Width="80px" Height="19px" placeholder="Surname"></asp:TextBox>
-
-                    <asp:DropDownList ID="ddlSearchValue" runat="server" Width="100px" AutoPostBack="false">
-                    </asp:DropDownList>
-                    IN 
-                    <asp:DropDownList ID="ddlType" runat="server" Width="70px" AutoPostBack="false">
-                        <asp:ListItem Value="All" Selected="True"> All TCDSB</asp:ListItem>
-                        <asp:ListItem Value="Principal">Principal</asp:ListItem>
-                        <asp:ListItem Value="Teacher">Teacher</asp:ListItem>
-                        <asp:ListItem Value="Secretary">Secretary</asp:ListItem>
-                        <asp:ListItem Value="Adminstration">Adminstration</asp:ListItem>
-                        <asp:ListItem Value="Support">Support Staff</asp:ListItem>
-                    </asp:DropDownList>
-                    <asp:Button ID="btnSearch" runat="server" Text="Go" OnClick="BtnSearch_Click" CssClass="Gobutton" />
-                    <asp:Button ID="btnGradeTab" runat="server" Text="" Height="0px" Width="0px" CssClass="HideButton" OnClick="BtnGradeTab_Click" />
-
-
-                    <div id="SearchBar">
-                        <asp:UpdateProgress ID="UpdateProgress1" runat="server">
-                            <ProgressTemplate>
-                                <img src="../images/indicator.gif" alt="" />
-                                <b>Searching.....</b>
-                            </ProgressTemplate>
-                        </asp:UpdateProgress>
                     </div>
-
-                </div>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
         <div>
             <asp:UpdatePanel ID="UpdatePanel6" runat="server">
                 <ContentTemplate>
@@ -256,7 +199,7 @@
                                         </ItemTemplate>
                                         <ItemStyle Width="40px" Wrap="False" />
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="UserID" HeaderText="Network UserID" ItemStyle-CssClass="myUserID">
+                                    <asp:BoundField DataField="UserID" HeaderText="UserID" ItemStyle-CssClass="myUserID">
                                         <ItemStyle Width="80px" Wrap="False" />
                                     </asp:BoundField>
                                     <asp:TemplateField HeaderText="Staff Name" ItemStyle-CssClass="myName">
@@ -265,9 +208,9 @@
                                         </ItemTemplate>
                                         <ItemStyle Width="150px" />
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="StaffType" HeaderText="Staff Type" ItemStyle-CssClass="myGrade">
+                                    <%-- <asp:BoundField DataField="StaffType" HeaderText="Staff Type" ItemStyle-CssClass="myGrade">
                                         <ItemStyle Width="100px" Wrap="False" />
-                                    </asp:BoundField>
+                                    </asp:BoundField>--%>
                                     <asp:BoundField DataField="Gender" HeaderText="Gender" ItemStyle-CssClass="visible-sm visible-md visible-lg" HeaderStyle-CssClass="visible-sm visible-md visible-lg">
                                         <ItemStyle Width="50px" Wrap="False" />
                                     </asp:BoundField>
@@ -279,40 +222,45 @@
                                         <ItemTemplate>
                                             <asp:HyperLink ID="Link5" runat="server" Text='<%# Bind("Position") %>'>  </asp:HyperLink>
                                         </ItemTemplate>
-                                        <ItemStyle Width="120px" Wrap="true" />
+                                        <ItemStyle Width="180px" Wrap="true" />
                                     </asp:TemplateField>
 
                                     <asp:BoundField DataField="EmployeeID" HeaderText="Employee ID." ReadOnly="True" ItemStyle-CssClass="StudentNo">
                                         <ItemStyle Width="80px" Wrap="False" />
                                     </asp:BoundField>
 
-                                    <asp:BoundField DataField="PersonID" ReadOnly="True" HeaderText="Person ID" ItemStyle-CssClass="PErsonID">
-                                        <ItemStyle Width="80px" Wrap="False" />
+                                    <asp:BoundField DataField="SIN" ReadOnly="True" HeaderText="SIN" ItemStyle-CssClass="SIN">
+                                        <ItemStyle Width="60px" Wrap="False" />
                                     </asp:BoundField>
 
                                     <asp:BoundField DataField="CPNum" ReadOnly="True" HeaderText="CP Number" ItemStyle-CssClass="OEN">
                                         <ItemStyle Width="80px" Wrap="False" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="OCTNum" ReadOnly="True" HeaderText="OCT Number" ItemStyle-CssClass="OCT">
+                                    <asp:BoundField DataField="OCTNum" ReadOnly="True" HeaderText="OCT Numbr" ItemStyle-CssClass="OCT">
                                         <ItemStyle Width="80px" Wrap="False" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="FTE" ReadOnly="True" HeaderText="FTE" ItemStyle-CssClass="SchoolCode">
+                                        <ItemStyle Width="60px" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="Email" ReadOnly="True" HeaderText="Email" ItemStyle-CssClass="Email">
                                         <ItemStyle Width="100px" Wrap="False" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="SchoolName" ReadOnly="True" HeaderText="School" ItemStyle-CssClass="School">
+                                    <%--  <asp:BoundField DataField="SchoolName" ReadOnly="True" HeaderText="School" ItemStyle-CssClass="School">
                                         <ItemStyle Width="250px" />
-                                    </asp:BoundField>
+                                    </asp:BoundField>--%>
                                     <asp:BoundField DataField="SchoolCode" ReadOnly="True" HeaderText="SchoolCode" ItemStyle-CssClass="SchoolCode">
                                         <ItemStyle Width="50px" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="Area" ReadOnly="True" HeaderText="School Area" ItemStyle-CssClass="SchoolCode">
-                                        <ItemStyle Width="80px" />
+                                    <asp:BoundField DataField="EmployeeRole" ReadOnly="True" HeaderText="Employee Role" ItemStyle-CssClass="SchoolCode">
+                                        <ItemStyle Width="120px" />
                                     </asp:BoundField>
 
-
+                                    <asp:BoundField DataField="JobDesc" ReadOnly="True" HeaderText="Job Description" ItemStyle-CssClass="SchoolCode">
+                                        <ItemStyle Width="120px" />
+                                    </asp:BoundField>
 
                                     <asp:BoundField DataField="Comments" HeaderText="Comments" ItemStyle-CssClass="visible-sm visible-md visible-lg" HeaderStyle-CssClass="visible-sm visible-md visible-lg">
-                                        <ItemStyle Width="20%" Wrap="True" />
+                                        <ItemStyle Width="10%" Wrap="True" />
                                     </asp:BoundField>
 
 
@@ -376,15 +324,9 @@
 
         <div id="ActionMenuDIV" class="bubble epahide">
             <asp:Label runat="server" ID="LabelTeacherName" Text=""> </asp:Label>
-            <ul id="ActionMenuUL">
-                <li id="submenu1"><a class="menuLink" href="javascript:openPage(5,10,750,1000,'IEPForm');">IEP Form </a></li>
-                <li id="submenu2"><a class="menuLink" href="javascript:openPage(5,10,750,1000,'IEPReport');">IEP Report </a></li>
-                <li id="submenu3"><a class="menuLink" href="javascript:openPage(5,10,750,1000,'GiftForm');">Gift Form </a></li>
-                <li id="submenu4"><a class="menuLink" href="javascript:openPage(5,10,750,1000,'GiftReport');">Gift Report </a></li>
-                <li id="submenu5"><a class="menuLink" href="javascript:openPage(5,10,750,1000,'AlterRCForm');">Alternative Report Card</a></li>
-                <li id="submenu6"><a class="menuLink" href="javascript:openPage(5,10,750,1000,'AlterRCReport');">Alternative Report Card Report </a></li>
+            <div id="ActionMenuUL" class="LeftSideMenu">
+            </div>
 
-            </ul>
         </div>
         <div id="PopUpDIV" class="bubble epahide"></div>
         <div id="ActionPOPDIV" class="bubble epahide">
@@ -404,6 +346,7 @@
             <asp:HiddenField ID="hfUserRole" runat="server" />
             <asp:HiddenField ID="hfUserLoginRole" runat="server" />
             <asp:HiddenField ID="hfRunningModel" runat="server" />
+              <input id ="clipboardText" type ="text" style="position:absolute;top:100px;left:100px;" />
         </div>
     </form>
 </body>
@@ -415,21 +358,23 @@
 <script src="../Scripts/Appr_ListPage.js"></script>
 <script src="../Scripts/Appr_Help.js"></script>
 <script src="../Scripts/Appr_textEdit.js"></script>
+<script src="../Scripts/CommonListBuild.js"></script>
+<script src="../Scripts/ActionMenu.js"></script>
 
 <script type="text/javascript">
     var UserID = $("#hfUserID").val();
     var UserRole = $("#hfUserRole").val();
     var ItemCode = $("#hfCode").val();
     var preaLinkID;
-    var BasePara = {
-        UserID: $("#hfUserID").val(),
-        UserRole: $("#hfUserRole").val(),
-        SchoolYear: "",
-        SchoolCode: "",
-        Grade: "",
-        StudentID: "",
-        StudentName: ""
-    };
+    //var BasePara = {
+    //    UserID: $("#hfUserID").val(),
+    //    UserRole: $("#hfUserRole").val(),
+    //    SchoolYear: "",
+    //    SchoolCode: "",
+    //    Grade: "",
+    //    StaffID: "",
+    //    StaffName: ""
+    //};
     var stName;
     var stID;
     var scYear;
@@ -447,9 +392,10 @@
             preaLinkID = $("#hfSelectedTabL").val();
             ChangeHeaderSchoolName();
             $("#GridView1 tr").mouseenter(function (event) {
-                if (currentTR != undefined) { currentTR.removeClass("highlightRow"); }
-                currentTR = $(this)
-                currentTR.addClass("highlightRow");
+                //if (currentTR != undefined) { currentTR.removeClass("highlightRow"); }
+                //currentTR = $(this)
+                //currentTR.addClass("highlightRow");
+                if ($("#ActionMenuDIV").is(":visible")) $("#ActionMenuDIV").hide();
             });
             $("#GradeTab").click(function (e) {
                 var cEvantID = e.originalEvent.srcElement.id;
@@ -464,96 +410,98 @@
                 $("#TextSearch").val(cEvantID);
                 $("#btnGradeTab").click();
             });
-            //$("#ddlSchool").change(function (e) {
-            //     ChangeTitleSchool();
-            //});
-            //$("#ddlSchoolCode").change(function (e) {
-            //   ChangeTitleSchool();
-            //});
+            $("#DDLPanel").change(function () {
+                BuildingSchoolList();
+            });
         });
     }
-    function ChangeHeaderSchoolName() {
-        var schoolcode = $("#ddlSchool").val();
-        var schoolName = $("#ddlSchool option:selected").text();
-        $("#LabelSchool", parent.document).text(schoolName);
-        $("#LabelSchoolCode", parent.document).text(schoolcode);
-        $("#LabelSchoolYear", parent.document).text($("#ddlSchoolYear").val());
-    }
-    function OpenMenu(sYear, sCode, grade, sID, sName) {
-        BasePara.StudentName = sName;
-        BasePara.StudentID = sID;
-        BasePara.SchoolYear = sYear;
-        BasePara.SchoolCode = sCode;
-        BasePara.Grade = grade;
-        $("#LabelTeacherName").text(sName);
+    //function ChangeHeaderSchoolName() {
+    //    var schoolcode = $("#ddlSchool").val();
+    //    var schoolName = $("#ddlSchool option:selected").text();
+    //    $("#LabelSchool", parent.document).text(schoolName);
+    //    $("#LabelSchoolCode", parent.document).text(schoolcode);
+    //    $("#LabelSchoolYear", parent.document).text($("#ddlSchoolYear").val());
+    //}
+    //function OpenMenu(sYear, sCode, grade, sID, sName,OCT) {
+    //    BasePara.StaffName = sName;
+    //    BasePara.StaffID = sID;
+    //    BasePara.SchoolYear = sYear;
+    //    BasePara.SchoolCode = sCode;
+    //    BasePara.Grade = grade;
+    //    $("#LabelTeacherName").text(sName );
 
-        var menuList = SIC.Models.WebService.MenuOfStudentList("Get", BasePara, onSuccessMenu, onFailure);
-    }
-    function onSuccessMenu(result) {
-        BuildingMenuList(result);
-    }
+    //    var menuList = SIC.Models.WebService.MenuOfStudentList("Get", BasePara, onSuccessMenuWithTab, onFailure);
+    //}
+    //function onSuccessMenu(result) {
+    //    BuildingMenuList(result);
+    //}
 
+    //function onSuccessMenuWithTab(result) {
+
+    //    BuildingList.ULList($("#ActionMenuUL"), BuildingULListWithTab(result));
+    //    var menulength = result.length * 40 / 4; // result as return items count. 
+    //    var menuWidth = 215;
+    //    ShowBuildingMenuList($("#ActionMenuDIV"), menuWidth, menulength);
+    //}
+
+    function BuildingSchoolList() {
+        BaseParaDDL.Operate = "SchoolList";
+        BaseParaDDL.SchoolYear = $("#ddlSchoolYear").val();
+        BaseParaDDL.SchoolCode = $("#DDLPanel").val();
+
+        var ddlList = SIC.Models.WebService.CommonLists(BaseParaDDL.Operate, BaseParaDDL, onSuccessSchoolList, onFailure);
+    }
+    function onSuccessSchoolList(result) {
+        BuildingList.DropDown2($("#ddlSchool"), BuildingDropDownList(result), $("#ddlSchoolCode"), BuildingDropDownList1(result));
+
+    }
     function onFailure() {
         alert("Get Menu Failed!");
     }
-    function BuildingMenuList(result) {
-        var list = "";
-        var myObj = result;
-        //  $("#ActionMenuDIV").html("");
-        for (x in myObj) {
-            // list += "<option value ='" + myObj[x].myCode + "'>" + myObj[x].myName + "</option>";
-            var para = "javascript:openPage(" + myObj[x].Ptop + "," + myObj[x].Pleft + "," + myObj[x].Pheight + "," + myObj[x].Pwidth + ",'" + myObj[x].MenuID + "','" + myObj[x].Type + "')";
+    //function ShowBuildingMenuList(Objcontrol, width, length) {
+    //    var vTop = mousey;
+    //    if (vTop > 500) {
+    //        vTop = vTop - 150;
+    //    }
 
-            list += ' <li><a class="menuLink" href="' + para + '">' + myObj[x].Name + ' </a></li>';
-        }
+    //    Objcontrol.css({
+    //        top: vTop - 12,
+    //        left: 59,
+    //        width: width,
+    //        height: length
 
-        var menulength = myObj.length * 40;
-        $("#ActionMenuUL").html("");
-        $("#ActionMenuUL").html(list);
+    //    });
+    //    Objcontrol.fadeToggle("fast");
 
-        var vTop = mousey;
-        if (vTop > 500) {
-            vTop = vTop - 150;
-        }
-        //  var vLeft = event.currentTarget.offsetLeft;
-        $("#ActionMenuDIV").css({
-            top: vTop + 15,
-            left: 60,
-            width: 250,
-            height: menulength
+    //}
+    //function openPage(vTop, vLeft, vHeight, vWidth, menuID, type) {
+    //    var para = "?pageID=" + menuID + "&uRole=" + BasePara.UserRole + "&sYear=" + BasePara.SchoolYear + "&sCode=" + BasePara.SchoolCode + "&grade=" + BasePara.Grade + "&sID=" + BasePara.StaffID;
+    //    var goPage = "Loading3.aspx"
+    //    if (type == "PDF") goPage = "Loading3Report.aspx"
 
-        });
-        $("#ActionMenuDIV").fadeToggle("fast");
-
-    }
-    function openPage(vTop, vLeft, vHeight, vWidth, menuID, type) {
-        var para = "?pageID=" + menuID + "&uRole=" + BasePara.UserRole + "&sYear=" + BasePara.SchoolYear + "&sCode=" + BasePara.SchoolCode + "&grade=" + BasePara.Grade + "&sID=" + BasePara.StudentID;
-        var goPage = "Loading3.aspx"
-        if (type == "PDF") goPage = "Loading3Report.aspx"
-
-        var goPage = goPage + para
+    //    var goPage = goPage + para
 
 
 
-        try {
-            $("#ActionMenuDIV").fadeToggle("fast");
+    //    try {
+    //        $("#ActionMenuDIV").fadeToggle("fast");
 
-            $("#editiFrame", parent.document).attr('src', goPage);
-            $("#EditTitle", parent.document).html(menuID);
-            $("#EditDIV", parent.document).css({
-                top: vTop,
-                left: vLeft,
-                height: vHeight,
-                width: vWidth
-            });
-            //   PopUpDIV2();
-            $("#PopUpDIV", parent.document).fadeToggle("fast");
-            $("#EditDIV", parent.document).fadeToggle("fast");
+    //        $("#editiFrame", parent.document).attr('src', goPage);
+    //        $("#EditTitle", parent.document).html(menuID);
+    //        $("#EditDIV", parent.document).css({
+    //            top: vTop,
+    //            left: vLeft,
+    //            height: vHeight,
+    //            width: vWidth
+    //        });
+    //        //   PopUpDIV2();
+    //        $("#PopUpDIV", parent.document).fadeToggle("fast");
+    //        $("#EditDIV", parent.document).fadeToggle("fast");
 
-        }
+    //    }
 
-        catch (e) {
-            window.alert(e.mess);
-        }
-    }
+    //    catch (e) {
+    //        window.alert(e.mess);
+    //    }
+    //}
 </script>

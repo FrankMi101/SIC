@@ -1,4 +1,13 @@
-﻿var helpDiv = $("#HelpDIV");
+﻿var HelpPara = {
+    Operate: "Get",
+    UserID: $("#hfUserID").val(),
+    Category: $("#hfCategory").val(),
+    Area: $("#hfArea").val(),
+    ItemCode: $("#hfItemCode").val(),
+    ContentType: "Help",
+    Value: ""
+}
+var helpDiv = $("#HelpDIV");
 $(".imgHelp").mouseleave(function (event) {
     closeHelp();
 });
@@ -7,7 +16,7 @@ $(".imgEP").mouseleave(function (event) {
 });
 
 function closeHelp() {
- if (helpDiv.css('display') === "block") {
+    if (helpDiv.css('display') === "block") {
         helpDiv.fadeToggle("fast");
         ItemCode = $("#hfCode").val();
     }
@@ -22,18 +31,19 @@ $(".imgEP").mouseenter(function (event) {
     //if ($(this)[0].id !== "") { ItemCode = $(this)[0].id.replace("img_", ""); }
     var vTop = event.currentTarget.offsetTop;
     var vLeft = event.currentTarget.offsetLeft;
-    getHelp("EP",vTop,vLeft);
+    getHelp("EP", vTop, vLeft);
 });
 $(".imgHelp").mouseenter(function (event) {
-   // if ($(this)[0].id !== "") { ItemCode = $(this)[0].id.replace("img_", ""); }
+    // if ($(this)[0].id !== "") { ItemCode = $(this)[0].id.replace("img_", ""); }
     var vTop = event.currentTarget.offsetTop;
     var vLeft = event.currentTarget.offsetLeft;
-    getHelp( "Help",vTop, vLeft);
+    getHelp("Help", vTop, vLeft);
 });
-function getHelp( type, vTop, vLeft) {
-  //  if ($(this)[0].id !== "") { ItemCode = $(this)[0].id.replace("img_", ""); }
-    ItemCode = $("#hfCode").val();
-    var helptext = SIC.Models.WebService1.GetHelpContent("Read", UserID, CategoryID, AreaID, ItemCode, type, onSuccessHelp, onFailureHelp);
+function getHelp(type, vTop, vLeft) {
+    //  if ($(this)[0].id !== "") { ItemCode = $(this)[0].id.replace("img_", ""); }
+    HelpPara.ItemCode = $("#hfItemCode").val();
+    HelpPara.HelpType = type;
+    var helptext = SIC.Models.WebService.GetHelpContentbyHelpPara("Read", HelpPara, onSuccessHelp, onFailureHelp);
 
     if (vLeft < 100) { vLeft = vLeft + 20; }
     else {
@@ -63,7 +73,7 @@ function onFailureHelp() {
 }
 function onSuccessHelp(result) {
     // $("#textHelp").text(result);
-    
+
     var helpBox = $(".HelpTextBox");
     try {
         $("#HelpTextContent").val(result);

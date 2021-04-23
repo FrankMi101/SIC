@@ -43,14 +43,20 @@ namespace ClassLibrary
     }
     public class MenuListParameter: SchoolListParameter
     {
-        public string Grade { get; set; }
-        public string StudentID { get; set; }
-
-        public string ClassID { get; set; }
-
+        public string TabID { get; set; }
+        public string ObjID { get; set; }
         public string PageID { get; set; }
 
         public string Term { get; set; }
+        public string Semester { get; set; }
+
+        public string Grade { get; set; }
+        public string StudentID { get; set; }
+        public string Category { get; set; }
+        public string AppID { get; set; }
+        public string GroupID { get; set; }
+        public string MemberID { get; set; }
+
     }
     public class PageHelp
     {
@@ -59,6 +65,13 @@ namespace ClassLibrary
         public string Category { get; set; }
         public string Area { get; set; }
         public string Code { get; set; }
+    }
+
+    public class ParametersForStudentList
+    {
+        public string SchoolYear {get; set;}
+        public string SchoolCode { get; set; }
+        public string Grade { get; set; }
     }
 
 }

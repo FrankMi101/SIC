@@ -1,294 +1,4 @@
-﻿var myTopMenu = [
-    {
-        "display": "System Setup",
-        "role": "Admin",
-        "url": "#",
-        "target": "",
-        "ID": "1",
-        "myClass": "current-menu-item",
-        "subItems": [
-            {
-                "display": "Student Tasks Definition",
-                "role": "Admin",
-                "url": "SICSetup/Loading.aspx?pID=StudentTasks",
-                "target": "GoList",
-                "ID": "11",
-                "myClass": "Level-2"
-            },
-            {
-                "display": "School Tasks Definition",
-                "role": "Admin",
-                "url": "SICSetup/Loading.aspx?pID=SchoolTasks",
-                "target": "GoList",
-                "ID": "12",
-                "myClass": "Level-2"
-            },
-            {
-                "display": "User Management",
-                "role": "Admin",
-                "url": "#",
-                "target": "",
-                "ID": "13",
-                "myClass": "Level-2",
-                "subItems": [
-                    {
-                        "display": "User Role Setup",
-                        "role": "Admin",
-                        "url": "SICSetup/Loading.aspx?pID=ApplicationRole",
-                        "target": "GoList",
-                        "ID": "131",
-                        "myClass": "Level-3"
-                    },
-                    {
-                        "display": "User Management",
-                        "role": "Admin",
-                        "url": "SICSetup/Loading.aspx?pID=UserManagement",
-                        "target": "GoList",
-                        "ID": "132",
-                        "myClass": "Level-3"
-                    },
-                    {
-                        "display": "Multiple School Work User Management",
-                        "role": "Admin",
-                        "url": "SICSetup/Loading.aspx?pID=MultipleSchoolUser",
-                        "target": "GoList",
-                        "ID": "133",
-                        "myClass": "Level-3"
-                    }
-                ]
-            },
-            {
-                "display": "School Management",
-                "role": "Admin",
-                "url": "#",
-                "target": "",
-                "ID": "15",
-                "myClass": "Level-2",
-                "subItems": [
-                    {
-                        "display": "School District Setup",
-                        "role": "Admin",
-                        "url": "SICSetup/Loading.aspx?pID=SchoolDistrictSetup",
-                        "target": "GoList",
-                        "ID": "151",
-                        "myClass": "Level-3"
-                    },
-                    {
-                        "display": "School Region Setup",
-                        "role": "Admin",
-                        "url": "SICSetup/Loading.aspx?pID=SchoolRegionSetup",
-                        "target": "GoList",
-                        "ID": "152",
-                        "myClass": "Level-3"
-                    },
-                    {
-                        "display": "School Department Management",
-                        "role": "Admin",
-                        "url": "SICSetup/Loading.aspx?pID=SchoolManagement",
-                        "target": "GoList",
-                        "ID": "153",
-                        "myClass": "Level-3"
-                    }
-                ]
-            },           
-             {
-                "display": "Encryption String",
-                "role": "Admin",
-                "url": "SICSetup/Loading.aspx?pID=Encryption",
-                "target": "GoList",
-                "ID": "13",
-                "myClass": "Level-2"
-            },
-            {
-                "display": "Example Page",
-                "role": "Admin",
-                "url": "#",
-                "target": "GoList",
-                "ID": "14",
-                "myClass": "Level-2",
-                "subItems": [
-                    {
-                        "display": "Client Call Web Service",
-                        "role": "Admin",
-                        "url": "SICSetup/Loading.aspx?pID=ClientPage",
-                        "target": "GoList",
-                        "ID": "141",
-                        "myClass": "Level-3"
-                    },
-                    {
-                        "display": "Client Call Web API",
-                        "role": "Admin",
-                        "url": "SICSetup/Loading.aspx?pID=ClientPageAPI",
-                        "target": "GoList",
-                        "ID": "142",
-                        "myClass": "Level-3"
-                    } 
-                ]
-            } 
-        ]
-    },
-    {
-        "display": "Student Info Center",
-        "role": "All",
-        "url": "#",
-        "target": "",
-        "ID": "2",
-        "myClass": "Level-1",
-        "subItems": [
-            {
-                "display": "Student List",
-                "role": "Teacher",
-                "url": "Loading.aspx?pID=StudentList",
-                "target": "GoList",
-                "ID": "21",
-                "myClass": "Level-2"
-            },
-            {
-                "display": "Student Reports",
-                "role": "Teacher",
-                "url": "SICStudent/Loading.aspx?pID=StudentReports",
-                "target": "GoList",
-                "ID": "22",
-                "myClass": "Level-2"
-            },
-            {
-                "display": "Student Forms",
-                "role": "Teacher",
-                "url": "SICStudent/Loading.aspx?pID=StudentForms",
-                "target": "GoList",
-                "ID": "23",
-                "myClass": "Level-2"
-            } 
-            
-        ]
-    },
-    {
-        "display": "Class Info Center",
-        "role": "All",
-        "url": "#",
-        "target": "",
-        "ID": "3",
-        "myClass": "Level-1",
-        "subItems": [
-            {
-                "display": "Class List",
-                "role": "Teacher",
-                "url": "Loading.aspx?pID=ClassList",
-                "target": "GoList",
-                "ID": "31",
-                "myClass": "Level-2"
-            },
-            {
-                "display": "Class Reports",
-                "role": "Teacher",
-                "url": "SICClass/Loading.aspx?pID=ClassReports",
-                "target": "GoList",
-                "ID": "32",
-                "myClass": "Level-2"
-            },
-            {
-                "display": "Class Forms",
-                "role": "Teacher",
-                "url": "SICClass/Loading.aspx?pID=ClassForms",
-                "target": "GoList",
-                "ID": "33",
-                "myClass": "Level-2"
-            }
-
-        ]
-    },
-    {
-        "display": "School Info Center",
-        "role": "Principal",
-        "url": "#",
-        "target": "",
-        "ID": "4",
-        "myClass": "Level-1",
-        "subItems": [
-            {
-                "display": "School List",
-                "role": "Principal",
-                "url": "Loading.aspx?pID=SchoolList",
-                "target": "GoList",
-                "ID": "41",
-                "myClass": "Level-2"
-            },
-            {
-                "display": "School Management",
-                "role": "Principal",
-                "url": "SICSchool/Loading.aspx?pID=SchoolManagement",
-                "target": "",
-                "ID": "42",
-                "myClass": "Level-2" 
-                
-            } 
-        ]
-    },
-    {
-        "display": "Staff Info Center",
-        "role": "Principal",
-        "url": "#",
-        "target": "",
-        "ID": "5",
-        "myClass": "Level-1",
-        "subItems": [
-            {
-                "display": "TCDSB Staff List",
-                "role": "Principal",
-                "url": "Loading.aspx?pID=StaffListTCDSB",
-                "target": "GoList",
-                "ID": "51",
-                "myClass": "Level-2"
-            },
-            {
-                "display": "My School Staff List",
-                "role": "Principal",
-                "url": "Loading.aspx?pID=StaffListSchool",
-                "target": "GoList",
-                "ID": "52",
-                "myClass": "Level-2"
-            },
-            {
-                "display": "Staff Management",
-                "role": "Principal",
-                "url": "SICStaff/Loading.aspx?pID=StaffManagement",
-                "target": "",
-                "ID": "53",
-                "myClass": "Level-2"
-
-            }
-        ]
-    },
-    {
-        "display": "Help and Feedback",
-        "role": "All",
-        "url": "",
-        "target": "",
-        "ID": "9",
-        "myClass": "Level-1",
-        "subItems": [
-            {
-                "display": "User Guideline",
-                "role": "All",
-                "url": "Documents/Loading.aspx?pID=UserGuideline",
-                "target": "GoList",
-                "ID": "91",
-                "myClass": "Level-2"
-            },
-             
-            {
-                "display": "Feed Back",
-                "role": "All",
-                "url": "Javascript:OpenPopPage('Feed Back');",
-                "target": "_self",
-                "ID": "95",
-                "myClass": "Level-2"
-            } 
-        ]
-    }
-];
-
-function myTopNav(myMenuList) {
+﻿function myTopNav(myMenuList) {
     //  var CurrentUserRole = $("#ctl00_hfCurrentUserRole").val();
     //  var menulist = myTopNavRecurse(myMenuList, "");
     var menulist = myTopNavLoopRecurse(myMenuList, "N");
@@ -437,6 +147,9 @@ function checkItemShowbyRole(CurrentUserRole, RoleItem) {
         case "Teacher":
             roleStr = "Access, Teacher, All";
             break;
+        case "Secretary":
+            roleStr = "Access ,Secretary, Teacher, All";
+            break;
         case "Principal":
             roleStr = "Access ,Principal, Teacher, All";
             break;
@@ -476,7 +189,7 @@ function getShortLevel(myClass) {
 }
 
 function getMyALink(myArray, index, mobile) {
-    var myString = ' <li id = "TopItem_' +  myArray[index].ID  + '" class= "TopMenuItem" > '
+    var myString = ' <li id = "TopItem_' + myArray[index].ID + '" class= "TopMenuItem" > '
         + '<a ' + 'id = "' + getShortLevel(myArray[index].myClass) + '-' + myArray[index].ID + '" '
         + 'class="' + myArray[index].myClass + '" '
         + 'href="' + getUrl(myArray[index].url, myArray[index].subItems, mobile) + '" '
@@ -605,20 +318,41 @@ $(document).ready(function () {
             HighLightTopWorkingMenu();
             event.stopPropagation();
         });
-        $("#TopMenuItems a").hover(
+        $(".TopMenuItems a").hover(
             function (e) {
                 var cEvantID = e.originalEvent.srcElement.id;
                 var x = $("#" + cEvantID).position();
                 openTopSubMenu(cEvantID, x.top, x.left);
-
             },
             function (e) {
                 var cEvantID = e.originalEvent.srcElement.id;
                 var x = $("#" + cEvantID).position();
-                if (currentY > x.top) { $("#TopSubMenuItems").hide(); }
-
+                if (currentY > x.top) {
+                    $("#TopSubMenuItems").hide();
+                }
             }
         );
+        $(".TopMenuItem").click( function (e) { 
+           // alert( this.id);  
+            $("#" + currentMenuID).removeClass("TopSelectItem");
+            currentMenuID = this.id;
+         });
+
+        $("#TopNav .Level-2").click(function (e) {
+           // alert("Class Level-2 click :" + e.currentTarget.innerText);
+            var title = "Working Area: " + this.innerText; //   e.currentTarget.innerText;
+            $("#LabelPageTitle").text(title);
+        });
+        $("#TopNav .Level-3").click(function (e) {
+           // alert("Class Level-3 click :" + e.currentTarget.innerText);
+            var parentID =   this.id.replace("C", "B").substring(0, 4);
+            var pNode = document.getElementById(parentID);
+            var pTitle = pNode.innerText;
+            var title = "Working Area: " + pTitle + " >> " + this.innerText; // e.currentTarget.innerText;
+            $("#LabelPageTitle").text(title);
+            event.stopPropagation();
+
+        });
 
         $("#TopNavM ul li").click(function (event) {
 
@@ -638,7 +372,7 @@ $(document).ready(function () {
                     $("#" + currentNodeLevel1).removeClass("showMenuItem").addClass("hideMenuItem");
                     $("#" + currentNodeLevel2).removeClass("showMenuItem").addClass("hideMenuItem");
                 }
-
+              
                 event.stopPropagation();
             }
             catch (e) {
@@ -652,7 +386,6 @@ $(document).ready(function () {
         var exm = ex;
     }
 });
-
 
 var mouse_x = 0;
 var mouse_y = 0;
@@ -676,6 +409,8 @@ function openSupportInformation(vLoading, vH, actions) {
 }
 function openTopSubMenu(cEventID, eY, eX) {
 
+   // alert("item hover" + cEvantID);
+
     var myArray = getmyJosnArrybyID(cEventID);
     myTopSubMenuList(myArray);
     var eH = getSubMenuListCount(myArray);
@@ -691,6 +426,8 @@ function openTopSubMenu(cEventID, eY, eX) {
     //if (currentY != eY) {
     //    $("#TopSubMenuItems").fadeToggle("fast");
     //}
+
+    alert("opeen submenu action");
 
 }
 function openTopSubMenuM(cEventID, Level) {

@@ -24,7 +24,9 @@ namespace ClassLibrary
         public string Email { get; set; }
 
         public string Comments { get; set; }
+        public string ClassCode { get; set; }
+        public string HomeRoom { get; set; }
 
     }
-   
+
 }

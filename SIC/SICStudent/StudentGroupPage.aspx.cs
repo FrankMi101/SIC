@@ -7,8 +7,9 @@ using System.Web.UI;
 
 namespace SIC
 {
-    public partial class StaffListPage : System.Web.UI.Page
+    public partial class StudentGroupPage : System.Web.UI.Page
     {
+        readonly string pageID = "GroupListPage";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -16,27 +17,28 @@ namespace SIC
                 Page.Response.Expires = 0;
                 SetPageAttribution();
                 AssemblePage();
-                string pID = Page.Request.QueryString["Scope"].ToString();
-
+                //  string pID = Page.Request.QueryString["Scope"].ToString();
+                BindGridViewListData();
             }
         }
         private void SetPageAttribution()
         {
             hfCategory.Value = "Home";
-            hfPageID.Value = "StudentList";
+            hfPageID.Value = pageID;
             hfCode.Value = "Search";
             hfUserID.Value = User.Identity.Name;
             hfUserLoginRole.Value = WorkingProfile.UserRoleLogin;
             hfUserRole.Value = WorkingProfile.UserRole;
             hfRunningModel.Value = WebConfig.RunningModel();
-            Session["HomePage"] = "Loading.aspx?pID=StudentList";
-            hfSelectedTab.Value = "01";
-            Session["Term"] = "2";
-            Session["Semester"] = "1";
+            Session["HomePage"] = "Loading.aspx?pID=" + pageID;
+            hfSelectedTab.Value = "Grade";
         }
         private void AssemblePage()
         {
-
+            if (WorkingProfile.UserRole == "Admin")
+                ddlType.Enabled = true;
+            else
+                ddlType.Enabled = false;
             string schoolYear = WorkingProfile.SchoolYear;
             string schoolCode = WorkingProfile.SchoolCode;
             try
@@ -44,8 +46,6 @@ namespace SIC
 
                 if (schoolCode.Substring(0, 2) == "05")
                 {
-                    hfSelectedTab.Value = "09";
-
                     DDLPanel.SelectedIndex = 1;
                 }
                 var parameters = new CommonListParameter()
@@ -70,7 +70,7 @@ namespace SIC
                 parameters.Para4 = DDLPanel.SelectedValue;
                 AppsPage.BuildingList(ddlSchoolCode, ddlSchool, "DDLListSchool", parameters, schoolCode);
                 InitialPage();
-                if (ddlSchool.SelectedValue != "") Assembing_GradeTab();
+                if (ddlSchool.SelectedValue != "") Assembing_Tab();
             }
             catch (Exception ex)
             { var em = ex.Message; }
@@ -118,15 +118,15 @@ namespace SIC
         {
             UserLastWorking.SchoolCode = ddlSchoolCode.SelectedValue;
             WorkingProfile.SchoolCode = ddlSchoolCode.SelectedValue;
-            Assembing_GradeTab();
-
-
+            //   Assembing_Tab();
         }
 
 
         protected void DDLSearchBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlSearchby.SelectedValue == "SurName")
+            var serachText = WebConfig.getValuebyKey("TextSearchField");
+
+            if (serachText.Contains(ddlSearchby.SelectedValue))
             {
                 TextSearch.Visible = true;
                 ddlSearchValue.Visible = false;
@@ -145,19 +145,19 @@ namespace SIC
             string Grade = hfSelectedTab.Value;
             if (Grade != "")
             {
-                BindStudentListGridViewData();
-                Assembing_GradeTab();
+                Assembing_Tab();
+                BindGridViewListData();
             }
 
         }
         protected void BtnSearch_Click(object sender, EventArgs e)
         {
 
-            BindStudentListGridViewData();
-            Assembing_GradeTab();
+            Assembing_Tab();
+            BindGridViewListData();
         }
-        // private async Task BindStudentListGridViewData()
-        private void BindStudentListGridViewData()
+        // private async Task BindGridViewListData()
+        private void BindGridViewListData()
         {
             try
             {
@@ -172,30 +172,35 @@ namespace SIC
 
         }
 
-        private List<StudentList> GetDataSource()
+        private List<ClassesList> GetDataSource()
         {
-            string schoolyear = ddlSchoolYear.SelectedValue;
-            string schoolcode = ddlSchool.SelectedValue;
-            string searchby = ddlSearchby.SelectedValue;
-            string searchValue = ddlSearchValue.SelectedValue;
-            string grade = hfSelectedTab.Value;
-            if (searchby == "SurName") searchValue = TextSearch.Text;
 
             var parameter = new
             {
-                Operate = "StudentList",
+                Operate = "StudentGroupList",
                 UserID = User.Identity.Name,
                 UserRole = hfUserRole.Value,
-                SchoolYear = schoolyear,
-                SchoolCode = schoolcode,
+                SchoolYear = ddlSchoolYear.SelectedValue,
+                SchoolCode = ddlSchool.SelectedValue,
                 Grade = hfSelectedTab.Value,
-                SearchBy = searchby,
-                Searchvalue = searchValue,
-                Scope = ddlType.SelectedValue 
+                SearchBy = ddlSearchby.SelectedValue,
+                Searchvalue = TextSearch.Text,
+                Scope = ddlType.SelectedValue,
+                Program = "",
+                Term = ddlTerm.SelectedValue,
+                Semester = ddlSemester.SelectedValue
             };
 
-            var mystduentList = ListData.SearchStudentList<StudentList>(parameter);
-            return mystduentList;
+            var myList = ListData.SearchGeneralList<ClassesList>(pageID,parameter);
+            return myList;
+        }
+        private string GetSearchValue()
+        {
+            string searchby = ddlSearchby.SelectedValue;
+            string searchValue = ddlSearchValue.SelectedValue;
+            var serachText = WebConfig.getValuebyKey("TextSearchFields");
+            if (serachText.Contains(searchby)) searchValue = TextSearch.Text;
+            return searchValue;
         }
 
         protected void DDLPanel_SelectedIndexChanged(object sender, EventArgs e)
@@ -216,24 +221,22 @@ namespace SIC
                 ddlSchool.SelectedIndex = 0;
                 AppsPage.SetListValue(ddlSchoolCode, ddlSchool.SelectedValue);
                 WorkingProfile.SchoolCode = ddlSchool.SelectedValue;
-                if (DDLPanel.SelectedValue == "Elementary")
-                    hfSelectedTab.Value = "01";
-                else
-                    hfSelectedTab.Value = "09";
 
-                Assembing_GradeTab();
-                BindStudentListGridViewData();
+                //      hfSelectedTab.Value = "01";
+
+                //Assembing_GradeTab();
+                //BindGridViewListData();
             }
 
 
         }
 
 
-        private void Assembing_GradeTab()
+        private void Assembing_Tab()
         {
             var parameters = new
             {
-                Operate = "GradeTab",
+                Operate = "GroupTab",
                 UserID = User.Identity.Name,
                 UserRole = hfUserRole.Value,
                 SchoolYear = ddlSchoolYear.SelectedValue,
@@ -243,7 +246,7 @@ namespace SIC
             AppsPage.BuildingTab(GradeTab, parameters, Grade);
 
 
-            //    await BindStudentListGridViewData();
+            //    await BindGridViewListData();
 
 
         }

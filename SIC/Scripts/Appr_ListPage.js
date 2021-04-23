@@ -3,7 +3,8 @@ function pageLoad(sender, args) {
 
     $(document).ready(function () {
 
-
+    
+        
         $("#ActionMenuDIV").mouseleave(function (event) {
             $("#ActionMenuDIV").hide();
         });
@@ -125,6 +126,7 @@ function OpenMenu(id,employeeID, schoolYear, schoolCode, apprType, apprPhase,ses
     category = apprType;
     phase = apprPhase;
     myIDs = id;
+    CopyKeyIDToClipboard(employeeID + " " + teacherName);
     if (category === "TPA") {
         $("#submenu5").show();
     }
@@ -307,6 +309,8 @@ function openEditPage5(vHeight, vWidth, goPage, pTitle) {
     }
   
 }
+
+
 /*
    function pageLoad(sender, args) {
 

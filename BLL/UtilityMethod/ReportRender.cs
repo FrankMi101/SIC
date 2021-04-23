@@ -51,12 +51,12 @@ namespace BLL
         }
 
 
-        public static void RenderReport(string reportName, string reportFormat, List<ReportParameter> myParameter )
+        public static void RenderReport(string reportName, string reportFormat, List<ReportParameter> myParameter)
         {
             try
             {
-               
- 
+
+
                 string rFormat = WebConfigurationManager.AppSettings["ReportFormat"];//WebConfig.ReportFormat();
                 Byte[] result = GetReportR2(reportName, reportFormat, myParameter);
 
@@ -109,6 +109,33 @@ namespace BLL
             }
 
         }
+        public static void ShowPDFWithItxt(Byte[] pdfDocument)
+        {
+            HttpContext.Current.Response.ContentType = "application/pdf";
+            HttpContext.Current.Response.AddHeader("content-disposition", "attachment;filename=IEP_Report.pdf");
+            HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+
+            Document doc = new Document();
+            MemoryStream msOutput = new MemoryStream(pdfDocument);
+            //           PdfCopy pCopy;
+            PdfCopy pCopy = new PdfSmartCopy(doc, msOutput);
+            doc.Open();
+
+            MemoryStream stream1 = new MemoryStream(pdfDocument);
+            MemoryStream output = new MemoryStream();
+
+            PdfReader input = new PdfReader(stream1.ToArray());
+
+
+            var pdfDoc = new Document();
+
+            PdfWriter.GetInstance(pdfDoc, HttpContext.Current.Response.OutputStream);
+            pdfDoc.Open(); 
+            pdfDoc.Close();
+
+            HttpContext.Current.Response.Write(pdfDoc);
+            HttpContext.Current.Response.End();
+        }
         public static Byte[] GetReportR2(string _reportName, MyADO.MyParameterRS[] _reportParameter)
 
         {
@@ -118,8 +145,8 @@ namespace BLL
 
                 ReportingWebService.ReportExecutionService RS = new ReportingWebService.ReportExecutionService();
                 //  CredentialCache cache = new CredentialCache();
-                
- 
+
+
                 string accessUser = WebConfigurationManager.AppSettings["WebServiceUser"];// WebConfig.ReportUser();
                 string accessRWSPW = WebConfigurationManager.AppSettings["WebServiceWP"];//  WebConfig.ReportPW();
                 string accessDomain = WebConfigurationManager.AppSettings["NetWorkDomain"];//  WebConfig.DomainName();
@@ -149,7 +176,6 @@ namespace BLL
                 int pLeng = _reportParameter.Length;
                 ReportingWebService.ParameterValue[] rptParameters = new ReportingWebService.ParameterValue[pLeng];
 
-
                 int i = 0;
                 foreach (MyADO.MyParameterRS para in _reportParameter)
                 {
@@ -158,8 +184,6 @@ namespace BLL
                     rptParameters[i].Value = para.pValue.ToString();
                     i += 1;
                 }
-
-
 
                 // ReDim rptParameters(cnt - 1)
 
@@ -187,10 +211,10 @@ namespace BLL
                 return new Byte[0];
             }
         }
-        public static Byte[] GetReportR2(string _reportName, string reportFormat, List<ReportParameter> _reportParameter)  
+        public static Byte[] GetReportR2(string _reportName, string reportFormat, List<ReportParameter> _reportParameter)
 
         {
-          //  Byte[] result;
+            //  Byte[] result;
             try
             {
                 ReportingWebService.ReportExecutionService RS = new ReportingWebService.ReportExecutionService();
@@ -199,7 +223,7 @@ namespace BLL
                 string accessRWSPW = WebConfigurationManager.AppSettings["WebServiceWP"];//  WebConfig.ReportPW();
                 string accessDomain = WebConfigurationManager.AppSettings["NetWorkDomain"];//  WebConfig.DomainName();
                 string reportingServices = WebConfigurationManager.AppSettings["ReportingService"];// WebConfig.ReportServices();
-                                                                                               // string currentDB = DBConnectionHelper.CurrentDB();
+                                                                                                   // string currentDB = DBConnectionHelper.CurrentDB();
                 string report = WebConfigurationManager.AppSettings["ReportPathWS"] + _reportName;//  WebConfig.ReportPathWS()  + "/" + _reportName;
                 string format = reportFormat; // getReportContentType(reportFormat); //WebConfigValue.ReportFormat();
 
@@ -222,21 +246,25 @@ namespace BLL
 
                 // MyCommon.MyParameterRS[] _reportParameter = GetReportParameters(_reportName, parameters);
                 // List<NVListItem> _reportParameter = GetReportParameters(_reportName, parameters);
-                int pLeng = _reportParameter.Count; //  .Length;
-                ReportingWebService.ParameterValue[] rptParameters = new ReportingWebService.ParameterValue[pLeng];
+
+                var rptParameters = GetReportingServiceParameters(_reportParameter);
+
+                //int pLeng = _reportParameter.Count; //  .Length;
+                //ReportingWebService.ParameterValue[] rptParameters = new ReportingWebService.ParameterValue[pLeng];
 
 
-                int i = 0;
-                foreach (var item in _reportParameter)
-                {
-                    rptParameters[i] = new ReportingWebService.ParameterValue() {
-                        Name = item.ParaName,
-                        Value = item.ParaValue.ToString()
-                    } ;
-                  //  rptParameters[i].Name = item.ParaName;
-                  //  rptParameters[i].Value = item.ParaValue.ToString();  
-                    i += 1;
-                }
+                //int i = 0;
+                //foreach (var item in _reportParameter)
+                //{
+                //    rptParameters[i] = new ReportingWebService.ParameterValue()
+                //    {
+                //        Name = item.ParaName,
+                //        Value = item.ParaValue.ToString()
+                //    };
+                //    //  rptParameters[i].Name = item.ParaName;
+                //    //  rptParameters[i].Value = item.ParaValue.ToString();  
+                //    i += 1;
+                //}
 
                 // ReDim rptParameters(cnt - 1)
 
@@ -252,8 +280,8 @@ namespace BLL
                 string SessionId = RS.ExecutionHeaderValue.ExecutionID;
                 //   Console.WriteLine("SessionID: {0}", RS.ExecutionHeaderValue.ExecutionID);
 
-              return RS.Render(format, devInfo, out extension, out encoding, out mimeType, out warnings, out streamIDs);
-             
+                return RS.Render(format, devInfo, out extension, out encoding, out mimeType, out warnings, out streamIDs);
+
                 //    return result;
 
             }
@@ -274,8 +302,8 @@ namespace BLL
                 string accessUser = WebConfigurationManager.AppSettings["WebServiceUser"];// WebConfig.ReportUser();
                 string accessRWSPW = WebConfigurationManager.AppSettings["WebServiceWP"];//  WebConfig.ReportPW();
                 string accessDomain = WebConfigurationManager.AppSettings["NetWorkDomain"];//  WebConfig.DomainName();
-              //  string reportingServices = WebConfigurationManager.AppSettings["ReportingService"];// WebConfig.ReportServices(); 
-              //  string reportPath = WebConfigurationManager.AppSettings["ReportPathWS"];//  WebConfig.ReportPathWS()  + "/" + _reportName;
+                                                                                           //  string reportingServices = WebConfigurationManager.AppSettings["ReportingService"];// WebConfig.ReportServices(); 
+                                                                                           //  string reportPath = WebConfigurationManager.AppSettings["ReportPathWS"];//  WebConfig.ReportPathWS()  + "/" + _reportName;
                 string format = reportFormat; // getReportContentType(reportFormat); //WebConfigValue.ReportFormat();
 
                 RS.Url = reportingServices;
@@ -293,22 +321,26 @@ namespace BLL
                 string[] streamIDs = null;
 
 
-                ReportingWebService.ServerInfoHeader sh = new ReportingWebService.ServerInfoHeader();  
-                RS.ServerInfoHeaderValue = sh;   
-                int pLeng = _reportParameter.Count;  
-                ReportingWebService.ParameterValue[] rptParameters = new ReportingWebService.ParameterValue[pLeng];
+                ReportingWebService.ServerInfoHeader sh = new ReportingWebService.ServerInfoHeader();
+                RS.ServerInfoHeaderValue = sh;
 
-                int i = 0;
-                foreach (var item in _reportParameter)
-                {
-                    rptParameters[i] = new ReportingWebService.ParameterValue()
-                    {
-                        Name = item.ParaName,
-                        Value = item.ParaValue.ToString()
-                    };        
-                    i += 1;
-                }
-             
+               var rptParameters = GetReportingServiceParameters(_reportParameter);
+
+                //int pLeng = _reportParameter.Count;
+
+                //ReportingWebService.ParameterValue[] rptParameters = new ReportingWebService.ParameterValue[pLeng];
+
+                //int i = 0;
+                //foreach (var item in _reportParameter)
+                //{
+                //    rptParameters[i] = new ReportingWebService.ParameterValue()
+                //    {
+                //        Name = item.ParaName,
+                //        Value = item.ParaValue.ToString()
+                //    };
+                //    i += 1;
+                //}
+
                 ReportingWebService.ExecutionInfo execInfo = new ReportingWebService.ExecutionInfo();
                 ReportingWebService.ExecutionHeader execHeader = new ReportingWebService.ExecutionHeader();
 
@@ -317,7 +349,7 @@ namespace BLL
                 RS.SetExecutionParameters(rptParameters, "en-us");
 
                 string extension = "";
-                string SessionId = RS.ExecutionHeaderValue.ExecutionID;      
+                string SessionId = RS.ExecutionHeaderValue.ExecutionID;
                 return RS.Render(format, devInfo, out extension, out encoding, out mimeType, out warnings, out streamIDs);
 
             }
@@ -327,6 +359,43 @@ namespace BLL
                 return new Byte[0];
             }
         }
+        private static ReportingWebService.ParameterValue[] GetReportingServiceParameters(List<ReportParameter> _reportParameter)
+        {
+            int pLeng = _reportParameter.Count;
+
+            ReportingWebService.ParameterValue[] rptParameters = new ReportingWebService.ParameterValue[pLeng];
+
+            int i = 0;
+            foreach (var item in _reportParameter)
+            {
+                rptParameters[i] = new ReportingWebService.ParameterValue()
+                {
+                    Name = item.ParaName,
+                    Value = item.ParaValue.ToString()
+                };
+                i += 1;
+            }
+            return rptParameters;
+        }
+        public static Byte[] GetReportR3WithPW(string reportingServices, string reportPath, string reportName, string reportFormat, List<ReportParameter> _reportParameter, string reviewerPassword, string ownerPassword)
+
+        {
+            //  Byte[] result;
+            try
+            {
+                Byte[] myReport = GetReportR3(reportingServices, reportPath, reportName, reportFormat, _reportParameter);
+
+                return AddPWtoPDFMemory(myReport, reviewerPassword, ownerPassword);
+
+
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                return new Byte[0];
+            }
+        }
+
         public static Byte[] MultiplePDF(string[] mySelectIDArray, string reportName, string schoolyear, string schoolcode, string sessionID)
         {
             Document doc = new Document();
@@ -467,7 +536,7 @@ namespace BLL
             };
             return para1;
         }
-      
+
         public static string getFileExtension(string _reportFormat)
         {
 
@@ -481,7 +550,7 @@ namespace BLL
                     rValue = ".csv";
                     break;
                 case "EXCEL":
-                     rValue = ".xls";
+                    rValue = ".xls";
                     break;
                 case "IMAGE":
                     rValue = ".gif";
@@ -500,6 +569,74 @@ namespace BLL
             return rValue;
 
         }
+
+        public static void AddPWtoPDFFile(string inputFile, string outputFile, string folder, string reviewerPassword, string ownerPassword)
+        {
+            string WorkingFolder = folder; // Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string InputFile = Path.Combine(WorkingFolder, inputFile); // Path.Combine(WorkingFolder, "Test.pdf");
+            string OutputFile = Path.Combine(WorkingFolder, outputFile);
+
+            using (Stream input = new FileStream(InputFile, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                using (Stream output = new FileStream(OutputFile, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    PdfReader reader = new PdfReader(input);
+                    PdfEncryptor.Encrypt(reader, output, true, reviewerPassword, ownerPassword, PdfWriter.ALLOW_SCREENREADERS);
+                }
+            }
+
+        }
+        public static Byte[] AddPWtoPDFMemory(Byte[] pdfDocument, string reviewerPassword, string ownerPassword)
+        {
+            try
+            {          MemoryStream stream1 = new MemoryStream(pdfDocument);
+            MemoryStream output = new MemoryStream();
+
+            PdfReader input = new PdfReader(stream1.ToArray());
+            PdfEncryptor.Encrypt(input, output, true, reviewerPassword, ownerPassword, PdfWriter.ALLOW_SCREENREADERS);
+
+            return output.ToArray();
+            }
+            catch ( Exception ex)
+            {
+                return null;
+            }
+  
+        }
+
+        public static void SavePDFReport(Byte[] pdfDocument, string fileName, string filePath)
+        {
+      
+            fileName = fileName.Replace(@"\", "");
+            fileName = fileName.Replace("/", "");
+            fileName = fileName.Replace("`", "");
+            fileName = fileName.Replace("'", "");
+           // fileName = filePath + @"\" + fileName; 
+            var goFile = Path.Combine(filePath, fileName);
+            try
+            {
+                if (! Directory.Exists(filePath))
+                { System.IO.Directory.CreateDirectory(filePath); }
+                else
+                {
+                    if (System.IO.File.Exists(goFile))
+                    { System.IO.File.Delete(goFile); }
+
+                    var objFileStream = new FileStream(goFile, FileMode.Create);
+                    var objBinaryWriter = new BinaryWriter(objFileStream);
+                    objBinaryWriter.Write(pdfDocument);
+                    objBinaryWriter.Close();
+                    objFileStream.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                var mes = ex.Message;
+            }
+
+
+        }
+
     }
     public class ReportParameter
     {

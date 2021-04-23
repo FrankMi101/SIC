@@ -20,10 +20,10 @@
     <link href="Content/TopNavList.css" rel="stylesheet" />
     <link href="Content/TopNavListM.css" rel="stylesheet" />
     <link href="Content/DefaultPage.css" rel="stylesheet" />
-
     <script src="Scripts/jquery-3.3.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/NavTopList.js"></script>
+    <script src="Scripts/NavTopListData.js"></script>
 
     <style>
         html, body {
@@ -41,15 +41,13 @@
         }*/
 
         #GoList {
-/*            font-size: small;
-            font-family: Arial;
-            table-layout: auto;
-*/            height: 100%;
+         
+            height: 100%;
             width: 100%;
             border: 0px solid red;
             margin: auto;
             margin-bottom: -20px;
-            margin-top: -5px;
+            margin-top: 0px;
         }
 
         .CenterDIV {
@@ -60,13 +58,15 @@
             padding: 30px;
         }
 
-
+        header {
+            height:125px;
+        }
 
         .appheader {
             /*height: 100px;*/
             width: 100%;
             border-top: 2px solid #56c0e9;
-            height: 80px;
+            height: 95px;
         }
 
         #appriFrame {
@@ -95,6 +95,10 @@
             color: purple;
         }
 
+        .LinkCell {
+            font-size: smaller;
+        }
+
         #MobileMenu {
             margin-top: 0px;
             margin-bottom: 1px;
@@ -117,6 +121,27 @@
         .hideme {
             display: none;
         }
+
+        .EditPage {
+            height: 95%
+        }
+
+        .Page-title-label {
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(lightsalmon, white);  
+            display: block;
+            text-wrap: avoid;
+            margin-top:-20px;
+            padding-top:15px;
+            color:dodgerblue;
+            text-align:left;
+            font-size:small;  
+            margin-bottom:-5px;
+        }
+        .messageSchoolArea {
+        color: brown;
+        }
     </style>
 
 
@@ -137,7 +162,7 @@
                     <br />
                     <br />
                     <br />
-                    <div style="vertical-align: baseline; font-size: smaller; text-wrap: avoid">
+                    <div class="messageSchoolArea" style="vertical-align: baseline; font-size: smaller; text-wrap: avoid;">
 
                         <a href="javascript:openParameter();">School Year:</a>
                         <asp:Label ID="LabelSchoolYear" runat="server" BackColor="Transparent"
@@ -178,7 +203,7 @@
                         </tr>
                         <tr>
 
-                            <td style="height: 20px; margin-right: 20px; text-align: right; color: #cc0033; font-size: large;" colspan="3">
+                            <td class="messageSchoolArea" style="height: 20px; margin-right: 20px; text-align: right;  font-size: large;" colspan="3">
 
                                 <asp:Label ID="lblApplication" runat="server" Text="School Information Center"></asp:Label>
                                 (<a id="appLink" runat="server" href="~/Default.aspx">SIC</a>) 
@@ -220,10 +245,13 @@
 
         </header>
 
-
         <section style="text-align: center;">
+            <div class="Page-title-label">
+                <%--<img src="images/finger.png" height="25" width="50" style="background-color:transparent" />--%>  
+                <asp:Label ID="LabelPageTitle" CssClass="Page-title-label" runat="server" Text=""></asp:Label>
+            </div>
             <div class="iFrameDIV">
-                <iframe id="GoList" name="GoList" frameborder="0" scrolling="auto" src="iBlankPage.html" runat="server" style="border: 1px, red,solid"></iframe>
+                <iframe id="GoList" name="GoList" frameborder="0" scrolling="auto" src="" runat="server" style="border: 1px, red,solid"></iframe>
             </div>
 
 
@@ -238,6 +266,8 @@
             <asp:HiddenField ID="hfApprEmployeeID" runat="server" />
             <asp:HiddenField ID="hfTeacherName" runat="server" />
             <asp:HiddenField ID="hfSchoolArea" runat="server" />
+            <asp:HiddenField ID="hfTopMenuArea" runat="server" />
+              <asp:HiddenField ID="hfLevel1MenuArea" runat="server" />
 
         </div>
         <div id="EditDIV" runat="server" class="EditDIV bubble epahide">
@@ -252,12 +282,12 @@
                     </tr>
                 </table>
             </div>
-            <iframe class="EditPage" id="editiFrame" name="editiFrame" frameborder="0" scrolling="auto" src="iBlankPage.html" runat="server"></iframe>
+            <iframe class="EditPage" id="editiFrame" name="editiFrame" frameborder="0" scrolling="auto" src="" runat="server"></iframe>
         </div>
         <div style="width: 100%; height: 100%; align-content: center">
-            <div id="ApprDIV" runat="server" class="ApprDIV bubble epahide" tabindex="998" style="height: 100%x; width: 100%; text-align: center">
+            <div id="ApprDIV" runat="server" class="ApprDIV bubble epahide" tabindex="998" style="height: 100%; width: 100%; text-align: center">
 
-                <iframe class="ApprPage" id="appriFrame" name="appriFrame" frameborder="0" scrolling="auto" src="iBlankPage.html" runat="server" style="height: 100%"></iframe>
+                <iframe class="ApprPage" id="appriFrame" name="appriFrame" frameborder="0" scrolling="auto" src="" runat="server" style="height: 100%"></iframe>
             </div>
         </div>
 
@@ -265,11 +295,11 @@
         <div id="ActionPOPDIV" class="bubble epahide">
             <div class="editTitle" style="display: block">
                 <div id="ActionTitle" style="display: inline; float: left; width: 92%; font-weight: 600;"></div>
-                <div style="display: inline; float: right; width:30px;">
+                <div style="display: inline; float: right; width: 30px;">
                     <img id="closeActionPOP" src="images/close.ico" style="height: 25px; width: 25px; margin: -3px 0 -3px 0" />
                 </div>
             </div>
-            <iframe id="ActioniFramePage" name="ActioniFramePage" style="height: 420px; width: 99%" frameborder="0" scrolling="auto" src="iBlankPage.html" runat="server"></iframe>
+            <iframe id="ActioniFramePage" name="ActioniFramePage" style="height: 420px; width: 99%" frameborder="0" scrolling="auto" src="" runat="server"></iframe>
         </div>
 
 
@@ -281,13 +311,20 @@
     var currentY = 0;
     var currentNodeLevel1;
     var currentNodeLevel2;
-    myTopNav(myTopMenu);
-</script> 
+    var topMenuID = $("#hfTopMenuArea").val();
+    var level1MenuID = $("#hfLevel1MenuArea").val();
+     
+    //var menuData = JSON.parse(TopMenuListData);
+    //myTopNav(mydata[0]value);
+    var menuData = myTopMenuData;
+    myTopNav(menuData);
+</script>
 
 <script type="text/javascript">
     $(document).ready(function () {
-
         var vHeight = window.innerHeight - 140;
+        $("#" + topMenuID).addClass("TopSelectItem");
+        $("#" + level1MenuID).addClass("TopSelectItem");
         $("#GoList").css("height", vHeight);
 
         $("#LoginUserRole").click(function (event) {
@@ -316,13 +353,13 @@
         });
 
         $("#MobileMenu").click(function (event) {
-            if ($("#GoList").attr("src") === "iBlankPage.html") {
+            if ($("#GoList").attr("src") === "") {
                 $("#TopNavM").hide();
                 $("#GoList").attr("src", "DefaultSummary.aspx");
             }
             else {
                 $("#TopNavM").show();
-                $("#GoList").attr("src", "iBlankPage.html");
+                $("#GoList").attr("src", "");
             }
         });
 
@@ -335,7 +372,7 @@
                 sessionid = "";
                 pageid = $("#hfPageID").val();
                 userid = $("#hfUserID").val();
-                openEditPageA('450','800', 'SICSetup/Loading.aspx?pID=Encryption', 'Encription String');
+                openEditPageA('450', '800', 'SICSetup/Loading.aspx?pID=Encryption', 'Encription String');
             }
         });
     });

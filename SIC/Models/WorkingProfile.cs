@@ -16,7 +16,17 @@ namespace SIC
             // TODO: Add constructor logic here
             //
         }
-        
+        public static string ApplicationID
+        {
+            get
+            {
+                return HttpContext.Current.Session["applicationID"].ToString();
+            }
+            set
+            {
+                HttpContext.Current.Session["applicationID"] = value;
+            }
+        }
         public static string UserId
         { get
            

@@ -75,31 +75,44 @@ namespace SIC
             catch (Exception ex)
             { }
             string pId = Page.Request.QueryString["pID"];
-            pId = "Loading.aspx?pID=Summary";
+            pId = GetDefaultListbyRole();  // "Loading.aspx?pID=Summary";
 
-            if (WorkingProfile.UserRole == "Teacher")
-            {
-                pId = "Loading.aspx?pID=StudentList";
-            }
-            else
-            {
-                if (pId == "Summary")
-                { pId = "Loading.aspx?pID=StudentList"; }
-                else
-                {
-                    if (Session["HomePage"] != null)
-                    {
-                        pId = Session["HomePage"].ToString();
-                    }
-                    else
-                    {
-                        pId = "Loading.aspx?pID=StudentList";
-                    }
-                }
-            }
             GoList.Attributes.Add("src", pId);
         }
 
+        private string GetDefaultListbyRole()
+        { string workingArea = "Current Working Area";
+            string goPage = "HomePage.aspx";
+            switch (WorkingProfile.UserRole)
+            { case "Teacher":
+                    workingArea = "Student Info Center >> Student List";
+                    goPage = "SICStudent/StudentListPage.aspx";
+                    hfTopMenuArea.Value = "TopItem_2";
+                    hfLevel1MenuArea.Value = "TopItem_21";
+                    break;
+                case "Principal":
+                    workingArea = "School Info Center >> School Basic Information Management";
+                    goPage = "SICStudent/StudentListPage.aspx";
+                    hfTopMenuArea.Value = "TopItem_2";
+                    hfLevel1MenuArea.Value = "TopItem_21";
+                    break;
+                case "Security":
+                    goPage = "SICSchool/SchoolListPage.aspx";
+                    break;
+                case "Admin":
+                    workingArea = "Board Info Center >> User Access Control Management >> Apps Access Control Summary";
+                    goPage = "SICBoard/SecurityAccessSummary.aspx";
+                    hfTopMenuArea.Value = "TopItem_5"; 
+                    hfLevel1MenuArea.Value = "TopItem_55";
+                    break;
+                default:
+                    goPage = "HomePage.aspx";
+                    break;
+            }
+            LabelPageTitle.Text = workingArea;
+
+            return "Loading.aspx?pID=" + goPage; 
+        }
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {

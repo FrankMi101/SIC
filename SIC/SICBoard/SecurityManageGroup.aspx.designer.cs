@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SIC {
-    
-    
-    public partial class StudentListPage {
-        
+namespace SIC
+{
+
+
+    public partial class SecurityManageGroup
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,61 +22,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// UpdatePanel2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-        
-        /// <summary>
-        /// Label3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
-        
-        /// <summary>
-        /// ddlSchoolYear control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSchoolYear;
-        
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
-        /// DDLPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLPanel;
-        
-        /// <summary>
-        /// Label2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
-        
+
         /// <summary>
         /// ddlSchoolCode control.
         /// </summary>
@@ -83,7 +31,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSchoolCode;
-        
+
         /// <summary>
         /// ddlSchool control.
         /// </summary>
@@ -92,124 +40,106 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSchool;
-        
+
         /// <summary>
-        /// Searchby control.
+        /// UpdatePanel2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Searchby;
-        
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+
         /// <summary>
-        /// ddlSearchby control.
+        /// TextBoxFirstName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSearchby;
-        
+        protected global::System.Web.UI.WebControls.TextBox TextBoxFirstName;
+
         /// <summary>
-        /// TextSearch control.
+        /// btnSearchGoFirstName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextSearch;
-        
+        protected global::System.Web.UI.WebControls.ImageButton btnSearchGoFirstName;
+
         /// <summary>
-        /// ddlSearchValue control.
+        /// TextBoxLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSearchValue;
-        
+        protected global::System.Web.UI.WebControls.TextBox TextBoxLastName;
+
         /// <summary>
-        /// ddlScope control.
+        /// btnSearchGoLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlScope;
-        
+        protected global::System.Web.UI.WebControls.ImageButton btnSearchGoLastName;
+
         /// <summary>
-        /// btnSearch control.
+        /// TextBoxUserID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
-        
+        protected global::System.Web.UI.WebControls.TextBox TextBoxUserID;
+
         /// <summary>
-        /// btnGradeTab control.
+        /// btnSearchGoUserID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGradeTab;
-        
+        protected global::System.Web.UI.WebControls.ImageButton btnSearchGoUserID;
+
         /// <summary>
-        /// UpdateProgress1 control.
+        /// TextBoxCPNum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdateProgress UpdateProgress1;
-        
+        protected global::System.Web.UI.WebControls.TextBox TextBoxCPNum;
+
         /// <summary>
-        /// ddlProgram control.
+        /// btnSearchGoCPNum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProgram;
-        
+        protected global::System.Web.UI.WebControls.ImageButton btnSearchGoCPNum;
+
         /// <summary>
-        /// ddlTerm control.
+        /// hfSearchby control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTerm;
-        
+        protected global::System.Web.UI.WebControls.HiddenField hfSearchby;
+
         /// <summary>
-        /// ddlSmester control.
+        /// hfSearchValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSmester;
-        
-        /// <summary>
-        /// UpdatePanel6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel6;
-        
-        /// <summary>
-        /// GradeTab control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl GradeTab;
-        
+        protected global::System.Web.UI.WebControls.HiddenField hfSearchValue;
+
         /// <summary>
         /// hfSelectedTab control.
         /// </summary>
@@ -218,16 +148,16 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfSelectedTab;
-        
+
         /// <summary>
-        /// hfSelectedTabL control.
+        /// UpdateProgress1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfSelectedTabL;
-        
+        protected global::System.Web.UI.UpdateProgress UpdateProgress1;
+
         /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
@@ -236,7 +166,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
+
         /// <summary>
         /// GridView1 control.
         /// </summary>
@@ -245,7 +175,16 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
-        
+
+        /// <summary>
+        /// IframeFunction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlIframe IframeFunction;
+
         /// <summary>
         /// HelpTextContent control.
         /// </summary>
@@ -254,7 +193,25 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox HelpTextContent;
-        
+
+        /// <summary>
+        /// EditDIV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EditDIV;
+
+        /// <summary>
+        /// editiFrame control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlIframe editiFrame;
+
         /// <summary>
         /// LabelTeacherName control.
         /// </summary>
@@ -263,7 +220,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelTeacherName;
-        
+
         /// <summary>
         /// ActioniFramePage control.
         /// </summary>
@@ -272,7 +229,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlIframe ActioniFramePage;
-        
+
         /// <summary>
         /// hfCategory control.
         /// </summary>
@@ -281,7 +238,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfCategory;
-        
+
         /// <summary>
         /// hfPageID control.
         /// </summary>
@@ -290,7 +247,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfPageID;
-        
+
         /// <summary>
         /// hfCode control.
         /// </summary>
@@ -299,7 +256,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfCode;
-        
+
         /// <summary>
         /// hfUserID control.
         /// </summary>
@@ -308,7 +265,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfUserID;
-        
+
         /// <summary>
         /// hfUserRole control.
         /// </summary>
@@ -317,7 +274,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfUserRole;
-        
+
         /// <summary>
         /// hfUserLoginRole control.
         /// </summary>
@@ -326,7 +283,7 @@ namespace SIC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfUserLoginRole;
-        
+
         /// <summary>
         /// hfRunningModel control.
         /// </summary>

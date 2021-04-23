@@ -119,10 +119,13 @@ namespace BLL
                 case "PageHelp":
                     return "dbo.EPA_Appr_AppraisalProcess_GoPage" + parameters;
                  case "GoPage":
-                    return "dbo.SIC_sys_GoPageOfStudentLevel" + parameters;
+                    return "dbo.SIC_sys_ActionMenu_GoPage" + parameters;
+                case "GoPageGroup":
+                    return "dbo.SIC_sys_ActionMenu_GoPage" + parameters + ",@Term,@Category,@AppID";
                 case "GoPageItems":
-                    return "dbo.SIC_sys_GoPageOfStudentLevel" + parameters + ",@Term";
-
+                    return "dbo.SIC_sys_ActionMenu_GoPage" + parameters + ",@Term,@Category,@AppID,@GroupID,@MemberID";
+                case "HelpContent":
+                    return "dbo.SIC_sys_HelpTitleContentSP";
 
                 default:
                     return action;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.WebControls; 
+using System.Web.UI.WebControls;
 
 namespace SIC
 {
@@ -33,7 +33,7 @@ namespace SIC
                 string authenticationMethod = WebConfig.getValuebyKey("AuthenticateMethod");
                 if (authenticationMethod == "NameOnly")
                 {
-                    rfPassword.Enabled = false;
+                    //   rfPassword.Enabled = false;
                 }
             }
         }
@@ -42,7 +42,7 @@ namespace SIC
             try
             {
                 txtUserName.Text = txtUserName.Text.ToLower();
-                if (Authentication.IsAuthenticated(txtDomain.Text, txtUserName.Text , txtPassword.Text))
+                if (Authentication.IsAuthenticated(txtDomain.Text, txtUserName.Text, txtPassword.Text))
                 {
                     CreateAuthenticationTicket();
                 }
@@ -111,7 +111,5 @@ namespace SIC
 
 
         }
-
-
     }
 }

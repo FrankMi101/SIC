@@ -1,5 +1,5 @@
 
-
+ 
 using System.Web.Configuration;
 
 namespace SIC
@@ -7,6 +7,11 @@ namespace SIC
 
     public class WebConfig
     {
+        public static string getDB(string source)
+        {
+            string currentDataSource = WebConfigurationManager.ConnectionStrings["currentDB"].ConnectionString;             
+            return   source + "_" + currentDataSource;
+        }
         public static string getValuebyKey(string key)
         {
             return WebConfigurationManager.AppSettings[key];
