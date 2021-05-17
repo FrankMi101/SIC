@@ -18,14 +18,15 @@ namespace SIC
                 txtDomain.Text = WebConfig.DomainName();
                 LabelAppName.Text = WebConfig.AppName();
                 HostName.InnerText = System.Net.Dns.GetHostName();
-                if (User.Identity.Name == "")
-                {
-                    txtUserName.Text = "mif";
-                }
-                else
-                { txtUserName.Text = User.Identity.Name; }
+                //if (User.Identity.Name == "")
+                //{
+                //    txtUserName.Text = "mif";
+                //}
+                //else
+                //{ txtUserName.Text = User.Identity.Name; }
+
                 txtUserName.Focus();
-                if (DBConnection.CurrentDB != "Live")
+                if (DBConnection.CurrentDB != "Production")
                 {
                     LabelTrain.Text = DBConnection.CurrentDB;
                     LabelTrain.Visible = true;
@@ -41,49 +42,57 @@ namespace SIC
         {
             try
             {
-                txtUserName.Text = txtUserName.Text.ToLower();
-                if (Authentication.IsAuthenticated(txtDomain.Text, txtUserName.Text, txtPassword.Text))
-                {
-                    CreateAuthenticationTicket();
-                }
+                if (Authentication.AuthenticateMethod(txtUserName.Text) == "NameOnly")
+                { CheckAppRole(); }
                 else
                 {
-                    errorlabel.Text = "Error Login User ID or Passward !";
-                    errorlabel.Visible = true;
-                    txtPassword.Focus();
+                    if (Authentication.IsAuthenticated(txtDomain.Text, txtUserName.Text, txtPassword.Text))
+                    {
+                        CheckAppRole();
+                    }
+                    else
+                    {
+                        ShowMessage("MessageAuthenticate");
+                        txtUserName.Focus();
+                    }
                 }
             }
             catch (Exception ex)
             {
+                // CheckTestUser();
                 string exM = ex.Message;
-
+                ShowMessage("MessageAuthenticate");
+                txtUserName.Focus();
             }
 
         }
-
-        private void CreateAuthenticationTicket()
+        private void CheckAppRole()
         {
             try
             {
                 string loginRole = UserProfile.UserLoginRole(txtUserName.Text);//  Authentication.UserRole(txtUserName.Text);
                 if (loginRole == "Other")
                 {
-                    errorlabel.Text = WebConfig.MessageNotAllow(); // "You are not allow to run this application ! ";
-                    errorlabel.Visible = true;
-                    txtUserName.Focus();
+                    ShowMessage("MessageNoPermission");
                 }
                 else
                 {
-                    CreateauTicket(loginRole);
+                    CreateAuthenticationTicket(loginRole);
                 }
             }
             catch (Exception ex)
             {
-                string exm = ex.Message;
+                ShowMessage("MessageLoginDB");
             }
-
         }
-        private void CreateauTicket(string loginRole)
+
+        private void ShowMessage(string MessageType)
+        {
+            errorlabel.Text = WebConfig.getValuebyKey(MessageType);
+            errorlabel.Visible = true;
+            errorlabel.ForeColor = System.Drawing.Color.Red;
+        }
+        private void CreateAuthenticationTicket(string loginRole)
         {
             try
             {
@@ -102,7 +111,10 @@ namespace SIC
                 Response.Cookies.Add(authCookie);
                 System.Security.Principal.GenericIdentity id = new System.Security.Principal.GenericIdentity(authTicket.Name, "LdapAuthentication");
                 System.Security.Principal.GenericPrincipal principal = new System.Security.Principal.GenericPrincipal(id, null);
-                FormsAuthentication.RedirectFromLoginPage(txtUserName.Text.ToLower(), chkPersist.Checked);
+
+                //  FormsAuthentication.RedirectFromLoginPage(txtUserName.Text.ToLower(), chkPersist.Checked);
+
+                Response.Redirect(FormsAuthentication.GetRedirectUrl(txtUserName.Text.ToLower(), false), false);
             }
             catch (Exception ex)
             {

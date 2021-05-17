@@ -27,9 +27,9 @@ namespace BLL
         {
             try
             {
-                // string sp = GetSP(action,"GeneralList");
+                  string fsp = CheckParamerters(sp, parameter) ;
                 var myList = new CommonOperate<T>();
-                return myList.ListOfT(sp, parameter);
+                return myList.ListOfT(fsp, parameter);
 
             }
             catch (Exception ex)
@@ -131,7 +131,7 @@ namespace BLL
             if (sp.Contains("@"))
                 return sp;
             else
-                return sp + GetParameterStrFromParameterObj2(obj);
+                return sp + GetParameterStrFromParameterObj(obj);
         }
         private static string GetParamerters(string sp, object obj)
         {

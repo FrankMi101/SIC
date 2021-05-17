@@ -54,8 +54,8 @@ namespace SIC
                     Operate = "",
                     UserID = User.Identity.Name,
                     Para1 = hfUserRole.Value,
-                    Para2 = WorkingProfile.SchoolYear,
-                    Para3 = WorkingProfile.SchoolCode,
+                    Para2 = schoolYear,
+                    Para3 = schoolCode,
                 };
                 AppsPage.BuildingList(ddlSchoolYear, "SchoolYear", parameters, schoolYear);
 
@@ -109,8 +109,8 @@ namespace SIC
             {   Operate = "",
                 UserID = User.Identity.Name,
                 Para1 = hfUserRole.Value,
-                Para2 = WorkingProfile.SchoolYear,
-                Para3 = WorkingProfile.SchoolCode,
+                Para2 = ddlSchoolYear.SelectedValue,
+                Para3 = ddlSchool.SelectedValue,
                 Para4 = DDLPanel.SelectedValue
             }; 
             AppsPage.BuildingList(ddlSchoolCode, ddlSchool, "DDLListSchool", parameters);

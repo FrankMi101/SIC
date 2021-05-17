@@ -24,6 +24,7 @@ namespace ClassLibrary
         public string IDs { get; set; }
         public string StudentMember { get; set; }
         public bool HasMemberT { get; set; }
+
     }
     public class GroupOperation : Group
     {

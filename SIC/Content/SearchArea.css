@@ -23,7 +23,8 @@ width:100px;
 }
 
 .highlightSearchBox {
-    border: 2px solid;
+    border: 1px solid #0094ff;
+    
 }
 
 .term {

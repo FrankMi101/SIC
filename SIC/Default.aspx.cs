@@ -1,6 +1,7 @@
 ﻿using BLL;
 using ClassLibrary;
 using System;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -42,10 +43,6 @@ namespace SIC
             hfUserLoginRole.Value = WorkingProfile.UserRoleLogin;
             hfUserID.Value = User.Identity.Name;
             hfRunningModel.Value = WebConfig.RunningModel();
-            hfApprYear.Value = WorkingProfile.SchoolYear;
-            hfApprSchool.Value = WorkingProfile.SchoolCode;
-            hfApprEmployeeID.Value = WorkingProfile.UserEmployeeId;
-            hfTeacherName.Value = WorkingProfile.UserName;
 
             if (DBConnection.CurrentDB != "Production")
             {
@@ -130,11 +127,21 @@ namespace SIC
         }
         private void GetUserLastWorkingValue()
         {
+
+            List<LastWorkInfo> LastInfo = GetLastWorkInfo()  ;
+            var myInfo = LastInfo[0];
             LabelSchoolYear.Text = UserProfile.CurrentSchoolYear;
-            LabelSchoolCode.Text = UserLastWorking.SchoolCode;
-            LabelSchool.Text = UserLastWorking.SchoolName;
-            hfSchoolArea.Value = UserLastWorking.SchoolArea;
+            LabelSchoolCode.Text = myInfo.SchoolCode; // UserLastWorking.SchoolCode;
+            LabelSchool.Text = myInfo.SchoolName; //  UserLastWorking.SchoolName;
+            hfSchoolArea.Value = myInfo.SchoolArea;// UserLastWorking.SchoolArea;
+
+            hfApprYear.Value = myInfo.SchoolYear;//  WorkingProfile.SchoolYear;
+            hfApprSchool.Value = myInfo.SchoolCode;//   WorkingProfile.SchoolCode;
+            hfApprEmployeeID.Value = myInfo.ContentPage;
+            hfTeacherName.Value = myInfo.UserName;//   WorkingProfile.UserName;
+
             WorkingProfile.SchoolArea = hfSchoolArea.Value;
+
         }
         private void SaveUserWorkingEnvironment()
         {
@@ -145,6 +152,19 @@ namespace SIC
 
             string lastValue = UserLastWorking.LastValue(User.Identity.Name, "LastValue", WorkingProfile.UserRole, machineName, screenSize, browserType, browserVersion);
 
+        }
+        private List<LastWorkInfo> GetLastWorkInfo()
+        {
+
+
+            var parameter = new
+            {
+                Operate = "GetAll",
+                UserID = User.Identity.Name
+            };
+
+             var myList = AppsBase.GeneralList<LastWorkInfo>("dbo.SIC_sys_UserWorkingTrack", parameter);
+            return myList;
         }
     }
 }

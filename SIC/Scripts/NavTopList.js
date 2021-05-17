@@ -335,7 +335,8 @@ $(document).ready(function () {
         $(".TopMenuItem").click( function (e) { 
            // alert( this.id);  
             $("#" + currentMenuID).removeClass("TopSelectItem");
-            currentMenuID = this.id;
+            var cID =  this.id;
+            if (cID.length == 10) currentMenuID = cID;
          });
 
         $("#TopNav .Level-2").click(function (e) {

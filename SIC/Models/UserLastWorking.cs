@@ -193,7 +193,7 @@ namespace SIC
                     Value = value
                 };
 
-                string result =  CommonExecute<string>.ValueOfT(SP + " @Operate, @UserID,@Value", parameter); 
+                string result =  CommonExecute<string>.ValueOfT(SP + " @Operate, @UserID, @Value", parameter); 
             }
             catch (Exception ex)
             { var em = ex.Message; }

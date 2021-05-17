@@ -16,6 +16,11 @@ namespace SIC
         {
             return WebConfigurationManager.AppSettings[key];
         }
+
+        public static string AuthenticationMethod()
+        {
+            return getValuebyKey("AuthenticationMethod").ToString();
+        }
         public static string RunningModel()
         {
             return getValuebyKey("RunningModel");

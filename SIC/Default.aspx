@@ -313,7 +313,7 @@
     var currentNodeLevel2;
     var topMenuID = $("#hfTopMenuArea").val();
     var level1MenuID = $("#hfLevel1MenuArea").val();
-     
+    var currentMenuID = level1MenuID; 
     //var menuData = JSON.parse(TopMenuListData);
     //myTopNav(mydata[0]value);
     var menuData = myTopMenuData;

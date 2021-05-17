@@ -56,6 +56,7 @@
     <Compile Include="GroupList.cs" />
     <Compile Include="HelpMessage.cs" />
     <Compile Include="ItemsOnList.cs" />
+    <Compile Include="LastWorkInfo.cs" />
     <Compile Include="MenuItems.cs" />
     <Compile Include="School.cs" />
     <Compile Include="SchoolDate.cs" />

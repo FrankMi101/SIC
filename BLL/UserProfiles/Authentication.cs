@@ -45,63 +45,49 @@ namespace BLL
         public static bool IsAuthenticated(string _domain, string username, string pwd)
         {
 
+            string _path = WebConfigurationManager.AppSettings["LDAP"]; // WebConfig.getValuebyKey("LDAP");
+            string domainAndUsername = _domain + "'\'" + username;
+            DirectoryEntry entry = new DirectoryEntry(_path, username, pwd);
             try
             {
-              //  string authenticationMethod = WebConfigurationManager.AppSettings["AuthenticateMethod"];// WebConfig.getValuebyKey("AuthenticateMethod");
-
-                if (AuthenticateMethod() == "NameOnly")
+                Object obj = entry.NativeObject; //  .NativeObject;
+                DirectorySearcher search = new DirectorySearcher(entry)
                 {
-                    return true;
-                }
+                    Filter = "(SAMAccountName=" + username + ")"
+                };
+                search.PropertiesToLoad.Add("cn");
+                SearchResult result = search.FindOne();
+
+                if (result == null)
+                    return false;
                 else
-                {
-                    string _path = WebConfigurationManager.AppSettings["LDAP"]; // WebConfig.getValuebyKey("LDAP");
-                    string domainAndUsername = _domain + "'\'" + username;
-                    DirectoryEntry entry = new DirectoryEntry(_path, username, pwd);
-                    try
-                    {
-                        Object obj = entry.NativeObject; //  .NativeObject;
-                        DirectorySearcher search = new DirectorySearcher(entry)
-                        {
-                            Filter = "(SAMAccountName=" + username + ")"
-                        };
-                        search.PropertiesToLoad.Add("cn");
-                        SearchResult result = search.FindOne();
+                    return true;
 
-                        if (result == null)
-                            return false;
-                        else
-                            return true;
-
-                    }
-                    catch (Exception ex)
-                    {
-                        string em = ex.Message;
-                        return false; ;
-
-                    }
-
-                }
             }
             catch (Exception ex)
             {
-                string myEx = ex.Message;
-                return false;
-            }
+                string em = ex.Message;
+                return false; ;
 
+            }
         }
-        private static string AuthenticateMethod()
+        public static string AuthenticateMethod(string loginUser)
         {
-            string authMethod = WebConfigurationManager.AppSettings["AuthenticateMethod"]; ;
+            string authMethod = WebConfigurationManager.AppSettings["AuthenticateMethod"];
+            string hostName = System.Net.Dns.GetHostName();
             if (authMethod == "NameOnly")
             {
-                string appServers = WebConfigurationManager.AppSettings["AppServers"]; 
-                string serverName = System.Net.Dns.GetHostName();
-                if (appServers.Contains(serverName))
-                    authMethod = "NameOnlyFalse";
+                string appServers = WebConfigurationManager.AppSettings["AppServers"];
+                if (appServers.Contains(hostName)) authMethod = "NameOnlyFalse";
+            }
+            else
+            {
+                string developers = WebConfigurationManager.AppSettings["Developers"];  
+                 if (developers.Contains(loginUser.ToLower())) authMethod = "NameOnly";
             }
             return authMethod;
         }
+ 
         //public static string UserRole(string userID)
         //{
         //    try
