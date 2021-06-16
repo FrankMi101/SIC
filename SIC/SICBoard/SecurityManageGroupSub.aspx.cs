@@ -83,6 +83,7 @@ namespace SIC
             AppsPage.BuildingList(ddlSchoolYear, "SchoolYear", parameters, WorkingProfile.SchoolYear);
             AppsPage.BuildingList(ddlSchoolCode, ddlSchool, "DDLListSchool", parameters, WorkingProfile.SchoolCode);
             AppsPage.BuildingList(ddlApps, "AppsName", parameters, "SIC");
+            AppsPage.BuildingList(ddlAppRole, "AppRolee", parameters, "Teacher");
             SetAppsGroup();
             Assembing_Tab();
         }

@@ -58,12 +58,14 @@
     <Compile Include="ItemsOnList.cs" />
     <Compile Include="LastWorkInfo.cs" />
     <Compile Include="MenuItems.cs" />
+    <Compile Include="Report.cs" />
+    <Compile Include="ReportList.cs" />
     <Compile Include="School.cs" />
     <Compile Include="SchoolDate.cs" />
     <Compile Include="SchoolList.cs" />
     <Compile Include="Staff.cs" />
     <Compile Include="StaffList.cs" />
-    <Compile Include="StudentEnrolment.cs" />
+    <Compile Include="Enrolment.cs" />
     <Compile Include="StudentList.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="DataSource.cs" />

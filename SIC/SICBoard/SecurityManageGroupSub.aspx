@@ -167,7 +167,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-        <div style ="margin-left:-2px;">
+        <div style="margin-left: -2px;">
             <asp:UpdatePanel ID="UpdatePanel6" runat="server">
                 <ContentTemplate>
                     <div class="Horizontal_Tab" id="GradeTab" runat="server"></div>
@@ -348,7 +348,12 @@
                         <label for="ddlGroupID">Group Name: </label>
                     </td>
                     <td colspan="4">
-                        <asp:DropDownList ID="ddlGroupID" runat="server" Width="400px" CssClass="ddlControls"></asp:DropDownList></td>
+                        <asp:UpdatePanel ID="UpdatePanel24" runat="server">
+                            <ContentTemplate>
+                                <asp:DropDownList ID="ddlGroupID" runat="server" Width="400px" CssClass="ddlControls"></asp:DropDownList>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </td>
 
                 </tr>
                 <tr>
@@ -356,9 +361,13 @@
                         <label for="ddlSchool">School Name: </label>
                     </td>
                     <td colspan="4">
-                        <asp:DropDownList ID="ddlSchoolCode" runat="server" Width="58px" CssClass="ddlControls" OnSelectedIndexChanged="DDLSchoolCode_SelectedIndexChanged"></asp:DropDownList>
-                        <asp:DropDownList ID="ddlSchool" runat="server" Width="337px" CssClass="ddlControls" OnSelectedIndexChanged="DDLSchool_SelectedIndexChanged"></asp:DropDownList></td>
-
+                        <asp:UpdatePanel ID="UpdatePanel23" runat="server">
+                            <ContentTemplate>
+                                <asp:DropDownList ID="ddlSchoolCode" runat="server" Width="58px" AutoPostBack="true" CssClass="ddlControls" OnSelectedIndexChanged="DDLSchoolCode_SelectedIndexChanged"></asp:DropDownList>
+                                <asp:DropDownList ID="ddlSchool" runat="server" Width="337px" AutoPostBack="true" CssClass="ddlControls" OnSelectedIndexChanged="DDLSchool_SelectedIndexChanged"></asp:DropDownList>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -381,33 +390,40 @@
                         <label for="">Permission: </label>
 
                     </td>
-                    <td colspan="4">
+                    <td colspan="2">
                         <asp:RadioButtonList ID="rblPermission" runat="server" Width="180px" RepeatDirection="Horizontal">
                             <asp:ListItem Selected="True">Read</asp:ListItem>
                             <asp:ListItem>Update</asp:ListItem>
                             <asp:ListItem>Super</asp:ListItem>
                         </asp:RadioButtonList>
                     </td>
+                    <td colspan="2">App Role: 
+                         <asp:DropDownList ID="ddlAppRole" runat="server" Width="100px" CssClass="ddlControls"></asp:DropDownList>
+                    </td>
 
 
+                </tr>
 
+                <tr>
+                    <td colspan="4">
+                        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                            <ContentTemplate>
+                                <input id="btnAssignNew" type="button" value="Assign New School" class="action-button" />
+                                <input id="btnSubmit" type="button" value="Add to Group" class="action-button" />
+                                <input id="btnAddToSchool" type="button" value="Add To School" class="action-button" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td style="width: 8%"></td>
                     <td style="width: 10%"></td>
                     <td style="width: 10%"></td>
-                    <td style="width: 10%">
-                        <input id="btnSubmit" type="button" value="Add to Group" class="action-button" /></td>
-                    <td style="width: 15%">
-
-                        <input id="btnAddToSchool" type="button" value="Add To School" class="action-button" />
-                        <%--  <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="action-button" OnClick="BtnSubmit_Click" />
-                        <asp:Button ID="btnAddToSchool" runat="server" Text="Add To School" CssClass="action-button" OnClick="BtnAddToSchool_Click" />--%>
-
-                    </td>
+                    <td style="width: 10%"></td>
+                    <td style="width: 15%"></td>
                     <td style="width: 47%"></td>
                 </tr>
-
             </table>
         </div>
         <div id="ActionMenuDIV" class="bubble epahide">
@@ -503,7 +519,9 @@
             $("#btnAddToSchool").click(function (e) {
                 SaveDataToDatabase("AddUserToSchool");
             });
-
+            $("#btnAssignNew").click(function (e) {
+                SaveDataToDatabase("AssignNewSchool");
+            })
             $("#GridView_APP tr").mouseenter(function (event) {
                 //if ($("#ActionMenuDIV", parent.document).is(":visible")) $("#ActionMenuDIV", parent.document).hide();
                 if ($("#ActionMenuDIV").is(":visible")) $("#ActionMenuDIV").hide();
@@ -527,13 +545,15 @@
                 AppID: $("#ddlApps").val(),
                 GroupID: $("#ddlGroupID").val(),
                 MemberID: $("#TextBoxCPNum").val(),
+                AppRole: $("#ddlAppRole").val(),
                 StartDate: $("#dateStart").val(),
                 EndDate: $("#dateEnd").val(),
                 Comments: $("#TextComments").val(),
                 Permission: $("input:radio[name='rblPermission']:checked").val()
             };
-
+          //  alert("Save action");
             var result = SIC.Models.WebService.SaveSecurityGroupMember("Teachers", action, para, onSuccess, onFailure);
+            event.stopPropagation();
         }
         catch (e) {
             alert(action + " button click something going wrong");
@@ -549,8 +569,8 @@
 
     function RemoveUserFromGroup(userID, userRole, schoolYear, schoolCode, appID, groupID, memberID) {
         try {
-                 Action = "Remove the User from Group";
-           var result = confirm("Going to delete" + memberID + " ?");
+            Action = "Remove the User from Group";
+            var result = confirm("Going to delete" + memberID + " ?");
             if (result) {
                 var para = {
                     Operate: "Delete",
@@ -560,7 +580,8 @@
                     SchoolCode: schoolCode,
                     AppID: appID,
                     GroupID: groupID,
-                    MemberID: memberID
+                    MemberID: memberID,
+                    AppRole: ""
                 };
                 var result = SIC.Models.WebService.SaveSecurityGroupMember("Teachers", "Delete", para, onSuccess, onFailure);
             }

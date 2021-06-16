@@ -33,6 +33,22 @@ namespace BLL
             }
 
         }
+        public static List<T> CommonList<T>(string db,string action, object parameter)
+        {
+            try
+            {
+                string sp = GetSP(action);
+                var myList = new CommonOperate<T>();
+                return myList.ListOfT(db,sp, parameter);
+                //  return CommonExecute<T>.ListOfT(sp, parameter);
+            }
+            catch (Exception ex)
+            {
+                string em = ex.StackTrace;
+                throw;
+            }
+
+        }
         public static T CommonValue<T>(string action, object parameter)
         {
             try
@@ -73,7 +89,7 @@ namespace BLL
                 case "DDLListStudents":
                     return "dbo.SIC_sys_ListItemsStudents" + parameter;
                 case "SchoolList":
-                    return "dbo.SIC_sys_SchoolList" + parameter1 + ",@Panel,";
+                    return "dbo.SIC_sys_SchoolList" + parameter1 + ",@Panel";
                 case "SchoolListPage":
                     return "dbo.SIC_sys_ListofSchools" + parameter2;
                 case "GroupListPage":

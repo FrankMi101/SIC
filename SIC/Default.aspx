@@ -22,8 +22,8 @@
     <link href="Content/DefaultPage.css" rel="stylesheet" />
     <script src="Scripts/jquery-3.3.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/NavTopList.js"></script>
     <script src="Scripts/NavTopListData.js"></script>
+    <script src="Scripts/NavTopList.js"></script>
 
     <style>
         html, body {
@@ -312,6 +312,7 @@
     var currentNodeLevel1;
     var currentNodeLevel2;
     var topMenuID = $("#hfTopMenuArea").val();
+
     var level1MenuID = $("#hfLevel1MenuArea").val();
     var currentMenuID = level1MenuID; 
     //var menuData = JSON.parse(TopMenuListData);
@@ -322,6 +323,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        topSelectedMenuItem = topMenuID ;
         var vHeight = window.innerHeight - 140;
         $("#" + topMenuID).addClass("TopSelectItem");
         $("#" + level1MenuID).addClass("TopSelectItem");

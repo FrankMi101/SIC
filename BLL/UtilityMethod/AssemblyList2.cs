@@ -7,8 +7,9 @@ using System.Web.UI.WebControls;
 namespace BLL
 {
   
-    public static class AssemblingList
+    public static class AssemblingList2
     {
+        readonly static string _db = DBConnection.OtherDB("SISDB");
         public static void SetLists(System.Web.UI.WebControls.ListControl myListControl, List<NameValueList> myListData)
         {           
                 AssemblingMyList(myListControl, myListData, "Value", "Name");
@@ -169,7 +170,7 @@ namespace BLL
 
                 //  string SP = SPandParameters.GetSPNameAndParameters("General", "DDList");
                 //   myListData = CommonListExecute<NVListItem>.GeneralList(SP, parameter);
-                myListData = GeneralList.CommonList<NameValueList>(action, parameter); //  CommonExcute<CommonList>.ListOfT(SP, parameter);
+                myListData = GeneralList.CommonList<NameValueList>(_db, action, parameter); //  CommonExcute<CommonList>.ListOfT(SP, parameter);
             }
             else
             {

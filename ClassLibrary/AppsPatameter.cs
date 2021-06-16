@@ -57,6 +57,8 @@ namespace ClassLibrary
         public string GroupID { get; set; }
         public string MemberID { get; set; }
 
+        public string ObjName { get; set; }
+        public string ObjType { get; set; }
     }
     public class PageHelp
     {

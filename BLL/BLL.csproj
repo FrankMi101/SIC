@@ -70,9 +70,11 @@
     <Compile Include="ManageApp\AppsPageHelp.cs" />
     <Compile Include="ManageApp\CommentsBank.cs" />
     <Compile Include="ManageApp\GeneralValue.cs" />
+    <Compile Include="SISInfo\SISInfoBase.cs" />
     <Compile Include="SPandParameters.cs" />
     <Compile Include="UserProfiles\UserLastWorking.cs" />
     <Compile Include="UserProfiles\UserProfile.cs" />
+    <Compile Include="UtilityMethod\AssemblyList2.cs" />
     <Compile Include="UtilityMethod\AssemblyListControl.cs" />
     <Compile Include="CommonOperate.cs" />
     <Compile Include="CommonParameters.cs" />

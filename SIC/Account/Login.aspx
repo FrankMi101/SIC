@@ -334,6 +334,7 @@
 
 <script>
     $(document).ready(function () {
+        $("#txtUserName").focus;
         var screenWidth = screen.width;
         var screenHeight = screen.height;
         $("#txtResolution").val(screenWidth + "x" + screenHeight);

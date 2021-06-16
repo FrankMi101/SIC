@@ -139,6 +139,8 @@
     <Content Include="images\pdf.png" />
     <Content Include="images\pgBar3e_all.png" />
     <Content Include="images\setupDone.png" />
+    <Content Include="OutSidePage.aspx" />
+    <Content Include="LoadingParameters.aspx" />
     <Content Include="Models\WebServiceAction.asmx" />
     <Content Include="Scripts\ActionInPage.js" />
     <Content Include="Scripts\ActionMenu.js" />
@@ -205,11 +207,13 @@
     <Content Include="SICSchool\Loading.aspx" />
     <Content Include="Scripts\MoursPoint.js" />
     <Content Include="SICSchool\SchoolListPage.aspx" />
+    <Content Include="SICSchool\ReportListPage.aspx" />
     <Content Include="SICSetup\ClientPage.aspx" />
     <Content Include="SICSetup\ClientPageApi.aspx" />
     <Content Include="SICSetup\EncryptionStr.aspx" />
     <Content Include="SICSetup\HtmlPageExample.html" />
     <Content Include="SICStaff\Loading.aspx" />
+    <Content Include="SICStudent\EnrolmentEdit.aspx" />
     <Content Include="SICStudent\StudentGroupPage.aspx" />
     <Content Include="Account\Web.config" />
     <Content Include="Documents\MinistryGuidelineE.pdf" />
@@ -413,6 +417,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="SICStudent\EnrolmentRecords.aspx" />
     <Content Include="SICStudent\StudentListPage.aspx" />
     <Content Include="Site.Master" />
     <Content Include="SICStudent\Loading.aspx" />
@@ -473,7 +478,24 @@
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
+    <Compile Include="OutSidePage.aspx.cs">
+      <DependentUpon>OutSidePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OutSidePage.aspx.designer.cs">
+      <DependentUpon>OutSidePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoadingParameters.aspx.cs">
+      <DependentUpon>LoadingParameters.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoadingParameters.aspx.designer.cs">
+      <DependentUpon>LoadingParameters.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AppsBaseDb.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Models\AppsSIS.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Models\StudentEnrolment.cs">
@@ -709,6 +731,13 @@
     <Compile Include="SICSchool\SchoolListPage.aspx.designer.cs">
       <DependentUpon>SchoolListPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SICSchool\ReportListPage.aspx.cs">
+      <DependentUpon>ReportListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SICSchool\ReportListPage.aspx.designer.cs">
+      <DependentUpon>ReportListPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SICSetup\ClientPage.aspx.cs">
       <DependentUpon>ClientPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -736,6 +765,13 @@
     </Compile>
     <Compile Include="SICStaff\Loading.aspx.designer.cs">
       <DependentUpon>Loading.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SICStudent\EnrolmentEdit.aspx.cs">
+      <DependentUpon>EnrolmentEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SICStudent\EnrolmentEdit.aspx.designer.cs">
+      <DependentUpon>EnrolmentEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="SICStudent\StudentGroupPage.aspx.cs">
       <DependentUpon>StudentGroupPage.aspx</DependentUpon>
@@ -788,6 +824,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SICStudent\EnrolmentRecords.aspx.cs">
+      <DependentUpon>EnrolmentRecords.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SICStudent\EnrolmentRecords.aspx.designer.cs">
+      <DependentUpon>EnrolmentRecords.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SICStudent\StudentListPage.aspx.cs">
       <DependentUpon>StudentListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

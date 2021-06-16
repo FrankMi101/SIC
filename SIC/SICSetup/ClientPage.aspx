@@ -32,7 +32,100 @@
         </asp:ScriptManager>
         <h2>Client Call data source from Web API and Web Services</h2>
 
+        <div>
+            <ul class="Top_ul">
+                <li id="NaN0" class="ItemLevel0">
+                    <img style="height: 25px; width: 30px; float: right; padding-top: -1px;" src="../images/submenu.png" /><a href="#" target="">General Info</a><ul class="ItemLevel1_ul hideMenuItem">
+                        <li id="NaN0_menu_0" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/card.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'StudentBiography','General Info','StudentListPage','PDF','OutApp','611-969-528')">Student Biography </a></li>
+                        <li id="NaN0_menu_1" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/card.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'StudentGuardian','General Info','StudentListPage','PDF','OutApp','611-969-528')">Student Guardian </a></li>
+                        <li id="NaN0_menu_2" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/pdf.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'OfficeIndexCard','General Info','StudentListPage','PDF','OutApp','611-969-528')">Office Index Card </a></li>
+                        <li id="NaN0_menu_3" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/pdf.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'WhereStudentIs','General Info','StudentListPage','PDF','OutApp','611-969-528')">Where is student  </a></li>
+                        <li id="NaN0_menu_4" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/pdf.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'Registration','General Info','StudentListPage','PDF','OutApp','611-969-528')">Student Registration History </a></li>
+                        <li id="NaN0_menu_5" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/pdf.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'Enrolment','General Info','StudentListPage','PDF','OutApp','611-969-528')">Student Enrolment </a></li>
+                        <li id="NaN0_menu_6" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/pdf.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'StudentContact','General Info','StudentListPage','PDF','OutApp','611-969-528')">Student Contact Card </a></li>
+                        <li id="NaN0_menu_7" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/card.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'SchoolSafety','General Info','StudentListPage','Site','OutApp','611-969-528')">Student School Safety </a></li>
+                    </ul>
+                </li>
+                <li id="NaN1" class="ItemLevel0">
+                    <img style="height: 25px; width: 30px; float: right; padding-top: -1px;" src="../images/submenu.png" /><a href="#" target="">Academic Info</a><ul class="ItemLevel1_ul hideMenuItem">
+                        <li id="NaN1_menu_8" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/card.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'CourseRegister','Academic Info','StudentListPage','Site','OutApp','611-969-528')">Course Register </a></li>
+                        <li id="NaN1_menu_9" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/card.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'CourseMarks','Academic Info','StudentListPage','Site','OutApp','611-969-528')">Course Marks </a></li>
+                        <li id="NaN1_menu_10" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/pdf.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'StudentTimeTable','Academic Info','StudentListPage','PDF','OutApp','611-969-528')">Student Timetable </a></li>
+                        <li id="NaN1_menu_11" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/card.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'AttendingStatus','Academic Info','StudentListPage','Site','OutApp','611-969-528')">Attending Status </a></li>
+                    </ul>
+                </li>
+                <li id="NaN2" class="ItemLevel0">
+                    <img style="height: 25px; width: 30px; float: right; padding-top: -1px;" src="../images/submenu.png" /><a href="#" target="">Report Card</a>
+                    <ul class="ItemLevel1_ul hideMenuItem">
+                        <li id="NaN2_menu_12" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/card.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'ReportCard','Report Card','StudentListPage','Site','OutApp','611-969-528')">Report Card </a></li>
+                        <li id="NaN2_menu_13" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/card.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'AlternativeRC','Report Card','StudentListPage','Form','OutApp','611-969-528')">Alternative Report Card </a></li>
+                        <li id="NaN2_menu_14" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/pdf.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'AlternativeRCPDF','Report Card','StudentListPage','PDF','OutApp','611-969-528')">Alternative Report Card PDF </a></li>
+                        <li id="NaN2_menu_15" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/card.png" /><a class="menuLink" href="javascript:openPage(5,10,999,9999,'GiftRC','Report Card','StudentListPage','Form','OutApp','611-969-528')">Gift Report Card </a></li>
+                        <li id="NaN2_menu_16" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/pdf.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'GiftPDF','Report Card','StudentListPage','PDF','OutApp','611-969-528')">Gift Report Card PDF </a></li>
+                    </ul>
+                </li>
+                <li id="NaN3" class="ItemLevel0">
+                    <img style="height: 25px; width: 30px; float: right; padding-top: -1px;" src="../images/submenu.png" /><a href="#" target="">Special Education</a><ul class="ItemLevel1_ul hideMenuItem">
+                        <li id="NaN3_menu_17" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/form.png" /><a class="menuLink" href="javascript:openPage(5,10,999,1200,'IEPForm','Special Education','StudentListPage','Site','OutApp','611-969-528')">IEP Form </a></li>
+                        <li id="NaN3_menu_18" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/pdf.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'IEPPDF','Special Education','StudentListPage','PDF','OutApp','611-969-528')">IEP PDF Report </a></li>
+                        <li id="NaN3_menu_19" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/pdf.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'IEPPDF2','Special Education','StudentListPage','Form','OutApp','611-969-528')">IEP PDF Link </a></li>
+                        <li id="NaN3_menu_20" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/form.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'IPRC','Special Education','StudentListPage','Site','OutApp','611-969-528')">IPRC Form </a></li>
+                        <li id="NaN3_menu_21" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/form.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'SBST','Special Education','StudentListPage','Site','OutApp','611-969-528')">SBST Form </a></li>
+                        <li id="NaN3_menu_22" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/form.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1000,'SSForms','Special Education','StudentListPage','Site','OutApp','611-969-528')">Special Services forms </a></li>
+                        <li id="NaN3_menu_23" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/form.png" /><a class="menuLink" href="javascript:openPage(5,10,700,1000,'SSN','Special Education','StudentListPage','Site','OutApp','611-969-528')">Support Staff Needs </a></li>
+                        <li id="NaN3_menu_24" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/pdf.png" /><a class="menuLink" href="javascript:openPage(5,10,700,1000,'SSNPDF','Special Education','StudentListPage','PDF','OutApp','611-969-528')">Support Staff Need PDF </a></li>
+                    </ul>
+                </li>
+                <li id="NaN4" class="ItemLevel0">
+                    <img style="height: 25px; width: 30px; float: right; padding-top: -1px;" src="../images/submenu.png" /><a href="#" target="">Learning Path</a>
+                    <ul class="ItemLevel1_ul hideMenuItem">
+                        <li id="NaN4_menu_25" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/pdf.png" /><a class="menuLink" href="javascript:openPage(5,10,700,1000,'Registration','Learning Path','StudentListPage','PDF','InApp','611-969-528')">School Attending Histroy </a></li>
+                        <li id="NaN4_menu_26" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/pdf.png" /><a class="menuLink" href="javascript:openPage(5,10,700,1000,'AcademicAchievement','Learning Path','StudentListPage','PDF','InApp','611-969-528')">Academic Achievement </a></li>
+                        <li id="NaN4_menu_27" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/pdf.png" /><a class="menuLink" href="javascript:openPage(5,10,700,1000,'SpecialEdHistroy','Learning Path','StudentListPage','PDF','InApp','611-969-528')">Special Ed. Histroy </a></li>
+                        <li id="NaN4_menu_28" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/pdf.png" /><a class="menuLink" href="javascript:openPage(5,10,700,1000,'ClassMark','Learning Path','StudentListPage','PDF','InApp','611-969-528')">Class Taken </a></li>
+                    </ul>
+                </li>
+                <li id="NaN5" class="ItemLevel0">
+                    <img style="height: 25px; width: 30px; float: right; padding-top: -1px;" src="../images/submenu.png" /><a href="#" target="">Enrolment Records</a>
+                    <ul class="ItemLevel1_ul hideMenuItem">
+                        <li id="NaN5_menu_29" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/card.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1400,'Enrolment','Enrolment Records','StudentListPage','Page','InApp','611-969-528')">View Student Enrolment Record </a></li>
+                        <li id="NaN5_menu_30" class="ItemLevel1">
+                            <img style="height: 18px; width: 18px; border: 0px; margin-top: auto;" src="../images/form.png" /><a class="menuLink" href="javascript:openPage(5,10,750,1400,'EnrolmentOperation','Enrolment Records','StudentListPage','Page','InApp','611-969-528')">Enrolment Record Adjustment </a></li>
+                    </ul>
+                </li>
+            </ul>
 
+        </div>
 
         <table style="width: 60%">
             <tr>
@@ -232,7 +325,7 @@
             }
         });
     }
-   
+
 
 </script>
 

@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <script src="../Scripts/jquery-3.3.1.min.js"></script>
-<%--    <script src="../Scripts/bootstrap.min.js"></script>
+    <%--    <script src="../Scripts/bootstrap.min.js"></script>
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />--%>
     <link href="../Content/BubbleHelp.css" rel="stylesheet" />
     <link href="../Content/ListPage.css" rel="stylesheet" />
@@ -105,12 +105,14 @@
             padding: 0px;
             border: 0px;
         }
- 
+
         #SearchingBar {
             position: absolute;
             top: 35px;
             left: 1010px;
-} 
+        }
+ 
+ 
     </style>
 
 </head>
@@ -200,27 +202,27 @@
                         </div>
 
                     </div>
-                    <div style="margin-top: 5px; width:1010px;" class="Search-Area-Sigal ">
-                          &nbsp;  Search Student By: &nbsp;
-                        <asp:TextBox CssClass="SearchTextBox" ID="TextBoxFirstName" runat="server"  placeholder="First name"></asp:TextBox>
+                    <div style="margin-top: 5px; width: 1010px;" class="Search-Area-Sigal ">
+                        &nbsp;  Search Student By: &nbsp;
+                        <asp:TextBox CssClass="SearchTextBox" ID="TextBoxFirstName" runat="server" placeholder="First name"></asp:TextBox>
                         <asp:ImageButton ID="btnSearchGoFirstName" CssClass="SearchGoButton hideMe" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
-                        <asp:TextBox CssClass="SearchTextBox" ID="TextBoxLastName" runat="server"  placeholder="Last name"></asp:TextBox>
+                        <asp:TextBox CssClass="SearchTextBox" ID="TextBoxLastName" runat="server" placeholder="Last name"></asp:TextBox>
                         <asp:ImageButton ID="btnSearchGoLastName" CssClass="SearchGoButton hideMe" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
                         &nbsp; &nbsp; &nbsp;&nbsp; 
                         <asp:TextBox CssClass="SearchTextBox" ID="TextBoxOEN" runat="server" placeholder="OEN Number"></asp:TextBox>
                         <asp:ImageButton ID="btnSearchGoOEN" CssClass="SearchGoButton hideMe" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
-                        <asp:TextBox CssClass="SearchTextBox" ID="TextBoxStudentNo" runat="server"  placeholder="Student No."></asp:TextBox>
+                        <asp:TextBox CssClass="SearchTextBox" ID="TextBoxStudentNo" runat="server" placeholder="Student No."></asp:TextBox>
                         <asp:ImageButton ID="btnSearchGoStudentNo" CssClass="SearchGoButton hideMe" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
                         &nbsp; &nbsp;  &nbsp;&nbsp;  
-                         <asp:TextBox CssClass="SearchTextBox" ID="TextBoxClass" runat="server"   placeholder="Class Code"></asp:TextBox>
+                         <asp:TextBox CssClass="SearchTextBox" ID="TextBoxClass" runat="server" placeholder="Class Code"></asp:TextBox>
                         <asp:ImageButton ID="btnSearchGoClass" CssClass="SearchGoButton hideMe" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
-                        <asp:TextBox CssClass="SearchTextBox" ID="TextBoxAge" runat="server"   placeholder="Age"></asp:TextBox>
+                        <asp:TextBox CssClass="SearchTextBox" ID="TextBoxAge" runat="server" placeholder="Age"></asp:TextBox>
                         <asp:ImageButton ID="btnSearchGoAge" CssClass="SearchGoButton hideMe" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
-                       &nbsp; &nbsp; IN 
+                        &nbsp; &nbsp; IN 
                          <asp:DropDownList ID="ddlScope" runat="server" Width="65px" AutoPostBack="false">
-                        <asp:ListItem Value="School" Selected="True"> School</asp:ListItem>
-                        <asp:ListItem Value="Board">Board</asp:ListItem>
-                    </asp:DropDownList>
+                             <asp:ListItem Value="School" Selected="True"> School</asp:ListItem>
+                             <asp:ListItem Value="Board">Board</asp:ListItem>
+                         </asp:DropDownList>
                     </div>
                     <%-- <div style="margin-top:5px;">
                         &nbsp; &nbsp; Search Student By: &nbsp;
@@ -248,12 +250,13 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-        <div style="margin-top:5px">
+        <div style="margin-top: 5px">
             <asp:UpdatePanel ID="UpdatePanel6" runat="server">
                 <ContentTemplate>
                     <div class="Horizontal_Tab" id="GradeTab" runat="server"></div>
                     <asp:HiddenField ID="hfSelectedTab" runat="server" />
                     <asp:HiddenField ID="hfSelectedTabL" runat="server" />
+ 
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
@@ -296,7 +299,7 @@
                                     <asp:BoundField DataField="BirthDate" HeaderText="Birth Date">
                                         <ItemStyle Width="100px" Wrap="true" />
                                     </asp:BoundField>
-                                     <asp:BoundField DataField="HomeRoom" HeaderText="Home Room">
+                                    <asp:BoundField DataField="HomeRoom" HeaderText="Home Room">
                                         <ItemStyle Width="100px" Wrap="true" />
                                     </asp:BoundField>
                                     <asp:TemplateField HeaderText="Exceptionality">
@@ -427,7 +430,7 @@
 
             <div id="ActionMenuUL" class="LeftSideMenu">
 
-              <%--  <ul class="Top_ul" id="NUA-1">
+                <%--  <ul class="Top_ul" id="NUA-1">
                     <li id="TopItem_13" class="ItemLevel0"><a id="B-13" class="Level-2" href="#" target="">User Management</a>
                         <img style="height: 25px; width: 30px; float: right; padding-top: -3px;" src="images/submenu.png">
                         <ul class="ItemLevel1_ul hideMenuItem" id="NUA-13">
@@ -452,8 +455,6 @@
                         </ul>
                     </li>
                 </ul>--%>
-
-
 
                 <%-- <ul id="ActionMenuULsub">
                     <li id="submenu1"><a class="menuLink" href="javascript:openPage(5,10,750,1000,'IEPForm');">IEP Form </a></li>
@@ -488,7 +489,7 @@
             <asp:HiddenField ID="hfUserLoginRole" runat="server" />
             <asp:HiddenField ID="hfRunningModel" runat="server" />
             <asp:HiddenField ID="hfSearchTextFields" runat="server" />
-            <input id ="clipboardText" type ="text" style="position:absolute;top:10px;left:-500px;" />
+            <input id="clipboardText" type="text" style="position: absolute; top: 10px; left: -500px;" />
         </div>
     </form>
 </body>
@@ -539,7 +540,7 @@
             //$("#btnSearchGoClass").hide();
             //$("#btnSearchGoAge").hide();
             try {
-              //  $("#btnSearchGo" + $("#hfSearchby").val()).show();
+                //  $("#btnSearchGo" + $("#hfSearchby").val()).show();
                 $("#btnSearchGo" + $("#hfSearchby").val()).removeClass("hideMe");
 
             }
@@ -586,13 +587,13 @@
                         $("#btnSearchGo" + preBox).addClass("hideMe"); // .hide();
                         $("#TextBox" + preBox).val("");
                         $("#TextBox" + preBox).removeClass("highlightSearchBox");
-                      
+
 
                         //  $("#" + currentSearchBoxID).val("");
                         //  $("#" + currentSearchBoxID.replace("TextBox", "btnSearchGo")).hide();
                     }
 
-                  //  $("#" + cEvantID.replace("TextBox", "btnSearchGo")).show();
+                    //  $("#" + cEvantID.replace("TextBox", "btnSearchGo")).show();
                     $("#" + cEvantID.replace("TextBox", "btnSearchGo")).removeClass("hideMe"); // .show();
                     $("#" + cEvantID).addClass("highlightSearchBox");
                     currentSearchBoxID = cEvantID;
@@ -658,7 +659,7 @@
             ChangeSearchValueList();
         }
     }
-  
+
     function ChangeSearchValueList() {
         BaseParaDDL.Operate = $("#ddlSearchby").val();
         BaseParaDDL.SchoolYear = $("#ddlSchoolYear").val();

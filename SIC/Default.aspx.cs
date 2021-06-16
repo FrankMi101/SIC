@@ -100,7 +100,7 @@ namespace SIC
                     workingArea = "Board Info Center >> User Access Control Management >> Apps Access Control Summary";
                     goPage = "SICBoard/SecurityAccessSummary.aspx";
                     hfTopMenuArea.Value = "TopItem_5"; 
-                    hfLevel1MenuArea.Value = "TopItem_55";
+                    hfLevel1MenuArea.Value = "TopItem_55"; 
                     break;
                 default:
                     goPage = "HomePage.aspx";

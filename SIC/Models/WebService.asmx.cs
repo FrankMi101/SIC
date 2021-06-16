@@ -218,7 +218,7 @@ namespace SIC.Models
         {
             try
             {
-                string para = " @Operate,@UserID,@UserRole,@SchoolYear,@SchoolCode,@AppID,@GroupID,@MemberID";
+                string para = " @Operate,@UserID,@UserRole,@SchoolYear,@SchoolCode,@AppID,@GroupID,@MemberID,@AppRole";
                 string sp = "dbo.SIC_sys_UserGroupMember_Students";
                 if (memberType == "Students")
                 {

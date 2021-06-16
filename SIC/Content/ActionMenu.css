@@ -11,9 +11,9 @@
 }*/
 
 .ItemLevel0 {
-    width: 170px;
+    width: 180px;
     list-style-type: none;
-    margin-right: -2px; 
+    margin-right: -5px; 
 }
 
     .ItemLevel0:hover, .ItemLevel1:hover {
@@ -32,7 +32,7 @@
     list-style-type: none;
     position: relative;
     top: -20px;
-    left: 170px;
+    left: 177px;
     margin-left: 0px;
     background: #fff;
     padding: 0;
@@ -45,12 +45,17 @@
 
 .ItemLevel1 {
     padding-left: 5px;
+    display: inline-block;
+    width:98.5%
 }
-
-    .ItemLevel1 a {
-        padding-left: 10px;
-    }
-
+ 
+.ItemLevel1 a {
+    padding-left: 10px;
+    text-wrap:avoid;
+}
+.menuLink {
+    width: 400px;
+}
 .LeftSideMenu ul li:hover > ul {
     display: block;
 }
@@ -69,7 +74,7 @@
 
 #ActionMenuDIV {
     border: 2px lightblue ridge;
-    height: 180px;
+    height: 220px;
     width: 210px;
     background: lightblue;
     background: -webkit-linear-gradient(left,lightblue,white ); /* For Safari 5.1 to 6.0 */

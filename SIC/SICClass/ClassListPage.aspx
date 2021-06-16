@@ -271,41 +271,7 @@
             </asp:UpdatePanel>
 
         </div>
-      <%--  <div id="alphabateSearch">
-            <ul>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">A</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">B</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">C</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">D</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">E</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink"></a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">F</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">G</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">H</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">I</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">J</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink"></a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">K</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">L</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">M</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">N</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">O</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink"></a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">P</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">Q</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">R</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">S</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">T</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink"></a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">U</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">V</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">W</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">X</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">Y</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">Z</a></li>
-            </ul>
-        </div>--%>
-
+  
         <div id="HelpDIV" class="bubble epahide">
             <asp:TextBox ID="HelpTextContent" runat="server" TextMode="MultiLine" CssClass="HelpTextBox" BackColor="transparent"></asp:TextBox>
 
@@ -335,6 +301,8 @@
             <asp:HiddenField ID="hfUserRole" runat="server" />
             <asp:HiddenField ID="hfUserLoginRole" runat="server" />
             <asp:HiddenField ID="hfRunningModel" runat="server" />
+            <asp:HiddenField ID="clipboardText" runat="server" />
+
         </div>
     </form>
 </body>

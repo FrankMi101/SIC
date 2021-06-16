@@ -36,7 +36,7 @@ function CopyKeyIDToClipboard(vID) {
         document.execCommand("copy");
     }
     catch (e) {
-        alert("Action Error!");
+        alert("Copy Key value to Clipboard Action Error!");
     }
 }
 //** only works on IE 

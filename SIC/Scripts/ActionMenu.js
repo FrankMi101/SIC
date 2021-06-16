@@ -50,13 +50,13 @@ function onSuccessMenuList(result) {
 
     BuildingList.ULList($("#ActionMenuUL"), BuildingActionMenuList(result));
     var menulength = 100;// result.length * 40 / 4;
-    if (menulength < 150) menulength = 150;
+    if (menulength < 150) menulength = 180;
     var menuWidth = 215;
     if (ActionMenuLevel1Length == 1)   menuWidth = 300;
     ShowBuildingMenuList(menuWidth, menulength);
 }
 function BuildingActionMenuList(DataSet) {
-    var img = '<img style="height: 25px; width: 30px; float:right; padding-top: -1px; " src="../images/submenu.png">'
+    var img = '<img style="height: 25px; width: 30px; float:right; padding-top: -1px; " src="../images/submenu.png" />'
     var list = '<ul class="Top_ul" >';
     var tabData = getTabData(DataSet);
     var cData = "";
@@ -69,10 +69,9 @@ function BuildingActionMenuList(DataSet) {
              var para = "javascript:openPage(" + DataSet[x].Ptop + "," + DataSet[x].Pleft + "," + DataSet[x].Pheight + "," + DataSet[x].Pwidth + ",'" + DataSet[x].MenuID + "','" + DataSet[x].Category + "','" + DataSet[x].Area + "','" + DataSet[x].Type + "','" + DataSet[x].AppSource + "','" + DataSet[x].AppID + "')";
           //  if (item == category)
                 list += ' <li id="' + xItemID + '" class="ItemLevel1" >'
-                    + '<img style="height: 18px; width: 18px; border="0" padding-top: -3px; src="../images/' + DataSet[x].Image + '"/>'
+                    + '<img style="height: 18px; width: 18px; border: 0; padding-top: -3px; " src="../images/' + DataSet[x].Image + '"/>'
                     + '<a class="menuLink" href="' + para + '">'
                     + DataSet[x].Name + ' </a> </li>';
-
         };
         list += '</ul>';
     }
@@ -87,7 +86,7 @@ function BuildingActionMenuList(DataSet) {
                 var para = "javascript:openPage(" + DataSet[x].Ptop + "," + DataSet[x].Pleft + "," + DataSet[x].Pheight + "," + DataSet[x].Pwidth + ",'" + DataSet[x].MenuID + "','" + DataSet[x].Category + "','" + DataSet[x].Area + "','" + DataSet[x].Type + "','" + DataSet[x].AppSource + "','" + DataSet[x].AppID + "')";
                 if (item == category)
                     list += ' <li id="' + xItemID + '" class="ItemLevel1" >'
-                        + '<img style="height: 18px; width: 18px; border="0"; margin-top:auto; src="../images/' + DataSet[x].Image + '"/>'
+                        + '<img style="height: 18px; width: 18px; border: 0px; margin-top:auto;" src="../images/' + DataSet[x].Image + '"/>'
                         + '<a class="menuLink" href="' + para + '">'
                         + DataSet[x].Name + ' </a> </li>';
             };
@@ -143,7 +142,7 @@ function openPage(vTop, vLeft, vHeight, vWidth, menuID, category, area, type, so
     }
 
     catch (e) {
-        window.alert(e.mess);
+        window.alert(e.mess + " Open Page Function Error." );
     }
 }
 

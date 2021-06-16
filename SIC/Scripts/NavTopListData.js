@@ -87,21 +87,21 @@
         "myClass": "Level-1",
         "subItems": [
             {
-                "display": "School Staff Management",
+                "display": "School Reports & Label & Data Extract",
                 "role": "Principal",
-                "url": "Loading.aspx?pID=SICSchool/SchoolStaffList.aspx",
+                "url": "Loading.aspx?pID=SICSchool/ReportListPage.aspx",
                 "target": "GoList",
                 "ID": "41",
                 "myClass": "Level-2"
-            },
+            },   
             {
-                "display": "School Teacher Management",
+                "display": "School Staff Management",
                 "role": "Principal",
-                "url": "Loading.aspx?pID=SICSchool/SchoolTeacherList.aspx",
+                "url": "Loading.aspx?pID=SICBoard/StaffListPage.aspx",
                 "target": "GoList",
                 "ID": "42",
                 "myClass": "Level-2"
-            },
+            },     
             {
                 "display": "School Room Management",
                 "role": "Principal",

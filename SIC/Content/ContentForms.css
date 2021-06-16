@@ -67,3 +67,6 @@ img {
         border: 2px solid #0094ff;
         box-shadow: 0 0 0 3px rgba(24,117,255,0.25);
     }
+    .textRight {
+        text-align:right;
+    }

@@ -99,6 +99,8 @@ namespace BLL
                         return AppsPageHelp.GetSP(action);
                     case "SecurityManage":
                         return AppsSecurityManagement.GetSP(action);
+                    case "SISInfo":
+                        return SISInfoBase.GetSP(action);
                     default:
                         return AppsPageHelp.GetSP(action);
                 }
