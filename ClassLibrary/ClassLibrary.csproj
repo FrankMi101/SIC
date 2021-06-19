@@ -58,6 +58,7 @@
     <Compile Include="ItemsOnList.cs" />
     <Compile Include="LastWorkInfo.cs" />
     <Compile Include="MenuItems.cs" />
+    <Compile Include="PrincipalList.cs" />
     <Compile Include="Report.cs" />
     <Compile Include="ReportList.cs" />
     <Compile Include="School.cs" />

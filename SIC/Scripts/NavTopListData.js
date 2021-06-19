@@ -79,11 +79,53 @@
         ]
     },
     {
+        "display": "Teacher Info Center",
+        "role": "All",
+        "url": "#",
+        "target": "",
+        "ID": "4",
+        "myClass": "Level-1",
+        "subItems": [
+            {
+                "display": "Class List",
+                "role": "Teacher",
+                "url": "Loading.aspx?pID=SICClass/ClassListPage.aspx",
+                "target": "GoList",
+                "ID": "41",
+                "myClass": "Level-2"
+            },
+            {
+                "display": "Class Reports",
+                "role": "Teacher",
+                "url": "Loading.aspx?pID=SICClass/ClassReports.aspx",
+                "target": "GoList",
+                "ID": "42",
+                "myClass": "Level-2"
+            },
+            {
+                "display": "Class Forms",
+                "role": "Teacher",
+                "url": "Loading.aspx?pID=SICClass/ClassForms.aspx",
+                "target": "GoList",
+                "ID": "43",
+                "myClass": "Level-2"
+            },
+            {
+                "display": "Teacher List",
+                "role": "Teacher",
+                "url": "Loading.aspx?pID=SICClass/ClassForms.aspx",
+                "target": "GoList",
+                "ID": "44",
+                "myClass": "Level-2"
+            }
+        ]
+    },
+    {
         "display": "School Info Center",
         "role": "Principal",
         "url": "#",
         "target": "",
-        "ID": "4",
+        "ID": "5",
         "myClass": "Level-1",
         "subItems": [
             {
@@ -91,7 +133,7 @@
                 "role": "Principal",
                 "url": "Loading.aspx?pID=SICSchool/ReportListPage.aspx",
                 "target": "GoList",
-                "ID": "41",
+                "ID": "51",
                 "myClass": "Level-2"
             },   
             {
@@ -99,7 +141,7 @@
                 "role": "Principal",
                 "url": "Loading.aspx?pID=SICBoard/StaffListPage.aspx",
                 "target": "GoList",
-                "ID": "42",
+                "ID": "52",
                 "myClass": "Level-2"
             },     
             {
@@ -107,7 +149,7 @@
                 "role": "Principal",
                 "url": "Loading.aspx?pID=SICSchool/SchoolRoomList.aspx",
                 "target": "GoList",
-                "ID": "43",
+                "ID": "53",
                 "myClass": "Level-2"
             },
             {
@@ -115,7 +157,7 @@
                 "role": "Principal",
                 "url": "",
                 "target": "",
-                "ID": "48",
+                "ID": "58",
                 "myClass": "Level-2",
                 "subItems": [
                     {
@@ -158,7 +200,7 @@
                 "role": "Principal",
                 "url": "Loading.aspx?pID=SICSchool/SchoolBasicInfo.aspx",
                 "target": "GoList",
-                "ID": "49",
+                "ID": "59",
                 "myClass": "Level-2"               
             } 
         ]
@@ -168,7 +210,7 @@
         "role": "Admin",
         "url": "#",
         "target": "",
-        "ID": "5",
+        "ID": "7",
         "myClass": "Level-1",
         "subItems": [
             {
@@ -176,7 +218,7 @@
                 "role": "Admin",
                 "url": "Loading.aspx?pID=SICBoard/StaffListPage.aspx",
                 "target": "GoList",
-                "ID": "51",
+                "ID": "71",
                 "myClass": "Level-2"
             },
             {
@@ -184,7 +226,7 @@
                 "role": "Admin",
                 "url": "Loading.aspx?pID=SICBoard/SchoolListPage.aspx",
                 "target": "GoList",
-                "ID": "52",
+                "ID": "72",
                 "myClass": "Level-2"
             },
             {
@@ -192,7 +234,7 @@
                 "role": "Admin",
                 "url": "Loading.aspx?pID=SICBoard/AppsManage.aspx",
                 "target": "GoList",
-                "ID": "53",
+                "ID": "73",
                 "myClass": "Level-2"
             },
             {
@@ -200,7 +242,15 @@
                 "role": "Admin",
                 "url": "Loading.aspx?pID=SICBoard/StaffListPageTPA.aspx",
                 "target": "GoList",
-                "ID": "54",
+                "ID": "74",
+                "myClass": "Level-2"
+            },
+            {
+                "display": "School Principal List",
+                "role": "Admin",
+                "url": "Loading.aspx?pID=SICBoard/StaffListPrincipal.aspx",
+                "target": "GoList",
+                "ID": "79",
                 "myClass": "Level-2"
             },
             {
@@ -208,7 +258,7 @@
                 "role": "Admin",
                 "url": "",
                 "target": "",
-                "ID": "55",
+                "ID": "75",
                 "myClass": "Level-2",
                 "subItems": [
                     {
@@ -216,7 +266,7 @@
                         "role": "Admin",
                         "url": "Loading.aspx?pID=SICBoard/SecurityAccessSummary.aspx",
                         "target": "GoList",
-                        "ID": "551",
+                        "ID": "751",
                         "myClass": "Level-3"
                     },
                     {
@@ -224,7 +274,7 @@
                         "role": "Admin",
                         "url": "Loading.aspx?pID=SICBoard/SecurityManage.aspx",
                         "target": "GoList",
-                        "ID": "552",
+                        "ID": "752",
                         "myClass": "Level-3"
                     },
                     {
@@ -232,7 +282,7 @@
                         "role": "Admin",
                         "url": "Loading.aspx?pID=SICBoard/SecurityManageGroup.aspx",
                         "target": "GoList",
-                        "ID": "553",
+                        "ID": "753",
                         "myClass": "Level-3"
                     },
                     {
@@ -240,7 +290,7 @@
                         "role": "Admin",
                         "url": "Loading.aspx?pID=SICBoard/SecurityRoleManage.aspx",
                         "target": "GoList",
-                        "ID": "554",
+                        "ID": "754",
                         "myClass": "Level-3"
                     },
                     {
@@ -248,7 +298,7 @@
                         "role": "Admin",
                         "url": "Loading.aspx?pID=SICBoard/SecurityRolePermission.aspx",
                         "target": "GoList",
-                        "ID": "554",
+                        "ID": "755",
                         "myClass": "Level-3"
                     }
                 ]

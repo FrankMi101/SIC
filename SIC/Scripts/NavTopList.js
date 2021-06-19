@@ -160,19 +160,7 @@ function checkItemShowbyRole(CurrentUserRole, RoleItem) {
             roleStr = "Access, Principal, All";
             break;
     }
-
-    //if (roleStr.indexOf(RoleItem) === -1) {
-    //    return "Hide";
-    //}
-    //else {
-    //    return "Show";
-    //}
-
     return roleStr.indexOf(RoleItem) === -1 ? "Hide" : "Show";
-
-    //return roleStr.includes(RoleItem) ? "Show" : "Hide";
-
-
 }
 
 function getShortLevel(myClass) {
@@ -189,13 +177,7 @@ function getShortLevel(myClass) {
 }
 
 function getMyALink(myArray, index, mobile) {
-    var myString = ' <li id = "TopItem_' + myArray[index].ID + '" class= "TopMenuItem" > '
-        + '<a ' + 'id = "' + getShortLevel(myArray[index].myClass) + '-' + myArray[index].ID + '" '
-        + 'class="' + myArray[index].myClass + '" '
-        + 'href="' + getUrl(myArray[index].url, myArray[index].subItems, mobile) + '" '
-        + 'target="' + getTarget(myArray[index].target, myArray[index].subItems, mobile) + '" >'
-        + myArray[index].display + '</a> ';
-
+    var myString = ' <li id = "TopItem_' + myArray[index].ID + '" class= "TopMenuItem" > ' + aLinkStrTop(myArray, index, mobile);
     if (typeof myArray[index].subItems === 'undefined') {
         myString += '</li> ';
     }
@@ -204,27 +186,34 @@ function getMyALink(myArray, index, mobile) {
             myString += ' <img style ="height:25px; width:30px; float:right; padding-top:-3px;" src="images/submenu.png" /> ';
         }
     }
-
     return myString;
 }
 
-function getMyALinkOld(myArray, k, level, mobile) {
-    var myString = ' <li> <a ' + 'id="' + getShortLevel(myArray[k].myClass) + '-' + myArray[k].ID + '" '
-        + 'class="' + myArray[k].myClass + '" '
-        + 'href="' + getUrl(myArray[k].url, myArray[k].subItems, mobile) + '" '
-        + 'target="' + getTarget(myArray[k].target, myArray[k].subItems, mobile) + '" >'
-        + myArray[k].display + '</a> ';
-    //    + getStr(myArray[k].subItems, "ImgStr", "</li>", level);
-    if (typeof myArray[k].subItems === 'undefined') {
-        myString += '</li> ';
-    }
-    else {
-        if (myArray[k].myClass === "Level-2") {
-            myString += ' <img style ="height:25px; width:30px; float:right; padding-top:-3px;" src="images/submenu.png" /> ';
-        }
-    }
-    return myString;
+function aLinkStrTop(myArray, index, mobile) {
+    return '<a id = "' + getShortLevel(myArray[index].myClass) + '-' + myArray[index].ID + '" '
+            + 'class="' + myArray[index].myClass + '" '
+            + 'href="' + getUrl(myArray[index].url, myArray[index].subItems, mobile) + '" '
+            + 'target="' + getTarget(myArray[index].target, myArray[index].subItems, mobile) + '" >'
+            + myArray[index].display + '</a> ';
 }
+
+//function getMyALinkOld(myArray, k, level, mobile) {
+//    var myString = ' <li> <a ' + 'id="' + getShortLevel(myArray[k].myClass) + '-' + myArray[k].ID + '" '
+//        + 'class="' + myArray[k].myClass + '" '
+//        + 'href="' + getUrl(myArray[k].url, myArray[k].subItems, mobile) + '" '
+//        + 'target="' + getTarget(myArray[k].target, myArray[k].subItems, mobile) + '" >'
+//        + myArray[k].display + '</a> ';
+//    //    + getStr(myArray[k].subItems, "ImgStr", "</li>", level);
+//    if (typeof myArray[k].subItems === 'undefined') {
+//        myString += '</li> ';
+//    }
+//    else {
+//        if (myArray[k].myClass === "Level-2") {
+//            myString += ' <img style ="height:25px; width:30px; float:right; padding-top:-3px;" src="images/submenu.png" /> ';
+//        }
+//    }
+//    return myString;
+//}
 
 function getTarget(target, subitem, mobile) {
     if (mobile === "M" && typeof subitem === "undefined") {

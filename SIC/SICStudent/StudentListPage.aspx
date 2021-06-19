@@ -147,7 +147,8 @@
                         </asp:DropDownList>
                         <asp:Label ID="Searchby" runat="server" Text="Search by" CssClass="label1" Visible="false"></asp:Label>
                         <asp:HiddenField ID="hfSearchby" runat="server" Value="SurName" />
-                        <%--<asp:DropDownList ID="ddlSearchby" runat="server" Width="100px" AutoPostBack="true" OnSelectedIndexChanged="DDLSearchBy_SelectedIndexChanged">
+                           <asp:HiddenField ID="hfSearchValue" runat="server" Value="" />
+                     <%--<asp:DropDownList ID="ddlSearchby" runat="server" Width="100px" AutoPostBack="true" OnSelectedIndexChanged="DDLSearchBy_SelectedIndexChanged">
                             <asp:ListItem Value="SurName" Selected="True"> SurName</asp:ListItem>
                             <asp:ListItem Value="Age">Age</asp:ListItem>
                             <asp:ListItem Value="Grade">Grade</asp:ListItem>
@@ -156,7 +157,6 @@
                             <asp:ListItem Value="Program">Program</asp:ListItem>
                             <asp:ListItem Value="Courses">Course List</asp:ListItem>
                         </asp:DropDownList>--%>
-                        <asp:HiddenField ID="hfSearchValue" runat="server" Value="" />
                         <%--<asp:TextBox ID="TextSearch" runat="server" Width="80px" Height="19px" placeholder="Surname"></asp:TextBox>--%>
 
                         <%--<asp:DropDownList ID="ddlSearchValue" runat="server" Width="100px" AutoPostBack="false">
@@ -202,7 +202,7 @@
                         </div>
 
                     </div>
-                    <div style="margin-top: 5px; width: 1010px;" class="Search-Area-Sigal ">
+                    <div style="margin-top: 5px; width: 1010px;" class="Search-Area-Sigal">
                         &nbsp;  Search Student By: &nbsp;
                         <asp:TextBox CssClass="SearchTextBox" ID="TextBoxFirstName" runat="server" placeholder="First name"></asp:TextBox>
                         <asp:ImageButton ID="btnSearchGoFirstName" CssClass="SearchGoButton hideMe" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
@@ -339,11 +339,11 @@
                                         </ItemTemplate>
                                         <ItemStyle Width="30px" HorizontalAlign="center" />
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Alternative">
+                                    <asp:TemplateField HeaderText="Alter">
                                         <ItemTemplate>
                                             <asp:CheckBox ID="chbAlternative" Checked='<%# Convert.ToBoolean(Eval("IsAlternative"))%>' runat="server" CssClass="myCheckAlternative"></asp:CheckBox>
                                         </ItemTemplate>
-                                        <ItemStyle Width="50px" HorizontalAlign="center" />
+                                        <ItemStyle Width="30px" HorizontalAlign="center" />
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="SSN">
                                         <ItemTemplate>

@@ -82,6 +82,8 @@ namespace BLL
             switch (action)
             {
 
+                case "TabList":
+                    return "dbo.SIC_sys_ListItemsTab" + parameter1;
                 case "DDList":
                     return "dbo.SIC_sys_ListItems" + parameter;
                 case "DDLListSchool":
@@ -100,7 +102,9 @@ namespace BLL
                     return "dbo.SIC_sys_ListofClasses" + parameter2 + ",@Scope,@Program,@Term,@Semester";
                 case "StaffListPage":
                     return "dbo.SIC_sys_ListofSchoolStaffs" + parameter2 + ",@Scope";
-                 case "GroupMembersList":
+                case "PrincipalListPage":
+                    return "dbo.SIC_sys_ListofSchoolPrincipals" + parameter2 + ",@Scope";
+                case "GroupMembersList":
                      return "dbo.SIC_sys_ListofMembersSecurityGroup" + parameter1 + ",@AppID,@GroupID,@MemberID";
 
               // case "SecurityStaffList":
@@ -120,8 +124,6 @@ namespace BLL
                     return "dbo.SIC_sys_ListofAppraisal" + parameter2 + ",@Scope";
                 case "Grade":
                     return "dbo.SIC_sys_GradeList" + parameter1;
-                case "TabList":
-                    return "dbo.SIC_sys_TabList" + parameter1;
                 case "ActionMenuList":
                     return "dbo.SIC_sys_ActionMenuList" + parameter1 + ",@TabID,@ObjID,@Semester,@Term,@AppID";
               

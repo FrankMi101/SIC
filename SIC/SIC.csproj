@@ -159,6 +159,7 @@
     <Content Include="SICBoard\SecurityRoleManage.aspx" />
     <Content Include="SICBoard\SecurityRoleManageSub.aspx" />
     <Content Include="SICBoard\SecurityRolePermission.aspx" />
+    <Content Include="SICBoard\StaffListPrincipal.aspx" />
     <Content Include="SICBoard\StaffListPage.aspx" />
     <Content Include="SICBoard\StaffListPageTPA.aspx" />
     <Content Include="SICClass\ClassListPage.aspx" />
@@ -212,6 +213,9 @@
     <Content Include="SICSetup\ClientPageApi.aspx" />
     <Content Include="SICSetup\EncryptionStr.aspx" />
     <Content Include="SICSetup\HtmlPageExample.html" />
+    <Content Include="SICSetup\JsonAjax.html" />
+    <Content Include="SICSetup\JsonAjax.js" />
+    <Content Include="SICSetup\TemplateLiterals.aspx" />
     <Content Include="SICStaff\Loading.aspx" />
     <Content Include="SICStudent\EnrolmentEdit.aspx" />
     <Content Include="SICStudent\StudentGroupPage.aspx" />
@@ -592,6 +596,13 @@
     <Compile Include="SICBoard\SecurityRolePermission.aspx.designer.cs">
       <DependentUpon>SecurityRolePermission.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SICBoard\StaffListPrincipal.aspx.cs">
+      <DependentUpon>StaffListPrincipal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SICBoard\StaffListPrincipal.aspx.designer.cs">
+      <DependentUpon>StaffListPrincipal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SICBoard\StaffListPage.aspx.cs">
       <DependentUpon>StaffListPage.aspx</DependentUpon>
     </Compile>
@@ -758,6 +769,13 @@
     </Compile>
     <Compile Include="SICSetup\EncryptionStr.aspx.designer.cs">
       <DependentUpon>EncryptionStr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SICSetup\TemplateLiterals.aspx.cs">
+      <DependentUpon>TemplateLiterals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SICSetup\TemplateLiterals.aspx.designer.cs">
+      <DependentUpon>TemplateLiterals.aspx</DependentUpon>
     </Compile>
     <Compile Include="SICStaff\Loading.aspx.cs">
       <DependentUpon>Loading.aspx</DependentUpon>

@@ -61,42 +61,65 @@ function BuildingActionMenuList(DataSet) {
     var tabData = getTabData(DataSet);
     var cData = "";
     ActionMenuLevel1Length = tabData.length;
-    if (ActionMenuLevel1Length == 1) { 
+    if (ActionMenuLevel1Length === 1) { 
         list = '<ul class="Top_ul_W" >';
-         for (x in DataSet) {
-            var xItemID = "Tab_1" + '_menu_' + x.toString();
-           // var category = DataSet[x].Category;
-             var para = "javascript:openPage(" + DataSet[x].Ptop + "," + DataSet[x].Pleft + "," + DataSet[x].Pheight + "," + DataSet[x].Pwidth + ",'" + DataSet[x].MenuID + "','" + DataSet[x].Category + "','" + DataSet[x].Area + "','" + DataSet[x].Type + "','" + DataSet[x].AppSource + "','" + DataSet[x].AppID + "')";
-          //  if (item == category)
-                list += ' <li id="' + xItemID + '" class="ItemLevel1" >'
-                    + '<img style="height: 18px; width: 18px; border: 0; padding-top: -3px; " src="../images/' + DataSet[x].Image + '"/>'
-                    + '<a class="menuLink" href="' + para + '">'
-                    + DataSet[x].Name + ' </a> </li>';
+        for (x in DataSet) {
+            var item = DataSet[x].Category;
+            list += MenuItem.menu(DataSet, "Tab_1", item);
         };
         list += '</ul>';
     }
     else {
          tabData.forEach((item, index) => {
             var tabItemID = + "Tab_" + index.toString();
-            list += '<li id="' + tabItemID + '"  class="ItemLevel0">' + img + '<a  href="#" target="">' + item + '</a>';
-            list += '<ul class="ItemLevel1_ul hideMenuItem" >';
-            for (x in DataSet) {
-                var xItemID = tabItemID + '_menu_' + x.toString();
-                var category = DataSet[x].Category;
-                var para = "javascript:openPage(" + DataSet[x].Ptop + "," + DataSet[x].Pleft + "," + DataSet[x].Pheight + "," + DataSet[x].Pwidth + ",'" + DataSet[x].MenuID + "','" + DataSet[x].Category + "','" + DataSet[x].Area + "','" + DataSet[x].Type + "','" + DataSet[x].AppSource + "','" + DataSet[x].AppID + "')";
-                if (item == category)
-                    list += ' <li id="' + xItemID + '" class="ItemLevel1" >'
-                        + '<img style="height: 18px; width: 18px; border: 0px; margin-top:auto;" src="../images/' + DataSet[x].Image + '"/>'
-                        + '<a class="menuLink" href="' + para + '">'
-                        + DataSet[x].Name + ' </a> </li>';
+             list += MenuItem.li0(tabItemID, img, item); // '<li id="' + tabItemID + '"  class="ItemLevel0">' + img + '<a  href="#" target="">' + item + '</a>';
+             list += MenuItem.ul();// '<ul class="ItemLevel1_ul hideMenuItem" >';
+             for (x in DataSet) {
+                 list += MenuItem.menu(DataSet, tabItemID,item);
             };
             list += '</ul></li>';
         });
         list += '</ul>';
     }
     return list;
-
 }
+
+var MenuItem = {
+    menu: function (data, tabid, item) { return menuElement(data, tabid, item); },
+    li0: function (id, img, name) { return `<li id="${id}" class="ItemLevel0"> ${img} <a  href="#" target="">${name}</a>`},
+    li: function (value) { return `<li id="${value}" class="ItemLevel1" >`; },
+    img: function (img) { return `<img style="height: 18px; width: 18px; border: 0px; margin-top:auto;" src="../images/${img}"/>`; },
+    a: function (para, name) { return `<a class="menuLink" href=" ${para} "> ${name} </a>`; },
+    ul: function () { return `<ul class="ItemLevel1_ul hideMenuItem" >`} ,
+};
+
+
+function menuElement(DataSet, tabItemID,item) {
+    var list =""
+    var itemID = tabItemID + '_menu_' + x.toString();
+    var category = DataSet[x].Category;
+    var para = "javascript:openPage(" + DataSet[x].Ptop + "," + DataSet[x].Pleft + "," + DataSet[x].Pheight + "," + DataSet[x].Pwidth + ",'" + DataSet[x].MenuID + "','" + DataSet[x].Category + "','" + DataSet[x].Area + "','" + DataSet[x].Type + "','" + DataSet[x].AppSource + "','" + DataSet[x].AppID + "')";
+    if (item == category)
+        list += MenuItem.li(itemID) + MenuItem.img(DataSet[x].Image) + MenuItem.a(para, DataSet[x].Name) + '</li >';
+        //  list += liElement(xItemID) + imgElement(DataSet[x].Image) + aLinkElement(para, DataSet[x].Name) + '</li >';
+        //list += ' <li id="' + xItemID + '" class="ItemLevel1" >'
+        //    + '<img style="height: 18px; width: 18px; border: 0px; margin-top:auto;" src="../images/' + DataSet[x].Image + '"/>'
+        //    + '<a class="menuLink" href="' + para + '">' + DataSet[x].Name + ' </a> '
+        //    + '</li > ';
+
+    return list;
+}
+
+// function liElement(itemID) {
+//    return `<li id="${itemID}" class="ItemLevel1" >`;
+// }
+// function imgElement(image) {
+//    return `<img style="height: 18px; width: 18px; border: 0px; margin-top:auto;" src="../images/${image}"/>`;
+// }
+// function aLinkElement(para, name) {
+//    return `<a class="menuLink" href=" ${para} "> ${name} </a>`;
+// }
+
 function ShowBuildingMenuList(width, length) {
     var vTop = mousey;
     if (vTop > 500) {

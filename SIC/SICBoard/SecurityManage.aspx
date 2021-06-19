@@ -12,10 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <script src="../Scripts/jquery-3.3.1.min.js"></script>
-<%--    <script src="../Scripts/bootstrap.min.js"></script>--%>
-<%--    <link href="../Content/bootstrap.min.css" rel="stylesheet" />--%>
+    <%--    <script src="../Scripts/bootstrap.min.js"></script>--%>
+    <%--    <link href="../Content/bootstrap.min.css" rel="stylesheet" />--%>
     <link href="../Content/BubbleHelp.css" rel="stylesheet" />
-<%--    <link href="Content/DefaultPage.css" rel="stylesheet" />--%>
+    <%--    <link href="Content/DefaultPage.css" rel="stylesheet" />--%>
     <link href="../Content/ListPage.css" rel="stylesheet" />
     <link href="../Content/ContentPage.css" rel="stylesheet" />
     <link href="../Content/TabMenu.css" rel="stylesheet" />
@@ -168,14 +168,14 @@
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
                     Apps: 
-            <asp:DropDownList ID="ddlApps" runat="server" Width="250px"  >
+            <asp:DropDownList ID="ddlApps" runat="server" Width="250px">
             </asp:DropDownList>
                     School:
             <asp:DropDownList ID="ddlSchoolCode" runat="server" Width="60px" AutoPostBack="True" OnSelectedIndexChanged="DDLSchoolCode_SelectedIndexChanged">
             </asp:DropDownList>
                     <asp:DropDownList ID="ddlSchool" runat="server" Width="350px" AutoPostBack="True" OnSelectedIndexChanged="DDLSchool_SelectedIndexChanged">
                     </asp:DropDownList>
-                        <asp:ImageButton ID="btnSearchGo" CssClass="SearchGoButton" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
+                    <asp:ImageButton ID="btnSearchGo" CssClass="SearchGoButton" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
 
                 </ContentTemplate>
 
@@ -185,9 +185,10 @@
 
         <div class="staff-container" style="margin-top: 5px;">
             <div class="staff-list">
-               
-                <a href="javascript:OpenGroupNew();"><img src="../images/add.png" border="0" style="margin-bottom:-2px;" />Add New Security Group </a>
-               
+
+                <a href="javascript:OpenGroupNew();">
+                    <img src="../images/add.png" border="0" style="margin-bottom: -2px;" />Add New Security Group </a>
+
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <div style="overflow: scroll; width: 800px; height: 500px" onscroll="OnScrollDiv(this)" id="DivMainContent">
@@ -345,20 +346,20 @@
 
         $(document).ready(function () {
 
-           // var vHeight = window.innerHeight - 50;
+            // var vHeight = window.innerHeight - 50;
             //  MakeStaticHeader("GridView1", vHeight, 1500, 20, false);
 
             $("#closeMe").click(function (event) {
 
-                $("#PopUpDIV").hide();  
-                 $("#EditDIV").hide();
+                $("#PopUpDIV").hide();
+                $("#EditDIV").hide();
             });
- 
+
             $(".GridView-List img").click(function (en) {
                 $(this).addClass("img-selected");
             })
             $('.GridView-List tr').mouseenter(function (event) {
-                 if (currentTR !== undefined) { currentTR.removeClass("GridView-Selected"); }
+                if (currentTR !== undefined) { currentTR.removeClass("GridView-Selected"); }
                 currentTR = $(this);
                 currentTR.addClass("GridView-Selected");
             });
@@ -396,16 +397,16 @@
     }
 
     function OpenGroupActionPage(userID, userrole, schoolyear, schoolcode, appID, groupID, action) {
-     
+
         if (action == "SubFun") {
-            var para = + '&sYear=' + schoolyear + '&sCode=' + schoolcode + '&appID=' +appID + '&gID=' +groupID + '&gType=' + M.GroupType
+            var para = + '&sYear=' + schoolyear + '&sCode=' + schoolcode + '&appID=' + appID + '&gID=' + groupID + '&gType=' + M.GroupType
             var goPage = "Loading.aspx?pID=SecurityManageSub.aspx" + para
             $("#IframeSubArea").attr('src', goPage);
         }
         else {
-         var page = "../SICCommon/Security_Group.aspx"
-        var para = "?SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&UserID=" + userID + "&UserRole=" + userrole + "&AppID=" + appID + "&GroupID=" + groupID + "&Action=" + action;
-       OpenInPage('Security Group', page, para, groupID);
+            var page = "../SICCommon/Security_Group.aspx"
+            var para = "?SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&UserID=" + userID + "&UserRole=" + userrole + "&AppID=" + appID + "&GroupID=" + groupID + "&Action=" + action;
+            OpenInPage('Security Group', page, para, groupID);
 
         }
 
