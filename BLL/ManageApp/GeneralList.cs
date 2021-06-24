@@ -107,17 +107,6 @@ namespace BLL
                 case "GroupMembersList":
                      return "dbo.SIC_sys_ListofMembersSecurityGroup" + parameter1 + ",@AppID,@GroupID,@MemberID";
 
-              // case "SecurityStaffList":
-               //     return "dbo.SIC_sys_ListofStaffsSecurity" + parameter2 + ",@Scope";
-               // case "SecurityContentList":
-               //     return "dbo.SIC_sys_ListofStaffsSecurityContent" + parameter1 + ",@CPNum";
-
-               // case "SecurityGroupManage":
-               //     return "dbo.SIC_sys_ListofSecurityGroups" + parameter1 + ",@AppID";
-               //  case "SecurityGroupManageSub":
-               //     return "dbo.SIC_sys_ListofSecurityGroups" + parameter1 + ",@AppID,@GroupID";
-               //case "UserRoleManagement":
-               //     return "dbo.SIC_sys_UserRoleManagement" + parameter1 + ",@AppID,@RoleID,@RoleType";
                 case "SchoolDateList":
                     return "dbo.SIC_sys_SchoolDateList" + parameter1;                  
                 case "TPAListPage":
@@ -125,7 +114,7 @@ namespace BLL
                 case "Grade":
                     return "dbo.SIC_sys_GradeList" + parameter1;
                 case "ActionMenuList":
-                    return "dbo.SIC_sys_ActionMenuList" + parameter1 + ",@TabID,@ObjID,@Semester,@Term,@AppID";
+                    return "dbo.SIC_sys_ActionMenuList" + parameter1 + ",@TabID,@ObjID,@AppID,@Semester,@Term";
               
                default:
                     return action;

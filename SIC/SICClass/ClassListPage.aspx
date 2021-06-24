@@ -12,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <script src="../Scripts/jquery-3.3.1.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
-    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+<%--    <script src="../Scripts/bootstrap.min.js"></script>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />--%>
     <link href="../Content/BubbleHelp.css" rel="stylesheet" />
     <link href="../Content/ListPage.css" rel="stylesheet" />
     <link href="../Content/ContentPage.css" rel="stylesheet" />

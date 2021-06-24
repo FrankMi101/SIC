@@ -143,6 +143,7 @@
     <Content Include="LoadingParameters.aspx" />
     <Content Include="Models\WebServiceAction.asmx" />
     <Content Include="Scripts\ActionInPage.js" />
+    <Content Include="Scripts\ActionMenu1234.js" />
     <Content Include="Scripts\ActionMenu.js" />
     <Content Include="Scripts\CommonListBuild.js" />
     <Content Include="Scripts\NavLeftListData.js" />
@@ -211,6 +212,9 @@
     <Content Include="SICSchool\ReportListPage.aspx" />
     <Content Include="SICSetup\ClientPage.aspx" />
     <Content Include="SICSetup\ClientPageApi.aspx" />
+    <Content Include="SICSetup\DogsApi.css" />
+    <Content Include="SICSetup\DogsApi.html" />
+    <Content Include="SICSetup\DogsApi.js" />
     <Content Include="SICSetup\EncryptionStr.aspx" />
     <Content Include="SICSetup\HtmlPageExample.html" />
     <Content Include="SICSetup\JsonAjax.html" />

@@ -108,8 +108,8 @@
 
         #SearchingBar {
             position: absolute;
-            top: 35px;
-            left: 1010px;
+            top: 30px;
+            left: 1050px;
         }
  
  
@@ -205,19 +205,19 @@
                     <div style="margin-top: 5px; width: 1010px;" class="Search-Area-Sigal">
                         &nbsp;  Search Student By: &nbsp;
                         <asp:TextBox CssClass="SearchTextBox" ID="TextBoxFirstName" runat="server" placeholder="First name"></asp:TextBox>
-                        <asp:ImageButton ID="btnSearchGoFirstName" CssClass="SearchGoButton hideMe" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
+                        <asp:ImageButton ID="btnSearchGoFirstName" CssClass="SearchGoButton hideMe" runat="server" ToolTip="entry search content in search box and then click me ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
                         <asp:TextBox CssClass="SearchTextBox" ID="TextBoxLastName" runat="server" placeholder="Last name"></asp:TextBox>
                         <asp:ImageButton ID="btnSearchGoLastName" CssClass="SearchGoButton hideMe" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
                         &nbsp; &nbsp; &nbsp;&nbsp; 
                         <asp:TextBox CssClass="SearchTextBox" ID="TextBoxOEN" runat="server" placeholder="OEN Number"></asp:TextBox>
-                        <asp:ImageButton ID="btnSearchGoOEN" CssClass="SearchGoButton hideMe" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
+                        <asp:ImageButton ID="btnSearchGoOEN" CssClass="SearchGoButton hideMe" runat="server" ToolTip="entry search content in search box and then click me  ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
                         <asp:TextBox CssClass="SearchTextBox" ID="TextBoxStudentNo" runat="server" placeholder="Student No."></asp:TextBox>
                         <asp:ImageButton ID="btnSearchGoStudentNo" CssClass="SearchGoButton hideMe" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
                         &nbsp; &nbsp;  &nbsp;&nbsp;  
                          <asp:TextBox CssClass="SearchTextBox" ID="TextBoxClass" runat="server" placeholder="Class Code"></asp:TextBox>
-                        <asp:ImageButton ID="btnSearchGoClass" CssClass="SearchGoButton hideMe" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
+                        <asp:ImageButton ID="btnSearchGoClass" CssClass="SearchGoButton hideMe" runat="server" ToolTip="entry search content in search box and then click me  ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
                         <asp:TextBox CssClass="SearchTextBox" ID="TextBoxAge" runat="server" placeholder="Age"></asp:TextBox>
-                        <asp:ImageButton ID="btnSearchGoAge" CssClass="SearchGoButton hideMe" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
+                        <asp:ImageButton ID="btnSearchGoAge" CssClass="SearchGoButton hideMe" runat="server" ToolTip="entry search content in search box and then click me  ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
                         &nbsp; &nbsp; IN 
                          <asp:DropDownList ID="ddlScope" runat="server" Width="65px" AutoPostBack="false">
                              <asp:ListItem Value="School" Selected="True"> School</asp:ListItem>

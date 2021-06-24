@@ -14,33 +14,7 @@
     MemberID: "",
     MemberType: ""
 };
-
-async function OpenMenu(sYear, sCode, tabID, objID, oen, sName) {
-    BasePara.Semester = $("#ddlSemester").val();
-    BasePara.Term = $("#ddlTerm").val();
-    BasePara.SchoolYear = sYear;
-    BasePara.SchoolCode = sCode;
-    BasePara.TabID = $("#hfSelectedTab").val();
-    BasePara.ObjID = objID;
-    BasePara.AppID = oen;
-    $("#LabelTeacherName").text(sName);
-    CopyKeyIDToClipboard(objID + " " + sName);
-
-    var para = "Operate=" + BasePara.Operate + "&UserID=" + BasePara.UserID + "&UserRole=" + BasePara.UserRole +"&SchoolYear=" + sYear + "&SchoolCode=" + sCode + "&TabID=" + BasePara.TabID + "&ObjID=" + objID + "&AppID=" + oen;
-    var myUrl = "https://webt.tcdsb.org/Webapi/SIC/api/Menu/?" + para;
-
-
-    //$.get(myUrl, function (data, status) {
-    //    var myData = JSON.parse(data);
-    //    console.log(myData);
-    //    onSuccessMenuList(myData);
-    //});
-
-    const response = await fetch(myUrl);
-    const data = await response.json();
-    BuildingListMenuAction(data);
-}
-function OpenMenuWS(sYear, sCode, tabID, objID, oen, sName) {
+function OpenMenu(sYear, sCode, tabID, objID, oen, sName) {
     BasePara.Semester = $("#ddlSemester").val();
     BasePara.Term = $("#ddlTerm").val();
     BasePara.SchoolYear = sYear;
@@ -52,7 +26,7 @@ function OpenMenuWS(sYear, sCode, tabID, objID, oen, sName) {
     CopyKeyIDToClipboard(objID + " " + sName);
     var menuList = SIC.Models.WebService.ActionMenuListService("Get", BasePara, onSuccessMenuList, onFailure);
 }
-function OpenMenu2(userID, userRole, sYear, sCode, appID, groupID, memberID, memberType) {
+function OpenMenu2(userID,userRole,sYear, sCode, appID,groupID,memberID, memberType) {
     BasePara.Semester = $("#ddlSemester").val();
     BasePara.Term = $("#ddlTerm").val();
     BasePara.SchoolYear = sYear;
@@ -63,8 +37,8 @@ function OpenMenu2(userID, userRole, sYear, sCode, appID, groupID, memberID, mem
     BasePara.GroupID = groupID;
     BasePara.MemberID = memberID;
     BasePara.MemberType = memberType;
-    // $("#LabelTeacherName").text(sName);
-    // CopyKeyIDToClipboard(objID + " " + sName);
+   // $("#LabelTeacherName").text(sName);
+   // CopyKeyIDToClipboard(objID + " " + sName);
     var menuList = SIC.Models.WebService.ActionMenuListService("Get", BasePara, onSuccessMenuList, onFailure);
 }
 function onFailure() {
@@ -74,22 +48,40 @@ var ActionMenuLevel1Length;
 
 function onSuccessMenuList(result) {
 
-    BuildingListMenuAction(result);
-}
-function BuildingListMenuAction(result) {
-   // console.log(result);
     BuildingList.ULList($("#ActionMenuUL"), BuildingActionMenuList(result));
     var menulength = 100;// result.length * 40 / 4;
     if (menulength < 150) menulength = 180;
     var menuWidth = 215;
-    menulength = ActionMenuLevel1Length * 35;
-    if (ActionMenuLevel1Length == 1) {
-        menulength = 100;
-        menuWidth = 300;
-    }
+    if (ActionMenuLevel1Length == 1)   menuWidth = 300;
     ShowBuildingMenuList(menuWidth, menulength);
 }
-function BuildingActionMenuList(DataSet) {
+
+function BuildingActionMenuList_Version_1(DataSet) {
+    var img = '<img style="height: 25px; width: 30px; float:right; padding-top: -3px; " src="../images/submenu.png">'
+    var list = '<ul class="Top_ul" >';
+    var tabData = getTabData(DataSet);
+    var cData = "";
+    tabData.forEach((item, index) => {
+        var tabItemID = + "Tab_" + index.toString();
+        list += '<li id="' + tabItemID + '"  class="ItemLevel0">' + img + '<a  href="#" target="">' + item + '</a>';
+        list += '<ul class="ItemLevel1_ul hideMenuItem" >';
+        for (x in DataSet) {
+            var xItemID = tabItemID + '_menu_' + x.toString();
+            var category = DataSet[x].Category;
+            var para = "javascript:openPage(" + DataSet[x].Ptop + "," + DataSet[x].Pleft + "," + DataSet[x].Pheight + "," + DataSet[x].Pwidth + ",'" + DataSet[x].MenuID + "','" + DataSet[x].Type + "')";
+            if (item == category)
+                list += ' <li id="' + xItemID + '" class="ItemLevel1" >'
+                    + '<img style="height: 18px; width: 18px; border="0" padding-top: -3px; src="../images/' + DataSet[x].Image + '"/>'
+                    + '<a class="menuLink" href="' + para + '">'
+                    + DataSet[x].Name + ' </a> </li>';
+        };
+        list += '</ul></li>';
+    });
+    list += '</ul>';
+    return list;
+}
+
+function BuildingActionMenuList_Version_2(DataSet) {
     var img = '<img style="height: 25px; width: 30px; float:right; padding-top: -1px; " src="../images/submenu.png" />'
     var list = '<ul class="Top_ul" >';
     var tabData = getTabData(DataSet);
@@ -97,15 +89,84 @@ function BuildingActionMenuList(DataSet) {
     ActionMenuLevel1Length = tabData.length;
     if (ActionMenuLevel1Length === 1) {
         list = '<ul class="Top_ul_W" >';
-        list += MenuItem.loop(DataSet, "Tab_1", '0');
+        for (x in DataSet) {
+            var item = DataSet[x].Category;            
+            list += ' <li id="' + xItemID + '" class="ItemLevel1" >'
+            + '<img style="height: 18px; width: 18px; border: 0px; margin-top:auto;" src="../images/' + DataSet[x].Image + '"/>'
+            + '<a class="menuLink" href="' + para + '">' + DataSet[x].Name + ' </a> '
+            + '</li > ';
+        };
         list += '</ul>';
     }
     else {
         tabData.forEach((item, index) => {
             var tabItemID = + "Tab_" + index.toString();
-            list += MenuItem.li0(tabItemID, img, item);
-            list += MenuItem.ul();
-            list += MenuItem.loop(DataSet, tabItemID, item);
+            list +=  '<li id="' + tabItemID + '"  class="ItemLevel0">' + img + '<a  href="#" target="">' + item + '</a>';
+            list += '<ul class="ItemLevel1_ul hideMenuItem" >';
+            for (x in DataSet) {
+                list += ' <li id="' + xItemID + '" class="ItemLevel1" >'
+                    + '<img style="height: 18px; width: 18px; border: 0px; margin-top:auto;" src="../images/' + DataSet[x].Image + '"/>'
+                    + '<a class="menuLink" href="' + para + '">' + DataSet[x].Name + ' </a> '
+                    + '</li > ';
+            };
+            list += '</ul></li>';
+        });
+        list += '</ul>';
+    }
+    return list;
+}
+
+function BuildingActionMenuList_Verson_3(DataSet) {
+    var img = '<img style="height: 25px; width: 30px; float:right; padding-top: -1px; " src="../images/submenu.png" />'
+    var list = '<ul class="Top_ul" >';
+    var tabData = getTabData(DataSet);
+    var cData = "";
+    ActionMenuLevel1Length = tabData.length;
+    if (ActionMenuLevel1Length === 1) {
+        list = '<ul class="Top_ul_W" >';
+        for (x in DataSet) {
+            var item = DataSet[x].Category;
+            list += menuElement3(DataSet, "Tab_1", item);
+        };
+        list += '</ul>';
+    }
+    else {
+        tabData.forEach((item, index) => {
+            var tabItemID = + "Tab_" + index.toString();
+            list +=  '<li id="' + tabItemID + '"  class="ItemLevel0">' + img + '<a  href="#" target="">' + item + '</a>';
+            list += '<ul class="ItemLevel1_ul hideMenuItem" >';
+            for (x in DataSet) {
+                list += menuElement3(DataSet, tabItemID, item);
+            };
+            list += '</ul></li>';
+        });
+        list += '</ul>';
+    }
+    return list;
+}
+
+function BuildingActionMenuList_4(DataSet) {
+    var img = '<img style="height: 25px; width: 30px; float:right; padding-top: -1px; " src="../images/submenu.png" />'
+    var list = '<ul class="Top_ul" >';
+    var tabData = getTabData(DataSet);
+    var cData = "";
+    ActionMenuLevel1Length = tabData.length;
+    if (ActionMenuLevel1Length === 1) { 
+        list = '<ul class="Top_ul_W" >';
+        for (x in DataSet) {
+            var item = DataSet[x].Category;
+            list += MenuItem.menu(DataSet, "Tab_1", item);
+        };
+        list += '</ul>';
+    }
+    else {
+         tabData.forEach((item, index) => {
+            var tabItemID = + "Tab_" + index.toString();
+             list += MenuItem.li0(tabItemID, img, item); 
+             list += MenuItem.ul(); 
+             for (x in DataSet) {
+                 list += MenuItem.menu(DataSet, tabItemID,item);
+            };
             list += '</ul></li>';
         });
         list += '</ul>';
@@ -114,58 +175,49 @@ function BuildingActionMenuList(DataSet) {
 }
 
 var MenuItem = {
-    loop: function (data, tabid, item) { return loopMenu(data, tabid, item) },
     menu: function (data, tabid, item) { return menuElement(data, tabid, item); },
-    li0: function (id, img, name) { return `<li id="${id}" class="ItemLevel0"> ${img} <a  href="#" target="">${name}</a>` },
+    li0: function (id, img, name) { return `<li id="${id}" class="ItemLevel0"> ${img} <a  href="#" target="">${name}</a>`},
     li: function (value) { return `<li id="${value}" class="ItemLevel1" >`; },
     img: function (img) { return `<img style="height: 18px; width: 18px; border: 0px; margin-top:auto;" src="../images/${img}"/>`; },
     a: function (para, name) { return `<a class="menuLink" href=" ${para} "> ${name} </a>`; },
-    ul: function () { return `<ul class="ItemLevel1_ul hideMenuItem" >` },
+    ul: function () { return `<ul class="ItemLevel1_ul hideMenuItem" >`} ,
 };
 
-function loopMenu(DataSet, tabItemID, item) {
-    var list = "";
-    for (x in DataSet) {
-        if (tabItemID === "Tab_1" && item === "0") { item = DataSet[x].Category };
-        // var item = DataSet[x].Category;
-        list += MenuItem.menu(DataSet, tabItemID, item);
-    };
-    return list
-}
 
-function menuElement(DataSet, tabItemID, item) {
-    var list = ""
+function menuElement(DataSet, tabItemID,item) {
+    var list =""
     var itemID = tabItemID + '_menu_' + x.toString();
     var category = DataSet[x].Category;
     var para = "javascript:openPage(" + DataSet[x].Ptop + "," + DataSet[x].Pleft + "," + DataSet[x].Pheight + "," + DataSet[x].Pwidth + ",'" + DataSet[x].MenuID + "','" + DataSet[x].Category + "','" + DataSet[x].Area + "','" + DataSet[x].Type + "','" + DataSet[x].AppSource + "','" + DataSet[x].AppID + "')";
     if (item == category)
         list += MenuItem.li(itemID) + MenuItem.img(DataSet[x].Image) + MenuItem.a(para, DataSet[x].Name) + '</li >';
+        //  list += liElement(xItemID) + imgElement(DataSet[x].Image) + aLinkElement(para, DataSet[x].Name) + '</li >';  Version 3
+        //list += ' <li id="' + xItemID + '" class="ItemLevel1" >'
+        //    + '<img style="height: 18px; width: 18px; border: 0px; margin-top:auto;" src="../images/' + DataSet[x].Image + '"/>'
+        //    + '<a class="menuLink" href="' + para + '">' + DataSet[x].Name + ' </a> '
+        //    + '</li > ';
+
     return list;
 }
-function menuElement4(DataSet, tabItemID, item) {
+function menuElement3(DataSet, tabItemID, item) {
     var list = ""
     var itemID = tabItemID + '_menu_' + x.toString();
     var category = DataSet[x].Category;
     var para = "javascript:openPage(" + DataSet[x].Ptop + "," + DataSet[x].Pleft + "," + DataSet[x].Pheight + "," + DataSet[x].Pwidth + ",'" + DataSet[x].MenuID + "','" + DataSet[x].Category + "','" + DataSet[x].Area + "','" + DataSet[x].Type + "','" + DataSet[x].AppSource + "','" + DataSet[x].AppID + "')";
     if (item == category)
-        list += MenuItem.li(itemID) + MenuItem.img(DataSet[x].Image) + MenuItem.a(para, DataSet[x].Name) + '</li >';
-    //  list += liElement(xItemID) + imgElement(DataSet[x].Image) + aLinkElement(para, DataSet[x].Name) + '</li >';
-    //list += ' <li id="' + xItemID + '" class="ItemLevel1" >'
-    //    + '<img style="height: 18px; width: 18px; border: 0px; margin-top:auto;" src="../images/' + DataSet[x].Image + '"/>'
-    //    + '<a class="menuLink" href="' + para + '">' + DataSet[x].Name + ' </a> '
-    //    + '</li > ';
-
+        list += liElement(xItemID) + imgElement(DataSet[x].Image) + aLinkElement(para, DataSet[x].Name) + '</li >'; // Version 3
+  
     return list;
 }
-// function liElement(itemID) {
-//    return `<li id="${itemID}" class="ItemLevel1" >`;
-// }
-// function imgElement(image) {
-//    return `<img style="height: 18px; width: 18px; border: 0px; margin-top:auto;" src="../images/${image}"/>`;
-// }
-// function aLinkElement(para, name) {
-//    return `<a class="menuLink" href=" ${para} "> ${name} </a>`;
-// }
+ function liElement(itemID) {
+    return `<li id="${itemID}" class="ItemLevel1" >`;
+ }
+ function imgElement(image) {
+    return `<img style="height: 18px; width: 18px; border: 0px; margin-top:auto;" src="../images/${image}"/>`;
+ }
+ function aLinkElement(para, name) {
+    return `<a class="menuLink" href=" ${para} "> ${name} </a>`;
+ }
 
 function ShowBuildingMenuList(width, length) {
     var vTop = mousey;
@@ -212,7 +264,7 @@ function openPage(vTop, vLeft, vHeight, vWidth, menuID, category, area, type, so
     }
 
     catch (e) {
-        window.alert(e.mess + " Open Page Function Error.");
+        window.alert(e.mess + " Open Page Function Error." );
     }
 }
 

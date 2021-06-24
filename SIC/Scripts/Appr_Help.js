@@ -43,7 +43,7 @@ function getHelp(type, vTop, vLeft) {
     //  if ($(this)[0].id !== "") { ItemCode = $(this)[0].id.replace("img_", ""); }
     HelpPara.ItemCode = $("#hfItemCode").val();
     HelpPara.HelpType = type;
-    var helptext = SIC.Models.WebService.GetHelpContentbyHelpPara("Read", HelpPara, onSuccessHelp, onFailureHelp);
+    var helptext = SIC.Models.WebService.GetHelpContentByHelpPara("Read", HelpPara, onSuccessHelp, onFailureHelp);
 
     if (vLeft < 100) { vLeft = vLeft + 20; }
     else {

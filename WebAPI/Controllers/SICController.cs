@@ -6,9 +6,11 @@ using System.Net.Http;
 using System.Web.Http;
 using ClassLibrary;
 using BLL;
+using System.Web.Http.Cors;
 
 namespace WebAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SICController : ApiController
     {
         // GET api/<controller>

@@ -3,6 +3,7 @@
 using ClassLibrary;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.UI;
 
 namespace SIC
@@ -10,14 +11,14 @@ namespace SIC
     public partial class StudentListPage : System.Web.UI.Page
     {
         readonly string pageID = "StudentListPage";
-        protected void Page_Load(object sender, EventArgs e)
+        protected async void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 Page.Response.Expires = 0;
                 SetPageAttribution();
                 AssemblePage();
-                BindStudentListGridViewData();
+               await  BindStudentListGridViewData();
             }
         }
         private void SetPageAttribution()
@@ -132,12 +133,12 @@ namespace SIC
             AppsPage.SetListValue(ddlSchool, ddlSchoolCode.SelectedValue);
             SchoolChange();
         }
-        private void SchoolChange()
+        private async void SchoolChange()
         {
             UserLastWorking.SchoolCode = ddlSchoolCode.SelectedValue;
             WorkingProfile.SchoolCode = ddlSchoolCode.SelectedValue;
             Assembing_GradeTab();
-            BindStudentListGridViewData();
+           await  BindStudentListGridViewData();
             //ddlSearchby.SelectedIndex = 0;
             //TextSearch.Visible = true;
             //ddlSearchValue.Visible = false;
@@ -163,32 +164,32 @@ namespace SIC
         //    }
 
         //}
-        protected void BtnGradeTab_Click(object sender, EventArgs e)
+        protected  async void BtnGradeTab_Click(object sender, EventArgs e)
         {
             string Grade = hfSelectedTab.Value;
             if (Grade != "")
             {
-                BindStudentListGridViewData(); 
+               await BindStudentListGridViewData(); 
            }
 
         }
-        protected void BtnSearch_Click(object sender, EventArgs e)
+        protected async void  BtnSearch_Click(object sender, EventArgs e)
         {
  
-           BindStudentListGridViewData();
+           await BindStudentListGridViewData();
         }
-        protected void BtnSearchGo_Click(object sender, EventArgs e)
+        protected async void BtnSearchGo_Click(object sender, EventArgs e)
         { 
-            BindStudentListGridViewData();
+           await BindStudentListGridViewData();
         }
-        // private async Task BindStudentListGridViewData()
-        private void BindStudentListGridViewData()
+         private async Task BindStudentListGridViewData()
+      // private void BindStudentListGridViewData()
         {
             try
             {
                 Assembing_GradeTab();
-                // GridView1.DataSource = await Task.Run(() => GetDataSource());// GetDataSource(true);
-                GridView1.DataSource = GetDataSource(); 
+                GridView1.DataSource = await Task.Run(() => GetDataSource());// GetDataSource(true);
+              //  GridView1.DataSource = GetDataSource(); 
                 GridView1.DataBind();
             }
             catch (Exception ex)
@@ -243,7 +244,7 @@ namespace SIC
 
 
         }
-        private void Assembing_GradeTab()
+        private async void Assembing_GradeTab()
         {
             var parameters = new
             {
@@ -253,9 +254,9 @@ namespace SIC
                 SchoolYear = ddlSchoolYear.SelectedValue,
                 SchoolCode = ddlSchool.SelectedValue
             };
-           // var Grade = hfSelectedTab.Value; ;
-            AppsPage.BuildGradeTab(GradeTab, parameters, hfSelectedTab.Value);
-
+            // var Grade = hfSelectedTab.Value; ;
+            await Task.Run(() => AppsPage.BuildGradeTab(GradeTab, parameters, hfSelectedTab.Value));
+            //AppsPage.BuildGradeTab(GradeTab, parameters, hfSelectedTab.Value)
 
             //    await BindStudentListGridViewData();
 

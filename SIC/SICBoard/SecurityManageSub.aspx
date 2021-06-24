@@ -170,7 +170,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-        <div class="Content-Area Content-Area-SAP">
+        <div class="Content-Area Content-Area-SAP ">
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
                     <div class="Gridview-title">
