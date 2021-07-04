@@ -1,5 +1,4 @@
-﻿var myTopMenuData = [
-    
+﻿var myTopMenuData = [   
     {
         "display": "Student Info Center",
         "role": "All",
@@ -243,6 +242,14 @@
                 "url": "Loading.aspx?pID=SICBoard/StaffListPageTPA.aspx",
                 "target": "GoList",
                 "ID": "74",
+                "myClass": "Level-2"
+            },
+            {
+                "display": "Report or Form Batch Print",
+                "role": "Admin",
+                "url": "Loading.aspx?pID=SICBoard/ReportsBatchPrint.aspx",
+                "target": "GoList",
+                "ID": "75",
                 "myClass": "Level-2"
             },
             {

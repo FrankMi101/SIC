@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
-    public class AppsPatameter 
+    public class AppsParameter 
     {
         public string SearchBy { get; set; }
         public string SearchValue { get; set; }
@@ -75,5 +75,5 @@ namespace ClassLibrary
         public string SchoolCode { get; set; }
         public string Grade { get; set; }
     }
-
+  
 }

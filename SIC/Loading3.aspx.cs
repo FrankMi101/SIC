@@ -43,7 +43,7 @@ namespace SIC
                 string goPage = PageSite + PagePath + PageFile + PagePara;
                 if (parameter.PageID == "IEPPDF2")
                 {
-                    var para1 = ReportRender.reportFormat("PDF");
+                    var para1 = ReportRenderADO.reportFormat("PDF");
 
                     goPage = PageSite + PagePath + PageFile + PagePara + para1;
                 }

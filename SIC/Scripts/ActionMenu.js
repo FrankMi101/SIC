@@ -29,16 +29,18 @@ async function OpenMenu(sYear, sCode, tabID, objID, oen, sName) {
     var para = "Operate=" + BasePara.Operate + "&UserID=" + BasePara.UserID + "&UserRole=" + BasePara.UserRole +"&SchoolYear=" + sYear + "&SchoolCode=" + sCode + "&TabID=" + BasePara.TabID + "&ObjID=" + objID + "&AppID=" + oen;
     var myUrl = "https://webt.tcdsb.org/Webapi/SIC/api/Menu/?" + para;
 
-
     //$.get(myUrl, function (data, status) {
     //    var myData = JSON.parse(data);
-    //    console.log(myData);
-    //    onSuccessMenuList(myData);
+    //    BuildingListMenuAction(myData);
     //});
-
-    const response = await fetch(myUrl);
-    const data = await response.json();
-    BuildingListMenuAction(data);
+    try {
+        const response = await fetch(myUrl);
+        const data = await response.json();
+        BuildingListMenuAction(data);
+    }
+    catch (ex) {
+        alert(ex.message);
+    }
 }
 function OpenMenuWS(sYear, sCode, tabID, objID, oen, sName) {
     BasePara.Semester = $("#ddlSemester").val();

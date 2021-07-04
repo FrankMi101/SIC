@@ -34,9 +34,9 @@ namespace SIC.Models
         {
             try
             {
-              //  string sp = "dbo.SIC_sys_HelpContent";
-              
-              return  ValueData.GeneralValue<string>("AppsPageHelp", "HelpContent", parameter);
+                //  string sp = "dbo.SIC_sys_HelpContent";
+
+                return ValueData.GeneralValue<string>("AppsPageHelp", "HelpContent", parameter);
             }
             catch (Exception ex)
             {
@@ -245,11 +245,11 @@ namespace SIC.Models
             }
         }
         [WebMethod]
-        public string PushGroupToAnotherApp(string operation,  GroupCopyOperation parameter )
+        public string PushGroupToAnotherApp(string operation, GroupCopyOperation parameter)
         {
             try
             {
-                 string result = AppsBase.GeneralValue<string>("SecurityManage","PushGroupToApps" , parameter);
+                string result = AppsBase.GeneralValue<string>("SecurityManage", "PushGroupToApps", parameter);
                 return result;
             }
             catch (Exception ex)
@@ -257,7 +257,7 @@ namespace SIC.Models
                 return "Failed";
             }
         }
-  
+
         [WebMethod]
         public List<MenuItems> ActionMenuListService(string operation, MenuListParameter parameter)
         {
@@ -304,57 +304,52 @@ namespace SIC.Models
 
         }
         [WebMethod]
-        public Byte[] PrintReportService(string reportID, object parameter)
+        public Byte[] PrintReportService(string reportID, ListOfSelected parameter)
         {
+            //try
+            //{
+            //    var reportParameters = new List<ReportParameter>
+            //{
+            //    new ReportParameter() { ParaName = "Operate", ParaValue = "Report" },
+            //    new ReportParameter() { ParaName = "UserID", ParaValue = parameter.UserID },
+            //    new ReportParameter() { ParaName = "SchoolYear", ParaValue =parameter.SchoolYear },
+            //    new ReportParameter() { ParaName = "SchoolCode", ParaValue = parameter.SchoolCode },
+            //    new ReportParameter() { ParaName = "PersonID", ParaValue = parameter.ObjID}
+            //};
+
+
+
+            var goPageparameter = new
+            {
+                Operate = "",
+                UserID = "mif",
+                UserRole = "Admin",
+                SchoolYear = "20202021",
+                SchoolCode = "0205",
+                Grade = "",
+                StudentID = "00881172306",
+                PageID = reportID,
+                Term = "1"
+            };
+            var myGoPageItem = AppsPage.GoPageItemsList<GoPageItems>(goPageparameter)[0];
+            string reportingService = myGoPageItem.PageSite;
+            string reportPath = myGoPageItem.PagePath;
+            string reportName = myGoPageItem.PageFile;
+            string PagePara = myGoPageItem.PagePara;
+
+
+            Byte[] myReport = null;
             try
             {
-                var repParameter = new List<ReportParameter>();
+                myReport = GeneratePDFReport.GetOneReport2(parameter, reportingService, reportPath, reportName, "PDF");
 
-                repParameter.Add(ReportRender.GetParameter(1, "PersonID", "00881172306"));
-                repParameter.Add(ReportRender.GetParameter(2, "SchoolYear", "20202021"));
-                repParameter.Add(ReportRender.GetParameter(3, "SchoolCode", "0205"));
-                repParameter.Add(ReportRender.GetParameter(4, "Term", "1"));
-
-                var goPageparameter = new
-                {
-                    Operate = "",
-                    UserID = "mif",
-                    UserRole = "Admin",
-                    SchoolYear = "20202021",
-                    SchoolCode = "0205",
-                    Grade = "",
-                    StudentID = "00881172306",
-                    PageID = reportID,
-                    Term = "1"
-                };
-                var myGoPageItem = AppsPage.GoPageItemsList<GoPageItems>(goPageparameter)[0];
-                string reportingService = myGoPageItem.PageSite;
-                string reportPath = myGoPageItem.PagePath;
-                string reportName = myGoPageItem.PageFile;
-                string PagePara = myGoPageItem.PagePara;
-
-
-                Byte[] myReport = null;
-                try
-                {
-                    myReport = ReportRender.GetReportR3(reportingService, reportPath, reportName, "PDF", repParameter);
-
-                    return myReport;
-
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-
+                return myReport;
 
             }
             catch (Exception ex)
             {
-
                 return null;
             }
-
         }
     }
 }

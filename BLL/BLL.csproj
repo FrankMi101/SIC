@@ -95,10 +95,15 @@
     <Compile Include="UtilityMethod\DateFormat.cs" />
     <Compile Include="UtilityMethod\DBConnection.cs" />
     <Compile Include="UtilityMethod\eMailNotification.cs" />
+    <Compile Include="UtilityMethod\GeneratePDFReport.cs" />
     <Compile Include="UtilityMethod\Generic.cs" />
     <Compile Include="UtilityMethod\HelpContext.cs" />
     <Compile Include="UtilityMethod\iCalendar.cs" />
+    <Compile Include="UtilityMethod\IReportParameter.cs" />
+    <Compile Include="UtilityMethod\MenuItem.cs" />
+    <Compile Include="UtilityMethod\ParameterFactory.cs" />
     <Compile Include="UtilityMethod\RandomCharacter.cs" />
+    <Compile Include="UtilityMethod\RenderDocuments.cs" />
     <Compile Include="UtilityMethod\ReportRender.cs" />
     <Compile Include="UtilityMethod\StringUtility.cs" />
     <Compile Include="UtilityMethod\SymetricEncryption.cs" />

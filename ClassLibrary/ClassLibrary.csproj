@@ -61,6 +61,7 @@
     <Compile Include="PrincipalList.cs" />
     <Compile Include="Report.cs" />
     <Compile Include="ReportList.cs" />
+    <Compile Include="ReportParameter.cs" />
     <Compile Include="School.cs" />
     <Compile Include="SchoolDate.cs" />
     <Compile Include="SchoolList.cs" />

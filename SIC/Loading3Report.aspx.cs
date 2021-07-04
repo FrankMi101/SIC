@@ -34,10 +34,22 @@ namespace SIC
                 string PagePara = myGoPageItem.PagePara;
 
                 var myParameter = GetReportParameter(parameter);
+                var myParameter1 = new ListOfSelected()
+                {
+                    UserID = User.Identity.Name,
+                    SchoolYear = Page.Request.QueryString["sYear"],
+                    SchoolCode= Page.Request.QueryString["sCode"],
+                    ObjID = Page.Request.QueryString["sID"],
+                    ObjNo = Page.Request.QueryString["grade"],
+                    ObjType = Page.Request.QueryString["category"]
+
+                };
                 Byte[] myReport = null;
                 try
                 {
-                    myReport = ReportRender.GetReportR3(reportingService, reportPath, reportName, "PDF", myParameter);              
+                  //  myReport = ReportRenderADO.GetReportR3(reportingService, reportPath, reportName, "PDF", myParameter);
+                    myReport = GeneratePDFReport.GetOneReport2(myParameter1,reportingService, reportPath, reportName, "PDF");
+
                 }
                 catch (Exception ex)
                 {
@@ -71,7 +83,7 @@ namespace SIC
                     if (myReport.Length < 100)
                         NotPDFReport.Visible = true;
                     else
-                         ReportRender.RenderDocument(myReport, reportName, "PDF");
+                         ReportRenderADO.RenderDocument(myReport, reportName, "PDF");
                       //  ReportRender.RenderDocument(myReportWithPW, reportName, "PDF");
 
                 }
@@ -117,7 +129,7 @@ namespace SIC
 
                 //  filePath = filePath.Replace(@"\\", @"\");
 
-                ReportRender.SavePDFReport(pdfReport, fileName, filePath);
+                ReportRenderADO.SavePDFReport(pdfReport, fileName, filePath);
             }
 
             catch (Exception ex)
@@ -136,39 +148,39 @@ namespace SIC
             {
 
                 case "OfficeIndexCard":
-                    myParameter.Add(ReportRender.GetParameter(1, "SchoolYear", parameter.SchoolYear));
-                    myParameter.Add(ReportRender.GetParameter(2, "SchoolCode", parameter.SchoolCode));
-                    myParameter.Add(ReportRender.GetParameter(3, "PersonID", parameter.StudentID));
+                    myParameter.Add(ReportRenderADO.GetParameter(1, "SchoolYear", parameter.SchoolYear));
+                    myParameter.Add(ReportRenderADO.GetParameter(2, "SchoolCode", parameter.SchoolCode));
+                    myParameter.Add(ReportRenderADO.GetParameter(3, "PersonID", parameter.StudentID));
 
                     break;
                 case "AlternativeRCPDF":
-                    myParameter.Add(ReportRender.GetParameter(1, "userid", User.Identity.Name));
-                    myParameter.Add(ReportRender.GetParameter(2, "school_year", parameter.SchoolYear));
-                    myParameter.Add(ReportRender.GetParameter(3, "school_code", parameter.SchoolCode));
-                    myParameter.Add(ReportRender.GetParameter(4, "person_id", parameter.StudentID));
-                    myParameter.Add(ReportRender.GetParameter(5, "terms", Session["Term"].ToString()));
-                    myParameter.Add(ReportRender.GetParameter(6, "semester", Session["Semester"].ToString()));
+                    myParameter.Add(ReportRenderADO.GetParameter(1, "userid", User.Identity.Name));
+                    myParameter.Add(ReportRenderADO.GetParameter(2, "school_year", parameter.SchoolYear));
+                    myParameter.Add(ReportRenderADO.GetParameter(3, "school_code", parameter.SchoolCode));
+                    myParameter.Add(ReportRenderADO.GetParameter(4, "person_id", parameter.StudentID));
+                    myParameter.Add(ReportRenderADO.GetParameter(5, "terms", Session["Term"].ToString()));
+                    myParameter.Add(ReportRenderADO.GetParameter(6, "semester", Session["Semester"].ToString()));
 
                     break;
                 case "GiftPDF":
-                    myParameter.Add(ReportRender.GetParameter(1, "userid", User.Identity.Name));
-                    myParameter.Add(ReportRender.GetParameter(2, "school_year", parameter.SchoolYear));
-                    myParameter.Add(ReportRender.GetParameter(3, "school_code", parameter.SchoolCode));
-                    myParameter.Add(ReportRender.GetParameter(4, "person_id", parameter.StudentID));
-                    myParameter.Add(ReportRender.GetParameter(5, "terms", Session["Term"].ToString()));
+                    myParameter.Add(ReportRenderADO.GetParameter(1, "userid", User.Identity.Name));
+                    myParameter.Add(ReportRenderADO.GetParameter(2, "school_year", parameter.SchoolYear));
+                    myParameter.Add(ReportRenderADO.GetParameter(3, "school_code", parameter.SchoolCode));
+                    myParameter.Add(ReportRenderADO.GetParameter(4, "person_id", parameter.StudentID));
+                    myParameter.Add(ReportRenderADO.GetParameter(5, "terms", Session["Term"].ToString()));
                     break;
                 case "IEPPDF":
-                    myParameter.Add(ReportRender.GetParameter(1, "PersonID", parameter.StudentID));
-                    myParameter.Add(ReportRender.GetParameter(2, "SchoolYear", parameter.SchoolYear));
-                    myParameter.Add(ReportRender.GetParameter(3, "SchoolCode", parameter.SchoolCode));
-                    myParameter.Add(ReportRender.GetParameter(4, "Term", Session["Term"].ToString()));
+                    myParameter.Add(ReportRenderADO.GetParameter(1, "PersonID", parameter.StudentID));
+                    myParameter.Add(ReportRenderADO.GetParameter(2, "SchoolYear", parameter.SchoolYear));
+                    myParameter.Add(ReportRenderADO.GetParameter(3, "SchoolCode", parameter.SchoolCode));
+                    myParameter.Add(ReportRenderADO.GetParameter(4, "Term", Session["Term"].ToString()));
                     break;
                 case "StudentTimeTable":
-                    myParameter.Add(ReportRender.GetParameter(1, "UserID", parameter.StudentID));
-                    myParameter.Add(ReportRender.GetParameter(2, "SchoolYear", parameter.SchoolYear));
-                    myParameter.Add(ReportRender.GetParameter(3, "SchoolCode", parameter.SchoolCode));
-                    myParameter.Add(ReportRender.GetParameter(4, "Grade", parameter.Grade));
-                    myParameter.Add(ReportRender.GetParameter(5, "PersonID", parameter.StudentID));
+                    myParameter.Add(ReportRenderADO.GetParameter(1, "UserID", parameter.StudentID));
+                    myParameter.Add(ReportRenderADO.GetParameter(2, "SchoolYear", parameter.SchoolYear));
+                    myParameter.Add(ReportRenderADO.GetParameter(3, "SchoolCode", parameter.SchoolCode));
+                    myParameter.Add(ReportRenderADO.GetParameter(4, "Grade", parameter.Grade));
+                    myParameter.Add(ReportRenderADO.GetParameter(5, "PersonID", parameter.StudentID));
 
                     break;
                 default:

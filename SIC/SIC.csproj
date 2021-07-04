@@ -163,6 +163,7 @@
     <Content Include="SICBoard\StaffListPrincipal.aspx" />
     <Content Include="SICBoard\StaffListPage.aspx" />
     <Content Include="SICBoard\StaffListPageTPA.aspx" />
+    <Content Include="SICBoard\ReportsBatchPrint.aspx" />
     <Content Include="SICClass\ClassListPage.aspx" />
     <Content Include="SICClass\Loading.aspx" />
     <Content Include="Common\HelpEdit.aspx" />
@@ -619,6 +620,13 @@
     </Compile>
     <Compile Include="SICBoard\StaffListPageTPA.aspx.designer.cs">
       <DependentUpon>StaffListPageTPA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SICBoard\ReportsBatchPrint.aspx.cs">
+      <DependentUpon>ReportsBatchPrint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SICBoard\ReportsBatchPrint.aspx.designer.cs">
+      <DependentUpon>ReportsBatchPrint.aspx</DependentUpon>
     </Compile>
     <Compile Include="SICClass\ClassListPage.aspx.cs">
       <DependentUpon>ClassListPage.aspx</DependentUpon>
