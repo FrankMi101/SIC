@@ -65,6 +65,7 @@
     <Compile Include="School.cs" />
     <Compile Include="SchoolDate.cs" />
     <Compile Include="SchoolList.cs" />
+    <Compile Include="SelectedDataSet.cs" />
     <Compile Include="Staff.cs" />
     <Compile Include="StaffList.cs" />
     <Compile Include="Enrolment.cs" />

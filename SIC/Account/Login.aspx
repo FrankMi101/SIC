@@ -168,18 +168,19 @@
                 border: 1px solid #0094ff;
                 box-shadow: 0 0 0 4px rgba(24,117,255,0.25);
             }
-              .textField:hover {
+
+            .textField:hover {
                 box-shadow: 0 0 0 3px rgba(24,117,255,0.25);
             }
 
 
         #Submit1 {
-            margin-top:20px;
+            margin-top: 20px;
             border: 2px solid dodgerblue;
             border-radius: 9px;
             width: 120px;
-            text-align:center;
-            outline:0;
+            text-align: center;
+            outline: 0;
         }
 
             #Submit1:hover {
@@ -235,7 +236,7 @@
 
                             </td>
                         </tr>
-                        <tr style="height: 25px; display:none ">
+                        <tr style="height: 25px; display: none">
                             <td colspan="2" style="text-align: center; vertical-align: top;">
 
                                 <asp:Label ID="Label1" Height="25px" runat="server" BackColor="Transparent" Width="100%"
@@ -288,7 +289,7 @@
                     <tr>
                         <td class="textright">User ID :</td>
                         <td>
-                            <asp:TextBox ID="txtUserName" runat="server" Text="" CssClass="text-left textField" /></td>
+                            <asp:TextBox ID="txtUserName" runat="server" TabIndex="1" Text="" CssClass="text-left textField" /></td>
                         <td class="textleft">
                             <asp:RequiredFieldValidator ID="rfUserName" ControlToValidate="txtUserName" runat="server" ErrorMessage="*" Font-Size="Large" ForeColor="red"></asp:RequiredFieldValidator>
                         </td>
@@ -307,7 +308,7 @@
                         <td></td>
                         <td style="text-align: center">
 
-                            <asp:Button ID="Submit1" OnClick="Login_Click" Text="Log On"  
+                            <asp:Button ID="Submit1" OnClick="Login_Click" Text="Log On"
                                 runat="server" />
                         </td>
                         <td></td>
@@ -329,17 +330,18 @@
         </div>
 
     </form>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#txtUserName").focus();
+            var screenWidth = screen.width;
+            var screenHeight = screen.height;
+            $("#txtResolution").val(screenWidth + "x" + screenHeight);
+        });
+
+    </script>
 </body>
 </html>
 
-<script>
-    $(document).ready(function () {
-        $("#txtUserName").focus;
-        var screenWidth = screen.width;
-        var screenHeight = screen.height;
-        $("#txtResolution").val(screenWidth + "x" + screenHeight);
-    });
-    //function pageLoad(sender, args) {   }
-
-</script>
 

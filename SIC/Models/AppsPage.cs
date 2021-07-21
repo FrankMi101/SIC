@@ -90,6 +90,11 @@ namespace SIC
 
 
         }
+        public static List<T> MultipleReportItemsList<T>(object parameter)
+        {
+
+            return GeneralList<T>("AppsPageHelp", "MultipleReport", parameter);
+        }
         public static List<T> GoPageItemsList<T>(object parameter)
         {
 
@@ -171,7 +176,10 @@ namespace SIC
         }
         public static void BuildGradeTab(System.Web.UI.HtmlControls.HtmlGenericControl myDIVTab, object parameter, string Grade)
         {
-            var gradeList = GeneralList<NameValueList>("GeneralList", "Grade", parameter);
+            var mySPclass = new List<CommonSP> { new GeneralList() };
+            var gradeList = AppsBase.GeneralList<NameValueList>(mySPclass, "Grade", parameter);
+
+          //  var gradeList = GeneralList<NameValueList>("GeneralList", "Grade", parameter);
             var UL = new HtmlGenericControl("ul");
             try
             {
@@ -198,8 +206,10 @@ namespace SIC
         }
         public static void BuildingTab(System.Web.UI.HtmlControls.HtmlGenericControl myDIVTab, object parameter,string cTab)
         {
+            var mySPclass = new List<CommonSP> { new GeneralList() };
+            var gradeList = AppsBase.GeneralList<NameValueList>(mySPclass, "TabList", parameter);
 
-            var gradeList = GeneralList<NameValueList>("GeneralList", "TabList", parameter);
+          //  var gradeList = GeneralList<NameValueList>("GeneralList", "TabList", parameter);
             var UL = new HtmlGenericControl("ul"); 
             try
             {

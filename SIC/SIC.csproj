@@ -137,8 +137,9 @@
     <Content Include="images\list32.ico" />
     <Content Include="images\menu3.png" />
     <Content Include="images\pdf.png" />
-    <Content Include="images\pgBar3e_all.png" />
+    <Content Include="images\print.png" />
     <Content Include="images\setupDone.png" />
+    <Content Include="LoadingMultipleReports.aspx" />
     <Content Include="OutSidePage.aspx" />
     <Content Include="LoadingParameters.aspx" />
     <Content Include="Models\WebServiceAction.asmx" />
@@ -305,7 +306,6 @@
     <Content Include="images\lookFor.png" />
     <Content Include="images\menu.png" />
     <Content Include="images\menu2.png" />
-    <Content Include="images\menubar.png" />
     <Content Include="images\MinistryDoc.png" />
     <Content Include="images\MinistryDoc2.png" />
     <Content Include="images\notes.png" />
@@ -314,14 +314,6 @@
     <Content Include="images\OrangeExplorerV.png" />
     <Content Include="images\pdfReport.bmp" />
     <Content Include="images\pdfReport.png" />
-    <Content Include="images\pgBar1.png" />
-    <Content Include="images\pgBar12a.png" />
-    <Content Include="images\pgBar1a.png" />
-    <Content Include="images\pgBar2.png" />
-    <Content Include="images\pgBar23a.png" />
-    <Content Include="images\pgBar3.png" />
-    <Content Include="images\pgBar3a.png" />
-    <Content Include="images\pgBar3e.png" />
     <Content Include="images\recover.png" />
     <Content Include="images\Recover2.bmp" />
     <Content Include="images\refresh.png" />
@@ -486,6 +478,13 @@
     </Compile>
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoadingMultipleReports.aspx.cs">
+      <DependentUpon>LoadingMultipleReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoadingMultipleReports.aspx.designer.cs">
+      <DependentUpon>LoadingMultipleReports.aspx</DependentUpon>
     </Compile>
     <Compile Include="OutSidePage.aspx.cs">
       <DependentUpon>OutSidePage.aspx</DependentUpon>

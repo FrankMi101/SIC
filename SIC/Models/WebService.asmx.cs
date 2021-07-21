@@ -337,11 +337,20 @@ namespace SIC.Models
             string reportName = myGoPageItem.PageFile;
             string PagePara = myGoPageItem.PagePara;
 
+            var reportPara = new ReportBase
+            {
+                ReportService = myGoPageItem.PageSite,
+                ReportPath = myGoPageItem.PagePath,
+                ReportName = myGoPageItem.PageFile,
+                ReportType = "IEP",
+                ReportFormat = "PDF"
+            };
+
 
             Byte[] myReport = null;
             try
             {
-                myReport = GeneratePDFReport.GetOneReport2(parameter, reportingService, reportPath, reportName, "PDF");
+                myReport = GeneratePDFReport.GetOneReport(reportPara, parameter);
 
                 return myReport;
 
@@ -350,6 +359,12 @@ namespace SIC.Models
             {
                 return null;
             }
+        }
+      
+        [WebMethod(EnableSession = true)]
+        public void SelectedStudentDataSet(string operate, List<ListOfSelected> parameters)
+        {
+            Session["SelectedDataSet"] = parameters; 
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿//using BLL;
 //using SIC.Generic.LIB;
+
 using ClassLibrary;
 using System;
 using System.Collections.Generic;
@@ -11,14 +12,16 @@ namespace SIC
     public partial class StudentListPage : System.Web.UI.Page
     {
         readonly string pageID = "StudentListPage";
-        protected async void Page_Load(object sender, EventArgs e)
+        protected   void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 Page.Response.Expires = 0;
                 SetPageAttribution();
                 AssemblePage();
-               await  BindStudentListGridViewData();
+                 RegisterAsyncTask(new PageAsyncTask(BindGridViewDataAsync));
+               //   BindGridViewDataAsync();
+              //  BindStudentListGridViewData();
             }
         }
         private void SetPageAttribution()
@@ -137,8 +140,9 @@ namespace SIC
         {
             UserLastWorking.SchoolCode = ddlSchoolCode.SelectedValue;
             WorkingProfile.SchoolCode = ddlSchoolCode.SelectedValue;
-            Assembing_GradeTab();
-           await  BindStudentListGridViewData();
+            await BindGridViewDataAsync();
+          //  Assembing_GradeTab();
+          //  BindStudentListGridViewData();
             //ddlSearchby.SelectedIndex = 0;
             //TextSearch.Visible = true;
             //ddlSearchValue.Visible = false;
@@ -164,39 +168,54 @@ namespace SIC
         //    }
 
         //}
-        protected  async void BtnGradeTab_Click(object sender, EventArgs e)
+        protected async void BtnGradeTab_Click(object sender, EventArgs e)
         {
             string Grade = hfSelectedTab.Value;
             if (Grade != "")
             {
-               await BindStudentListGridViewData(); 
+               await BindGridViewDataAsync();
+                // BindStudentListGridViewData(); 
            }
 
         }
         protected async void  BtnSearch_Click(object sender, EventArgs e)
         {
- 
-           await BindStudentListGridViewData();
+            //   BindStudentListGridViewData();
+            await BindGridViewDataAsync();
         }
         protected async void BtnSearchGo_Click(object sender, EventArgs e)
         { 
-           await BindStudentListGridViewData();
+          //   BindStudentListGridViewData();
+           await BindGridViewDataAsync();
         }
-         private async Task BindStudentListGridViewData()
-      // private void BindStudentListGridViewData()
+         private async void BindStudentListGridViewData()
         {
+            // BindGridViewData();
+           await BindGridViewDataAsync();
+        }
+        private void BindGridViewData() {
             try
             {
-                Assembing_GradeTab();
-                GridView1.DataSource = await Task.Run(() => GetDataSource());// GetDataSource(true);
-              //  GridView1.DataSource = GetDataSource(); 
+                 Assembing_GradeTab();
+                GridView1.DataSource =  GetDataSource();     
                 GridView1.DataBind();
             }
             catch (Exception ex)
             {
                 var em = ex.Message;
             }
-
+        }
+        private async Task BindGridViewDataAsync() {
+            try
+            {
+               await Assembing_GradeTab();
+                GridView1.DataSource = await Task.Run(() => GetDataSource());
+                GridView1.DataBind();
+            }
+            catch (Exception ex)
+            {
+                var em = ex.Message;
+            }
         }
 
         private List<StudentList> GetDataSource()
@@ -220,7 +239,8 @@ namespace SIC
                 Semester = ddlSemester.SelectedValue
             };
             initialSearchBox();
-            var mystduentList = ListData.SearchGeneralList<StudentList>(pageID,parameter, btnSearchGo);
+
+              var mystduentList =  ListData.SearchGeneralList<StudentList>(pageID,parameter, btnSearchGo);
             return mystduentList;
         }
         //private string GetSearchValue()
@@ -244,7 +264,7 @@ namespace SIC
 
 
         }
-        private async void Assembing_GradeTab()
+        private async Task  Assembing_GradeTab()
         {
             var parameters = new
             {

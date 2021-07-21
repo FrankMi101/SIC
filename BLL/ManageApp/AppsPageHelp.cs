@@ -4,8 +4,20 @@ using System.Collections.Generic;
 
 namespace BLL
 {
-    public class AppsPageHelp
+    public class AppsPageHelp : CommonSP
     {
+        public override string GetSPandParametersByOverride(string action)
+        {
+            switch (SPSource.SPFile)
+            {
+                case "JsonFile":
+                    return GetSPFrom.JsonFile(action);
+                case "DBTable":
+                    return GetSPFrom.DbTable(action, "AppraisalPageHelp");
+                default:
+                    return GetSPInClass(action);
+            }
+        }
         public static string GetSP(string action)
         {
             switch (SPSource.SPFile)
@@ -50,10 +62,10 @@ namespace BLL
         }
 
 
-        public static string PageHelp(string action,PageHelp parameter )
-        { 
-                parameter.Operate = action;
-                return CommonValue<string>(action, parameter); 
+        public static string PageHelp(string action, PageHelp parameter)
+        {
+            parameter.Operate = action;
+            return CommonValue<string>(action, parameter);
         }
 
 
@@ -108,7 +120,7 @@ namespace BLL
             {
                 case "PageTitle":
                     return "dbo.EPA_Appr_AppraisalProcess_GoPage" + parameters;
-                 case "DocFile":
+                case "DocFile":
                     return "dbo.EPA_Appr_AppraisalProcess_GoPage" + parameters;
                 case "PageItem":
                     return "dbo.EPA_Appr_AppraisalProcess_GoPage" + parameters;
@@ -118,12 +130,14 @@ namespace BLL
                     return "dbo.EPA_Appr_AppraisalProcess_GoPage" + parameters;
                 case "PageHelp":
                     return "dbo.EPA_Appr_AppraisalProcess_GoPage" + parameters;
-                 case "GoPage":
+                case "GoPage":
                     return "dbo.SIC_sys_ActionMenu_GoPage" + parameters;
                 case "GoPageGroup":
                     return "dbo.SIC_sys_ActionMenu_GoPage" + parameters + ",@Term,@Category,@AppID";
                 case "GoPageItems":
                     return "dbo.SIC_sys_ActionMenu_GoPage" + parameters + ",@Term,@Category,@AppID,@GroupID,@MemberID";
+                case "MultipleReport":
+                    return "dbo.SIC_sys_ActionMenu_GoPage" + parameters + ",@Term";
                 case "HelpContent":
                     return "dbo.SIC_sys_HelpTitleContentSP";
 

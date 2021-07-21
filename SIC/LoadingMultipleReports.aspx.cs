@@ -5,59 +5,49 @@ using System.Collections.Generic;
 using System.Web.UI;
 namespace SIC
 {
-    public partial class Loading3Report : System.Web.UI.Page
+    public partial class LoadingMultipleReports : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                string reportType = Page.Request.QueryString["pageID"];
+                var reportID = Page.Request.QueryString["ReportID"];
+                var oneFile = Page.Request.QueryString["OneFile"];
+
                 var parameter = new MenuListParameter
                 {
-                    Operate = Page.Request.QueryString["area"],
+                    Operate = "MultipleReport",
                     UserID = User.Identity.Name,
-                    UserRole = Page.Request.QueryString["uRole"],
-                    SchoolYear = Page.Request.QueryString["sYear"],
-                    SchoolCode = Page.Request.QueryString["sCode"],
-                    Grade = Page.Request.QueryString["grade"],
-                    StudentID = Page.Request.QueryString["sID"],
-                    PageID = reportType,
-                    Term = Session["Term"].ToString(),
-                    Category = Page.Request.QueryString["category"],
-
+                    UserRole = WorkingProfile.UserRole,
+                    SchoolYear = WorkingProfile.SchoolYear,
+                    SchoolCode = WorkingProfile.SchoolCode,
+                    StudentID = "",
+                    PageID = Page.Request.QueryString["ReportID"],
+                    Term = Page.Request.QueryString["Term"]
                 };
 
 
-                var myGoPageItem = AppsPage.GoPageItemsList<GoPageItems>(parameter)[0];
+                var myGoPageItem = AppsPage.MultipleReportItemsList<GoPageItems>(parameter)[0];
                 string reportService = myGoPageItem.PageSite;
                 string reportPath = myGoPageItem.PagePath;
                 string reportName = myGoPageItem.PageFile;
-                string PagePara = myGoPageItem.PagePara;
 
                 var reportPara = new ReportBase
                 {
                     ReportService = myGoPageItem.PageSite,
                     ReportPath = myGoPageItem.PagePath,
                     ReportName = myGoPageItem.PageFile,
-                    ReportType = reportType,
+                    ReportType = reportID,
                     ReportFormat = "PDF"
                 };
 
-                //  var myParameter = GetReportParameter(parameter);
-                var inputParameters = new ListOfSelected()
-                {
-                    UserID = User.Identity.Name,
-                    SchoolYear = Page.Request.QueryString["sYear"],
-                    SchoolCode = Page.Request.QueryString["sCode"],
-                    ObjID = Page.Request.QueryString["sID"],
-                    ObjNo = Page.Request.QueryString["grade"],
-                    ObjType = Page.Request.QueryString["category"]
+                List<ListOfSelected> inputParameters = (List<ListOfSelected>)Session["SelectedDataSet"];
 
-                };
                 Byte[] myReport = null;
                 try
                 {
-                    myReport = GeneratePDFReport.GetOneReport(reportPara,  inputParameters);
+                    //  myReport = ReportRenderADO.GetReportR3(reportingService, reportPath, reportName, "PDF", myParameter);
+                    myReport = GeneratePDFReport.GetMultipleReports(reportPara, inputParameters);
 
                 }
                 catch (Exception ex)
@@ -92,8 +82,8 @@ namespace SIC
                     if (myReport.Length < 100)
                         NotPDFReport.Visible = true;
                     else
-                        ReportRenderADO.RenderDocument(myReport, reportName, "PDF");
-                    //  ReportRender.RenderDocument(myReportWithPW, reportName, "PDF");
+                        //  ReportRenderADO.RenderDocument(myReport, reportName, "PDF");
+                        ShowDocument.Show(reportName, "PDF", myReport);
 
                 }
                 catch (Exception ex)
@@ -145,7 +135,6 @@ namespace SIC
 
             {
             }
-
         }
     }
 }

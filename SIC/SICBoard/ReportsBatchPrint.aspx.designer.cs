@@ -24,15 +24,6 @@ namespace SIC
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// UpdatePanel2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-
-        /// <summary>
         /// Label3 control.
         /// </summary>
         /// <remarks>
@@ -123,24 +114,6 @@ namespace SIC
         protected global::System.Web.UI.WebControls.HiddenField hfSearchValue;
 
         /// <summary>
-        /// btnGradeTab control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGradeTab;
-
-        /// <summary>
-        /// btnSearchGo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnSearchGo;
-
-        /// <summary>
         /// UpdateProgress1 control.
         /// </summary>
         /// <remarks>
@@ -177,166 +150,67 @@ namespace SIC
         protected global::System.Web.UI.WebControls.DropDownList ddlTerm;
 
         /// <summary>
-        /// TextBoxFirstName control.
+        /// ddlReportForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxFirstName;
+        protected global::System.Web.UI.WebControls.DropDownList ddlReportForm;
 
         /// <summary>
-        /// btnSearchGoFirstName control.
+        /// ddlPrintBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnSearchGoFirstName;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPrintBy;
 
         /// <summary>
-        /// TextBoxLastName control.
+        /// ddlPrintByValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxLastName;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPrintByValue;
 
         /// <summary>
-        /// btnSearchGoLastName control.
+        /// btnSearchGo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnSearchGoLastName;
+        protected global::System.Web.UI.WebControls.ImageButton btnSearchGo;
 
         /// <summary>
-        /// TextBoxOEN control.
+        /// chbOneFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxOEN;
+        protected global::System.Web.UI.WebControls.CheckBox chbOneFile;
 
         /// <summary>
-        /// btnSearchGoOEN control.
+        /// chbSelectAll control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnSearchGoOEN;
+        protected global::System.Web.UI.WebControls.CheckBox chbSelectAll;
 
         /// <summary>
-        /// TextBoxStudentNo control.
+        /// btnPrintReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxStudentNo;
-
-        /// <summary>
-        /// btnSearchGoStudentNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnSearchGoStudentNo;
-
-        /// <summary>
-        /// TextBoxClass control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxClass;
-
-        /// <summary>
-        /// btnSearchGoClass control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnSearchGoClass;
-
-        /// <summary>
-        /// TextBoxAge control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxAge;
-
-        /// <summary>
-        /// btnSearchGoAge control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnSearchGoAge;
-
-        /// <summary>
-        /// ddlScope control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlScope;
-
-        /// <summary>
-        /// UpdatePanel6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel6;
-
-        /// <summary>
-        /// GradeTab control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl GradeTab;
-
-        /// <summary>
-        /// hfSelectedTab control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfSelectedTab;
-
-        /// <summary>
-        /// hfSelectedTabL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfSelectedTabL;
-
-        /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.ImageButton btnPrintReport;
 
         /// <summary>
         /// GridView1 control.
@@ -355,15 +229,6 @@ namespace SIC
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox HelpTextContent;
-
-        /// <summary>
-        /// LabelTeacherName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelTeacherName;
 
         /// <summary>
         /// ActioniFramePage control.

@@ -15,13 +15,21 @@ namespace SIC
         {
 
         }
+        public static List<T> BatchPrintGeneralList<T>(string ListPage, object parameter, WebControl actionControl)
+        {
+            var mySPclass = new List<CommonSP> { new GeneralList() };
+            return AppsBase.GeneralList<T>(mySPclass, ListPage, parameter, actionControl);
+        }
         public static List<T> SearchGeneralList<T>(string ListPage,object parameter)
         {
             return GeneralList<T>("GeneralList", ListPage, parameter);
         }
         public static List<T> SearchGeneralList<T>(string ListPage, object parameter, WebControl actionControl)
         {
-            return GeneralList<T>("GeneralList", ListPage, parameter,actionControl);
+            var mySPclass = new List<CommonSP> { new GeneralList() };
+           return AppsBase.GeneralList<T>(mySPclass, ListPage, parameter, actionControl);
+
+          //  return GeneralList<T>("GeneralList", ListPage, parameter,actionControl);
         }
         public static string WorkingListContent(object parameter)
         {

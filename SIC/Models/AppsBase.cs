@@ -23,7 +23,17 @@ namespace SIC
             string sp = BLL.Common.SPName(className, action, parameter);
             return GeneralList<T>(sp, parameter);
         }
-
+        public static List<T> GeneralList<T>(List<CommonSP> classSP ,string action, object parameter)
+        {
+            string sp = BLL.Common.SPName(classSP, action, parameter);
+            return GeneralList<T>(sp, parameter);
+        }
+        public static List<T> GeneralList<T>(List<CommonSP> classSP, string action, object parameter, WebControl actionControl)
+        {
+            string sp = BLL.Common.SPName(classSP, action, parameter);
+            if (WebConfig.RunningModel() == "Design") actionControl.ToolTip = sp;
+            return GeneralList<T>(sp, parameter);
+        }
         public static List<T> GeneralList<T>(string className, string action, object parameter, WebControl actionControl)
         {
             string sp = BLL.Common.SPName(className, action, parameter);

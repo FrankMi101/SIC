@@ -10,23 +10,23 @@ namespace BLL
 {
     public class RenderDocuments
     {
-        public static void RenderDocument(string _reportName, string _reportFormat, List<ListOfSelected> myList)
+        public static void RenderDocument(ReportBase reportPara, List<ListOfSelected> myList)
         {
             try
             {
                 Byte[] myDoc;
 
-                if (myList.Count == 1) myDoc = GeneratePDFReport.GetOneReport(_reportName, myList[0]); 
-                else  myDoc = GeneratePDFReport.GetMultipleReports(_reportName, _reportFormat, myList);  
+                if (myList.Count == 1) myDoc = GeneratePDFReport.GetOneReport(reportPara, myList[0]);
+                else myDoc = GeneratePDFReport.GetMultipleReports(reportPara, myList);
 
-                ShowDocument.Show(_reportName, _reportFormat, myDoc);
+                ShowDocument.Show(reportPara.ReportName, reportPara.ReportFormat, myDoc);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-        public static void SaveDocuments(string _reportName, string _reportFormat, List<ListOfSelected> myList)
+        public static void SaveDocuments(ReportBase reportPara, List<ListOfSelected> myList)
         {
             foreach (var item in myList)
             {
@@ -34,14 +34,18 @@ namespace BLL
                 {
                     try
                     {
-                        Byte[] myPDF;
-                        myPDF = GeneratePDFReport.GetOneReport(_reportName, item); //  item => ListOfSelected
-                        string fileName = _reportName + " " + item.SchoolYear + " " + item.ObjID + " " + item.ObjNo + "." + _reportFormat;
-                        string filePath = "C:Temp/" + _reportName;
+                        byte[] myPDF = GeneratePDFReport.GetOneReport(reportPara, item);  // ; //  item => ListOfSelected
+
+                        string fileName = reportPara.ReportName + " " + item.SchoolYear + " " + item.ObjID + " " + item.ObjNo + "." + reportPara.ReportFormat;
+                        string filePath = "C:Temp/" + reportPara.ReportName;
 
                         SaveDocumentToFile(myPDF, fileName, filePath);
                     }
                     catch { }
+                    finally
+                    {
+
+                    }
                 }
             }
         }
@@ -94,9 +98,9 @@ namespace BLL
                 string showmsg = ex.Message;
             }
         }
-        private static string getReportContentType(string _reportFormat)
+        private static string getReportContentType(string reportFormat)
         {
-            switch (_reportFormat)
+            switch (reportFormat)
             {
                 case "PDF":
                     return "application/pdf";

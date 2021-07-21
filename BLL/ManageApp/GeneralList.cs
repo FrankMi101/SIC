@@ -3,8 +3,20 @@ using System.Collections.Generic;
 
 namespace BLL
 {
-    public class GeneralList
+    public class GeneralList : CommonSP
     {
+        public override string GetSPandParametersByOverride(string action)
+        {
+            switch (SPSource.SPFile)
+            {
+                case "JsonFile":
+                    return GetSPFrom.JsonFile(action);
+                case "DBTable":
+                    return GetSPFrom.DbTable(action, "AppraisalGeneral");
+                default:
+                    return GetSPInClass(action);
+            }
+        }
         public static string GetSP(string action)
         {
             switch (SPSource.SPFile)
@@ -81,7 +93,8 @@ namespace BLL
 
             switch (action)
             {
-
+                case "BatchPrintPage":
+                    return "dbo.SIC_sys_ListofStudentsForBatchPrint";// + parameter1 + ",@ReportID,@SearchBy,@SearchValue,,@Program,@Term,@Semester";
                 case "TabList":
                     return "dbo.SIC_sys_ListItemsTab" + parameter1;
                 case "DDList":

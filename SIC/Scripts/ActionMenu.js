@@ -14,6 +14,25 @@
     MemberID: "",
     MemberType: ""
 };
+function FetchMethod() {
+    var url = "";
+    fetch(url)
+        .then(function (response) {
+            response.text()
+                .then(function (text) {
+                    poemDisplay.textContent = text;
+                });
+    });
+    /*
+     The first line is saying "fetch the resource located at URL" (fetch(url)) and "then run the specified function 
+     when the promise resolves" (.then(function() { ... })). "Resolve" means "finish performing the specified operation
+     at some point in the future". The specified operation, in this case, is to fetch a resource from a specified URL
+     (using an HTTP request), and return the response for us to do something with.
+     Because the fetch() method returns a promise that resolves to the HTTP response, 
+     any function you define inside a .then() chained onto the end of it will automatically be given the response as a parameter.
+     You can call the parameter anything you like — the below example would still work:
+   */
+}
 
 async function OpenMenu(sYear, sCode, tabID, objID, oen, sName) {
     BasePara.Semester = $("#ddlSemester").val();
@@ -28,6 +47,36 @@ async function OpenMenu(sYear, sCode, tabID, objID, oen, sName) {
 
     var para = "Operate=" + BasePara.Operate + "&UserID=" + BasePara.UserID + "&UserRole=" + BasePara.UserRole +"&SchoolYear=" + sYear + "&SchoolCode=" + sCode + "&TabID=" + BasePara.TabID + "&ObjID=" + objID + "&AppID=" + oen;
     var myUrl = "https://webt.tcdsb.org/Webapi/SIC/api/Menu/?" + para;
+
+    //$.get(myUrl, function (data, status) {
+    //    var myData = JSON.parse(data);
+    //    BuildingListMenuAction(myData);
+    //});
+    try {
+        const response = await fetch(myUrl);
+        const data = await response.json();
+        BuildingListMenuAction(data);
+    }
+    catch (ex) {
+        alert(ex.message);
+    }
+}
+
+async function OpenMenuWSAsync(sYear, sCode, tabID, objID, oen, sName) {
+    // this async function dose not work
+    BasePara.Semester = $("#ddlSemester").val();
+    BasePara.Term = $("#ddlTerm").val();
+    BasePara.SchoolYear = sYear;
+    BasePara.SchoolCode = sCode;
+    BasePara.TabID = $("#hfSelectedTab").val();
+    BasePara.ObjID = objID;
+    BasePara.AppID = oen;
+    $("#LabelTeacherName").text(sName);
+    CopyKeyIDToClipboard(objID + " " + sName);
+
+   // var para = "Operate=" + BasePara.Operate + "&UserID=" + BasePara.UserID + "&UserRole=" + BasePara.UserRole + "&SchoolYear=" + sYear + "&SchoolCode=" + sCode + "&TabID=" + BasePara.TabID + "&ObjID=" + objID + "&AppID=" + oen;
+    var myUrl = "SIC.Models.WebService/ActionMenuListService(" + "Get" + BasePara + ")"
+
 
     //$.get(myUrl, function (data, status) {
     //    var myData = JSON.parse(data);

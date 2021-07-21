@@ -6,9 +6,22 @@ using System.Threading.Tasks;
 
 namespace BLL 
 {
-    public class SISInfoBase
+    public class SISInfoBase : CommonSP
     {
-        readonly static string _db = DBConnection.OtherDB("SISDB");  
+
+        readonly static string _db = DBConnection.OtherDB("SISDB");
+        public override string GetSPandParametersByOverride(string action)
+        {
+            switch (SPSource.SPFile)
+            {
+                case "JsonFile":
+                    return GetSPFrom.JsonFile(action);
+                case "DBTable":
+                    return GetSPFrom.DbTable(action, "AppraisalPageHelp");
+                default:
+                    return GetSPInClass(action);
+            }
+        }
         public static string GetSP(string action)
         {
             switch (SPSource.SPFile)

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReportsBatchPrint.aspx.cs" Inherits="SIC.ReportsBatchPrint" Async="true" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReportsBatchPrint.aspx.cs" Inherits="SIC.ReportsBatchPrint" Async="true"  enableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -109,10 +109,16 @@
         #SearchingBar {
             position: absolute;
             top: 30px;
-            left: 1050px;
+            left: 1150px;
         }
- 
- 
+
+        .StudentID {
+            display: none;
+        }
+        .PageButton {
+            margin-left:30px;
+            margin-right:30px;
+        }
     </style>
 
 </head>
@@ -126,8 +132,10 @@
             </Services>
         </asp:ScriptManager>
         <div class="SearchAreaRow" style="height: 60px;">
-            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+            <%--<asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
+                                 </ContentTemplate>
+            </asp:UpdatePanel>--%>
                     <div class="SearchAreaDIV">
                         <img class="imgHelp" src="../images/help2.png" title="Help Content" />
                         <asp:Label ID="Label3" runat="server" Text="School Year: " CssClass="label1"></asp:Label>
@@ -147,25 +155,7 @@
                         </asp:DropDownList>
                         <asp:Label ID="Searchby" runat="server" Text="Search by" CssClass="label1" Visible="false"></asp:Label>
                         <asp:HiddenField ID="hfSearchby" runat="server" Value="SurName" />
-                           <asp:HiddenField ID="hfSearchValue" runat="server" Value="" />
-                     <%--<asp:DropDownList ID="ddlSearchby" runat="server" Width="100px" AutoPostBack="true" OnSelectedIndexChanged="DDLSearchBy_SelectedIndexChanged">
-                            <asp:ListItem Value="SurName" Selected="True"> SurName</asp:ListItem>
-                            <asp:ListItem Value="Age">Age</asp:ListItem>
-                            <asp:ListItem Value="Grade">Grade</asp:ListItem>
-                            <asp:ListItem Value="OEN">OEN</asp:ListItem>
-                            <asp:ListItem Value="StudentNo">StudentNo.</asp:ListItem>
-                            <asp:ListItem Value="Program">Program</asp:ListItem>
-                            <asp:ListItem Value="Courses">Course List</asp:ListItem>
-                        </asp:DropDownList>--%>
-                        <%--<asp:TextBox ID="TextSearch" runat="server" Width="80px" Height="19px" placeholder="Surname"></asp:TextBox>--%>
-
-                        <%--<asp:DropDownList ID="ddlSearchValue" runat="server" Width="100px" AutoPostBack="false">
-                        </asp:DropDownList>--%>
-                       &nbsp;&nbsp;  &nbsp 
-                   
-                        <%--  <asp:Button ID="btnSearch" runat="server" Text="Go" OnClick="BtnSearch_Click" CssClass="Gobutton" Visible="false" />--%>
-                        <asp:Button ID="btnGradeTab" runat="server" Text="" Height="0px" Width="0px" CssClass="HideButton" OnClick="BtnGradeTab_Click" />
-                        <asp:ImageButton ID="btnSearchGo" Visible="false" CssClass="SearchGoButton" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
+                        <asp:HiddenField ID="hfSearchValue" runat="server" Value="" />
 
 
                         <div id="SearchingBar">
@@ -201,68 +191,41 @@
                       </asp:DropDownList>
                         </div>
 
-                    </div>
-                    <div style="margin-top: 5px; width: 1010px;" class="Search-Area-Sigal">
-                        &nbsp;  Search Student By: &nbsp;
-                        <asp:TextBox CssClass="SearchTextBox" ID="TextBoxFirstName" runat="server" placeholder="First name"></asp:TextBox>
-                        <asp:ImageButton ID="btnSearchGoFirstName" CssClass="SearchGoButton hideMe" runat="server" ToolTip="entry search content in search box and then click me ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
-                        <asp:TextBox CssClass="SearchTextBox" ID="TextBoxLastName" runat="server" placeholder="Last name"></asp:TextBox>
-                        <asp:ImageButton ID="btnSearchGoLastName" CssClass="SearchGoButton hideMe" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
-                        &nbsp; &nbsp; &nbsp;&nbsp; 
-                        <asp:TextBox CssClass="SearchTextBox" ID="TextBoxOEN" runat="server" placeholder="OEN Number"></asp:TextBox>
-                        <asp:ImageButton ID="btnSearchGoOEN" CssClass="SearchGoButton hideMe" runat="server" ToolTip="entry search content in search box and then click me  ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
-                        <asp:TextBox CssClass="SearchTextBox" ID="TextBoxStudentNo" runat="server" placeholder="Student No."></asp:TextBox>
-                        <asp:ImageButton ID="btnSearchGoStudentNo" CssClass="SearchGoButton hideMe" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
-                        &nbsp; &nbsp;  &nbsp;&nbsp;  
-                         <asp:TextBox CssClass="SearchTextBox" ID="TextBoxClass" runat="server" placeholder="Class Code"></asp:TextBox>
-                        <asp:ImageButton ID="btnSearchGoClass" CssClass="SearchGoButton hideMe" runat="server" ToolTip="entry search content in search box and then click me  ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
-                        <asp:TextBox CssClass="SearchTextBox" ID="TextBoxAge" runat="server" placeholder="Age"></asp:TextBox>
-                        <asp:ImageButton ID="btnSearchGoAge" CssClass="SearchGoButton hideMe" runat="server" ToolTip="entry search content in search box and then click me  ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
-                        &nbsp; &nbsp; IN 
-                         <asp:DropDownList ID="ddlScope" runat="server" Width="65px" AutoPostBack="false">
-                             <asp:ListItem Value="School" Selected="True"> School</asp:ListItem>
-                             <asp:ListItem Value="Board">Board</asp:ListItem>
-                         </asp:DropDownList>
-                    </div>
-                    <%-- <div style="margin-top:5px;">
-                        &nbsp; &nbsp; Search Student By: &nbsp;
-                        <asp:Label ID="LabelFirstName" runat="server" Text="First Name:" AssociatedControlID ="TextBoxFirstName"></asp:Label>
-                        <asp:TextBox CssClass="SearchBox" ID="TextBoxFirstName" runat="server" Width="100px" Height="19px" placeholder="First name"></asp:TextBox>
-                        &nbsp; &nbsp; 
-                        <asp:Label ID="LabelLastName" runat="server" Text="Last Name:" AssociatedControlID ="TextBoxLastName"></asp:Label>
-                        <asp:TextBox CssClass="SearchBox" ID="TextBoxLastName" runat="server" Width="100px" Height="19px" placeholder="Last name"></asp:TextBox>
-                        <asp:ImageButton ID="btnSearchGo" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
-                        &nbsp; &nbsp;
-                        <asp:Label ID="LabelOEN" runat="server" Text="OEN:" AssociatedControlID ="TextBoxOEN"></asp:Label>
-                        <asp:TextBox CssClass="SearchBox" ID="TextBoxOEN" runat="server" Width="100px" Height="19px" placeholder="OEN Number"></asp:TextBox>
-                        &nbsp; &nbsp;  
-                        <asp:Label ID="LabelStudentNo" runat="server" Text="Student No.:" AssociatedControlID ="TextBoxStudentNo"></asp:Label>
-                        <asp:TextBox CssClass="SearchBox" ID="TextBoxStudentNo" runat="server" Width="100px" Height="19px" placeholder="Student No."></asp:TextBox>
-                       <asp:ImageButton ID="btnSearchGo2" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
-                        &nbsp; &nbsp; 
-                        <asp:Label ID="LabelClass" runat="server" Text="Class:" AssociatedControlID ="TextBoxClass"></asp:Label>
-                        <asp:TextBox CssClass="SearchBox"  ID="TextBoxClass" runat="server" Width="100px" Height="19px" placeholder="Class Code"></asp:TextBox>
-                        &nbsp; &nbsp;  
-                        <asp:Label ID="LabelAge" runat="server" Text="Age:" AssociatedControlID ="TextBoxAge"></asp:Label>
-                        <asp:TextBox CssClass="SearchBox" ID="TextBoxAge" runat="server" Width="80px" Height="19px" placeholder="Age"></asp:TextBox>
+                 </div>
+                    <div style="margin: 5px">
+                        Batch Print Form & Report:
+                          <asp:DropDownList ID="ddlReportForm" runat="server" Width="150px" AutoPostBack="false">
+                              <asp:ListItem Value="IEP"> IEP Report </asp:ListItem>
+                              <asp:ListItem Value="IPRC">IPRC Form</asp:ListItem>
+                              <asp:ListItem Value="Gift">Gift Report Card</asp:ListItem>
+                              <asp:ListItem Value="RC">Report Card</asp:ListItem>
+                              <asp:ListItem Value="OIC">Office Index Card</asp:ListItem>
+                          </asp:DropDownList>
+                        Print By: 
+                        <asp:DropDownList ID="ddlPrintBy" runat="server" Width="100px" AutoPostBack="false" >
+                            <asp:ListItem Value="ListSchool"> School </asp:ListItem>
+                            <asp:ListItem Value="Grade">Grade</asp:ListItem>
+                            <asp:ListItem Value="Class">Class</asp:ListItem>
+                            <asp:ListItem Value="Program">Program</asp:ListItem>
+                            <asp:ListItem Value="Exceptionality">Exceptionality</asp:ListItem>
+                        </asp:DropDownList>
+                        By Value:
+                         <asp:DropDownList ID="ddlPrintByValue" runat="server" Width="250px" AutoPostBack="false">
+                      </asp:DropDownList>
 
-                    </div>--%>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+                         <asp:ImageButton ID="btnSearchGo"  CssClass="SearchGoButton PageButton" runat="server" ToolTip="Search ..." ImageUrl="../images/Go.png" OnClick="BtnSearchGo_Click" />
+                        <asp:CheckBox ID="chbOneFile" Checked="true" Text="In One File" runat="server" />
+                        <asp:CheckBox ID="chbSelectAll" runat="server" Text="Select All" AutoPostBack="true" />
+
+                        <asp:ImageButton ID="btnPrintReport" runat="server"   CssClass="SearchGoButton PageButton" ImageUrl="../images/print.png" />
+                    </div>
+   
         </div>
-        <div style="margin-top: 5px">
-            <asp:UpdatePanel ID="UpdatePanel6" runat="server">
-                <ContentTemplate>
-                    <div class="Horizontal_Tab" id="GradeTab" runat="server"></div>
-                    <asp:HiddenField ID="hfSelectedTab" runat="server" />
-                    <asp:HiddenField ID="hfSelectedTabL" runat="server" />
- 
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        </div>
+
         <div>
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
+            <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>  </ContentTemplate>
+            </asp:UpdatePanel>--%>
                     <div id="DivRoot" style="width: 100%;">
                         <div style="overflow: hidden;" id="DivHeaderRow">
                             <table id="GridView2" style="border: 1px ridge gray; width: 100%; height: 100%; background-color: white;" rules="all" cellspacing="1" cellpadding="1">
@@ -276,13 +239,13 @@
                                     <asp:BoundField DataField="RowNo" HeaderText="No." ItemStyle-CssClass="myRowNo">
                                         <ItemStyle Width="30px" />
                                     </asp:BoundField>
-
-                                    <asp:TemplateField HeaderText="Menu" ItemStyle-CssClass="myAction">
+                                    <asp:TemplateField HeaderText="Selected">
                                         <ItemTemplate>
-                                            <asp:HyperLink ID="Link1" runat="server" Text='<%# Bind("Actions") %>'>  </asp:HyperLink>
+                                            <asp:CheckBox ID="chbSelected" Checked='<%# Convert.ToBoolean(Eval("Selected"))%>' runat="server" CssClass="myCheckSelected"></asp:CheckBox>
                                         </ItemTemplate>
-                                        <ItemStyle Width="40px" Wrap="False" />
+                                        <ItemStyle Width="30px" HorizontalAlign="center" />
                                     </asp:TemplateField>
+
 
                                     <asp:TemplateField HeaderText="Student Name" ItemStyle-CssClass="myName">
                                         <ItemTemplate>
@@ -309,7 +272,7 @@
                                         <ItemStyle Width="120px" Wrap="true" />
                                     </asp:TemplateField>
 
-                                    <asp:BoundField DataField="StudentNo" HeaderText="Student No." ReadOnly="True" ItemStyle-CssClass="StudentNo">
+                                    <asp:BoundField DataField="StudentNo" HeaderText="Student No." ReadOnly="True" ItemStyle-CssClass="myStudentNo">
                                         <ItemStyle Width="80px" Wrap="False" />
                                     </asp:BoundField>
 
@@ -362,7 +325,7 @@
                                     </asp:BoundField>
 
 
-                                    <asp:BoundField DataField="StudentID" ReadOnly="True" ItemStyle-CssClass="StudentID" Visible="false">
+                                    <asp:BoundField DataField="StudentID" ReadOnly="True" ItemStyle-CssClass="StudentID">
 
                                         <%-- <ItemStyle Width="0px" />--%>
                                     </asp:BoundField>
@@ -381,94 +344,17 @@
                             </asp:GridView>
                         </div>
                     </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+              
 
         </div>
-        <div id="alphabateSearch">
-            <ul>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">A</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">B</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">C</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">D</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">E</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink"></a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">F</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">G</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">H</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">I</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">J</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink"></a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">K</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">L</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">M</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">N</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">O</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink"></a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">P</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">Q</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">R</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">S</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">T</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink"></a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">U</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">V</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">W</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">X</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">Y</a></li>
-                <li class="alphabateKey"><a href="#" class="alphabateLink">Z</a></li>
-            </ul>
-        </div>
+
 
         <div id="HelpDIV" class="bubble epahide">
             <asp:TextBox ID="HelpTextContent" runat="server" TextMode="MultiLine" CssClass="HelpTextBox" BackColor="transparent"></asp:TextBox>
 
         </div>
 
-        <div id="ActionMenuDIV" class="bubble epahide">
-            <asp:Label runat="server" ID="LabelTeacherName" Text=""> </asp:Label>
 
-            <div id="ActionMenuUL" class="LeftSideMenu">
-
-                <%--  <ul class="Top_ul" id="NUA-1">
-                    <li id="TopItem_13" class="ItemLevel0"><a id="B-13" class="Level-2" href="#" target="">User Management</a>
-                        <img style="height: 25px; width: 30px; float: right; padding-top: -3px;" src="images/submenu.png">
-                        <ul class="ItemLevel1_ul hideMenuItem" id="NUA-13">
-                            <li id="TopItem_131" class="ItemLevel1"><a id="C-131" class="Level-3" href="SICSetup/Loading.aspx?pID=ApplicationRole" target="GoList">User Role Setup</a> </li>
-                            <li id="TopItem_132" class="ItemLevel1"><a id="C-132" class="Level-3" href="SICSetup/Loading.aspx?pID=UserManagement" target="GoList">User Management</a> </li>
-                            <li id="TopItem_133" class="ItemLevel1"><a id="C-133" class="Level-3" href="SICSetup/Loading.aspx?pID=MultipleSchoolUser" target="GoList">Multiple School Work User Management</a> </li>
-                        </ul>
-                    </li>
-                    <li id="TopItem_14" class="ItemLevel0"><a id="B-14" class="Level-2" href="#" target="GoList">Example Page</a>
-                        <img style="height: 25px; width: 30px; float: right; padding-top: -3px;" src="images/submenu.png">
-                        <ul class="ItemLevel1_ul hideMenuItem" id="NUA-14">
-                            <li id="TopItem_141" class="ItemLevel1"><a id="C-141" class="Level-3" href="SICSetup/Loading.aspx?pID=ClientPage" target="GoList">Client Call Web Service</a> </li>
-                            <li id="TopItem_142" class="ItemLevel1"><a id="C-142" class="Level-3" href="SICSetup/Loading.aspx?pID=ClientPageApi" target="GoList">Client Call Web API</a> </li>
-                        </ul>
-                    </li>
-                    <li id="TopItem_15" class="ItemLevel0"><a id="B-15" class="Level-2" href="#" target="">School Management</a>
-                        <img style="height: 25px; width: 30px; float: right; padding-top: -3px;" src="images/submenu.png">
-                        <ul class="ItemLevel1_ul hideMenuItem" id="NUA-15">
-                            <li id="TopItem_151" class="ItemLevel1"><a id="C-151" class="Level-3" href="SICSetup/Loading.aspx?pID=SchoolDistrictSetup" target="GoList">School District Setup</a> </li>
-                            <li id="TopItem_152" class="ItemLevel1"><a id="C-152" class="Level-3" href="SICSetup/Loading.aspx?pID=SchoolRegionSetup" target="GoList">School Region Setup</a> </li>
-                            <li id="TopItem_153" class="ItemLevel1"><a id="C-153" class="Level-3" href="SICSetup/Loading.aspx?pID=SchoolManagement" target="GoList">School Department Management</a> </li>
-                        </ul>
-                    </li>
-                </ul>--%>
-
-                <%-- <ul id="ActionMenuULsub">
-                    <li id="submenu1"><a class="menuLink" href="javascript:openPage(5,10,750,1000,'IEPForm');">IEP Form </a></li>
-                    <li id="submenu2"><a class="menuLink" href="javascript:openPage(5,10,750,1000,'IEPReport');">IEP Report </a></li>
-                    <li id="submenu3"><a class="menuLink" href="javascript:openPage(5,10,750,1000,'GiftForm');">Gift Form </a></li>
-                    <li id="submenu4"><a class="menuLink" href="javascript:openPage(5,10,750,1000,'GiftReport');">Gift Report </a></li>
-                    <li id="submenu5"><a class="menuLink" href="javascript:openPage(5,10,750,1000,'AlterRCForm');">Alternative Report Card</a></li>
-                    <li id="submenu6"><a class="menuLink" href="javascript:openPage(5,10,750,1000,'AlterRCReport');">Alternative Report Card Report </a></li>
-
-                </ul>--%>
-            </div>
-
-
-        </div>
         <div id="PopUpDIV" class="bubble epahide"></div>
         <div id="ActionPOPDIV" class="bubble epahide">
             <div class="editTitle" style="display: block; margin-top: 5px;">
@@ -529,6 +415,7 @@
     var currentTR;
     var myIDs;
     var currentSearchBoxID = "";
+    var selectSet = [];
 
     function pageLoad(sender, args) {
         $(document).ready(function () {
@@ -542,7 +429,6 @@
             try {
                 //  $("#btnSearchGo" + $("#hfSearchby").val()).show();
                 $("#btnSearchGo" + $("#hfSearchby").val()).removeClass("hideMe");
-
             }
             catch (e) { }
             var vHeight = window.innerHeight - 120;
@@ -557,62 +443,70 @@
                 //currentTR.addClass("highlightRow");
                 if ($("#ActionMenuDIV").is(":visible")) $("#ActionMenuDIV").hide();
             });
-            $("#GradeTab").click(function (e) {
-                var cEvantID = e.originalEvent.srcElement.id;
-                $("#hfSelectedTab").val(cEvantID);
-                $("#hfSelectedTabL").val(e.originalEvent.srcElement.parentNode.id);
-                $("#btnGradeTab").click();
-                preaLinkID = $("#hfSelectedTabL").val();
-            });
-            $(".alphabateLink").click(function (e) {
+            $("#ddlPrintBy").change(function (event) {
+                var ddlType = $("#ddlPrintBy").val();
+                BuildDDLList($("#ddlPrintByValue"), ddlType);
+            })
 
-                var cEvantID = e.currentTarget.innerText;
-                $("#hfSearchby").val("LastName");
-                $("#hfSearchValue").val(cEvantID);
-                $("#btnGradeTab").click();
-            });
-            $(".SearchTextBox").change(function (e) {
-                var cEvantID = e.currentTarget.id;
-                currentSearchBoxID = cEvantID;
-                $("#hfSearchby").val(cEvantID.replace("TextBox", ""));
-                $("#hfSearchValue").val(e.currentTarget.value);
-                $("#hfSelectedTab").val("00");
-            });
-            $(".SearchTextBox").focus(function (e) {
-                try {
-                    var cEvantID = e.currentTarget.id;
-                    var preBox = $("#hfSearchby").val();
-                    $("#hfSearchby").val(cEvantID.replace("TextBox", ""));
-                    if (preBox != "") {
-                        $("#btnSearchGo" + preBox).addClass("hideMe"); // .hide();
-                        $("#TextBox" + preBox).val("");
-                        $("#TextBox" + preBox).removeClass("highlightSearchBox");
+            $("#chbSelectAll").change(function (event) {
+                var selectedValue = $('#chbSelectAll').is(":checked"); //  $("#chbSelectAll").is(":checked")? true: false;
+                // if ($('#check_id').is(":checked"))
+                // $('#check_id').val();
 
+                // alert(selectedValue);
+                $("#GridView1 tr").each(function () {
+                    try {
 
-                        //  $("#" + currentSearchBoxID).val("");
-                        //  $("#" + currentSearchBoxID.replace("TextBox", "btnSearchGo")).hide();
+                        var cellId = $(this).find('td .myCheckSelected')[0].childNodes[0].id;
+                        //  var newcell = $(this).find('td .myCheckSelected')[0].childNodes[0].checked;
+                        //  var chevalue = $("#" + cellId).is(":checked");
+                        $("#" + cellId).attr('checked', selectedValue);
+                        //  console.log($("#" + cellId).is(":checked"));
+
                     }
-
-                    //  $("#" + cEvantID.replace("TextBox", "btnSearchGo")).show();
-                    $("#" + cEvantID.replace("TextBox", "btnSearchGo")).removeClass("hideMe"); // .show();
-                    $("#" + cEvantID).addClass("highlightSearchBox");
-                    currentSearchBoxID = cEvantID;
-
-                }
-                catch (e) {
-                    alert("Something error");
-                }
+                    catch (ex) {
+                    }
+                });
             });
-            // after client assibling the DDL control, the page event does not work **************** 
-            //$("#DDLPanel").change(function () {
-            //    BuildingSchoolList();
-            //});
-            //$("#ddlSearchby").change(function (e) {
-            //    CheckSearchControl();
-            //});
-            // **************************************************************************************
+            $("#btnPrintReport").click(function (event) {
+                var selectedDataSet = [];
+                alert("click on");
+                $("#GridView1 tr").each(function () {
+                    try {
+                        var cellId = $(this).find('td .myCheckSelected')[0].childNodes[0].id;
+                        var chechedValue = $("#" + cellId).is(":checked");
+
+                        if (chechedValue) {
+                            var selectedOBJ = {
+                                UserID: $("#hfUserID").val(),
+                                SchoolYear: $("#ddlSchoolYear").val(),
+                                SchoolCode: $("#ddlSchool").val(),
+                                ObjID: $(this).find('td.StudentID').text(),
+                                ObjNo: $(this).find('td.myGrade').text(),
+                                ObjType: $(this).find('td.myStudentNo').text()
+                            };       
+                            selectedDataSet.push(selectedOBJ);
+                        }
+                    }
+                    catch (ex) {
+
+                    }
+                });
+
+                SIC.Models.WebService.SelectedStudentDataSet("BatchPrint", selectedDataSet, onSuccessSelectedData, onFailure);
+
+            });
+
         });
     }
+    function onSuccessSelectedData(result) {
+        var reportID = $("#ddlReportForm").val();
+        var semester = $("#ddlSemester").val();
+        var term = $("#ddlTerm").val();
+        var oneFile = $('#chbOneFile').is(":checked") ? "Yes" : "No";
+        window.open("../LoadingMultipleReports.aspx?ReportID=" + reportID + "&Semester=" + semester + "&Term=" + term + "&OneFile=" + oneFile, "pdfprint", "width=850 height=650, top=50, left=50, toolbars=no, scrollbars=no,status=no,resizable=no");
+    }
+
     function clearSearhBox() {
         $("#" + currentSearchBoxID).val("");
     }
@@ -634,40 +528,7 @@
 
     }
 
-    function BuildingSchoolList() {
-        BaseParaDDL.Operate = "SchoolList";
-        BaseParaDDL.SchoolYear = $("#ddlSchoolYear").val();
-        BaseParaDDL.SchoolCode = $("#DDLPanel").val();
 
-        var ddlList = SIC.Models.WebService.CommonLists(BaseParaDDL.Operate, BaseParaDDL, onSuccessSchoolList, onFailure);
-    }
-    function onSuccessSchoolList(result) {
-        BuildingList.DropDown2($("#ddlSchool"), BuildingDropDownList(result), $("#ddlSchoolCode"), BuildingDropDownList1(result));
-
-    }
-
-    function CheckSearchControl() {
-        var value = $("#ddlSearchby").val();
-        var txtValue = $("#hfSearchTextFields").val();
-        if (txtValue.indexOf(value) != -1) {
-            $("#TextSearch").show();
-            $("#ddlSearchValue").hide();
-        }
-        else {
-            $("#TextSearch").hide();
-            $("#ddlSearchValue").show();
-            ChangeSearchValueList();
-        }
-    }
-
-    function ChangeSearchValueList() {
-        BaseParaDDL.Operate = $("#ddlSearchby").val();
-        BaseParaDDL.SchoolYear = $("#ddlSchoolYear").val();
-        BaseParaDDL.SchoolCode = $("#ddlSchool").val();
-        BaseParaDDL.Para1 = $("#ddlSemester").val();
-        BaseParaDDL.Para2 = $("#ddlTerm").val();
-        var ddlList = SIC.Models.WebService.CommonLists(BaseParaDDL.Operate, BaseParaDDL, onSuccessDDL, onFailure);
-    }
 
     function onSuccessDDL(result) {
         BuildingList.DropDown($("#ddlSearchValue"), BuildingDropDownList(result));
@@ -698,6 +559,29 @@
         //        $("div").append(field + " ");
         //    });
         //});
+    }
+
+    async function BuildDDLList(ddlControl,ddlType) {
+       
+         var para = {         
+             Operate: ddlType,
+             UserID : $("#hfUserID").val(),
+             Para1 :$("#hfUserRole").val(),
+             Para2 : $("#ddlSchoolYear").val(),
+             Para3 : $("#ddlSchool").val(),
+             Para4 : ddlType,
+        };
+        var para = "Operate=" + para.Operate + "&UserID=" + para.UserID + "&Para1=" + para.Para1 + "&Para2=" + para.Para2 + "&Para3=" + para.Para3 + "&Para4=" + para.Para4 ;
+        var myUrl = "https://webt.tcdsb.org/Webapi/SIC/api/ListItems/?" + para;
+ 
+        try {
+            const response = await fetch(myUrl);
+            const data = await response.json();
+            BuildingList.DropDown(ddlControl, BuildingDropDownList(data) );
+        }
+        catch (ex) {
+            alert(ex.message);
+        }
     }
 
 </script>

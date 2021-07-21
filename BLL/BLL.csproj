@@ -64,6 +64,8 @@
     <Compile Include="Common.cs" />
     <Compile Include="CommonDb.cs" />
     <Compile Include="CommonExecute.cs" />
+    <Compile Include="CommonSP.cs" />
+    <Compile Include="CommonSPandParamter.cs" />
     <Compile Include="GetSPFrom.cs" />
     <Compile Include="ManageApp\AppsSecurityManagement.cs" />
     <Compile Include="ManageApp\GeneralList.cs" />
@@ -104,6 +106,7 @@
     <Compile Include="UtilityMethod\ParameterFactory.cs" />
     <Compile Include="UtilityMethod\RandomCharacter.cs" />
     <Compile Include="UtilityMethod\RenderDocuments.cs" />
+    <Compile Include="UtilityMethod\ReportBase.cs" />
     <Compile Include="UtilityMethod\ReportRender.cs" />
     <Compile Include="UtilityMethod\StringUtility.cs" />
     <Compile Include="UtilityMethod\SymetricEncryption.cs" />

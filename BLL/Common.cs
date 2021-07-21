@@ -10,11 +10,25 @@ namespace BLL
 {
     public class Common
     {
+        public static string SPName(List<CommonSP> cSP, string action, object parameter)
+        {
+            try
+            {
+                string sp = GetSPbyClassAndAction(cSP, action ); // this is a OOP method
+              //  string sp = GetSPbyClassAndAction(className, action);
+                return GetParamerters(sp, parameter);
+            }
+            catch (Exception ex)
+            {
+                return  "SP nmae for " + action;
+            }
+        }
         public static string SPName(string className, string action, object parameter)
         {
             try
             {
-                string sp = GetSPbyClassAndAction(className, action);
+                string sp = GetSPbyClassAndAction(className, action); // this is a OOP method
+                                                                            //  string sp = GetSPbyClassAndAction(className, action);
                 return GetParamerters(sp, parameter);
             }
             catch (Exception ex)
@@ -22,7 +36,6 @@ namespace BLL
                 return className + " " + action;
             }
         }
-
         public static List<T> CommonList<T>(string sp, object parameter)
         {
             try
@@ -110,24 +123,19 @@ namespace BLL
                 return className + " " + action;
             }
         }
+        private static string GetSPbyClassAndAction(List<CommonSP> classSP, string action )
+        {
+            try
+            {
+                return CommonSPandParamter.GetSPName(classSP, action);
+            }
+            catch (Exception ex)
+            {
+                return    "SP Name for " + action;
+            }
+        }
 
-        //private static string GetSPInClass(string action)
-        //{
-        //    string parameter = " @Operate,@UserID,@Type";
-        //    switch (action)
-        //    {
-        //        case "General":
-        //            return "dbo.SIC_sys_GeneralList" + parameter;
-
-        //        case "DDList":
-        //            return "dbo.SIC_sys_ListsValuePara" + parameter;
-        //        case "SchoolList":
-        //            return "dbo.SIC_sys_SchoolList" + parameter;
-        //        default:
-        //            return action;
-
-        //    }
-        //}
+   
         public static string CheckParamerters(string sp, object obj)
         {
             if (sp.Contains("@"))

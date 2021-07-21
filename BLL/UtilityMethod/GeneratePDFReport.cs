@@ -13,22 +13,22 @@ namespace BLL
 {
     public class GeneratePDFReport
     {
-        public static Byte[] GetOneReport2(ListOfSelected parameter, string reportServer, string reportPath, string reportName, string reportFormat)
+        public static Byte[] GetOneReport2(ListOfSelected parameter, ReportBase reportPara)
         {
-            var reportParameters = GetReportParameter(reportName, parameter);
+            var reportParameters = BuildReportingParameters.GetReportParameter(reportPara.ReportType, parameter);
 
-            return getPDFReport(reportServer, reportPath, reportName, reportFormat, reportParameters);
+            return getPDFReport(reportPara, reportParameters);
         }
-        public static Byte[] GetOneReport(string reportName, ListOfSelected parameter)
+        public static Byte[] GetOneReport(ReportBase reportPara, ListOfSelected parameter)
         {
-            var reportParameters = GetReportParameter(reportName, parameter);
-            string reportServer = getReportLocation(reportName, "Services");
-            string reportPath = getReportLocation(reportName, "Path");
+            var reportParameters = BuildReportingParameters.GetReportParameter(reportPara.ReportType, parameter);
+           // string reportServer = getReportLocation(reportType, "Service");
+          //  string reportPath = getReportLocation(reportType, "Path");
 
-            return getPDFReport(reportServer, reportPath, reportName, "PDF", reportParameters);
+            return getPDFReport(reportPara, reportParameters);
         }
 
-        public static Byte[] GetMultipleReports(string _reportName, string _reportFormat, List<ListOfSelected> myList)
+        public static Byte[] GetMultipleReports(ReportBase reportPara, List<ListOfSelected> myList)
         {
             Document doc = new Document();
             MemoryStream msOutput = new MemoryStream();
@@ -38,7 +38,7 @@ namespace BLL
             {
                 try
                 {
-                    Byte[] myPDF = GetOneReport(_reportName, item); // item  => ListOFSelected
+                    Byte[] myPDF = GetOneReport(reportPara, item); // item  => ListOFSelected
                     if (myPDF.Length > 10)
                     {
                         AddFileToPCopy(ref pCopy, myPDF);
@@ -65,54 +65,8 @@ namespace BLL
             }
             pdfFile1.Close();
         }
-        private static List<ReportParameter> GetReportParameter(string reportName, ListOfSelected parameter)
-        {
-            //ParameterFactory pFactory = new ParameterFactory();
-            //var pFactory = new ParameterFactory(new IEPPara()) ;
-            //return pFactory.rParameter(parameter);
-            IReportParameter iParameter = new IEPReportParameter(parameter);
-            switch (reportName)
-            {
-                case "IEP":
-                    iParameter = new IEPReportParameter(parameter);
-                    break;//  return iepParameter.reportParameters();
-                case "TPA":
-                    iParameter = new TPAReportParameter(parameter);
-                    break; //  return tpaParameter.reportParameters();
-                case "SSF":
-                    iParameter = new SSFormReportParameter(parameter);
-                    break;  //  return ssfParameter.reportParameters();
-                case "OfficeIndixCard":
-                    iParameter = new IEPReportParameter(parameter);
-                    break;   //  return indParameter.reportParameters();
-                case "RC":
-                    iParameter = new IEPReportParameter(parameter);
-                    break;   //   return rcParameter.reportParameters();
-                case "AlterRC":
-                    iParameter = new IEPReportParameter(parameter);
-                    break;   //  return altParameter.reportParameters();
-                case "GiftRC":
-                    iParameter = new GiftReportParameter(parameter);
-                    break;  //   return giftParameter.reportParameters();
-                default:
-                    iParameter = new IEPReportParameter(parameter);
-                    break;  //    return tcParameter.reportParameters();
-            }
-            return iParameter.ReportParameters();
-
-            //var reportParameters = new List<ReportParameter>
-            //{
-            //    new ReportParameter() { ParaName = "Operate", ParaValue = "Report" },
-            //    new ReportParameter() { ParaName = "UserID", ParaValue = parameter.UserID },
-            //    new ReportParameter() { ParaName = "SchoolYear", ParaValue = parameter.SchoolYear },
-            //    new ReportParameter() { ParaName = "SchoolCode", ParaValue = parameter.SchoolCode },
-            //    new ReportParameter() { ParaName = "EmployeeID", ParaValue = parameter.ObjID },
-            //    new ReportParameter() { ParaName = "SessionID", ParaValue = parameter.ObjNo },
-            //    new ReportParameter() { ParaName = "Category", ParaValue = parameter.ObjType }
-            //};
-            //return reportParameters;
-        }
-        private static Byte[] getPDFReport(string reportingServices, string reportPath, string reportName, string reportFormat, List<ReportParameter> _reportParameter)
+  
+        private static Byte[] getPDFReport(ReportBase reportPara, List<ReportParameter> _reportParameter)
 
         {
             //  Byte[] result;
@@ -125,12 +79,12 @@ namespace BLL
                 string accessDomain = WebConfigurationManager.AppSettings["NetWorkDomain"];//  WebConfig.DomainName();
                                                                                            //  string reportingServices = WebConfigurationManager.AppSettings["ReportingService"];// WebConfig.ReportServices(); 
                                                                                            //  string reportPath = WebConfigurationManager.AppSettings["ReportPathWS"];//  WebConfig.ReportPathWS()  + "/" + _reportName;
-                string format = reportFormat;
+                string format = reportPara.ReportFormat;
 
-                RS.Url = reportingServices;
+                RS.Url = reportPara.ReportService;
                 RS.Credentials = new System.Net.NetworkCredential(accessUser, accessRWSPW, accessDomain);
 
-                string report = reportPath + reportName;
+                string report = reportPara.ReportPath + reportPara.ReportName;
 
 
                 string historyID = null;
@@ -165,19 +119,21 @@ namespace BLL
                 return new Byte[0];
             }
         }
-        private static string getReportLocation(string reportName, string locationType)
-        {
-            if (locationType == "Service") return WebConfigurationManager.AppSettings["ReportingService"];
-            switch (reportName)
-            {
-                case "IEPReport":
-                    return "SES_Reports/IEP/Production";
-                case "SSForm":
-                    return "SES_Reports/SSForm/Production";
-                default:
-                    return "TC_Report/Production";
-            }
-        }
+        //private static string getReportLocation(string reportName, string locationType)
+        //{
+        //    if (locationType == "Service") return WebConfigurationManager.AppSettings["ReportingService"];
+        //    switch (reportName)
+        //    {
+        //        case "IEP":
+        //        case "IEPReport":
+        //            return "SES_Reports/IEP/Production";
+        //        case "SSF":
+        //        case "SSForm":
+        //            return "SES_Reports/SSForm/Production";
+        //        default:
+        //            return "TC_Report/Production";
+        //    }
+        //}
         private static ReportingWebService.ParameterValue[] GetReportingServiceParameters(List<ReportParameter> _reportParameter)
         {
             int pLeng = _reportParameter.Count;
@@ -197,20 +153,5 @@ namespace BLL
             return rptParameters;
         }
 
-    }
-    public class ReportParameter
-    {
-        public string ParaName { get; set; }
-        public string ParaValue { get; set; }
-
-    }
-    public class ListOfSelected
-    {
-        public string UserID { get; set; }
-        public string SchoolYear { get; set; }
-        public string SchoolCode { get; set; }
-        public string ObjID { get; set; }
-        public string ObjNo { get; set; }
-        public string ObjType { get; set; }
     }
 }

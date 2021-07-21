@@ -3,8 +3,20 @@ using System.Collections.Generic;
 
 namespace BLL
 {
-    public class GeneralValue
+    public class GeneralValue : CommonSP
     {
+        public override string GetSPandParametersByOverride(string action)
+        {
+            switch (SPSource.SPFile)
+            {
+                case "JsonFile":
+                    return GetSPFrom.JsonFile(action);
+                case "DBTable":
+                    return GetSPFrom.DbTable(action, "AppraisaValue");
+                default:
+                    return GetSPInClass(action);
+            }
+        }
         public static string GetSP(string action)
         {
             switch (SPSource.SPFile)
@@ -12,7 +24,7 @@ namespace BLL
                 case "JsonFile":
                     return GetSPFrom.JsonFile(action);
                 case "DBTable":
-                    return GetSPFrom.DbTable(action, "AppraisalGeneral");
+                    return GetSPFrom.DbTable(action, "AppraisalValue");
                 default:
                     return GetSPInClass(action);
             }

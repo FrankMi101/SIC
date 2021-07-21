@@ -5,8 +5,20 @@ using System.Web;
 using ClassLibrary;
 namespace BLL
 {
-    public class AppsSecurityManagement
+    public class AppsSecurityManagement : CommonSP
     {
+        public override string GetSPandParametersByOverride(string action)
+        {
+            switch (SPSource.SPFile)
+            {
+                case "JsonFile":
+                    return GetSPFrom.JsonFile(action);
+                case "DBTable":
+                    return GetSPFrom.DbTable(action, "AppraisalPageHelp");
+                default:
+                    return GetSPInClass(action);
+            }
+        }
         public static string GetSP(string action)
         {
             switch (SPSource.SPFile)

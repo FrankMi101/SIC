@@ -183,6 +183,8 @@
                          <asp:ListItem Value="IEP">IEP Student</asp:ListItem>
                          <asp:ListItem Value="IPRC">IPRC Student</asp:ListItem>
                          <asp:ListItem Value="Gift">Gift Student</asp:ListItem>
+                         <asp:ListItem Value="ESL">ESL Student</asp:ListItem>
+                         <asp:ListItem Value="SHSM">SHSM Student</asp:ListItem>
                          <asp:ListItem Value="Autism">Autism Student</asp:ListItem>
                          <asp:ListItem Value="Alternative">Alternative Student</asp:ListItem>
                      </asp:DropDownList>

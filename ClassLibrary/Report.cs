@@ -12,7 +12,8 @@ namespace ClassLibrary
         public string ReportID { get; set; }
         public string ReportName { get; set; }
         public string ReportTitle { get; set; }
-        public string  ReportType { get; set; }
+        public string ReportType { get; set; }
+
         public string Comments { get; set; }
     }
 }
