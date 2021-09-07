@@ -215,7 +215,7 @@ $(document).ready(function () {
             openSupportInformation("LoadingAppsInfo.aspx?aID=Edit", 550, "click");
         });
     }
-    catch (e)
+    catch(e)
     { }
 });
 

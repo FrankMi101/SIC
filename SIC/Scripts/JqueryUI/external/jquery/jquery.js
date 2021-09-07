@@ -307,7 +307,7 @@ jQuery.extend( {
 				!hasOwn.call( obj.constructor.prototype, "isPrototypeOf" ) ) {
 				return false;
 			}
-		} catch ( e ) {
+		} catch( e ) {
 
 			// IE8,9 Will throw exceptions on certain host objects #9897
 			return false;
@@ -749,7 +749,7 @@ try {
 	// Support: Android<4.0
 	// Detect silently failing push.apply
 	arr[ preferredDoc.childNodes.length ].nodeType;
-} catch ( e ) {
+} catch( e ) {
 	push = { apply: arr.length ?
 
 		// Leverage slice if possible
@@ -888,7 +888,7 @@ function Sizzle( selector, context, results, seed ) {
 							newContext.querySelectorAll( newSelector )
 						);
 						return results;
-					} catch ( qsaError ) {
+					} catch( qsaError ) {
 					} finally {
 						if ( nid === expando ) {
 							context.removeAttribute( "id" );
@@ -941,7 +941,7 @@ function assert( fn ) {
 
 	try {
 		return !!fn( div );
-	} catch (e) {
+	} catch(e) {
 		return false;
 	} finally {
 		// Remove from its parent by default
@@ -1463,7 +1463,7 @@ Sizzle.matchesSelector = function( elem, expr ) {
 					elem.document && elem.document.nodeType !== 11 ) {
 				return ret;
 			}
-		} catch (e) {}
+		} catch(e) {}
 	}
 
 	return Sizzle( expr, document, null, [ elem ] ).length > 0;
@@ -2924,7 +2924,7 @@ var rootjQuery,
 				} else {
 					elem = document.getElementById( match[ 2 ] );
 
-					// Check parentNode to catch when Blackberry 4.6 returns
+					// Check parentNode to catchwhen Blackberry 4.6 returns
 					// nodes that are no longer in the document #6963
 					if ( elem && elem.parentNode ) {
 
@@ -3657,7 +3657,7 @@ jQuery.ready.promise = function( obj ) {
 
 			try {
 				top = window.frameElement == null && document.documentElement;
-			} catch ( e ) {}
+			} catch( e ) {}
 
 			if ( top && top.doScroll ) {
 				( function doScrollCheck() {
@@ -3668,7 +3668,7 @@ jQuery.ready.promise = function( obj ) {
 							// Use the trick by Diego Perini
 							// http://javascript.nwbox.com/IEContentLoaded/
 							top.doScroll( "left" );
-						} catch ( e ) {
+						} catch( e ) {
 							return window.setTimeout( doScrollCheck, 50 );
 						}
 
@@ -3751,7 +3751,7 @@ jQuery( function() {
 	support.deleteExpando = true;
 	try {
 		delete div.test;
-	} catch ( e ) {
+	} catch( e ) {
 		support.deleteExpando = false;
 	}
 
@@ -3796,7 +3796,7 @@ function dataAttr( elem, key, data ) {
 					+data + "" === data ? +data :
 					rbrace.test( data ) ? jQuery.parseJSON( data ) :
 					data;
-			} catch ( e ) {}
+			} catch( e ) {}
 
 			// Make sure we set the data so it isn't changed later
 			jQuery.data( elem, key, data );
@@ -4769,7 +4769,7 @@ function returnFalse() {
 function safeActiveElement() {
 	try {
 		return document.activeElement;
-	} catch ( err ) { }
+	} catch( err ) { }
 }
 
 function on( elem, types, selector, data, fn, one ) {
@@ -5166,7 +5166,7 @@ jQuery.event = {
 					jQuery.event.triggered = type;
 					try {
 						elem[ type ]();
-					} catch ( e ) {
+					} catch( e ) {
 
 						// IE<9 dies on focus/blur to hidden element (#1486,#12518)
 						// only reproducible on winXP IE8 native, not IE9 in IE8 mode
@@ -5414,7 +5414,7 @@ jQuery.event = {
 					try {
 						this.focus();
 						return false;
-					} catch ( e ) {
+					} catch( e ) {
 
 						// Support: IE<9
 						// If we error on focus to hidden element (#1486, #12518),
@@ -6368,7 +6368,7 @@ jQuery.fn.extend( {
 					elem = 0;
 
 				// If using innerHTML throws an exception, use the fallback method
-				} catch ( e ) {}
+				} catch( e ) {}
 			}
 
 			if ( elem ) {
@@ -7133,7 +7133,7 @@ jQuery.extend( {
 				// Swallow errors from 'invalid' CSS values (#5509)
 				try {
 					style[ name ] = value;
-				} catch ( e ) {}
+				} catch( e ) {}
 			}
 
 		} else {
@@ -8332,7 +8332,7 @@ jQuery.extend( {
 						try {
 							option.selected = optionSet = true;
 
-						} catch ( _ ) {
+						} catch( _ ) {
 
 							// Will be executed only in IE6
 							option.scrollHeight;
@@ -8659,11 +8659,11 @@ jQuery.fn.extend( {
 		name = jQuery.propFix[ name ] || name;
 		return this.each( function() {
 
-			// try/catch handles cases where IE balks (such as removing a property on window)
+			// try/catchhandles cases where IE balks (such as removing a property on window)
 			try {
 				this[ name ] = undefined;
 				delete this[ name ];
-			} catch ( e ) {}
+			} catch( e ) {}
 		} );
 	}
 } );
@@ -9061,7 +9061,7 @@ jQuery.parseXML = function( data ) {
 			xml.async = "false";
 			xml.loadXML( data );
 		}
-	} catch ( e ) {
+	} catch( e ) {
 		xml = undefined;
 	}
 	if ( !xml || !xml.documentElement || xml.getElementsByTagName( "parsererror" ).length ) {
@@ -9327,13 +9327,13 @@ function ajaxConvert( s, response, jqXHR, isSuccess ) {
 				// Apply converter (if not an equivalence)
 				if ( conv !== true ) {
 
-					// Unless errors are allowed to bubble, catch and return them
+					// Unless errors are allowed to bubble, catchand return them
 					if ( conv && s[ "throws" ] ) { // jscs:ignore requireDotNotation
 						response = conv( response );
 					} else {
 						try {
 							response = conv( response );
-						} catch ( e ) {
+						} catch( e ) {
 							return {
 								state: "parsererror",
 								error: conv ? e : "No conversion from " + prev + " to " + current
@@ -9736,7 +9736,7 @@ jQuery.extend( {
 			try {
 				state = 1;
 				transport.send( requestHeaders, done );
-			} catch ( e ) {
+			} catch( e ) {
 
 				// Propagate exception as error if not done
 				if ( state < 2 ) {
@@ -10149,7 +10149,7 @@ jQuery.ajaxSettings.xhr = window.ActiveXObject !== undefined ?
 		// Support: IE 9-11
 		// IE seems to error on cross-domain PATCH requests when ActiveX XHR
 		// is used. In IE 9+ always use the native XHR.
-		// Note: this condition won't catch Edge as it doesn't define
+		// Note: this condition won't catchEdge as it doesn't define
 		// document.documentMode but it also doesn't support ActiveX so it won't
 		// reach this code.
 		if ( document.documentMode > 8 ) {
@@ -10250,7 +10250,7 @@ if ( xhrSupported ) {
 
 					// Do send the request
 					// This may raise an exception which is actually
-					// handled in jQuery.ajax (so no try/catch here)
+					// handled in jQuery.ajax (so no try/catchhere)
 					xhr.send( ( options.hasContent && options.data ) || null );
 
 					// Listener
@@ -10285,7 +10285,7 @@ if ( xhrSupported ) {
 								// statusText for faulty cross-domain requests
 								try {
 									statusText = xhr.statusText;
-								} catch ( e ) {
+								} catch( e ) {
 
 									// We normalize with Webkit giving an empty statusText
 									statusText = "";
@@ -10314,7 +10314,7 @@ if ( xhrSupported ) {
 
 					// Do send the request
 					// `xhr.send` may raise an exception, but it will be
-					// handled in jQuery.ajax (so no try/catch here)
+					// handled in jQuery.ajax (so no try/catchhere)
 					if ( !options.async ) {
 
 						// If we're in sync mode we fire the callback
@@ -10346,13 +10346,13 @@ if ( xhrSupported ) {
 function createStandardXHR() {
 	try {
 		return new window.XMLHttpRequest();
-	} catch ( e ) {}
+	} catch( e ) {}
 }
 
 function createActiveXHR() {
 	try {
 		return new window.ActiveXObject( "Microsoft.XMLHTTP" );
-	} catch ( e ) {}
+	} catch( e ) {}
 }
 
 

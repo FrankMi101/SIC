@@ -15,7 +15,7 @@ function OperationCheckBoxList(obj, value) {
             this.disabled = value;
         });
     }
-    catch (ex) {
+    catch(ex) {
         var em = ex.message;
     }
 
@@ -35,7 +35,7 @@ function OperationCheckBoxListSelectedStr(obj, type) {
         });
         return rVal;
     }
-    catch (ex) {
+    catch(ex) {
        var em = ex.message;
     }
 }
@@ -45,7 +45,7 @@ function OperationRadioButtonList(obj, value) {
             this.disabled = value;
         });
     }
-    catch (ex)
+    catch(ex)
     { var em = ex.message;}
 
 }
@@ -57,7 +57,7 @@ function RadioButtonListSelectedValue(obj, type)
         else 
             return $(obj + " input:checked").val();
     }
-    catch (ex)
+    catch(ex)
     { var em = ex.message;}
 }
 function OperationDropDownList(obj, value) {
@@ -71,7 +71,7 @@ function OperationButton(obj, value) {
     try {
         obj.prop("disabled", value);
     }
-    catch (ex)
+    catch(ex)
     { var em = ex.message;}
 
 }
@@ -80,7 +80,7 @@ function OperationDatePicker(obj, value) {
         obj.prop("disabled", value);
         obj.datepicker("disabled", value);
     }
-    catch (ex)
+    catch(ex)
     { var em = ex.message;}
 
 }

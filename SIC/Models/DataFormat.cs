@@ -6,52 +6,52 @@ using System.Web;
 namespace SIC 
 {
     
-    public class DateFC
+    public class DateFormat
     {
-        public DateFC()
+        public DateFormat()
         { }
         public static string Format(DateTime pDate, string pFormat)
         {
-            return BLL.DateFC.Format(pDate, pFormat);   
+            return BLL.DateFormat.Format(pDate, pFormat);   
         }
 
         public static DateTime YMD(string eDate)
         {
-            return BLL.DateFC.YMD(eDate);
+            return BLL.DateFormat.YMD(eDate);
         }
 
         public static string YMD(DateTime vDate)
         {
-            return BLL.DateFC.YMD(vDate);
+            return BLL.DateFormat.YMD(vDate,"/");
         }
 
         public static int Age(DateTime birthdate)
         {
-            return BLL.DateFC.Age(birthdate);
+            return BLL.DateFormat.Age(birthdate);
         }
         public static int Age(DateTime birthdate, DateTime comparedate)
         {
-            return BLL.DateFC.Age(birthdate, comparedate);
+            return BLL.DateFormat.Age(birthdate, comparedate);
         }
 
         public static string SchoolYearFrom(string strType, string cSchoolYear)
         {
-            return BLL.DateFC.SchoolYearFrom(strType, cSchoolYear);
+            return BLL.DateFormat.SchoolYearFrom(strType, cSchoolYear);
         }
 
         public static string SchoolYearNext(string strType, string cSchoolYear)
         {
-            return BLL.DateFC.SchoolYearNext(strType, cSchoolYear);
+            return BLL.DateFormat.SchoolYearNext(strType, cSchoolYear);
         }
 
         public static string SchoolYearPrevious(string strType, string cSchoolYear)
         {
-            return BLL.DateFC.SchoolYearPrevious(strType, cSchoolYear);
+            return BLL.DateFormat.SchoolYearPrevious(strType, cSchoolYear);
         }
 
         public static string YearTOGO(string strType, string cSchoolYear)
         {
-            return BLL.DateFC.YearTOGO(strType, cSchoolYear);
+            return BLL.DateFormat.YearTOGO(strType,9, cSchoolYear);
         }
   
     }

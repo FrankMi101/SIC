@@ -430,7 +430,7 @@
                 //  $("#btnSearchGo" + $("#hfSearchby").val()).show();
                 $("#btnSearchGo" + $("#hfSearchby").val()).removeClass("hideMe");
             }
-            catch (e) { }
+            catch(e) { }
             var vHeight = window.innerHeight - 120;
             MakeStaticHeader("GridView1", vHeight, 1500, 20, false);
             preaLinkID = $("#hfSelectedTabL").val();
@@ -464,7 +464,7 @@
                         //  console.log($("#" + cellId).is(":checked"));
 
                     }
-                    catch (ex) {
+                    catch(ex) {
                     }
                 });
             });
@@ -488,7 +488,7 @@
                             selectedDataSet.push(selectedOBJ);
                         }
                     }
-                    catch (ex) {
+                    catch(ex) {
 
                     }
                 });
@@ -579,7 +579,7 @@
             const data = await response.json();
             BuildingList.DropDown(ddlControl, BuildingDropDownList(data) );
         }
-        catch (ex) {
+        catch(ex) {
             alert(ex.message);
         }
     }

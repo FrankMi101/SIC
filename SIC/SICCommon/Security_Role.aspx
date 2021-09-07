@@ -183,7 +183,7 @@
             para.AccessScope = $("#ddlScope").val();
             var result = SIC.Models.WebService.SaveSecurityRole(para.Operate, para, onSuccess, onFailure);
         }
-        catch (e) {
+        catch(e) {
             alert(para.Operate + " Submit click something going wrong");
         }
     }

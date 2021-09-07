@@ -18,12 +18,7 @@ namespace SIC
                 txtDomain.Text = WebConfig.DomainName();
                 LabelAppName.Text = WebConfig.AppName();
                 HostName.InnerText = System.Net.Dns.GetHostName();
-                //if (User.Identity.Name == "")
-                //{
-                //    txtUserName.Text = "mif";
-                //}
-                //else
-                //{ txtUserName.Text = User.Identity.Name; }
+ 
 
                 txtUserName.Focus();
                 if (DBConnection.CurrentDB != "Production")
@@ -34,7 +29,7 @@ namespace SIC
                 string authenticationMethod = WebConfig.getValuebyKey("AuthenticateMethod");
                 if (authenticationMethod == "NameOnly")
                 {
-                    //   rfPassword.Enabled = false;
+                       rfPassword.Enabled = false;
                 }
             }
         }
@@ -57,10 +52,10 @@ namespace SIC
                     }
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 // CheckTestUser();
-                string exM = ex.Message;
+               // string exM = ex.Message;
                 ShowMessage("MessageAuthenticate");
                 txtUserName.Focus();
             }
@@ -80,7 +75,7 @@ namespace SIC
                     CreateAuthenticationTicket(loginRole);
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 ShowMessage("MessageLoginDB");
             }
@@ -116,9 +111,9 @@ namespace SIC
 
                 Response.Redirect(FormsAuthentication.GetRedirectUrl(txtUserName.Text.ToLower(), false), false);
             }
-            catch (Exception ex)
+            catch 
             {
-                string exm = ex.Message;
+               
             }
 
 

@@ -365,14 +365,14 @@ $(document).ready(function () {
               
                 event.stopPropagation();
             }
-            catch (e) {
+            catch(e) {
                 var k = "";
             }
         });
 
 
     }
-    catch (ex) {
+    catch(ex) {
         var exm = ex;
     }
 });
@@ -456,7 +456,7 @@ function openTopSubMenuM(cEventID, Level) {
         }
 
     }
-    catch (e) {
+    catch(e) {
         var k = "";
     }
     // window.alert(event.currentTarget.childNodes['3'].className);

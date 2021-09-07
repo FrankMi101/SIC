@@ -20,7 +20,7 @@ function WebForm_FindFirstFocusableChild(control) {
                         return focused;
                     }
                 }
-            } catch (e) {
+            } catch(e) {
             }
         }
     }
@@ -48,7 +48,7 @@ function WebForm_AutoFocus(focusId) {
                 window.__smartNav.ae = focused.id;
             }
         }
-        catch (e) {
+        catch(e) {
         }
     }
 }

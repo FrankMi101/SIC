@@ -6,12 +6,12 @@ using System.Web.UI.WebControls;
 
 namespace BLL
 {
-  
+
     public static class AssemblingList
     {
         public static void SetLists(System.Web.UI.WebControls.ListControl myListControl, List<NameValueList> myListData)
-        {           
-                AssemblingMyList(myListControl, myListData, "Value", "Name");
+        {
+            AssemblingMyList(myListControl, myListData, "Value", "Name");
         }
         public static void SetLists(System.Web.UI.WebControls.ListControl myListControl, List<NameValueList> myListData, object initialValue)
         {
@@ -21,7 +21,7 @@ namespace BLL
         }
         public static void SetLists(string JsonSource, System.Web.UI.WebControls.ListControl myListControl, string ddlType, CommonListParameter parameter)
         {
-            List<NameValueList> myListData = ListDataSource(JsonSource, ddlType, parameter,"DDList");
+            List<NameValueList> myListData = ListDataSource(JsonSource, ddlType, parameter, "DDList");
             SetLists(myListControl, myListData);
         }
         public static void SetLists(string JsonSource, System.Web.UI.WebControls.ListControl myListControl, string ddlType, CommonListParameter parameter, object initialValue)
@@ -29,53 +29,33 @@ namespace BLL
             SetLists(JsonSource, myListControl, ddlType, parameter);
             SetValue(myListControl, initialValue);
         }
-   
-        public static void SetValue(System.Web.UI.WebControls.ListControl myListControl, object objectValue)
 
+        public static void SetValue(System.Web.UI.WebControls.ListControl myListControl, object objectValue)
         {
             try
             {
                 myListControl.ClearSelection();
-                if (myListControl.Items.Count > 0)
+                if (myListControl.Items.Count == 0) return;
+ 
+                if (objectValue != null)
                 {
-                    if (myListControl.Items.Count == 1)
-                    {
-                        myListControl.SelectedIndex = 0;
-                    }
-                    else
-                    {
-                        if (objectValue != null)
-                        {
-                            if (objectValue.ToString() == "0")
-                            {
-                                myListControl.SelectedIndex = 0;
-                            }
-                            else
-                            {
-                                foreach (ListItem item in myListControl.Items)
-                                {
-                                    if (item.Value.ToString().ToLower() == objectValue.ToString().ToLower())
-                                    {
-                                        item.Selected = true;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                      myListControl.Items.FindByValue(objectValue.ToString()).Selected= true ; 
 
-            }
-            catch (Exception ex)
+                    //foreach (ListItem item in myListControl.Items)
+                    //{
+                    //    if (item.Value.ToString().ToLower() == objectValue.ToString().ToLower())
+                    //    {
+                    //        item.Selected = true;
+                    //        break;
+                    //    }
+                    //}
+                }
+             }
+            catch 
             {
-                if (myListControl.Items.Count > 0)
-                { myListControl.SelectedIndex = 0; }
-                else
-                {
-                    var error = ex.Message;
-                    throw new Exception(error);
-                }
-
+                myListControl.SelectedIndex = 0;
+                    //var error = ex.Message;
+                    //throw new Exception(error);
             }
         }
         public static void SetValueMultiple(System.Web.UI.WebControls.ListControl myListControl, string value)
@@ -127,6 +107,21 @@ namespace BLL
             { }
         }
 
+
+        public static void SetListSchool(System.Web.UI.WebControls.ListControl myListControl, System.Web.UI.WebControls.ListControl myListControl2, List<NameValueList> myListData)
+        {
+            SetLists(myListControl, myListData);
+            SetLists(myListControl2, myListData);
+        }
+        public static void SetListSchool(System.Web.UI.WebControls.ListControl myListControl, System.Web.UI.WebControls.ListControl myListControl2, List<NameValueList> myListData, object initialValue)
+        {
+
+            SetLists(myListControl, myListData);
+            SetLists(myListControl2, myListData);
+            SetValue(myListControl, initialValue);
+            SetValue(myListControl2, initialValue);
+        }
+
         public static void SetListSchool(System.Web.UI.WebControls.ListControl myListControl1, System.Web.UI.WebControls.ListControl myListControl2, string ddlType, CommonListParameter parameter, object initialValue)
         {
             SetListSchool(myListControl1, myListControl2, ddlType, parameter);
@@ -135,7 +130,7 @@ namespace BLL
         }
         public static void SetListSchool(System.Web.UI.WebControls.ListControl myListControl1, System.Web.UI.WebControls.ListControl myListControl2, string ddlType, CommonListParameter parameter)
         {
-          //  string SP = SPandParameters.GetSPNameAndParameters("General", "Schools");
+            //  string SP = SPandParameters.GetSPNameAndParameters("General", "Schools");
 
             List<NameValueList> myListData = ListDataSource("", ddlType, parameter, "DDLListSchool");  // CommonExcute<CommonList>.ListOfT(SP, parameter);
             AssemblingSchoolList(myListControl1, myListControl2, myListData);
@@ -145,7 +140,7 @@ namespace BLL
         {
             try
             {
-                var byList = myList.OrderBy(o => o.Value); 
+                var byList = myList.OrderBy(o => o.Value);
                 //var sList = from c in myList
                 //             orderby c.Code
                 //             select c;
@@ -174,7 +169,7 @@ namespace BLL
             else
             {
                 myListData = GeneralList.JsonSourceList<NameValueList>(JsonSource, ddlType, action);
-            } 
+            }
             return myListData;
 
         }

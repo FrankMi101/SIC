@@ -46,6 +46,7 @@
     <Compile Include="AppRoleList.cs" />
     <Compile Include="AppRoleMatch.cs" />
     <Compile Include="AppRoleMatchList.cs" />
+    <Compile Include="BaseClassT.cs" />
     <Compile Include="Classes.cs" />
     <Compile Include="ClassesList.cs" />
     <Compile Include="CommentBank.cs" />

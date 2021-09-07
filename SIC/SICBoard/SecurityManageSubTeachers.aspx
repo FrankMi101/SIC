@@ -177,7 +177,7 @@
             para.GroupName = $("#ddlStaff option:selected").text();
             var result = SIC.Models.WebService.SaveSecurityGroupMember("Teachers", para.Operate, para, onSuccess, onFailure);
         }
-        catch (e) {
+        catch(e) {
             alert(para.Operate + " Submit click something going wrong");
         }
     }

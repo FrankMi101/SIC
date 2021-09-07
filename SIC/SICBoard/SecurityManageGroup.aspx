@@ -370,7 +370,7 @@
                 $("#btnSearchGo" + $("#hfSearchby").val()).removeClass("hideMe");
 
             }
-            catch (e) { }
+            catch(e) { }
 
             $(".SearchBox").change(function (e) {
                 var cEvantID = e.currentTarget.id;
@@ -396,7 +396,7 @@
                     currentSearchBoxID = cEvantID;
                     $("#hfSearchValue").val("");
                 }
-                catch (e) {
+                catch(e) {
                     alert("Something error");
                 }
             });

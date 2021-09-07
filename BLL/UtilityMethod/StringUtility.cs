@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.UtilityMethod
+namespace BLL
 {
     public class StringUtility
     {
         public static string SummarizeText(string text, int maxLength = 25)
         {
-            if (text.Length < maxLength)
-                return text;
+            if (text.Length < maxLength)   return text;
             var words = text.Split(' ');
             var totalCharacters = 0;
             var summaryWords = new List<string>();

@@ -13,6 +13,11 @@ namespace WebAPI.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class MenuController : ApiController
     {
+        private IAPIAction<MenuItems> _iapiaction;//= new APIAction<NameValueList>();
+        public MenuController()
+        {
+            _iapiaction = new APIAction<MenuItems>();
+        }
         // GET: api/Menu
         public IEnumerable<string> Get()
         {
@@ -20,32 +25,18 @@ namespace WebAPI.Controllers
         }
         public IEnumerable<MenuItems> Get(string Operate, string UserID, string UserRole, string SchoolYear, string SchoolCode, string TabID, string ObjID, string AppID)
         {
-            List<MenuItems> myList;
-            var parameter = new { Operate, UserID, UserRole, SchoolYear, SchoolCode, TabID, ObjID, AppID };
-            var sp = "dbo.SIC_sys_ActionMenuList @Operate,@UserID,@UserRole,@SchoolYear,@SchoolCode,@TabID,@ObjID,@AppID";  
-            myList = GeneralList.CommonList<MenuItems>(sp, parameter);
-            return myList;
+            //List<MenuItems> myList;
+            //var parameter = new { Operate, UserID, UserRole, SchoolYear, SchoolCode, TabID, ObjID, AppID };
+            //var sp = "dbo.SIC_sys_ActionMenuList @Operate,@UserID,@UserRole,@SchoolYear,@SchoolCode,@TabID,@ObjID,@AppID";  
+            //myList = GeneralList.CommonList<MenuItems>(sp, parameter);
+            //return myList;
 
-        }
-        // GET: api/Menu/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/Menu
-        public void Post([FromBody]string value)
-        {
+            var parameter = new { Operate, UserID,UserRole, SchoolYear, SchoolCode, TabID, ObjID, AppID };
+            var sp = "dbo.SIC_sys_ActionMenuList";// @Operate,@UserID,@Para1,@Para2,@Para3,@Para4";
+            return _iapiaction.CeneralList("DDLList", sp, parameter);
+           // List<MenuItems>  myList = APIListofT<MenuItems>.CeneralList("DDLList", sp, parameter); // GeneralList.CommonList<NameValueList>(sp, parameter);
+           // return myList;
         }
 
-        // PUT: api/Menu/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Menu/5
-        public void Delete(int id)
-        {
-        }
     }
 }

@@ -546,7 +546,7 @@
                 $("#btnSearchGo" + $("#hfSearchby").val()).removeClass("hideMe");
 
             }
-            catch (e) { }
+            catch(e) { }
             var vHeight = window.innerHeight - 120;
             MakeStaticHeader("GridView1", vHeight, 1500, 20, false);
             preaLinkID = $("#hfSelectedTabL").val();
@@ -601,7 +601,7 @@
                     currentSearchBoxID = cEvantID;
 
                 }
-                catch (e) {
+                catch(e) {
                     alert("Something error");
                 }
             });

@@ -32,76 +32,12 @@ namespace BLL
         }
    
         public static void SetValue(System.Web.UI.WebControls.ListControl myListControl, object objectValue)
-
         {
-            try
-            {
-                myListControl.ClearSelection();
-                if (myListControl.Items.Count > 0)
-                {
-                    if (myListControl.Items.Count == 1)
-                    {
-                        myListControl.SelectedIndex = 0;
-                    }
-                    else
-                    {
-                        if (objectValue != null)
-                        {
-                            if (objectValue.ToString() == "0")
-                            {
-                                myListControl.SelectedIndex = 0;
-                            }
-                            else
-                            {
-                                foreach (ListItem item in myListControl.Items)
-                                {
-                                    if (item.Value.ToString().ToLower() == objectValue.ToString().ToLower())
-                                    {
-                                        item.Selected = true;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                if (myListControl.Items.Count > 0)
-                { myListControl.SelectedIndex = 0; }
-                else
-                {
-                    var error = ex.Message;
-                    throw new Exception(error);
-                }
-
-            }
+            AssemblingList.SetValue(myListControl, objectValue);
         }
         public static void SetValueMultiple(System.Web.UI.WebControls.ListControl myListControl, string value)
         {
-            try
-            {
-                if (myListControl.Items.Count > 0)
-                {
-                    if (value != null)
-                    {
-                        myListControl.ClearSelection();
-                        foreach (ListItem item in myListControl.Items)
-                        {
-                            if (value.IndexOf(item.Value) != -1)
-                            {
-                                item.Selected = true;
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            AssemblingList.SetValueMultiple(myListControl, value);
         }
 
         private static void AssemblingMyList(System.Web.UI.WebControls.ListControl myListControl, object myList, string ValueField, string TextField)
@@ -167,7 +103,6 @@ namespace BLL
             if (JsonSource == "")
             {
                 parameter.Operate = ddlType;
-
                 //  string SP = SPandParameters.GetSPNameAndParameters("General", "DDList");
                 //   myListData = CommonListExecute<NVListItem>.GeneralList(SP, parameter);
                 myListData = GeneralList.CommonList<NameValueList>(_db, action, parameter); //  CommonExcute<CommonList>.ListOfT(SP, parameter);

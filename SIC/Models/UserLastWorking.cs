@@ -174,9 +174,9 @@ namespace SIC
                 return CommonExecute<string>.ValueOfT(SP + " @Operate, @UserID", parameter);
  
             }
-            catch (Exception ex)
+            catch 
             {
-                var em = ex.Message;
+                
                 return "";
             }
             finally
@@ -195,8 +195,8 @@ namespace SIC
 
                 string result =  CommonExecute<string>.ValueOfT(SP + " @Operate, @UserID, @Value", parameter); 
             }
-            catch (Exception ex)
-            { var em = ex.Message; }
+            catch 
+            {  }
             finally
             { }
         }
@@ -219,9 +219,8 @@ namespace SIC
 
                  
             }
-            catch (Exception ex)
-            {
-                string myEx = ex.Message;
+            catch 
+            {              
                 return null;
             }
             finally

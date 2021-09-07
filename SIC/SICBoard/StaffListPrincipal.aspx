@@ -389,7 +389,7 @@
                     currentSearchBoxID = cEvantID;
 
                 }
-                catch (e) {
+                catch(e) {
                     alert("Something error");
                 }
             });
@@ -484,7 +484,7 @@
 
     //    }
 
-    //    catch (e) {
+    //    catch(e) {
     //        window.alert(e.mess);
     //    }
     //}

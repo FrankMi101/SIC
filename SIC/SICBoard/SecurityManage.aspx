@@ -433,7 +433,7 @@
             $("#EditDIV").fadeToggle("fast");
         }
 
-        catch (e) {
+        catch(e) {
             window.alert("Error:" + e.mess);
         }
 

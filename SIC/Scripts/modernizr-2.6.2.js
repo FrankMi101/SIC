@@ -802,7 +802,7 @@ window.Modernizr = (function( window, document, undefined ) {
     //   QUOTA_EXCEEDED_ERRROR DOM Exception 22.
     // Peculiarly, getItem and removeItem calls do not throw.
 
-    // Because we are forced to try/catch this, we'll go aggressive.
+    // Because we are forced to try/catchthis, we'll go aggressive.
 
     // Just FWIW: IE8 Compat mode supports these features completely:
     //   www.quirksmode.org/dom/html5.html

@@ -428,7 +428,7 @@
                     currentSearchBoxID = cEvantID;
 
                 }
-                catch (e) {
+                catch(e) {
                     alert("Something error");
                 }
             });

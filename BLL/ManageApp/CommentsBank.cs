@@ -11,27 +11,11 @@ namespace BLL
     {
         public override string GetSPandParametersByOverride(string action)
         {
-            switch (SPSource.SPFile)
-            {
-                case "JsonFile":
-                    return GetSPFrom.JsonFile(action);
-                case "DBTable":
-                    return GetSPFrom.DbTable(action, "AppraisalGeneral");
-                default:
-                    return GetSPInClass(action);
-            }
+            return GetSPNameAndParameters(action);
         }
         public static string GetSP(string action)
         {
-            switch (SPSource.SPFile)
-            {
-                case "JsonFile":
-                    return GetSPFrom.JsonFile(action);
-                case "DBTable":
-                    return GetSPFrom.DbTable(action, "AppraisalPageHelp");
-                default:
-                    return GetSPInClass(action);
-            }
+            return GetSPNameAndParameters(action);
         }
         public static List<T> CommonList<T>(string action, object parameter)
         {
@@ -91,8 +75,19 @@ namespace BLL
         {
             return CommonValue<string>("OLFCategorySave", parameter);
         }
-       
 
+        private static string GetSPNameAndParameters(string action)
+        {
+            switch (SPSource.SPFile)
+            {
+                case "JsonFile":
+                    return GetSPFrom.JsonFile(action);
+                case "DBTable":
+                    return GetSPFrom.DbTable(action, "AppraisalGeneral");
+                default:
+                    return GetSPInClass(action);
+            }
+        }
         private static string GetSPInClass(string action)
         {
 

@@ -1945,7 +1945,7 @@
       } else {
         rect = element.getBoundingClientRect();
       }
-    } catch (e) {}
+    } catch(e) {}
 
     var result = {
       left: rect.left,

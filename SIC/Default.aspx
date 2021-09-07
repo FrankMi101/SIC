@@ -41,7 +41,6 @@
         }*/
 
         #GoList {
-         
             height: 100%;
             width: 100%;
             border: 0px solid red;
@@ -59,7 +58,7 @@
         }
 
         header {
-            height:125px;
+            height: 125px;
         }
 
         .appheader {
@@ -129,18 +128,19 @@
         .Page-title-label {
             width: 100%;
             height: 50px;
-            background: linear-gradient(lightsalmon, white);  
+            background: linear-gradient(lightsalmon, white);
             display: block;
             text-wrap: avoid;
-            margin-top:-20px;
-            padding-top:15px;
-            color:dodgerblue;
-            text-align:left;
-            font-size:small;  
-            margin-bottom:-5px;
+            margin-top: -20px;
+            padding-top: 15px;
+            color: dodgerblue;
+            text-align: left;
+            font-size: small;
+            margin-bottom: -5px;
         }
+
         .messageSchoolArea {
-        color: brown;
+            color: brown;
         }
     </style>
 
@@ -203,7 +203,7 @@
                         </tr>
                         <tr>
 
-                            <td class="messageSchoolArea" style="height: 20px; margin-right: 20px; text-align: right;  font-size: large;" colspan="3">
+                            <td class="messageSchoolArea" style="height: 20px; margin-right: 20px; text-align: right; font-size: large;" colspan="3">
 
                                 <asp:Label ID="lblApplication" runat="server" Text="School Information Center"></asp:Label>
                                 (<a id="appLink" runat="server" href="~/Default.aspx">SIC</a>) 
@@ -218,8 +218,8 @@
 
                     </table>
                 </div>
-                <div id="LoginAsDIV" class="bubble epahide">
-                    <asp:RadioButtonList ID="rblLoginAS" runat="server" AutoPostBack="true" Height="150px" OnSelectedIndexChanged="RblLoginAS_SelectedIndexChanged"></asp:RadioButtonList>
+                <div id="LoginAsDIV" class="bubble epahide" style="overflow: scroll;">
+                    <asp:RadioButtonList ID="rblLoginAS" runat="server" AutoPostBack="true" Height="100%" OnSelectedIndexChanged="RblLoginAS_SelectedIndexChanged"></asp:RadioButtonList>
                 </div>
             </div>
 
@@ -247,7 +247,7 @@
 
         <section style="text-align: center;">
             <div class="Page-title-label">
-                <%--<img src="images/finger.png" height="25" width="50" style="background-color:transparent" />--%>  
+                <%--<img src="images/finger.png" height="25" width="50" style="background-color:transparent" />--%>
                 <asp:Label ID="LabelPageTitle" CssClass="Page-title-label" runat="server" Text=""></asp:Label>
             </div>
             <div class="iFrameDIV">
@@ -267,7 +267,7 @@
             <asp:HiddenField ID="hfTeacherName" runat="server" />
             <asp:HiddenField ID="hfSchoolArea" runat="server" />
             <asp:HiddenField ID="hfTopMenuArea" runat="server" />
-              <asp:HiddenField ID="hfLevel1MenuArea" runat="server" />
+            <asp:HiddenField ID="hfLevel1MenuArea" runat="server" />
 
         </div>
         <div id="EditDIV" runat="server" class="EditDIV bubble epahide">
@@ -314,7 +314,7 @@
     var topMenuID = $("#hfTopMenuArea").val();
 
     var level1MenuID = $("#hfLevel1MenuArea").val();
-    var currentMenuID = level1MenuID; 
+    var currentMenuID = level1MenuID;
     //var menuData = JSON.parse(TopMenuListData);
     //myTopNav(mydata[0]value);
     var menuData = myTopMenuData;
@@ -322,73 +322,75 @@
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        topSelectedMenuItem = topMenuID ;
-        var vHeight = window.innerHeight - 140;
-        $("#" + topMenuID).addClass("TopSelectItem");
-        $("#" + level1MenuID).addClass("TopSelectItem");
-        $("#GoList").css("height", vHeight);
+ 
+        $(document).ready(function () {
+            topSelectedMenuItem = topMenuID;
+            var vHeight = window.innerHeight - 140;
+            $("#" + topMenuID).addClass("TopSelectItem");
+            $("#" + level1MenuID).addClass("TopSelectItem");
+            $("#GoList").css("height", vHeight);
 
-        $("#LoginUserRole").click(function (event) {
-            OpenLoginUserRolePage();
+            $("#LoginUserRole").click(function (event) {
+                OpenLoginUserRolePage();
+            });
+
+            $("#LoginUserIcon").click(function (event) {
+                OpenLoginUserRolePage();
+            });
+
+            $("#closeMe").click(function (event) {
+
+                $("#PopUpDIV").fadeToggle("fast");
+
+                if ($("#EditDIV").css('display') === "block") { $("#EditDIV").fadeToggle("fast"); }
+
+                if ($("#ApprDIV").css('display') === "block") { $("#ApprDIV").fadeToggle("fast"); }
+            });
+
+            $("#closeActionPOP").click(function (event) {
+
+                if ($("#PopUpDIV").css('display') === "block") $("#PopUpDIV").fadeToggle("fast");
+
+                if ($("#ActionPOPDIV").css('display') === "block") { $("#ActionPOPDIV").fadeToggle("fast"); }
+
+            });
+
+            $("#MobileMenu").click(function (event) {
+                if ($("#GoList").attr("src") === "") {
+                    $("#TopNavM").hide();
+                    $("#GoList").attr("src", "DefaultSummary.aspx");
+                }
+                else {
+                    $("#TopNavM").show();
+                    $("#GoList").attr("src", "");
+                }
+            });
+
+            $("#LabelTrain").click(function () {
+                if ($("#hfUserID").val() == "mif") {
+                    teachername = $("#hfTeacherName").val();
+                    schoolyear = $("#hfApprYear").val();
+                    schoolcode = $("#hfApprSchool").val();
+                    employeeid = $("#hfApprEmployeeID").val();
+                    sessionid = "";
+                    pageid = $("#hfPageID").val();
+                    userid = $("#hfUserID").val();
+                    openEditPageA('450', '800', 'SICSetup/Loading.aspx?pID=Encryption', 'Encription String');
+                }
+            });
         });
 
-        $("#LoginUserIcon").click(function (event) {
-            OpenLoginUserRolePage();
-        });
-
-        $("#closeMe").click(function (event) {
-
-            $("#PopUpDIV").fadeToggle("fast");
-
-            if ($("#EditDIV").css('display') === "block") { $("#EditDIV").fadeToggle("fast"); }
-
-            if ($("#ApprDIV").css('display') === "block") { $("#ApprDIV").fadeToggle("fast"); }
-        });
-
-        $("#closeActionPOP").click(function (event) {
-
-            if ($("#PopUpDIV").css('display') === "block") $("#PopUpDIV").fadeToggle("fast");
-
-            if ($("#ActionPOPDIV").css('display') === "block") { $("#ActionPOPDIV").fadeToggle("fast"); }
-
-        });
-
-        $("#MobileMenu").click(function (event) {
-            if ($("#GoList").attr("src") === "") {
-                $("#TopNavM").hide();
-                $("#GoList").attr("src", "DefaultSummary.aspx");
-            }
-            else {
-                $("#TopNavM").show();
-                $("#GoList").attr("src", "");
-            }
-        });
-
-        $("#LabelTrain").click(function () {
-            if ($("#hfUserID").val() == "mif") {
-                teachername = $("#hfTeacherName").val();
-                schoolyear = $("#hfApprYear").val();
-                schoolcode = $("#hfApprSchool").val();
-                employeeid = $("#hfApprEmployeeID").val();
-                sessionid = "";
-                pageid = $("#hfPageID").val();
-                userid = $("#hfUserID").val();
-                openEditPageA('450', '800', 'SICSetup/Loading.aspx?pID=Encryption', 'Encription String');
-            }
-        });
-    });
     function OpenLoginUserRolePage() {
+    
         if ($("#hfUserLoginRole").val() === "Admin") {
             var vTop = $("#LoginUserRole")[0].offsetParent.offsetTop + 25;      // event.originalEvent.clientY +5;
             var vLeft = $("#LoginUserRole")[0].offsetParent.offsetLeft + 135;    //    event.originalEvent.clientX + 50;
             $("#LoginAsDIV").css({
                 top: vTop,
                 left: vLeft - 100,
-                height: 350,
-                width: 150
+                height: 250,
+                width: 150,
             });
-
             $("#LoginAsDIV").fadeToggle("fast");
         }
     }
@@ -396,12 +398,12 @@
         if ($("#hfUserLoginRole").val() === "Admin") {
             var vTop = $("#LoginUserRole")[0].offsetParent.offsetTop + 25;
             var vLeft = $("#LoginUserRole")[0].offsetParent.offsetLeft + 150;
-            window.alert($("#hfUserLoginRole").val());
-            window.alert($(vTop + "  " + vLeft).val());
+            // window.alert($("#hfUserLoginRole").val());
+            //   window.alert($(vTop + "  " + vLeft).val());
             $("#LoginAsDIV").css({
                 top: vTop,
                 left: vLeft - 100,
-                height: 150,
+                height: 250,
                 width: 150
             });
 

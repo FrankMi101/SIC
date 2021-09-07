@@ -38,7 +38,7 @@ function CountTextBoxCharactors() {
             $("#textCount").val(maxCount - nCnt);
         }
     }
-    catch (ex)
+    catch(ex)
     { var smg = ex.attr; }
 
 }
@@ -91,7 +91,7 @@ function ChangeLeftMenuSelectedNode(action) {
         window.alert("New Node:" + newliNode);
         event.stopPropagation();
     }
-    catch (ex) {
+    catch(ex) {
         var smg = ex.attr;
     }
 
@@ -109,7 +109,7 @@ function Highlight_LeftMenuSelectNode() {
         $("#" + newliCode, parent.document).addClass('HighLightItem');
         event.stopPropagation();
     }
-    catch (ex) {
+    catch(ex) {
         var smg = ex.attr;
     }
 

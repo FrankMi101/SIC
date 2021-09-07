@@ -206,7 +206,7 @@
                 //    currentDIV = showDIV;
                 //}
             }
-            catch (e) { }
+            catch(e) { }
         }
 
         function setTabMouseOut(sender, oCSS) {
@@ -215,7 +215,7 @@
                 cueentDIV.visible = false;
 
             }
-            catch (e) { }
+            catch(e) { }
         }
         function Close() {
             window.close();
@@ -236,14 +236,14 @@
                     $("#BubbleHelpDIV", parent.document).fadeToggle("fast");
 
                 }
-                catch (e) {
+                catch(e) {
 
                 }
                 // window.returnValue = mentor;
                 return 0;
 
             }
-            catch (e) { }
+            catch(e) { }
         }
         function refreshMe() {
             var vbutton = document.getElementById("ImageButton1").click();

@@ -15,7 +15,7 @@ namespace BLL
                 string sp = GetSPbyClassAndAction(className, action);
                 return GetParamerters(sp, parameter);
             }
-            catch (Exception ex)
+            catch 
             {
                 return className + " " + action;
             }
@@ -30,9 +30,9 @@ namespace BLL
                 return myList.ListOfT(db, sp, parameter);
 
             }
-            catch (Exception ex)
+            catch 
             {
-                string em = ex.StackTrace;
+               // string em = ex.StackTrace;
                 throw;
             }
 
@@ -44,9 +44,9 @@ namespace BLL
                 string sp = SPName(className, action, parameter);
                 return CommonList<T>(db, sp, parameter);
             }
-            catch (Exception ex)
+            catch  
             {
-                string em = ex.StackTrace;
+               // string em = ex.StackTrace;
                 throw;
             }
 
@@ -60,9 +60,9 @@ namespace BLL
                 return myValue.ValueOfT(db, sp, parameter);
 
             }
-            catch (Exception ex)
+            catch 
             {
-                string em = ex.StackTrace;
+               // string em = ex.StackTrace;
                 throw;
             }
         }
@@ -73,9 +73,7 @@ namespace BLL
                 string sp = SPName(className, action, parameter);
                 return CommonValue<T>(db, sp, parameter);             
             }
-            catch (Exception ex)
-            {
-                string em = ex.StackTrace;
+            catch {
                 throw;
             }
         }
@@ -96,29 +94,12 @@ namespace BLL
                         return AppsPageHelp.GetSP(action);
                 }
             }
-            catch (Exception ex)
+            catch  
             {
                 return className + " " + action;
             }
         }
 
-        //private static string GetSPInClass(string action)
-        //{
-        //    string parameter = " @Operate,@UserID,@Type";
-        //    switch (action)
-        //    {
-        //        case "General":
-        //            return "dbo.SIC_sys_GeneralList" + parameter;
-
-        //        case "DDList":
-        //            return "dbo.SIC_sys_ListsValuePara" + parameter;
-        //        case "SchoolList":
-        //            return "dbo.SIC_sys_SchoolList" + parameter;
-        //        default:
-        //            return action;
-
-        //    }
-        //}
 
         private static string GetParamerters(string sp, object obj)
         {

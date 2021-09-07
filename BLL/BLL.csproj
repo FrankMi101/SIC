@@ -73,15 +73,13 @@
     <Compile Include="ManageApp\CommentsBank.cs" />
     <Compile Include="ManageApp\GeneralValue.cs" />
     <Compile Include="SISInfo\SISInfoBase.cs" />
-    <Compile Include="SPandParameters.cs" />
     <Compile Include="UserProfiles\UserLastWorking.cs" />
     <Compile Include="UserProfiles\UserProfile.cs" />
     <Compile Include="UtilityMethod\AssemblyList2.cs" />
     <Compile Include="UtilityMethod\AssemblyListControl.cs" />
     <Compile Include="CommonOperate.cs" />
     <Compile Include="CommonParameters.cs" />
-    <Compile Include="DataTools.cs" />
-    <Compile Include="DateFormat.cs" />
+    <Compile Include="UtilityMethod\DateFormat.cs" />
     <Compile Include="ICommonList.cs" />
     <Compile Include="ICommonValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,7 +92,6 @@
     <Compile Include="SystemSetup\AppsSetup.cs" />
     <Compile Include="SystemSetup\StaffProfile.cs" />
     <Compile Include="UserProfiles\Authentication.cs" />
-    <Compile Include="UtilityMethod\DateFormat.cs" />
     <Compile Include="UtilityMethod\DBConnection.cs" />
     <Compile Include="UtilityMethod\eMailNotification.cs" />
     <Compile Include="UtilityMethod\GeneratePDFReport.cs" />
@@ -102,6 +99,7 @@
     <Compile Include="UtilityMethod\HelpContext.cs" />
     <Compile Include="UtilityMethod\iCalendar.cs" />
     <Compile Include="UtilityMethod\IReportParameter.cs" />
+    <Compile Include="UtilityMethod\IStoreProcedureNameAndParameters.cs" />
     <Compile Include="UtilityMethod\MenuItem.cs" />
     <Compile Include="UtilityMethod\ParameterFactory.cs" />
     <Compile Include="UtilityMethod\RandomCharacter.cs" />

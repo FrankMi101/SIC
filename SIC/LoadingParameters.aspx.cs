@@ -65,8 +65,8 @@ namespace SIC
                 AppsPage.BuildingList(ddlCourse, "Course", parameters, "000");
  
             }
-            catch (Exception ex)
-            { var em = ex.Message; }
+            catch 
+            {  }
         }
 
         protected void DDLSchoolYear_SelectedIndexChanged(object sender, EventArgs e)

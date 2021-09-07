@@ -57,7 +57,7 @@ async function OpenMenu(sYear, sCode, tabID, objID, oen, sName) {
         const data = await response.json();
         BuildingListMenuAction(data);
     }
-    catch (ex) {
+    catch(ex) {
         alert(ex.message);
     }
 }
@@ -87,7 +87,7 @@ async function OpenMenuWSAsync(sYear, sCode, tabID, objID, oen, sName) {
         const data = await response.json();
         BuildingListMenuAction(data);
     }
-    catch (ex) {
+    catch(ex) {
         alert(ex.message);
     }
 }
@@ -262,7 +262,7 @@ function openPage(vTop, vLeft, vHeight, vWidth, menuID, category, area, type, so
 
     }
 
-    catch (e) {
+    catch(e) {
         window.alert(e.mess + " Open Page Function Error.");
     }
 }

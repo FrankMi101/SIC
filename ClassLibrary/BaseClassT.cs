@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL
+namespace ClassLibrary
 {
-    public class DataTools
+   public class BaseClassT
     {
+        public string EntityName { get; set; }
     }
 }

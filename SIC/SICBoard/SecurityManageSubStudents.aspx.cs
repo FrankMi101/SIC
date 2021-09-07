@@ -50,8 +50,8 @@ namespace SIC
         private void AssemblePage()
         {
 
-            string scope = "School";
-            if (hfUserRole.Value == "Admin") scope = "All";
+           
+            if (hfUserRole.Value == "Admin")  
            
             BuildStudentMemberDDL(LabelGroupType.Text, "");
 
@@ -128,7 +128,7 @@ namespace SIC
                 Page.ClientScript.RegisterStartupScript(GetType(), "actionMessage", strScript, true);
 
             }
-            catch (Exception ex)
+            catch 
             { }
         }
  

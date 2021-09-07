@@ -78,11 +78,11 @@ function onSuccessHelp(result) {
     try {
         $("#HelpTextContent").val(result);
     }
-    catch (ex) {
+    catch(ex) {
         var se = "";
     }
     try { $("#textHelp").html(result); }
-    catch (ex) { var ex = ""; }
+    catch(ex) { var ex = ""; }
 
 
     helpBox.css({

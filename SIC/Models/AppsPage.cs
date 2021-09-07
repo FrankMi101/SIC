@@ -197,9 +197,9 @@ namespace SIC
                 myDIVTab.Controls.Add(UL);
 
             }
-            catch (System.Exception ex)
+            catch 
             {
-                var em = ex.Message;
+               
                 throw;
             }
 
@@ -227,9 +227,8 @@ namespace SIC
                myDIVTab.Controls.Add(UL);
 
             }
-            catch (System.Exception ex)
-            {
-                var em = ex.Message;
+            catch 
+            {          
                 throw;
             }
         }

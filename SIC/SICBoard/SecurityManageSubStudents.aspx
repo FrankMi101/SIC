@@ -144,7 +144,7 @@
             para.MemberID = $("#ddlStudentMemberID").val();   
              var result = SIC.Models.WebService.SaveSecurityGroupMember("Students", para.Operate, para, onSuccess, onFailure);
         }
-        catch (e) {
+        catch(e) {
             alert(para.Operate + " Submit click something going wrong");
         }
     }

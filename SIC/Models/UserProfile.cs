@@ -70,9 +70,9 @@ namespace SIC
                 return CommonExecute<string>.ValueOfT("dbo.SIC_sys_LoginUserProfile @Operate, @UserID", parameter);
 
             }
-            catch (Exception ex)
+            catch
             {
-                var em = ex.Message;
+                
                 return "";
             } 
         }

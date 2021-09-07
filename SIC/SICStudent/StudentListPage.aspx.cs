@@ -77,8 +77,8 @@ namespace SIC
                 InitialPage();
                 if (ddlSchool.SelectedValue != "") Assembing_GradeTab();
             }
-            catch (Exception ex)
-            { var em = ex.Message; }
+            catch 
+            {  }
         }
         private void InitialPage()
         {
@@ -200,9 +200,9 @@ namespace SIC
                 GridView1.DataSource =  GetDataSource();     
                 GridView1.DataBind();
             }
-            catch (Exception ex)
+            catch 
             {
-                var em = ex.Message;
+                
             }
         }
         private async Task BindGridViewDataAsync() {
@@ -212,9 +212,9 @@ namespace SIC
                 GridView1.DataSource = await Task.Run(() => GetDataSource());
                 GridView1.DataBind();
             }
-            catch (Exception ex)
+            catch 
             {
-                var em = ex.Message;
+                
             }
         }
 

@@ -74,8 +74,8 @@ namespace SIC
                 InitialPage();
                 if (ddlSchool.SelectedValue != "") Assembing_Tab();
             }
-            catch (Exception ex)
-            { var em = ex.Message; }
+            catch 
+            {  }
         }
         private void InitialPage()
         {
@@ -184,9 +184,9 @@ namespace SIC
                 GridView1.DataSource = GetDataSource();// GetDataSource(true);
                 GridView1.DataBind();
             }
-            catch (Exception ex)
+            catch 
             {
-                var em = ex.Message;
+                
             }
 
         }

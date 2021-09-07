@@ -508,7 +508,7 @@
                     }
                     CopyKeyIDToClipboard(value);
                 }
-                catch (e) {
+                catch(e) {
                     alert("Something error");
                 }
             });
@@ -555,7 +555,7 @@
             var result = SIC.Models.WebService.SaveSecurityGroupMember("Teachers", action, para, onSuccess, onFailure);
             event.stopPropagation();
         }
-        catch (e) {
+        catch(e) {
             alert(action + " button click something going wrong");
         }
     }
@@ -588,7 +588,7 @@
 
 
         }
-        catch (e) {
+        catch(e) {
             alert(action + " button click something going wrong");
         }
     }

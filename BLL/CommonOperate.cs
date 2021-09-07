@@ -19,6 +19,7 @@ namespace BLL
         {
             try
             {
+                sp = CheckStoreProcedureParameters.GetParamerters(sp, parameter);
                 var list = MyDapper.EasyDataAccess<T>.ListOfT(sp, parameter);
                 return list;
             }
@@ -32,6 +33,7 @@ namespace BLL
         {
             try
             {
+                sp = CheckStoreProcedureParameters.GetParamerters(sp, parameter);
                 var list = MyDapper.EasyDataAccess<T>.ListOfT(db,sp, parameter);
                 return list;
             }
@@ -45,6 +47,7 @@ namespace BLL
         {
             try
             {
+                sp = CheckStoreProcedureParameters.GetParamerters(sp, parameter);
                 var result = MyDapper.EasyDataAccess<T>.ValueOfT(sp, parameter);
                 return result;
             }
@@ -55,12 +58,11 @@ namespace BLL
             }
         }
 
- 
-
         public T ValueOfT(string db,string sp, object parameter)
         {
             try
             {
+                sp = CheckStoreProcedureParameters.GetParamerters(sp, parameter);
                 var result = MyDapper.EasyDataAccess<T>.ValueOfT(db,sp, parameter);
                 return result;
             }
@@ -74,6 +76,7 @@ namespace BLL
         {
             try
             {
+                sp = CheckStoreProcedureParameters.GetParamerters(sp, parameter);
                 var result = MyDapper.EasyDataAccess<String>.ValueOfT(sp, parameter);
                 return result;
             }

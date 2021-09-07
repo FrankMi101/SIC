@@ -13,6 +13,12 @@ namespace WebAPI.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ListItemsController : ApiController
     {
+        private IAPIAction<NameValueList> _iapiAction;//= new APIAction<NameValueList>();
+        public ListItemsController(IAPIAction<NameValueList> iapiAction)
+        {
+            _iapiAction = iapiAction ?? new APIAction<NameValueList>();
+        }
+        //  private readonly StoreProcedureNameAndParameters _spClass = new StoreProcedureNameAndParameters();
         // GET: api/ListItems
         public IEnumerable<string> Get()
         {
@@ -26,11 +32,12 @@ namespace WebAPI.Controllers
         }
         public IEnumerable<NameValueList> Get(string Operate, string UserID, string Para1, string Para2, string Para3, string Para4 )
         {
-            List<NameValueList> myList;
             var parameter = new { Operate, UserID, Para1, Para2, Para3, Para4 };
-            var sp = "dbo.SIC_sys_ListItems @Operate,@UserID,@Para1,@Para2,@Para3,@Para4";
-            myList = GeneralList.CommonList<NameValueList>(sp, parameter);
-            return myList;
+            var sp = "dbo.SIC_sys_ListItems";// @Operate,@UserID,@Para1,@Para2,@Para3,@Para4";
+            return _iapiAction.CeneralList("DDLList", sp, parameter);
+          //  List<NameValueList> myList;
+          //  myList =  APIListofT<NameValueList>.CeneralList("DDLList",sp,parameter) ; // GeneralList.CommonList<NameValueList>(sp, parameter);
+         //   return myList;
 
         }
         // POST: api/ListItems

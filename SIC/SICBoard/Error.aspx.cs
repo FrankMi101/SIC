@@ -17,7 +17,7 @@ namespace SIC.SICBoard
           //  string pageID = Page.Request.QueryString["pageID"].ToString();
           //  Label1.Text = ex + " in Page " + pageID;
              }
-            catch ( Exception ex)
+            catch 
             { }
           }
     }

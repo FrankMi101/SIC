@@ -23,7 +23,6 @@ namespace SIC
                 Page.Response.Expires = 0;
                 GetQueryInfo();
                 SetPageAttribution();
-                AssemblePage();
                 BindGridViewListData();
             }
         }
@@ -46,25 +45,6 @@ namespace SIC
             hfUserRole.Value = WorkingProfile.UserRole;
             hfRunningModel.Value = WebConfig.RunningModel();
             Session["HomePage"] = "Loading.aspx?pID=" + pageID;
-        }
-        private void AssemblePage()
-        {
-
-            string scope = "School";
-            if (hfUserRole.Value == "Admin") scope = "All";
-           
-        }
-        private void InitialPage()
-        {
-
-            //AppsPage.SetListValue(ddlSchoolCode, ddlSchool.SelectedValue);
-            //WorkingProfile.SchoolCode = ddlSchool.SelectedValue;
-
-            //AppsPage.SetListValue(ddlSchoolCode, WorkingProfile.SchoolCode);
-            //AppsPage.SetListValue(ddlSchool, WorkingProfile.SchoolCode);
-
-
-
         }
    
 
@@ -120,7 +100,7 @@ namespace SIC
                 Page.ClientScript.RegisterStartupScript(GetType(), "actionMessage", strScript, true);
  
             }
-            catch (Exception ex)
+            catch 
             { }
         }
     }

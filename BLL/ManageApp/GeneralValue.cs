@@ -7,27 +7,11 @@ namespace BLL
     {
         public override string GetSPandParametersByOverride(string action)
         {
-            switch (SPSource.SPFile)
-            {
-                case "JsonFile":
-                    return GetSPFrom.JsonFile(action);
-                case "DBTable":
-                    return GetSPFrom.DbTable(action, "AppraisaValue");
-                default:
-                    return GetSPInClass(action);
-            }
+            return GetSPNameAndParameters(action);
         }
         public static string GetSP(string action)
         {
-            switch (SPSource.SPFile)
-            {
-                case "JsonFile":
-                    return GetSPFrom.JsonFile(action);
-                case "DBTable":
-                    return GetSPFrom.DbTable(action, "AppraisalValue");
-                default:
-                    return GetSPInClass(action);
-            }
+            return GetSPNameAndParameters(action);
         }
      
         public static T CommonValue<T>(string action, object parameter)
@@ -46,7 +30,18 @@ namespace BLL
             }
 
         }
-
+        private static string GetSPNameAndParameters(string action)
+        {
+            switch (SPSource.SPFile)
+            {
+                case "JsonFile":
+                    return GetSPFrom.JsonFile(action);
+                case "DBTable":
+                    return GetSPFrom.DbTable(action, "AppraisaValue");
+                default:
+                    return GetSPInClass(action);
+            }
+        }
         private static string GetSPInClass(string action)
         {
             string parameter = " @Operate,@UserID,@UserRole,@SchoolYear,@SchoolCode";
@@ -55,7 +50,8 @@ namespace BLL
 
             switch (action)
             {
-                  case "ManageGroup":
+                case "ManageGroup":
+                case "ManageGroupMember":
                     return "dbo.SIC_sys_UserGroupMember" + parameter2;
                 case "AppsValue":
                     return "dbo.SIC_sys_GeneralValue" + parameter;              

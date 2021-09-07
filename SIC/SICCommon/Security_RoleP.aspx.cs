@@ -125,9 +125,9 @@ namespace SIC
                 ddlScope.Enabled = mybool; 
                 ddlApps.Enabled = mybool; 
             }
-            catch (Exception ex)
+            catch
             {
-                var ms = ex.Message;
+                
             }
         }
 
@@ -167,7 +167,7 @@ namespace SIC
                 Page.ClientScript.RegisterStartupScript(GetType(), "actionMessage", strScript, true);
 
             }
-            catch (Exception ex)
+            catch 
             { }
         }
 

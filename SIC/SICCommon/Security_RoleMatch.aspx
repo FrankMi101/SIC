@@ -126,7 +126,7 @@
 
             var result = SIC.Models.WebService.SaveSecurityRoleMatch(para.Operate, para, onSuccess, onFailure);
         }
-        catch (e) {
+        catch(e) {
             alert(para.Operate + " Submit click something going wrong");
         }
     }

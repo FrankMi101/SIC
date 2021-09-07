@@ -53,7 +53,7 @@ namespace SIC
                         break;
                 }
             }
-            catch { }
+            catch{ }
 
             return fileName;
         }

@@ -38,9 +38,7 @@ namespace SIC.Models
 
                 return ValueData.GeneralValue<string>("AppsPageHelp", "HelpContent", parameter);
             }
-            catch (Exception ex)
-            {
-                var em = ex.Message;
+            catch{
                 return "";
             }
 
@@ -52,9 +50,7 @@ namespace SIC.Models
             {
                 return HelpContext.Content(operation, userId, categoryId, areaId, itemCode, "Help");
             }
-            catch (Exception ex)
-            {
-                var em = ex.Message;
+            catch{
                 return "";
             }
 
@@ -66,9 +62,7 @@ namespace SIC.Models
             {
                 return HelpContext.Content(operation, userId, categoryId, areaId, itemCode, type);
             }
-            catch (Exception ex)
-            {
-                var em = ex.Message;
+            catch{
                 return "";
             }
 
@@ -80,9 +74,7 @@ namespace SIC.Models
             {
                 return HelpContext.Content(operation, userId, categoryId, areaId, itemCode, "Help", value);
             }
-            catch (Exception ex)
-            {
-                var em = ex.Message;
+            catch{
                 return "";
             }
 
@@ -94,9 +86,7 @@ namespace SIC.Models
             {
                 return TitleContext.Content(operation, userId, categoryId, areaId, itemCode);
             }
-            catch (Exception ex)
-            {
-                var em = ex.Message;
+            catch{
                 return "";
             }
 
@@ -108,9 +98,7 @@ namespace SIC.Models
             {
                 return TitleContext.Content(operation, userId, categoryId, areaId, itemCode, title, subtitle);
             }
-            catch (Exception ex)
-            {
-                var em = ex.Message;
+            catch{
                 return "";
             }
         }
@@ -125,7 +113,7 @@ namespace SIC.Models
         //        string result = AppsBase.GeneralValue<string>(sp, parameter);
         //        return result;
         //    }
-        //    catch (Exception ex)
+        //    catch()
         //    {
         //       return "Failed";
         //    }
@@ -141,7 +129,7 @@ namespace SIC.Models
         //        string result = AppsBase.GeneralValue<string>("SecuriyManage","GroupMemberTeacher", parameter);
         //        return result;
         //    }
-        //    catch (Exception ex)
+        //    catch()
         //    {
         //        return "Failed";
         //    }
@@ -156,7 +144,7 @@ namespace SIC.Models
         //        string result = AppsBase.GeneralValue<string>("SecuriyManage", "GroupMemberStudent", parameter);
         //        return result;
         //    }
-        //    catch (Exception ex)
+        //    catch()
         //    {
         //        return "Failed";
         //    }
@@ -169,7 +157,7 @@ namespace SIC.Models
                 string result = ValueData.GeneralValue<string>("SecuriyManage", "UserRoleManagementOperation", parameter);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return "Failed";
             }
@@ -182,7 +170,7 @@ namespace SIC.Models
                 string result = ValueData.GeneralValue<string>("SecuriyManage", "UserRolePermissionOperation", parameter);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return "Failed";
             }
@@ -195,7 +183,7 @@ namespace SIC.Models
                 string result = ValueData.GeneralValue<string>("SecurityManage", "UserRoleMatchManagementOperation", parameter);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return "Failed";
             }
@@ -208,7 +196,7 @@ namespace SIC.Models
                 string result = ValueData.GeneralValue<string>("SecurityManage", "ManageGroupMember", parameter);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return "Failed";
             }
@@ -239,7 +227,7 @@ namespace SIC.Models
                 string result = AppsBase.GeneralValue<string>(sp + para, parameter);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return "Failed";
             }
@@ -252,7 +240,7 @@ namespace SIC.Models
                 string result = AppsBase.GeneralValue<string>("SecurityManage", "PushGroupToApps", parameter);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return "Failed";
             }
@@ -267,9 +255,8 @@ namespace SIC.Models
                 myList = AppsPage.ActionMenuList<MenuItems>(parameter);
                 return myList;
             }
-            catch (Exception ex)
+            catch 
             {
-                var em = ex.Message;
                 return null;
             }
         }
@@ -282,9 +269,8 @@ namespace SIC.Models
                 var sp = "[dbo].[SIC_sys_GeneralList]";
                 return GeneralList.CommonList<NameValueList>(sp, parameter);
             }
-            catch (Exception ex)
+            catch 
             {
-                var em = ex.Message;
                 return null;
             }
         }
@@ -296,9 +282,7 @@ namespace SIC.Models
                 var sp = "[dbo].[SIC_sys_GeneralList] @Operate,@UserID,@UserRole,@SchoolYear,@SchoolCode,@Para1,@Para2,@Para3";
                 return GeneralList.CommonList<NameValueList>(sp, parameter);
             }
-            catch (Exception ex)
-            {
-                var em = ex.Message;
+            catch{
                 return null;
             }
 
@@ -355,7 +339,7 @@ namespace SIC.Models
                 return myReport;
 
             }
-            catch (Exception ex)
+            catch 
             {
                 return null;
             }

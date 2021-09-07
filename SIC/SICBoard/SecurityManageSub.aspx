@@ -372,7 +372,7 @@
                 var result = SIC.Models.WebService.SaveSecurityGroupMember(memberType, actionType, para, onSuccess, onFailure);
             }
         }
-        catch (e) {
+        catch(e) {
             alert(action + " button click something going wrong");
         }
     }
@@ -400,7 +400,7 @@
 
         }
 
-        catch (e) {
+        catch(e) {
             window.alert("Error:" + e.mess);
         }
 

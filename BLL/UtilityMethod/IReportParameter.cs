@@ -97,7 +97,7 @@ namespace BLL
         {
             var reportParameters = new List<ReportParameter>
             {
-                 new ReportParameter() { ParaName = "Operate", ParaValue = "Report" },
+                new ReportParameter() { ParaName = "Operate", ParaValue = "Report" },
                 new ReportParameter() { ParaName = "UserID", ParaValue = _parameter.UserID },
                 new ReportParameter() { ParaName = "SchoolYear", ParaValue = _parameter.SchoolYear },
                 new ReportParameter() { ParaName = "SchoolCode", ParaValue = _parameter.SchoolCode },

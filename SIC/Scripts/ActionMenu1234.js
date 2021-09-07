@@ -263,7 +263,7 @@ function openPage(vTop, vLeft, vHeight, vWidth, menuID, category, area, type, so
 
     }
 
-    catch (e) {
+    catch(e) {
         window.alert(e.mess + " Open Page Function Error." );
     }
 }

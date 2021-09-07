@@ -18,7 +18,7 @@ namespace BLL
               //  string sp = GetSPbyClassAndAction(className, action);
                 return GetParamerters(sp, parameter);
             }
-            catch (Exception ex)
+            catch
             {
                 return  "SP nmae for " + action;
             }
@@ -31,7 +31,7 @@ namespace BLL
                                                                             //  string sp = GetSPbyClassAndAction(className, action);
                 return GetParamerters(sp, parameter);
             }
-            catch (Exception ex)
+            catch
             {
                 return className + " " + action;
             }
@@ -45,9 +45,8 @@ namespace BLL
                 return myList.ListOfT(fsp, parameter);
 
             }
-            catch (Exception ex)
+            catch
             {
-                string em = ex.StackTrace;
                 throw;
             }
 
@@ -60,10 +59,9 @@ namespace BLL
                 string sp = SPName(className, action, parameter);
                 return CommonList<T>(sp, parameter);
             }
-            catch (Exception ex)
+            catch
             {
-                string em = ex.StackTrace;
-                throw;
+                 throw;
             }
 
         }
@@ -118,7 +116,7 @@ namespace BLL
                         return AppsPageHelp.GetSP(action);
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 return className + " " + action;
             }
@@ -129,7 +127,7 @@ namespace BLL
             {
                 return CommonSPandParamter.GetSPName(classSP, action);
             }
-            catch (Exception ex)
+            catch
             {
                 return    "SP Name for " + action;
             }

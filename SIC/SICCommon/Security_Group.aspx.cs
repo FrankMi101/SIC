@@ -176,9 +176,9 @@ namespace SIC
                 //  }
 
             }
-            catch (Exception ex)
+            catch 
             {
-                var ms = ex.Message;
+              //  var ms = ex.Message;
             }
         }
 
@@ -233,7 +233,7 @@ namespace SIC
                 Page.ClientScript.RegisterStartupScript(GetType(), "actionMessage", strScript, true);
 
             }
-            catch (Exception ex)
+            catch 
             { }
         }
 

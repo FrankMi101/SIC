@@ -13,7 +13,7 @@ namespace BLL
 {
     public class GeneratePDFReport
     {
-        public static Byte[] GetOneReport2(ListOfSelected parameter, ReportBase reportPara)
+        public static Byte[] GetOneReport2( ReportBase reportPara, ListOfSelected parameter)
         {
             var reportParameters = BuildReportingParameters.GetReportParameter(reportPara.ReportType, parameter);
 
@@ -22,9 +22,6 @@ namespace BLL
         public static Byte[] GetOneReport(ReportBase reportPara, ListOfSelected parameter)
         {
             var reportParameters = BuildReportingParameters.GetReportParameter(reportPara.ReportType, parameter);
-           // string reportServer = getReportLocation(reportType, "Service");
-          //  string reportPath = getReportLocation(reportType, "Path");
-
             return getPDFReport(reportPara, reportParameters);
         }
 
@@ -39,10 +36,7 @@ namespace BLL
                 try
                 {
                     Byte[] myPDF = GetOneReport(reportPara, item); // item  => ListOFSelected
-                    if (myPDF.Length > 10)
-                    {
-                        AddFileToPCopy(ref pCopy, myPDF);
-                    }
+                    if (myPDF.Length > 10) AddFileToPCopy(ref pCopy, myPDF);
                 }
                 catch { }
             }
@@ -110,6 +104,7 @@ namespace BLL
 
                 string extension = "";
                 string SessionId = RS.ExecutionHeaderValue.ExecutionID;
+
                 return RS.Render(format, devInfo, out extension, out encoding, out mimeType, out warnings, out streamIDs);
 
             }

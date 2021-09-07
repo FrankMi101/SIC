@@ -311,7 +311,7 @@ jQuery.extend( {
 		var proto, Ctor;
 
 		// Detect obvious negatives
-		// Use toString instead of jQuery.type to catch host objects
+		// Use toString instead of jQuery.type to catchhost objects
 		if ( !obj || toString.call( obj ) !== "[object Object]" ) {
 			return false;
 		}
@@ -692,7 +692,7 @@ try {
 	// Support: Android<4.0
 	// Detect silently failing push.apply
 	arr[ preferredDoc.childNodes.length ].nodeType;
-} catch ( e ) {
+} catch( e ) {
 	push = { apply: arr.length ?
 
 		// Leverage slice if possible
@@ -830,7 +830,7 @@ function Sizzle( selector, context, results, seed ) {
 							newContext.querySelectorAll( newSelector )
 						);
 						return results;
-					} catch ( qsaError ) {
+					} catch( qsaError ) {
 					} finally {
 						if ( nid === expando ) {
 							context.removeAttribute( "id" );
@@ -883,7 +883,7 @@ function assert( fn ) {
 
 	try {
 		return !!fn( el );
-	} catch (e) {
+	} catch(e) {
 		return false;
 	} finally {
 		// Remove from its parent by default
@@ -1498,7 +1498,7 @@ Sizzle.matchesSelector = function( elem, expr ) {
 					elem.document && elem.document.nodeType !== 11 ) {
 				return ret;
 			}
-		} catch (e) {}
+		} catch(e) {}
 	}
 
 	return Sizzle( expr, document, null, [ elem ] ).length > 0;
@@ -3449,7 +3449,7 @@ function adoptValue( value, resolve, reject, noValue ) {
 	// For Promises/A+, convert exceptions into rejections
 	// Since jQuery.when doesn't unwrap thenables, we can skip the extra checks appearing in
 	// Deferred#then to conditionally suppress rejection.
-	} catch ( value ) {
+	} catch( value ) {
 
 		// Support: Android 4.0 only
 		// Strict mode functions invoked without .call/.apply get global-object context
@@ -3594,13 +3594,13 @@ jQuery.extend( {
 									}
 								},
 
-								// Only normal processors (resolve) catch and reject exceptions
+								// Only normal processors (resolve) catchand reject exceptions
 								process = special ?
 									mightThrow :
 									function() {
 										try {
 											mightThrow();
-										} catch ( e ) {
+										} catch( e ) {
 
 											if ( jQuery.Deferred.exceptionHook ) {
 												jQuery.Deferred.exceptionHook( e,
@@ -4207,7 +4207,7 @@ function dataAttr( elem, key, data ) {
 		if ( typeof data === "string" ) {
 			try {
 				data = getData( data );
-			} catch ( e ) {}
+			} catch( e ) {}
 
 			// Make sure we set the data so it isn't changed later
 			dataUser.set( elem, key, data );
@@ -4876,7 +4876,7 @@ function returnFalse() {
 function safeActiveElement() {
 	try {
 		return document.activeElement;
-	} catch ( err ) { }
+	} catch( err ) { }
 }
 
 function on( elem, types, selector, data, fn, one ) {
@@ -5985,7 +5985,7 @@ jQuery.fn.extend( {
 					elem = 0;
 
 				// If using innerHTML throws an exception, use the fallback method
-				} catch ( e ) {}
+				} catch( e ) {}
 			}
 
 			if ( elem ) {

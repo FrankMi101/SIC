@@ -224,7 +224,7 @@
 
             var result = SIC.Models.WebService.SaveSecurityGroupMember("Teachers", action, para, onSuccess, onFailure);
         }
-        catch (e) {
+        catch(e) {
             alert(action + " button click something going wrong");
         }
     }
@@ -256,7 +256,7 @@
 
 
         }
-        catch (e) {
+        catch(e) {
             alert(action + " button click something going wrong");
         }
     }

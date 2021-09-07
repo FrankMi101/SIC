@@ -62,7 +62,7 @@ function WebPart_OnMouseDown() {
         __wpm.draggedWebPart = draggedWebPart;
         __wpm.DragDrop();
     }
-    catch (e) {
+    catch(e) {
         __wpm.draggedWebPart = draggedWebPart;
         window.setTimeout("__wpm.DragDrop()", 0);
     }

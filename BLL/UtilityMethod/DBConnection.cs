@@ -27,6 +27,10 @@ namespace BLL
         {
             get { return getNamebyKey("Live"); }
         }
+        public static string ProductionDB
+        {
+            get { return getNamebyKey("Production"); }
+        }
         public static string ConnectionSTR(string name)
         {
             return getNamebyKey(name);

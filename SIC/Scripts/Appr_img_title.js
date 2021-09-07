@@ -166,11 +166,11 @@ function onFailure(result) {
 //    try {
 //        $("#HelpTextContent").val(result);
 //    }
-//    catch (ex) {
+//    catch(ex) {
 //        var se = "";
 //    }
 //    try { $("#textHelp").html(result); }
-//    catch (ex) { var ex = "";}
+//    catch(ex) { var ex = "";}
 
   
 //    $(".HelpTextBox").css({
@@ -280,7 +280,7 @@ function openActionPage(vTop, vLeft, vHeight, vWidth, goPage, pTitle) {
 
         $("#ActionPOPDIV").fadeToggle("fast");
     }
-    catch (e)
+    catch(e)
     { var msg = e.attr; }
 }
 
@@ -298,6 +298,6 @@ function openActionPageAGP(vTop, vLeft, vHeight, vWidth, goPage, pTitle) {
 
         $("#ActionPOPDIV").fadeToggle("fast");
     }
-    catch (e)
+    catch(e)
     { var msg = e.attr;  }
 }

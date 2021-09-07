@@ -53,7 +53,7 @@ $.cleanData = ( function( orig ) {
 				}
 
 			// Http://bugs.jquery.com/ticket/8235
-			} catch ( e ) {}
+			} catch( e ) {}
 		}
 		orig( elems );
 	};
@@ -1928,7 +1928,7 @@ color.hook = function( hook ) {
 							try {
 								backgroundColor = jQuery.css( curElem, "backgroundColor" );
 								curElem = curElem.parentNode;
-							} catch ( e ) {
+							} catch( e ) {
 							}
 						}
 
@@ -1941,7 +1941,7 @@ color.hook = function( hook ) {
 				}
 				try {
 					elem.style[ hook ] = value;
-				} catch ( e ) {
+				} catch( e ) {
 
 					// Wrapped to prevent IE from throwing errors on "invalid" values like
 					// 'auto' or 'inherit'
@@ -2295,7 +2295,7 @@ if ( $.uiBackCompat !== false ) {
 			// https://bugzilla.mozilla.org/show_bug.cgi?id=561664
 			try {
 				active.id;
-			} catch ( e ) {
+			} catch( e ) {
 				active = document.body;
 			}
 
@@ -4898,7 +4898,7 @@ var safeActiveElement = $.ui.safeActiveElement = function( document ) {
 	// IE9 throws an "Unspecified error" accessing document.activeElement from an <iframe>
 	try {
 		activeElement = document.activeElement;
-	} catch ( error ) {
+	} catch( error ) {
 		activeElement = document.body;
 	}
 
@@ -7641,7 +7641,7 @@ $.extend( Datepicker.prototype, {
 		try {
 			return $.data( target, "datepicker" );
 		}
-		catch ( err ) {
+		catch( err ) {
 			throw "Missing instance data for this datepicker";
 		}
 	},
@@ -7875,7 +7875,7 @@ $.extend( Datepicker.prototype, {
 					$.datepicker._updateDatepicker( inst );
 				}
 			}
-			catch ( err ) {
+			catch( err ) {
 			}
 		}
 		return true;
@@ -8648,7 +8648,7 @@ $.extend( Datepicker.prototype, {
 
 		try {
 			date = this.parseDate( dateFormat, dates, settings ) || defaultDate;
-		} catch ( event ) {
+		} catch( event ) {
 			dates = ( noDefault ? "" : dates );
 		}
 		inst.selectedDay = date.getDate();
@@ -8678,7 +8678,7 @@ $.extend( Datepicker.prototype, {
 					return $.datepicker.parseDate( $.datepicker._get( inst, "dateFormat" ),
 						offset, $.datepicker._getFormatConfig( inst ) );
 				}
-				catch ( e ) {
+				catch( e ) {
 
 					// Ignore
 				}
@@ -17348,10 +17348,10 @@ $.widget( "ui.tabs", {
 			// Decoding may throw an error if the URL isn't UTF-8 (#9518)
 			try {
 				anchorUrl = decodeURIComponent( anchorUrl );
-			} catch ( error ) {}
+			} catch( error ) {}
 			try {
 				locationUrl = decodeURIComponent( locationUrl );
-			} catch ( error ) {}
+			} catch( error ) {}
 
 			return anchor.hash.length > 1 && anchorUrl === locationUrl;
 		};

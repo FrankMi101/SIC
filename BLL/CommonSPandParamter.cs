@@ -16,6 +16,11 @@ namespace BLL
             }
             return "";
         }
+        public static string GetSPName(string className, string action)
+        {
+
+            return Common.SPName(className, action, "");
+        }
         //public static List<ReportParameter> GetReportParameters(List<IReportParameter> listRPs,  ListOfSelected listSelected)
         //{
         //    foreach (var sp in listRPs)

@@ -55,8 +55,8 @@ namespace SIC
  
                
              }
-            catch (Exception ex)
-            { var em = ex.Message; }
+            catch 
+            {  }
         }
       
         protected void DDLSchoolYear_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,9 +95,9 @@ namespace SIC
                }
 
             }
-            catch (Exception ex)
+            catch 
             {
-                var em = ex.Message;
+                
             }
 
         }

@@ -275,7 +275,7 @@ namespace SIC
                 Page.ClientScript.RegisterStartupScript(GetType(), "actionMessage", strScript, true);
  
             }
-            catch (Exception ex)
+            catch 
             { }
         }
     }

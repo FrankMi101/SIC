@@ -255,8 +255,8 @@ namespace SIC
                 return node;
 
             }
-            catch (System.Exception ex)
-            { var em = ex.Message;
+            catch 
+            { 
                 return null;
             }
          }
@@ -307,9 +307,9 @@ namespace SIC
 
 
             }
-            catch (System.Exception ex)
+            catch 
             {
-                var em = ex.Message;
+                
                 throw;
             }
 
@@ -333,9 +333,9 @@ namespace SIC
 
                 return Level;
             }
-            catch (System.Exception ex)
+            catch 
             {
-                var em = ex.Message;
+                
                 throw;
             }
 
@@ -372,7 +372,7 @@ namespace SIC
                         AddTreeNodeToParentNode(pNode, shared);
                         n2++;
                     }
-                    catch { }
+                    catch{ }
                 }
                 if (comments != item.Comments.ToString())
                 {
@@ -382,7 +382,7 @@ namespace SIC
                         pNode = myRoot.ChildNodes[n1 - 1].ChildNodes[n2 - 1];
                         AddTreeNodeToParentNode(pNode, comments);
                     }
-                    catch { }
+                    catch{ }
                 }
 
             }
@@ -435,14 +435,10 @@ namespace SIC
                 return myList.Where(s => s.DomainID == dName && s.Shared == sName).ToList<CommentBank>();
 
             }
-            catch (System.Exception ex)
-            {
-                var em = ex.Message;
+            catch 
+            {                
                 throw;
             }
-
-
-
         }
     }
 

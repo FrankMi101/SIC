@@ -186,7 +186,7 @@ function openEditPage(vHeight, vWidth, goPage, pTitle) {
             $("#ActionMenuDIV").fadeToggle("fast");
         }
 
-        catch (e)
+        catch(e)
         {
             window.alert(e.mess);
         }
@@ -231,7 +231,7 @@ function openEditPage2(vHeight1, vWidth1, goPage, pTitle) {
             $("#ApprDIV", parent.document).fadeToggle("fast");
         }
 
-        catch (e) {
+        catch(e) {
             window.alert(e.mess);
         }
 
@@ -266,7 +266,7 @@ function openEditPage3(vHeight, vWidth, goPage, pTitle) {
           //  $("#ActionMenuDIV").fadeToggle("fast");
         }
 
-      catch (e) {
+      catch(e) {
           window.alert(e.mess);
       }
     //$(document).ready(function () {
@@ -304,7 +304,7 @@ function openEditPage5(vHeight, vWidth, goPage, pTitle) {
         //  $("#ActionMenuDIV").fadeToggle("fast");
     }
 
-    catch (e) {
+    catch(e) {
         window.alert(e.mess);
     }
   
@@ -434,7 +434,7 @@ function openEditPage5(vHeight, vWidth, goPage, pTitle) {
                 $("#ActionMenuDIV").fadeToggle("fast");
             }
 
-            catch (e) { }
+            catch(e) { }
 
         });
     }
@@ -466,7 +466,7 @@ function openEditPage5(vHeight, vWidth, goPage, pTitle) {
 
     //        }
 
-    //        catch (e) { }
+    //        catch(e) { }
 
     //    });
     //}
@@ -499,7 +499,7 @@ function openEditPage5(vHeight, vWidth, goPage, pTitle) {
 
             }
 
-            catch (e) { }
+            catch(e) { }
 
         });
     }

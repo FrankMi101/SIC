@@ -55,7 +55,7 @@ function setupFocusTab(tabID, tabText, aLinkID, type) {
         $("#Header2N_lbl_Title").text(tabText);
         $("#Header2N_lbl_Title", parent.document).text(tabText);
     }
-    catch (e)
+    catch(e)
     { }
     */
 
@@ -76,7 +76,7 @@ function setupFocusTab1(tabID, tabText, aLinkID, type ) {
          $("#Header2N_lbl_Title").text(tabText);
          $("#Header2N_lbl_Title", parent.document).text(tabText);
      }
-     catch (e)
+     catch(e)
      { }
      */
 

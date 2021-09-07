@@ -60,7 +60,7 @@ namespace SIC
                     myReport = GeneratePDFReport.GetOneReport(reportPara,  inputParameters);
 
                 }
-                catch (Exception ex)
+                catch
                 {
                     NotPDFReport.Text = "Can't find the Report -- " + reportName + " at " + reportPath;
                     NotPDFReport.Visible = true;
@@ -76,7 +76,7 @@ namespace SIC
                     // send a email with attachment of myReport 
                     // SendtheReportAsAttachment(myReportWithPW, parameter.StudentID + "_IEP_Report.pdf", "application/pdf");
                 }
-                catch (Exception ex)
+                catch
                 { }
 
                 try
@@ -84,7 +84,7 @@ namespace SIC
                      // save encrypted report 
                      //  SavePDF(myReportWithPW, parameter.SchoolYear, parameter.SchoolCode, parameter.Grade, parameter.StudentID, "IEPReports");
                 }
-                catch (Exception ex)
+                catch
                 { }
                 // ***************************************************************************************************************************
                 try
@@ -96,7 +96,7 @@ namespace SIC
                     //  ReportRender.RenderDocument(myReportWithPW, reportName, "PDF");
 
                 }
-                catch (Exception ex)
+                catch
                 {
                     NotPDFReport.Text = "Can't find the Report -- " + reportName + " at " + reportPath;
                     NotPDFReport.Visible = true;
@@ -123,7 +123,7 @@ namespace SIC
                 };
                 eMailNotification.SendMail(myMail);
             }
-            catch (Exception ex)
+            catch
             { }
 
         }
@@ -141,7 +141,7 @@ namespace SIC
                 ReportRenderADO.SavePDFReport(pdfReport, fileName, filePath);
             }
 
-            catch (Exception ex)
+            catch 
 
             {
             }

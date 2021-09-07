@@ -500,7 +500,7 @@
 
     //    }
 
-    //    catch (e) {
+    //    catch(e) {
     //        window.alert(e.mess);
     //    }
     //}

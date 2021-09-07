@@ -69,7 +69,7 @@ namespace SIC
 
                 GetUserLastWorkingValue();
             }
-            catch (Exception ex)
+            catch
             { }
             string pId = Page.Request.QueryString["pID"];
             pId = GetDefaultListbyRole();  // "Loading.aspx?pID=Summary";

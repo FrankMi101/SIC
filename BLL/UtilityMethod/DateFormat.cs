@@ -1,50 +1,60 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BLL
 {
-
-    public class DateFC
+    public class DateFormat
     {
-        public DateFC()
-        { }
+        public static string DateF(DateTime datetime, string dFormat)
+        {
+            switch (dFormat)
+            {
+                case "YMD":
+                    return datetime.ToString("yyyy-MM-dd");
+                case "YMDH":
+                    return datetime.ToString("yyyy-MM-dd HH:mm");
+                case "MDY":
+                    return datetime.ToString("d");
+                default:
+                    return datetime.ToString("MM/dd/yyyy");
+            }
+        }
+
         public static string Format(DateTime pDate, string pFormat)
         {
             try
             {
-                string rValue = "";
-                if (pDate.GetType() == typeof(DateTime?))
+                if (pDate.GetType() == typeof(DateTime))
                 {
                     string vYY = pDate.Year.ToString();
-                    string vMM = pDate.Month.ToString();
-                    string vDD = pDate.Day.ToString();
-                    int iMM = pDate.Month; //.ToString();
-                    int iDD = pDate.Day; //.ToString();
-                    if (iMM < 10)
-                    { vMM += "0"; }
-                    if (iDD < 10)
-                    { vDD += "0"; }
+                    string vMM = TwinValue(pDate.Month);
+                    string vDD = TwinValue(pDate.Day);
+                
                     switch (pFormat)
                     {
                         case "YYYYMMDD":
-                            rValue = vYY + "/" + vMM + "/" + vDD;
-                            break;
-                        case "DDMMYYYY":
-                            rValue = vYY + "/" + vMM + "/" + vDD;
-                            break;
-                        case "MMDDYYYY":
-                            rValue = vYY + "/" + vMM + "/" + vDD;
-                            break;
-                        case "MMMDDYYYYY":
-                            rValue = pDate.ToShortDateString();
-                            break;
-                        default:
-                            rValue = vYY + "/" + vMM + "/" + vDD;
-                            break;
-                    }
+                           return   vYY + "/" + vMM + "/" + vDD;
+                         case "DDMMYYYY":
+                           return  vDD + "/" + vMM + "/" + vYY;
+                         case "MMDDYYYY":
+                            return vMM + "/" + vDD + "/" + vYY;
+                         case "MMMDDYYYY":
+                            return  pDate.ToString("MMMM dd") +" " + vYY;
+                         case "MMMDD":
+                          return pDate.ToString("MMMM dd");
+                         case "YYYYMMM":
+                           return  pDate.ToString("yyyy MMMM");
+                         default:
+                            return vYY + "/" + vMM + "/" + vDD;
+                     }
                 }
                 else
-                { rValue = pDate.ToString(); }
-                return rValue;
+                {return pDate.ToString(); 
+                }
+              
             }
             catch (Exception ex)
             {
@@ -52,10 +62,26 @@ namespace BLL
                 return pDate.ToString();
             }
         }
+        private static string TwinValue(int iValue)
+        {
+            if (iValue < 10) return "0" + iValue.ToString();
+            return iValue.ToString();
+        }
+        public static DateTime YMD(string eDate)
+        {
+            try
+            {
+                string[] format = new[] { "dd/MM/yyyy", "d/M/yyyy", "dd-MM-yyyy", "yyyy/MM/dd" };
+                DateTime oDate = DateTime.ParseExact(eDate, format, System.Globalization.DateTimeFormatInfo.InvariantInfo, System.Globalization.DateTimeStyles.None);
+                return oDate;
+            }
+            catch (Exception)
+            {
+                return DateTime.Now;
+            }
+        }
 
-
-
-        public static string YMD(DateTime vDate)
+        public static string YMD(DateTime vDate, string split )
         {
             string rDate = "";
             if (vDate == null)
@@ -63,13 +89,10 @@ namespace BLL
             else
             {
                 string vYY = vDate.Year.ToString();
-                string vMM = vDate.Month.ToString();
-                string vDD = vDate.Day.ToString();
-                if (vDate.Month < 10)
-                { vMM = "0" + vMM; }
-                if (vDate.Day < 10)
-                { vDD = "0" + vDD; }
-                rDate = vYY + "/" + vMM + "/" + vDD;
+                string vMM = TwinValue(vDate.Month);
+                string vDD = TwinValue(vDate.Day);
+            
+                rDate = vYY + split + vMM + split + vDD;
 
             }
             return rDate;
@@ -117,10 +140,10 @@ namespace BLL
             return bYear + strType + eYear;
         }
 
-        public static string YearTOGO(string strType, string cSchoolYear)
+        public static string YearTOGO(string strType, int month, string cSchoolYear)
         {
             string rSchoolyear = "";
-            int thisYear = int.Parse(cSchoolYear.Substring(0, 4));
+            int thisYear = (month)>8 ? int.Parse(cSchoolYear.Substring(4, 4)): int.Parse(cSchoolYear.Substring(0, 4));
             int goYear = 0;
             if (strType == "Next")
             {
@@ -134,21 +157,7 @@ namespace BLL
             }
             return rSchoolyear;
         }
-        public static DateTime YMD(string eDate)
-        {
-            try
-            {
-                string[] format = new[] { "dd/MM/yyyy", "d/M/yyyy", "dd-MM-yyyy", "yyyy/MM/dd" };
-                DateTime oDate = DateTime.ParseExact(eDate, format, System.Globalization.DateTimeFormatInfo.InvariantInfo, System.Globalization.DateTimeStyles.None);
-                return oDate;
 
-            }
-            catch (Exception)
-            {
-
-                return DateTime.Now;
-            }
-        }
     }
 
 }

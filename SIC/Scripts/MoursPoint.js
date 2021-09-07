@@ -35,7 +35,7 @@ function CopyKeyIDToClipboard(vID) {
         copyText.select();
         document.execCommand("copy");
     }
-    catch (e) {
+    catch(e) {
         alert("Copy Key value to Clipboard Action Error!");
     }
 }
@@ -55,8 +55,8 @@ function CopyKeyIDToClipboardIE(vID) {
             try {
                 netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
             }
-            catch (e) { }
+            catch(e) { }
         }
     }
-    catch (e) { }
+    catch(e) { }
 }

@@ -82,8 +82,8 @@ namespace SIC.SICStudent
 
             }
 
-            catch (Exception ex)
-            { var em = ex.Message; }
+            catch
+            {   }
         }
 
 
@@ -118,9 +118,9 @@ namespace SIC.SICStudent
                 TextBoxDemitNextBSID.Text = myData[0].DemitNextBSID.ToString();
 
             }
-            catch (Exception ex)
+            catch
             {
-                var em = ex.Message;
+               
             }
 
         }

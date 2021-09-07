@@ -37,7 +37,7 @@ namespace SIC.Models
                 string result = AppsBase.GeneralValue<string>(sp, parameter);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
               
                 return "Failed";
