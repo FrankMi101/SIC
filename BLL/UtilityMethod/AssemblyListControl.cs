@@ -39,16 +39,16 @@ namespace BLL
  
                 if (objectValue != null)
                 {
-                      myListControl.Items.FindByValue(objectValue.ToString()).Selected= true ; 
+                    //myListControl.Items.FindByValue(objectValue.ToString()).Selected= true ; 
 
-                    //foreach (ListItem item in myListControl.Items)
-                    //{
-                    //    if (item.Value.ToString().ToLower() == objectValue.ToString().ToLower())
-                    //    {
-                    //        item.Selected = true;
-                    //        break;
-                    //    }
-                    //}
+                    foreach (ListItem item in myListControl.Items)
+                    {
+                        if (item.Value.ToString().ToLower() == objectValue.ToString().ToLower())
+                        {
+                            item.Selected = true;
+                            break;
+                        }
+                    }
                 }
              }
             catch 

@@ -15,5 +15,5 @@ namespace ClassLibrary
         public string PagePath { get; set; }
         public string PageFile { get; set; }
         public string PagePara { get; set; }
-    }
+     }
 }

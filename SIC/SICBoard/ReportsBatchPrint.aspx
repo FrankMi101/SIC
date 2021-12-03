@@ -202,7 +202,7 @@
                               <asp:ListItem Value="OIC">Office Index Card</asp:ListItem>
                           </asp:DropDownList>
                         Print By: 
-                        <asp:DropDownList ID="ddlPrintBy" runat="server" Width="100px" AutoPostBack="false" >
+                        <asp:DropDownList ID="ddlPrintBy" runat="server" Width="100px" AutoPostBack="true" OnSelectedIndexChanged ="DDLPrintBy_SelectedIndexChanged"  >
                             <asp:ListItem Value="ListSchool"> School </asp:ListItem>
                             <asp:ListItem Value="Grade">Grade</asp:ListItem>
                             <asp:ListItem Value="Class">Class</asp:ListItem>
@@ -443,10 +443,10 @@
                 //currentTR.addClass("highlightRow");
                 if ($("#ActionMenuDIV").is(":visible")) $("#ActionMenuDIV").hide();
             });
-            $("#ddlPrintBy").change(function (event) {
-                var ddlType = $("#ddlPrintBy").val();
-                BuildDDLList($("#ddlPrintByValue"), ddlType);
-            })
+            //$("#ddlPrintBy").change(function (event) {
+            //    var ddlType = $("#ddlPrintBy").val();
+            //    BuildDDLList($("#ddlPrintByValue"), ddlType);
+            //})
 
             $("#chbSelectAll").change(function (event) {
                 var selectedValue = $('#chbSelectAll').is(":checked"); //  $("#chbSelectAll").is(":checked")? true: false;

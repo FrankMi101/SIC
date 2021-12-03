@@ -22,7 +22,7 @@ namespace SIC
                     SchoolYear = WorkingProfile.SchoolYear,
                     SchoolCode = WorkingProfile.SchoolCode,
                     StudentID = "",
-                    PageID = Page.Request.QueryString["ReportID"],
+                    PageID = reportID,
                     Term = Page.Request.QueryString["Term"]
                 };
 
@@ -37,7 +37,8 @@ namespace SIC
                     ReportService = myGoPageItem.PageSite,
                     ReportPath = myGoPageItem.PagePath,
                     ReportName = myGoPageItem.PageFile,
-                    ReportType = reportID,
+                    ReportType = myGoPageItem.Type,
+                    ReportID = reportID,
                     ReportFormat = "PDF"
                 };
 

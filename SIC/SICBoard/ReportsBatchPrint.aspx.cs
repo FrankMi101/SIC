@@ -100,7 +100,19 @@ namespace SIC
             WorkingProfile.SchoolYear = ddlSchoolYear.SelectedValue;
             //  await BindGridViewData();
         }
-
+        protected void DDLPrintBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var parameters = new CommonListParameter()
+            {
+                Operate = "BatchPrint",
+                UserID = User.Identity.Name,
+                Para1 = hfUserRole.Value,
+                Para2 = ddlSchoolYear.SelectedValue,
+                Para3 = ddlSchool.SelectedValue,
+                Para4 = ddlPrintBy.SelectedValue
+            };
+            AppsPage.BuildingList(ddlPrintByValue, ddlPrintBy.SelectedValue, parameters);
+        }
         protected void DDLPanel_SelectedIndexChanged(object sender, EventArgs e)
         {
             var parameters = new CommonListParameter()
@@ -208,18 +220,6 @@ namespace SIC
             return ddlPrintByValue.SelectedValue;
         }
 
-        protected void DdlPrintBy_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var parameters = new CommonListParameter()
-            {
-                Operate = "BatchPrint",
-                UserID = User.Identity.Name,
-                Para1 = hfUserRole.Value,
-                Para2 = ddlSchoolYear.SelectedValue,
-                Para3 = ddlSchool.SelectedValue,
-                Para4 = ddlPrintBy.SelectedValue
-            };
-            AppsPage.BuildingList(ddlPrintByValue, ddlPrintBy.SelectedValue, parameters);
-         }
+    
     }
 }

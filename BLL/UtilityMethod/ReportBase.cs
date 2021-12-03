@@ -9,6 +9,7 @@ namespace BLL
     public class ReportBase
     {
         public string ReportName { get; set; }
+        public string ReportID { get; set; }
         public string ReportType { get; set; }
         public string ReportService { get; set; }
         public string ReportPath { get; set; }
